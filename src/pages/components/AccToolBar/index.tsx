@@ -5,7 +5,7 @@ import MicAccessTool from '../AccToolBar/app/js/common';
 export default function AccToolBar() {
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (window && typeof window !== 'undefined') {
       new MicAccessTool({});
     }
   }, [])
