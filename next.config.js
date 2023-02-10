@@ -6,7 +6,8 @@ const nextConfig = {
       {
         source: "/_next/:path*",
         headers: [
-          { key: "Access-Control-Allow-Origin", value: "https://repository-dth.vlibras.gov.br/api/signs" },
+          { key: "Access-Control-Allow-Origin", value: "*" },
+          { key: "Access-Control-Allow-Headers", value: "Origin, X-Requested-With, Content-Type, Accept" },
         ],
       },
     ]
