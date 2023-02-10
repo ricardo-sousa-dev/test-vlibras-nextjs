@@ -3,13 +3,12 @@ import Script from 'next/script'
 import MicAccessTool from '../AccToolBar/app/js/common';
 
 export default function AccToolBar() {
-  const page = window.document
 
   useEffect(() => {
-    if (typeof page !== 'undefined') {
+    if (typeof window !== 'undefined') {
       new MicAccessTool({});
     }
-  }, [page])
+  }, [])
 
   return <Script src="./acctoolbar.min.js" />
 }
