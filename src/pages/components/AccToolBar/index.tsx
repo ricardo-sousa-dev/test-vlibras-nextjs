@@ -1,14 +1,162 @@
-import { useEffect } from 'react';
-import Script from 'next/script'
-import MicAccessTool from '../AccToolBar/app/js/common';
+import React, { useEffect, useState } from 'react';
+import style from './accToolBar.module.scss';
 
 export default function AccToolBar() {
 
-  useEffect(() => {
-    if (window && typeof window !== 'undefined') {
-      new MicAccessTool({});
+  const colorPrimary = '#00bf98';
+  const colorSecondary = '#353e52';
+  const colorLight = '#f1f1f1';
+  const colorWhite = '#ffffff';
+
+  const [ darkMode, setDarkMode ] = useState(false);
+
+  let tagsH1: HTMLCollectionOf<HTMLElement>;
+  let tagsH2: HTMLCollectionOf<HTMLElement>;
+  let tagsH3: HTMLCollectionOf<HTMLElement>;
+  let tagsH4: HTMLCollectionOf<HTMLElement>;
+  let tagsH5: HTMLCollectionOf<HTMLElement>;
+  let tagsH6: HTMLCollectionOf<HTMLElement>;
+  let tagsP: HTMLCollectionOf<HTMLElement>;
+  let storage:  {darkMode: Boolean};
+
+  if (typeof window !== 'undefined') {
+
+    tagsH1 = document.getElementsByTagName('h1');
+    tagsH2 = document.getElementsByTagName('h2');
+    tagsH3 = document.getElementsByTagName('h3');
+    tagsH4 = document.getElementsByTagName('h4');
+    tagsH5 = document.getElementsByTagName('h5');
+    tagsH6 = document.getElementsByTagName('h6');
+    tagsP = document.getElementsByTagName('p');
+    storage = JSON.parse(localStorage.getItem('a11y')|| '');
+  }
+
+  const changeDarkMode = () => {
+    if (darkMode) {
+      storage = {darkMode:true}
+      localStorage.setItem('a11y', JSON.stringify(storage))
+      document.getElementsByTagName('body')[ 0 ].style.background = colorSecondary;
+
+      if (tagsH1) {
+        for (var i = 0; i < tagsH1.length; i++) {
+          tagsH1[ i ].setAttribute('style', `color: ${ colorLight }`);
+        }
+      }
+
+      if (tagsH2) {
+        for (var i = 0; i < tagsH2.length; i++) {
+          tagsH2[ i ].setAttribute('style', `color: ${ colorLight }`);
+        }
+      }
+
+      if (tagsH3) {
+        for (var i = 0; i < tagsH3.length; i++) {
+          tagsH3[ i ].setAttribute('style', `color: ${ colorLight }`);
+        }
+      }
+
+      if (tagsH4) {
+        for (var i = 0; i < tagsH4.length; i++) {
+          tagsH4[ i ].setAttribute('style', `color: ${ colorLight }`);
+        }
+      }
+
+      if (tagsH5) {
+        for (var i = 0; i < tagsH5.length; i++) {
+          tagsH5[ i ].setAttribute('style', `color: ${ colorLight }`);
+        }
+      }
+
+      if (tagsH6) {
+        for (var i = 0; i < tagsH6.length; i++) {
+          tagsH6[ i ].setAttribute('style', `color: ${ colorLight }`);
+        }
+      }
+
+      if (tagsP) {
+        for (var i = 0; i < tagsP.length; i++) {
+          tagsP[ i ].setAttribute('style', `color: ${ colorLight }`);
+        }
+      }
+    } else {
+      document.getElementsByTagName('body')[ 0 ].style.background = colorLight;
+
+      if (tagsH1) {
+        for (var i = 0; i < tagsH1.length; i++) {
+          tagsH1[ i ].removeAttribute('style');
+        }
+      }
+
+      if (tagsH2) {
+        for (var i = 0; i < tagsH2.length; i++) {
+          tagsH2[ i ].removeAttribute('style');
+
+        }
+      }
+
+      if (tagsH3) {
+        for (var i = 0; i < tagsH3.length; i++) {
+          tagsH3[ i ].removeAttribute('style');
+
+        }
+      }
+
+      if (tagsH4) {
+        for (var i = 0; i < tagsH4.length; i++) {
+          tagsH4[ i ].removeAttribute('style');
+
+        }
+      }
+
+      if (tagsH5) {
+        for (var i = 0; i < tagsH5.length; i++) {
+          tagsH5[ i ].removeAttribute('style');
+
+        }
+      }
+
+      if (tagsH6) {
+        for (var i = 0; i < tagsH6.length; i++) {
+          tagsH6[ i ].removeAttribute('style');
+
+        }
+      }
+
+      if (tagsP) {
+        for (var i = 0; i < tagsP.length; i++) {
+          tagsP[ i ].removeAttribute('style');
+
+        }
+      }
+      storage = { darkMode: false }
+      localStorage.setItem('a11y', JSON.stringify(storage))
     }
+  }
+
+  useEffect(() => {
+      if (!storage) {
+      localStorage.setItem('a11y', JSON.stringify(
+        { darkMode: false }
+      ))
+    }
+
+    storage = JSON.parse(localStorage.getItem('a11y') || '');
+   
+    if(storage && storage.darkMode){
+      setDarkMode(true)
+    }
+
   }, [])
 
-  return <Script src="./acctoolbar.min.js" />
+  useEffect(() => {
+    changeDarkMode();
+  }, [ darkMode ])
+
+  return (
+    <div className={ style.accToolBar }>
+      <button
+        className={ style.darkModeButton }
+        onClick={ () => setDarkMode(!darkMode) }>Dark Mode</button>
+    </div>
+  )
 }

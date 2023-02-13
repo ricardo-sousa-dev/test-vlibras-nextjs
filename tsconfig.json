@@ -24,15 +24,11 @@
         "./src/*"
       ]
     },
-    "typeRoots": [
-      "./src/types",
-      "./types"
-    ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
   ],
   "exclude": [
     "node_modules"
