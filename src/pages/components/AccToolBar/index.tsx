@@ -17,7 +17,7 @@ export default function AccToolBar() {
   let tagsH5: HTMLCollectionOf<HTMLElement>;
   let tagsH6: HTMLCollectionOf<HTMLElement>;
   let tagsP: HTMLCollectionOf<HTMLElement>;
-  let storage:  {darkMode: Boolean};
+  let storage:  string | null;
 
   if (typeof window !== 'undefined') {
 
@@ -33,8 +33,7 @@ export default function AccToolBar() {
 
   const changeDarkMode = () => {
     if (darkMode) {
-      storage = {darkMode:true}
-      localStorage.setItem('a11y', JSON.stringify(storage))
+      localStorage.setItem('a11y', JSON.stringify({ darkMode: true }))
       document.getElementsByTagName('body')[ 0 ].style.background = colorSecondary;
 
       if (tagsH1) {
@@ -80,7 +79,7 @@ export default function AccToolBar() {
       }
     } else {
       document.getElementsByTagName('body')[ 0 ].style.background = colorLight;
-
+      localStorage.setItem('a11y', JSON.stringify({ darkMode: false }))
       if (tagsH1) {
         for (var i = 0; i < tagsH1.length; i++) {
           tagsH1[ i ].removeAttribute('style');
@@ -128,8 +127,6 @@ export default function AccToolBar() {
 
         }
       }
-      storage = { darkMode: false }
-      localStorage.setItem('a11y', JSON.stringify(storage))
     }
   }
 
@@ -140,9 +137,7 @@ export default function AccToolBar() {
       ))
     }
 
-    storage = JSON.parse(localStorage.getItem('a11y') || '');
-   
-    if(storage && storage.darkMode){
+    if(storage && JSON.parse(storage).darkMode){
       setDarkMode(true)
     }
 
