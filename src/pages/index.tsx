@@ -21,6 +21,7 @@ export default function Home() {
         <h1>Geek Jokes</h1>
         <h2>Test in English:</h2>
         <p> { joke }</p>
+        <button>Button</button>
       </div>
     </>
   )

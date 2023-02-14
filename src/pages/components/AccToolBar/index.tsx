@@ -3,12 +3,12 @@ import style from './accToolBar.module.scss';
 
 export default function AccToolBar() {
 
-  const colorPrimary = '#00bf98';
-  const colorSecondary = '#353e52';
-  const colorLight = '#f1f1f1';
-  const colorWhite = '#ffffff';
+  const primary = '#00bf98';
+  const secondary = '#353e52';
+  const light = '#f1f1f1';
+  const black = '#000000';
 
-  const [ contrast, setContrast ] = useState(false);
+  const [ contrast, setContrast ] = useState(1);
 
   let tagsH1: HTMLCollectionOf<HTMLElement>;
   let tagsH2: HTMLCollectionOf<HTMLElement>;
@@ -17,7 +17,9 @@ export default function AccToolBar() {
   let tagsH5: HTMLCollectionOf<HTMLElement>;
   let tagsH6: HTMLCollectionOf<HTMLElement>;
   let tagsP: HTMLCollectionOf<HTMLElement>;
-  let storageContrast:  string | null;
+  let tagsButton: HTMLCollectionOf<HTMLElement>;
+  let storageContrast: string | null;
+  let arrayTags: HTMLCollectionOf<HTMLElement>[];
 
   if (typeof window !== 'undefined') {
 
@@ -28,129 +30,74 @@ export default function AccToolBar() {
     tagsH5 = document.getElementsByTagName('h5');
     tagsH6 = document.getElementsByTagName('h6');
     tagsP = document.getElementsByTagName('p');
-    storageContrast = localStorage.getItem('storageContrast')|| null;
+    tagsButton = document.getElementsByTagName('button');
+    storageContrast = localStorage.getItem('storageContrast') || null;
+    arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsButton ];
+  }
+
+  // tag[ t ].style.removeProperty('color');
+  // document.getElementsByTagName('body')[ 0 ].style.removeProperty('background');
+
+  const modifyingContrastClear = () => {
+    for (let i = 0; i < arrayTags.length; i++) {
+      const tag = arrayTags[ i ];
+      for (let t = 0; t < tag.length; t++) {
+        tag[ t ].removeAttribute('style');
+      }
+    }
+    localStorage.setItem('storageContrast', JSON.stringify(2))
+  }
+
+  const modifyingContrast2 = () => {
+    for (let i = 0; i < arrayTags.length; i++) {
+      const tag = arrayTags[ i ];
+      for (let t = 0; t < tag.length; t++) {
+        tag[ t ].setAttribute('style', 'color: blue');
+        if (tag[ t ].tagName === 'BUTTON') {
+          tag[ t ].setAttribute('style', 'background: blue; color: white');
+        }
+      }
+    }
+    localStorage.setItem('storageContrast', JSON.stringify(1))
   }
 
   const changeContrast = useCallback(() => {
-    if (contrast) {
-      localStorage.setItem('storageContrast', JSON.stringify(true))
-      document.getElementsByTagName('body')[ 0 ].style.background = colorSecondary;
+    console.log('CONTRAST', contrast)
+    if (contrast < 2) {
+      setContrast(contrast + 1);
 
-      if (tagsH1) {
-        for (var i = 0; i < tagsH1.length; i++) {
-          tagsH1[ i ].setAttribute('style', `color: ${ colorLight }`);
-        }
-      }
-
-      if (tagsH2) {
-        for (var i = 0; i < tagsH2.length; i++) {
-          tagsH2[ i ].setAttribute('style', `color: ${ colorLight }`);
-        }
-      }
-
-      if (tagsH3) {
-        for (var i = 0; i < tagsH3.length; i++) {
-          tagsH3[ i ].setAttribute('style', `color: ${ colorLight }`);
-        }
-      }
-
-      if (tagsH4) {
-        for (var i = 0; i < tagsH4.length; i++) {
-          tagsH4[ i ].setAttribute('style', `color: ${ colorLight }`);
-        }
-      }
-
-      if (tagsH5) {
-        for (var i = 0; i < tagsH5.length; i++) {
-          tagsH5[ i ].setAttribute('style', `color: ${ colorLight }`);
-        }
-      }
-
-      if (tagsH6) {
-        for (var i = 0; i < tagsH6.length; i++) {
-          tagsH6[ i ].setAttribute('style', `color: ${ colorLight }`);
-        }
-      }
-
-      if (tagsP) {
-        for (var i = 0; i < tagsP.length; i++) {
-          tagsP[ i ].setAttribute('style', `color: ${ colorLight }`);
-        }
-      }
     } else {
-      document.getElementsByTagName('body')[ 0 ].style.background = colorLight;
-      localStorage.setItem('storageContrast', JSON.stringify(false ))
-
-      if (tagsH1) {
-        for (var i = 0; i < tagsH1.length; i++) {
-          tagsH1[ i ].removeAttribute('style');
-        }
-      }
-
-      if (tagsH2) {
-        for (var i = 0; i < tagsH2.length; i++) {
-          tagsH2[ i ].removeAttribute('style');
-
-        }
-      }
-
-      if (tagsH3) {
-        for (var i = 0; i < tagsH3.length; i++) {
-          tagsH3[ i ].removeAttribute('style');
-
-        }
-      }
-
-      if (tagsH4) {
-        for (var i = 0; i < tagsH4.length; i++) {
-          tagsH4[ i ].removeAttribute('style');
-
-        }
-      }
-
-      if (tagsH5) {
-        for (var i = 0; i < tagsH5.length; i++) {
-          tagsH5[ i ].removeAttribute('style');
-
-        }
-      }
-
-      if (tagsH6) {
-        for (var i = 0; i < tagsH6.length; i++) {
-          tagsH6[ i ].removeAttribute('style');
-
-        }
-      }
-
-      if (tagsP) {
-        for (var i = 0; i < tagsP.length; i++) {
-          tagsP[ i ].removeAttribute('style');
-
-        }
-      }
+      setContrast(1);
     }
-  },[ contrast]);
+
+    switch (contrast) {
+      case 1:
+        modifyingContrast2();
+        break;
+      case 2:
+        modifyingContrastClear();
+        break;
+      default:
+        break;
+    }
+  }, [ contrast ]);
 
   useEffect(() => {
     if (!storageContrast) {
-      localStorage.setItem('storageContrast', JSON.stringify(false))
+      localStorage.setItem('storageContrast', JSON.stringify(1))
     }
 
-    if (storageContrast && JSON.parse(storageContrast)){
-      setContrast(true)
+    if (storageContrast && JSON.parse(storageContrast)) {
+      setContrast(JSON.parse(storageContrast))
     }
-    
+
   }, [])
-
-  useEffect(() => {
-    changeContrast();
-  }, [ contrast ])
 
   return (
     <div className={ style.accToolBar }>
       <button
         className={ style.contrastButton }
-        onClick={ () => setContrast(!contrast) }>Contrast</button>
+        onClick={ () => changeContrast() }>Contrast</button>
     </div>
   )
 }
