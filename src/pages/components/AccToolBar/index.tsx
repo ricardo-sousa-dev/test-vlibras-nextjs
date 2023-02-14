@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import style from './accToolBar.module.scss';
 
 export default function AccToolBar() {
@@ -17,7 +17,7 @@ export default function AccToolBar() {
   let tagsH5: HTMLCollectionOf<HTMLElement>;
   let tagsH6: HTMLCollectionOf<HTMLElement>;
   let tagsP: HTMLCollectionOf<HTMLElement>;
-  let storage:  string | null;
+  let storageContrast:  string | null;
 
   if (typeof window !== 'undefined') {
 
@@ -28,12 +28,12 @@ export default function AccToolBar() {
     tagsH5 = document.getElementsByTagName('h5');
     tagsH6 = document.getElementsByTagName('h6');
     tagsP = document.getElementsByTagName('p');
-    storage = JSON.parse(localStorage.getItem('a11y')|| '');
+    storageContrast = localStorage.getItem('storageContrast')|| null;
   }
 
-  const changeDarkMode = () => {
+  const changeDarkMode = useCallback(() => {
     if (darkMode) {
-      localStorage.setItem('a11y', JSON.stringify({ darkMode: true }))
+      localStorage.setItem('storageContrast', JSON.stringify(true))
       document.getElementsByTagName('body')[ 0 ].style.background = colorSecondary;
 
       if (tagsH1) {
@@ -79,7 +79,8 @@ export default function AccToolBar() {
       }
     } else {
       document.getElementsByTagName('body')[ 0 ].style.background = colorLight;
-      localStorage.setItem('a11y', JSON.stringify({ darkMode: false }))
+      localStorage.setItem('storageContrast', JSON.stringify(false ))
+
       if (tagsH1) {
         for (var i = 0; i < tagsH1.length; i++) {
           tagsH1[ i ].removeAttribute('style');
@@ -128,19 +129,17 @@ export default function AccToolBar() {
         }
       }
     }
-  }
+  },[ darkMode]);
 
   useEffect(() => {
-      if (!storage) {
-      localStorage.setItem('a11y', JSON.stringify(
-        { darkMode: false }
-      ))
+    if (!storageContrast) {
+      localStorage.setItem('storageContrast', JSON.stringify(false))
     }
 
-    if(storage && JSON.parse(storage).darkMode){
+    if (storageContrast && JSON.parse(storageContrast)){
       setDarkMode(true)
     }
-
+    
   }, [])
 
   useEffect(() => {
