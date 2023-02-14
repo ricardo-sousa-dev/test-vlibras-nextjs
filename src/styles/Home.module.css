@@ -1,9 +1,0 @@
-.section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 0 30vw;
-  gap:3rem;
-}
