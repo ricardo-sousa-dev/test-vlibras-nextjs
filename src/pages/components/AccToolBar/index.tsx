@@ -8,7 +8,7 @@ export default function AccToolBar() {
   const colorLight = '#f1f1f1';
   const colorWhite = '#ffffff';
 
-  const [ darkMode, setDarkMode ] = useState(false);
+  const [ contrast, setContrast ] = useState(false);
 
   let tagsH1: HTMLCollectionOf<HTMLElement>;
   let tagsH2: HTMLCollectionOf<HTMLElement>;
@@ -31,8 +31,8 @@ export default function AccToolBar() {
     storageContrast = localStorage.getItem('storageContrast')|| null;
   }
 
-  const changeDarkMode = useCallback(() => {
-    if (darkMode) {
+  const changeContrast = useCallback(() => {
+    if (contrast) {
       localStorage.setItem('storageContrast', JSON.stringify(true))
       document.getElementsByTagName('body')[ 0 ].style.background = colorSecondary;
 
@@ -129,7 +129,7 @@ export default function AccToolBar() {
         }
       }
     }
-  },[ darkMode]);
+  },[ contrast]);
 
   useEffect(() => {
     if (!storageContrast) {
@@ -137,20 +137,20 @@ export default function AccToolBar() {
     }
 
     if (storageContrast && JSON.parse(storageContrast)){
-      setDarkMode(true)
+      setContrast(true)
     }
     
   }, [])
 
   useEffect(() => {
-    changeDarkMode();
-  }, [ darkMode ])
+    changeContrast();
+  }, [ contrast ])
 
   return (
     <div className={ style.accToolBar }>
       <button
-        className={ style.darkModeButton }
-        onClick={ () => setDarkMode(!darkMode) }>Dark Mode</button>
+        className={ style.contrastButton }
+        onClick={ () => setContrast(!contrast) }>Contrast</button>
     </div>
   )
 }
