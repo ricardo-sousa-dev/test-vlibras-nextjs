@@ -1,11 +1,17 @@
-import style from './accToolBar.module.scss';
-import ContrastButton from './Contrast'
+import { useState } from 'react';
+import FloatingIcon from './FloatingIcon';
+import Toolbar from './Toolbar';
 
-export default function AccToolBar() {
+export default function AccToolbar() {
+  const [ showToolbar, setShowToolbar ] = useState(false)
 
   return (
-    <div className={ style.accToolBar }>
-      <ContrastButton />
-    </div>
+    <>
+      <FloatingIcon 
+      setShowToolbar={ setShowToolbar } 
+      showToolbar={showToolbar}
+      />
+      {showToolbar ? <Toolbar />:null}
+    </>
   )
 }
