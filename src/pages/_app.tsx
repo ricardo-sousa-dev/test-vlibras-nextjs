@@ -3,9 +3,9 @@ import AccToolBar from './components/AccToolBar'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-  <>
-  <AccToolBar/>
-  <Component {...pageProps} />
-  </>
+    <>
+      <AccToolBar />
+      <Component { ...pageProps } />
+    </>
   )
 }
