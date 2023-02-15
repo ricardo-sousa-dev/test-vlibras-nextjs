@@ -22,6 +22,10 @@ export default function Home() {
         <h2>Test in English:</h2>
         <p> { joke }</p>
         <button>Button</button>
+        <div>Div1
+          <div>Div intern</div>
+        </div>
+        <div>Div2</div>
       </div>
     </>
   )

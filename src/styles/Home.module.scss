@@ -17,9 +17,23 @@
   }
 
   button {
-    background-color: rgba(255, 255, 0, 0.525);
+    background-color: gray;
     padding: 5px 10px;
     border-radius: 7px;
     margin: 5px;
+  }
+
+  div {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    padding:5px;
+    max-width: 70%;
+    text-align: center;
+    align-items:center;
+    justify-content: center;
+    background-color: grey;
+    border:1px solid black;
   }
 }

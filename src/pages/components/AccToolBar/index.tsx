@@ -10,6 +10,8 @@ export default function AccToolBar() {
   let tagsH5: HTMLCollectionOf<HTMLElement>;
   let tagsH6: HTMLCollectionOf<HTMLElement>;
   let tagsP: HTMLCollectionOf<HTMLElement>;
+  let tagsDiv: HTMLCollectionOf<HTMLDivElement>;
+  let tagBody: HTMLCollectionOf<HTMLBodyElement>;
   let tagsButton: HTMLCollectionOf<HTMLElement>;
   let storageContrast: string | null;
   let arrayTags: HTMLCollectionOf<HTMLElement>[];
@@ -25,6 +27,7 @@ export default function AccToolBar() {
       for (let t = 0; t < tag.length; t++) {
         tag[ t ].style.removeProperty('color');
         tag[ t ].style.removeProperty('background');
+        document.getElementsByTagName('body')[ 0 ].style.removeProperty('background');
       }
     }
   }
@@ -41,19 +44,41 @@ export default function AccToolBar() {
     }
   }
 
+  const modifyingContrast3 = () => {
+    console.log('ARRAY TAGS', arrayTags)
+
+    for (let i = 0; i < arrayTags.length; i++) {
+      const tag = arrayTags[ i ];
+      for (let t = 0; t < tag.length; t++) {
+        tag[ t ].setAttribute('style', 'color: black');
+        if (tag[ t ].tagName === 'BUTTON') {
+          tag[ t ].setAttribute('style', 'background: black; color: yellow');
+        }
+        // console.log(document.body.nodeName);
+        if(tag[t].tagName === 'DIV'){
+          tag[ t ].setAttribute('style', 'background: green');
+        }
+
+        document.getElementsByTagName('body')[ 0 ].style.background = 'yellow';
+      }
+    }
+  }
+
   if (typeof window !== 'undefined') {
-
-    tagsH1 = document.getElementsByTagName('h1');
-    tagsH2 = document.getElementsByTagName('h2');
-    tagsH3 = document.getElementsByTagName('h3');
-    tagsH4 = document.getElementsByTagName('h4');
-    tagsH5 = document.getElementsByTagName('h5');
-    tagsH6 = document.getElementsByTagName('h6');
-    tagsP = document.getElementsByTagName('p');
-    tagsButton = document.getElementsByTagName('button');
-    storageContrast = localStorage.getItem('storageContrast') || null;
-    arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsButton ];
-
+    
+    tagsH1 = document.getElementsByTagName('h1'),
+    tagsH2 = document.getElementsByTagName('h2'),
+    tagsH3 = document.getElementsByTagName('h3'),
+    tagsH4 = document.getElementsByTagName('h4'),
+    tagsH5 = document.getElementsByTagName('h5'),
+    tagsH6 = document.getElementsByTagName('h6'),
+    tagsP = document.getElementsByTagName('p'),
+    tagsDiv = document.getElementsByTagName('div'),
+    tagBody= document.getElementsByTagName('body'),
+    tagsButton = document.getElementsByTagName('button'),
+    storageContrast = localStorage.getItem('storageContrast') || null,
+    
+    arrayTags = [ tagBody, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsButton ];
   }
 
   useEffect(()=> {
@@ -71,6 +96,12 @@ export default function AccToolBar() {
           setContrast(2)
           modifyingContrast2();
           break;
+        case 3:
+          setContrast(3);
+          modifyingContrast3();
+          break;
+        default:
+          break;
       }
     }
   },[])
@@ -84,10 +115,15 @@ export default function AccToolBar() {
       localStorage.setItem('storageContrast', JSON.stringify(2))
       
     } else if (contrast == 2) {
+      setContrast(3);
+      modifyingContrast3();
+      localStorage.setItem('storageContrast', JSON.stringify(3))
+    } else if (contrast == 3) {
       setContrast(1);
       modifyingContrastClear();
       localStorage.setItem('storageContrast', JSON.stringify(1))
     }
+
   };
 
 
