@@ -11,7 +11,9 @@ export default function AccToolbar() {
       setShowToolbar={ setShowToolbar } 
       showToolbar={showToolbar}
       />
-      {showToolbar ? <Toolbar />:null}
+      <Toolbar
+      showToolbar={showToolbar}
+      />
     </>
   )
 }

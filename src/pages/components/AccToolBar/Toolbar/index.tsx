@@ -1,11 +1,11 @@
 import style from './toolbar.module.scss';
 import ContrastButton from '../Contrast';
-import { useState } from 'react';
+import { ComponentState} from 'react';
 
-export default function Toolbar() {
-
+export default function Toolbar({ showToolbar }:ComponentState) {
+  
   return (
-    <div className={ style.toolBar }>
+    <div className={ style.toolBar } style={ showToolbar ? {} : {visibility: "hidden"}}>
       <ContrastButton />
     </div>
   )
