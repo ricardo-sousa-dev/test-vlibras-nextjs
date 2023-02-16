@@ -9,9 +9,9 @@ export default function FloatingIcon({ setShowToolbar, showToolbar }: React.Comp
     onClick={()=>setShowToolbar(!showToolbar)}>
       <Image
         alt='Acessibility Toolbar'
-        src='/vision-down-simbol.png'
-        width={35}
-        height={35}
+        src='/a11y-symbol.webp'
+        width={30}
+        height={30}
         quality={ 100 }
       />
     </span>)

@@ -1,8 +1,13 @@
 .floatingIcon {
   position: fixed;
-  bottom: 50%;
-  right: 1px;
-  width: 35px;
-  height: 35px;
+  bottom: 60%;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
   cursor:pointer;
+
+  img{
+  border-radius:10px;
+  }
 }
