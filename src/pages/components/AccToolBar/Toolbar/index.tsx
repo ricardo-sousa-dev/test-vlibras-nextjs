@@ -1,13 +1,22 @@
-import style from './toolbar.module.scss';
 import ContrastButton from '../Contrast';
-import { ComponentState} from 'react';
+import { ComponentState } from 'react';
 
-export default function Toolbar({ showToolbar }:ComponentState) {
-  
+export default function Toolbar({ showToolbar }: ComponentState) {
+
   return (
-    <div 
-    className={ style.toolBar } 
-    style={ showToolbar ? {} : {visibility: "hidden"}}>
+    <div
+    id='toolbar'
+      style={ {
+        visibility: showToolbar && "hidden",
+        backgroundColor: '#f1f1f1',
+        display: 'flex',
+        justifyContent: 'center',
+        padding: '5px',
+        gap: '5px',
+        borderRadius: '15px',
+        position: 'sticky',
+        top: '0',
+      } }>
       <ContrastButton />
     </div>
   )

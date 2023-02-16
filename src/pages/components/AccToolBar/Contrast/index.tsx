@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 export default function ContrastButton() {
 
   let tagsH1: HTMLCollectionOf<HTMLElement>;
@@ -15,6 +13,7 @@ export default function ContrastButton() {
   let tagsButton: HTMLCollectionOf<HTMLElement>;
   let storageContrast: string | null;
   let arrayTags: HTMLCollectionOf<HTMLElement>[];
+  const toolbar: HTMLElement | null = typeof window !== 'undefined' ? document.getElementById('toolbar'):null;
 
   const [ contrast, setContrast ] = useState(1);
 
@@ -35,6 +34,7 @@ export default function ContrastButton() {
       divs[ i ].style.removeProperty('color');
       divs[ i ].style.removeProperty('border');
     }
+    toolbar ? toolbar.style.background = '#f1f1f1' : null;
   }
 
   const modifyingContrast2 = () => {
@@ -74,6 +74,8 @@ export default function ContrastButton() {
       divs[ i ].style.background = 'yellow';
       divs[ i ].style.removeProperty('color');
     }
+    toolbar ? toolbar.style.border = '1px solid black' : null;
+
   }
 
   const modifyingContrast4 = () => {
@@ -100,6 +102,8 @@ export default function ContrastButton() {
     for (let i = 0; i < iconsToolbar.length; i++) {
       iconsToolbar[ i ].setAttribute('style', 'background: white')
     }
+    toolbar ? toolbar.style.border = 'none' : null;
+
   }
 
   if (typeof window !== 'undefined') {
