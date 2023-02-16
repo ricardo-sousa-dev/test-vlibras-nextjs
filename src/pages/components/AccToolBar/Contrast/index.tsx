@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import style from './contrast.module.scss';
+import Image from 'next/image'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 export default function ContrastButton() {
 
   let tagsH1: HTMLCollectionOf<HTMLElement>;
@@ -92,6 +95,11 @@ export default function ContrastButton() {
       divs[ i ].style.color = 'white';
       divs[ i ].style.border = '1px solid white';
     }
+    const iconsToolbar = document.getElementsByClassName('a11yIcon');
+    console.log(iconsToolbar)
+    for (let i = 0; i < iconsToolbar.length; i++) {
+      iconsToolbar[ i ].setAttribute('style', 'background: white')
+    }
   }
 
   if (typeof window !== 'undefined') {
@@ -161,9 +169,26 @@ export default function ContrastButton() {
   };
 
   return (
-    <button
-      onClick={ () => changeContrast()} 
-      className={style.contrast}
-    >Contrast</button>
+    <>
+      <span
+        onClick={ () => changeContrast() }
+        style={ {
+          color: 'white',
+          padding: '5px 10px',
+          borderRadius: '7px',
+          margin: '5px',
+          cursor: 'pointer',
+          background: contrast == 4? 'white' : 'transparent'
+        } }
+      >
+        <Image
+          alt='Contrast Color'
+          src='/contrast_icon.svg'
+          width={ 30 }
+          height={ 30 }
+          quality={ 100 }
+        />
+      </span>
+    </>
   )
 }
