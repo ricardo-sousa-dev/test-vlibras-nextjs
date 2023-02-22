@@ -3,7 +3,7 @@ import FloatingIcon from './FloatingIcon';
 import Toolbar from './Toolbar';
 
 export default function AccToolbar() {
-  const [ showToolbar, setShowToolbar ] = useState(false)
+  const [ showToolbar, setShowToolbar ] = useState(true)
 
   return (
     <>
