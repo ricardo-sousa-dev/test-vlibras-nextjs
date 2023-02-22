@@ -98,7 +98,6 @@ export default function ContrastButton() {
       divs[ i ].style.border = '1px solid white';
     }
     const iconsToolbar = document.getElementsByClassName('a11yIcon');
-    console.log(iconsToolbar)
     for (let i = 0; i < iconsToolbar.length; i++) {
       iconsToolbar[ i ].setAttribute('style', 'background: white')
     }

@@ -1,5 +1,5 @@
 import styles from '@/styles/Home.module.scss'
-import VLibras from './components/VLibras';
+import VLibras from '../components/VLibras';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -8,7 +8,7 @@ export default function Home() {
 
   useEffect(() => {
     axios.get('https://geek-jokes.sameerkumar.website/api?format=json').then((response) => {
-    setJoke(response.data.joke);
+      setJoke(response.data.joke);
     });
   }, [])
 
