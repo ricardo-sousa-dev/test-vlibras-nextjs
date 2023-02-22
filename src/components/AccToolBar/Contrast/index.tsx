@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image'
+import ButtonTollbar from '../ButtonToolbar';
 
 export default function ContrastButton() {
 
@@ -13,7 +14,8 @@ export default function ContrastButton() {
   let tagsButton: HTMLCollectionOf<HTMLElement>;
   let storageContrast: string | null;
   let arrayTags: HTMLCollectionOf<HTMLElement>[];
-  const toolbar: HTMLElement | null = typeof window !== 'undefined' ? document.getElementById('toolbar'):null;
+  let iconsToolbar: HTMLCollectionOf<HTMLElement>;
+  const toolbar: HTMLElement | null = typeof window !== 'undefined' ? document.getElementById('toolbar') : null;
 
   const [ contrast, setContrast ] = useState(1);
 
@@ -34,7 +36,13 @@ export default function ContrastButton() {
       divs[ i ].style.removeProperty('color');
       divs[ i ].style.removeProperty('border');
     }
+
     toolbar ? toolbar.style.background = '#f1f1f1' : null;
+
+    for (let i = 0; i < iconsToolbar.length; i++) {
+      iconsToolbar[ i ].style.border = '1px solid black'
+      iconsToolbar[ i ].style.background = 'white'
+    }
   }
 
   const modifyingContrast2 = () => {
@@ -42,10 +50,13 @@ export default function ContrastButton() {
 
     for (let i = 0; i < arrayTags.length; i++) {
       const tag = arrayTags[ i ];
+
       for (let t = 0; t < tag.length; t++) {
-        tag[ t ].setAttribute('style', 'color: blue');
-        if (tag[ t ].tagName === 'BUTTON') {
-          tag[ t ].setAttribute('style', 'background: blue; color: white');
+        tag[ t ].style.color = 'blue';
+
+        if (tag[ t ].tagName === 'BUTTON' && !tag[ t ].classList.contains('a11yIcon')) {
+          tag[ t ].style.background = 'blue';
+          tag[ t ].style.color = 'white';
         }
       }
     }
@@ -61,21 +72,29 @@ export default function ContrastButton() {
 
     for (let i = 0; i < arrayTags.length; i++) {
       const tag = arrayTags[ i ];
+
       for (let t = 0; t < tag.length; t++) {
-        tag[ t ].setAttribute('style', 'color: black');
+        tag[ t ].style.color = 'black';
         if (tag[ t ].tagName === 'BUTTON') {
-          tag[ t ].setAttribute('style', 'background: black; color: yellow');
+          tag[ t ].style.background = 'black';
+          tag[ t ].style.color = 'yellow';
         }
       }
     }
 
     const divs = document.querySelectorAll('div');
+
     for (let i = 0; i < divs.length; i++) {
       divs[ i ].style.background = 'yellow';
       divs[ i ].style.removeProperty('color');
     }
-    toolbar ? toolbar.style.border = '1px solid black' : null;
 
+    for (let i = 0; i < iconsToolbar.length; i++) {
+      iconsToolbar[ i ].style.border = '1px solid black'
+      iconsToolbar[ i ].style.background = 'yellow'
+    }
+
+    toolbar ? toolbar.style.border = '1px solid black' : null;
   }
 
   const modifyingContrast4 = () => {
@@ -84,9 +103,11 @@ export default function ContrastButton() {
     for (let i = 0; i < arrayTags.length; i++) {
       const tag = arrayTags[ i ];
       for (let t = 0; t < tag.length; t++) {
-        tag[ t ].setAttribute('style', 'color: white');
+        tag[ t ].style.color = 'white';
         if (tag[ t ].tagName === 'BUTTON') {
-          tag[ t ].setAttribute('style', 'background: black; color: white; border: 1px solid white');
+          tag[ t ].style.background = 'black'
+          tag[ t ].style.color = 'white'
+          tag[ t ].style.border = '1px solid white'
         }
       }
     }
@@ -97,9 +118,9 @@ export default function ContrastButton() {
       divs[ i ].style.color = 'white';
       divs[ i ].style.border = '1px solid white';
     }
-    const iconsToolbar = document.getElementsByClassName('a11yIcon');
+
     for (let i = 0; i < iconsToolbar.length; i++) {
-      iconsToolbar[ i ].setAttribute('style', 'background: white')
+      iconsToolbar[ i ].style.background = 'white'
     }
     toolbar ? toolbar.style.border = 'none' : null;
 
@@ -116,8 +137,8 @@ export default function ContrastButton() {
       tagsP = document.getElementsByTagName('p'),
       tagsButton = document.getElementsByTagName('button'),
       storageContrast = localStorage.getItem('storageContrast') || null,
-
-      arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsButton ];
+      iconsToolbar = document.getElementsByClassName('a11yIcon') as HTMLCollectionOf<HTMLElement>;
+    arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsButton ];
   }
 
   useEffect(() => {
@@ -154,7 +175,6 @@ export default function ContrastButton() {
       setContrast(2);
       modifyingContrast2();
       localStorage.setItem('storageContrast', JSON.stringify(2))
-
     } else if (contrast == 2) {
       setContrast(3);
       modifyingContrast3();
@@ -172,26 +192,9 @@ export default function ContrastButton() {
   };
 
   return (
-    <>
-      <span
-        onClick={ () => changeContrast() }
-        style={ {
-          color: 'white',
-          padding: '5px 10px',
-          borderRadius: '7px',
-          margin: '5px',
-          cursor: 'pointer',
-          background: contrast == 4? 'white' : 'transparent'
-        } }
-      >
-        <Image
-          alt='Contrast Color'
-          src='/contrast_icon.svg'
-          width={ 30 }
-          height={ 30 }
-          quality={ 100 }
-        />
-      </span>
-    </>
+    <ButtonTollbar
+      icon='/contrast_icon.svg'
+      alt='Contrast Color'
+      onClick={ changeContrast } />
   )
 }
