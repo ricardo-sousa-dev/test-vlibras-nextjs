@@ -1,87 +1,44 @@
-import React, { EffectCallback, useEffect } from "react";
+import React, { Component } from 'react'
 
-type ExpectedReadyState =
-  | ReadonlyArray<DocumentReadyState>
-  | DocumentReadyState
-  | undefined;
+export default class VLibras extends Component<{ forceOnload?: boolean }> {
+  widgetSrc: string
+  scriptSrc: string
+  script: any
 
-const isReadyStateMatch = (expected?: ExpectedReadyState): boolean => {
-  if (!expected) {
-    return true;
+  constructor(props: any) {
+    super(props)
+    this.widgetSrc = 'https://vlibras.gov.br/app'
+    this.scriptSrc = 'https://vlibras.gov.br/app/vlibras-plugin.js'
   }
-  if (typeof expected === "string" && document.readyState === expected) {
-    return true;
-  }
-  return expected.indexOf(document.readyState) !== -1;
-};
 
-type useReadyStateEffect = (
-  effect: EffectCallback,
-  deps?: any[],
-  onState?: ExpectedReadyState
-) => void;
-
-const useReadyStateEffect: useReadyStateEffect = (
-  effect,
-  deps = [],
-  onState = "complete"
-): void => {
-  useEffect(() => {
-    const destructors: Array<() => void> = [
-      () => document.removeEventListener("readystatechange", listener),
-    ];
-
-    const listener = () => {
-      if (!isReadyStateMatch(onState)) {
-        return;
-      }
-      const destructor = effect();
-      if (destructor) {
-        destructors.push(destructor);
-      }
-    };
-
-    listener();
-    document.addEventListener("readystatechange", listener);
-
-    return () => destructors.forEach((d) => d());
-  }, deps);
-};
-
-type Props = {
-  forceOnload?: boolean;
-};
-
-function VLibras({ forceOnload }: Props): JSX.Element {
-  useReadyStateEffect(
-    () => {
-      const script = document.createElement("script");
-      script.src = "https://vlibras.gov.br/app/vlibras-plugin.js";
-      script.async = true;
-      const widgetUrl = `https://vlibras.gov.br/app`;
-      script.onload = () => {
+  init() {
+    this.script = document.createElement('script')
+    this.script.src = this.scriptSrc
+    this.script.async = true
+    this.script.onload = (load: any) => {
+      // @ts-ignore
+      new window.VLibras.Widget(this.widgetSrc)
+      if (this.props.forceOnload) {
         // @ts-ignore
-        new window.VLibras.Widget(widgetUrl);
-        if (forceOnload) {
-          // @ts-ignore
-          window.onload();
-        }
-      };
-      document.head.appendChild(script);
-    },
-    [ forceOnload ],
-    "complete"
-  );
+        window.onload()
+      }
+    }
+    document.head.appendChild(this.script)
+  }
 
-  return (
-    // @ts-ignore
-    <div vw="true" className="enabled">
-      <div vw-access-button="true" className="active" />
-      <div vw-plugin-wrapper="true">
-        <div className="vw-plugin-top-wrapper" />
+  componentDidMount() {
+    this.init()
+  }
+
+  render() {
+    return (
+      // @ts-ignore
+      <div vw="true" className="enabled">
+        <div vw-access-button="true" className="active"></div>
+        <div vw-plugin-wrapper="true">
+          <div className="vw-plugin-top-wrapper"></div>
+        </div>
       </div>
-    </div>
-  );
+    )
+  }
 }
-
-export default VLibras;
