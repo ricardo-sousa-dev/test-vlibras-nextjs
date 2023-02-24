@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image'
 import ButtonTollbar from '../ButtonToolbar';
 
 export default function ContrastButton() {
@@ -57,6 +56,11 @@ export default function ContrastButton() {
         if (tag[ t ].tagName === 'BUTTON' && !tag[ t ].classList.contains('a11yIcon')) {
           tag[ t ].style.background = 'blue';
           tag[ t ].style.color = 'white';
+          tag[ t ].style.border = 'black';
+        }
+
+        if (tag[ t ].tagName === 'P' && tag[ t ].parentElement?.classList.contains('divButton')) {
+          tag[ t ].style.color = 'black';
         }
       }
     }
@@ -116,7 +120,9 @@ export default function ContrastButton() {
     for (let i = 0; i < divs.length; i++) {
       divs[ i ].style.background = 'black';
       divs[ i ].style.color = 'white';
-      divs[ i ].style.border = '1px solid white';
+      if (!divs[ i ].classList.contains('divButton')) {
+        divs[ i ].style.border = '1px solid white';
+      }
     }
 
     for (let i = 0; i < iconsToolbar.length; i++) {
@@ -128,16 +134,16 @@ export default function ContrastButton() {
 
   if (typeof window !== 'undefined') {
 
-    tagsH1 = document.getElementsByTagName('h1'),
-      tagsH2 = document.getElementsByTagName('h2'),
-      tagsH3 = document.getElementsByTagName('h3'),
-      tagsH4 = document.getElementsByTagName('h4'),
-      tagsH5 = document.getElementsByTagName('h5'),
-      tagsH6 = document.getElementsByTagName('h6'),
-      tagsP = document.getElementsByTagName('p'),
-      tagsButton = document.getElementsByTagName('button'),
-      storageContrast = localStorage.getItem('storageContrast') || null,
-      iconsToolbar = document.getElementsByClassName('a11yIcon') as HTMLCollectionOf<HTMLElement>;
+    tagsH1 = document.getElementsByTagName('h1')
+    tagsH2 = document.getElementsByTagName('h2')
+    tagsH3 = document.getElementsByTagName('h3')
+    tagsH4 = document.getElementsByTagName('h4')
+    tagsH5 = document.getElementsByTagName('h5')
+    tagsH6 = document.getElementsByTagName('h6')
+    tagsP = document.getElementsByTagName('p')
+    tagsButton = document.getElementsByTagName('button')
+    storageContrast = localStorage.getItem('storageContrast') || null
+    iconsToolbar = document.getElementsByClassName('a11yIcon') as HTMLCollectionOf<HTMLElement>;
     arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsButton ];
   }
 
@@ -194,7 +200,7 @@ export default function ContrastButton() {
   return (
     <ButtonTollbar
       icon='/contrast_icon.svg'
-      alt='Contrast Color'
+      alt='Contrast'
       onClick={ changeContrast } />
   )
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image'
+import ButtonTollbar from '../ButtonToolbar';
 
 export default function textSize() {
 
@@ -12,7 +12,6 @@ export default function textSize() {
   let tagsP: HTMLCollectionOf<HTMLElement>;
   let storageTextSize: string | null;
   let arrayTags: HTMLCollectionOf<HTMLElement>[];
-  const toolbar: HTMLElement | null = typeof window !== 'undefined' ? document.getElementById('toolbar'):null;
 
   const [ textSize, setTextSize ] = useState(1);
 
@@ -30,21 +29,19 @@ export default function textSize() {
 
   const modifyingTextSize4 = () => {
     console.log('TextSize: ', textSize)
-
   }
 
   if (typeof window !== 'undefined') {
 
-    tagsH1 = document.getElementsByTagName('h1'),
-      tagsH2 = document.getElementsByTagName('h2'),
-      tagsH3 = document.getElementsByTagName('h3'),
-      tagsH4 = document.getElementsByTagName('h4'),
-      tagsH5 = document.getElementsByTagName('h5'),
-      tagsH6 = document.getElementsByTagName('h6'),
-      tagsP = document.getElementsByTagName('p'),
-      storageTextSize = localStorage.getItem('storageTextSize') || null,
-
-      arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP ];
+    tagsH1 = document.getElementsByTagName('h1')
+    tagsH2 = document.getElementsByTagName('h2')
+    tagsH3 = document.getElementsByTagName('h3')
+    tagsH4 = document.getElementsByTagName('h4')
+    tagsH5 = document.getElementsByTagName('h5')
+    tagsH6 = document.getElementsByTagName('h6')
+    tagsP = document.getElementsByTagName('p')
+    storageTextSize = localStorage.getItem('storageTextSize') || null
+    arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP ];
   }
 
   useEffect(() => {
@@ -97,26 +94,9 @@ export default function textSize() {
   };
 
   return (
-    <>
-      <span
-        onClick={ () => changeTextSize() }
-        style={ {
-          padding: '5px 10px',
-          borderRadius: '7px',
-          margin: '5px',
-          cursor: 'pointer',
-          background: 'transparent'
-        } }
-        className='a11yIcon'
-      >
-        <Image
-          alt='TextSize Color'
-          src='/format_size.svg'
-          width={ 30 }
-          height={ 30 }
-          quality={ 100 }
-        />
-      </span>
-    </>
+    <ButtonTollbar
+      icon='/format_size.svg'
+      alt='Font Size'
+      onClick={ changeTextSize } />
   )
 }
