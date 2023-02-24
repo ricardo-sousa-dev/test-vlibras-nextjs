@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
       {/* { process.env.NODE_ENV === "production" && <VLibras forceOnload /> } */ }
       {/* <AccToolBar /> */ }
       <Component { ...pageProps } />
-      <VLibras forceOnload />
+      <VLibras forceOnload={true} />
     </>
   )
 }
