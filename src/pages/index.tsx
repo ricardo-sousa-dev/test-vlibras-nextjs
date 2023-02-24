@@ -1,5 +1,5 @@
 import styles from '@/styles/Home.module.scss'
-import VLibras from '../components/VLibras';
+// import VLibras from '../components/VLibras';
 // import axios from 'axios';
 // import { useEffect, useState } from 'react';
 
@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <>
-      { process.env.NODE_ENV === "production" && <VLibras forceOnload /> }
+      {/* { process.env.NODE_ENV === "production" && <VLibras forceOnload /> } */}
 
       <div className={ styles.section }>
         <h1>Teste de ferramentas de acessibilidade - NextJS</h1>
