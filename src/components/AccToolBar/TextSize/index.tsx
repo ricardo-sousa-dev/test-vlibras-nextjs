@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ButtonTollbar from '../ButtonToolbar';
 
-export default function textSize() {
+export default function TextSize() {
 
   let tagsH1: HTMLCollectionOf<HTMLElement>;
   let tagsH2: HTMLCollectionOf<HTMLElement>;
