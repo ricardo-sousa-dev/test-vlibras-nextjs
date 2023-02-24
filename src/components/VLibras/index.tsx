@@ -1,44 +1,87 @@
-import React, { Component } from 'react'
+import React, { EffectCallback, useEffect } from "react";
 
-export default class VLibras extends Component<{ forceOnload?: boolean }> {
-  widgetSrc: string
-  scriptSrc: string
-  script: any
+type ExpectedReadyState =
+  | ReadonlyArray<DocumentReadyState>
+  | DocumentReadyState
+  | undefined;
 
-  constructor(props: any) {
-    super(props)
-    this.widgetSrc = 'https://vlibras.gov.br/app'
-    this.scriptSrc = 'https://vlibras.gov.br/app/vlibras-plugin.js'
+const isReadyStateMatch = (expected?: ExpectedReadyState): boolean => {
+  if (!expected) {
+    return true;
   }
+  if (typeof expected === "string" && document.readyState === expected) {
+    return true;
+  }
+  return expected.indexOf(document.readyState) !== -1;
+};
 
-  init() {
-    this.script = document.createElement('script')
-    this.script.src = this.scriptSrc
-    this.script.async = true
-    this.script.onload = (load: any) => {
-      // @ts-ignore
-      new window.VLibras.Widget(this.widgetSrc)
-      if (this.props.forceOnload) {
-        // @ts-ignore
-        window.onload()
+type useReadyStateEffect = (
+  effect: EffectCallback,
+  deps?: any[],
+  onState?: ExpectedReadyState
+) => void;
+
+const useReadyStateEffect: useReadyStateEffect = (
+  effect,
+  deps = [],
+  onState = "complete"
+): void => {
+  useEffect(() => {
+    const destructors: Array<() => void> = [
+      () => document.removeEventListener("readystatechange", listener),
+    ];
+
+    const listener = () => {
+      if (!isReadyStateMatch(onState)) {
+        return;
       }
-    }
-    document.head.appendChild(this.script)
-  }
+      const destructor = effect();
+      if (destructor) {
+        destructors.push(destructor);
+      }
+    };
 
-  componentDidMount() {
-    this.init()
-  }
+    listener();
+    document.addEventListener("readystatechange", listener);
 
-  render() {
-    return (
-      // @ts-ignore
-      <div vw="true" className="enabled">
-        <div vw-access-button="true" className="active"></div>
-        <div vw-plugin-wrapper="true">
-          <div className="vw-plugin-top-wrapper"></div>
-        </div>
+    return () => destructors.forEach((d) => d());
+  }, deps);
+};
+
+type Props = {
+  forceOnload?: boolean;
+};
+
+function VLibras({ forceOnload }: Props): JSX.Element {
+  useReadyStateEffect(
+    () => {
+      const script = document.createElement("script");
+      script.src = "https://vlibras.gov.br/app/vlibras-plugin.js";
+      script.async = true;
+      const widgetUrl = `https://vlibras.gov.br/app`;
+      script.onload = () => {
+        // @ts-ignore
+        new window.VLibras.Widget(widgetUrl);
+        if (forceOnload) {
+          // @ts-ignore
+          window.onload();
+        }
+      };
+      document.head.appendChild(script);
+    },
+    [ forceOnload ],
+    "complete"
+  );
+
+  return (
+    // @ts-ignore
+    <div vw="true" className="enabled">
+      <div vw-access-button="true" className="active" />
+      <div vw-plugin-wrapper="true">
+        <div className="vw-plugin-top-wrapper" />
       </div>
-    )
-  }
+    </div>
+  );
 }
+
+export default VLibras;
