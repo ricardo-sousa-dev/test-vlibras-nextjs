@@ -57,10 +57,10 @@ export default function ContrastButton() {
           tag[ t ].style.background = 'blue';
           tag[ t ].style.color = 'white';
         }
-        if(tag[t].classList.contains('floatingIcon')){
+        if (tag[ t ].classList.contains('floatingIcon')) {
           tag[ t ].style.border = 'none';
         }
-        if (tag[ t ].tagName === 'P' && tag[ t ].parentElement?.classList.contains('divButton')) {
+        if (tag[ t ].tagName === 'P' && tag[ t ].parentElement?.classList.contains('divButtonToolbar')) {
           tag[ t ].style.color = 'black';
         }
       }
@@ -112,7 +112,7 @@ export default function ContrastButton() {
     for (let i = 0; i < divs.length; i += 1) {
       divs[ i ].style.background = 'black';
       divs[ i ].style.color = 'white';
-      if (!divs[ i ].classList.contains('divButton')) {
+      if (!divs[ i ].classList.contains('divButtonToolbar')) {
         divs[ i ].style.border = '1px solid white';
       }
     }

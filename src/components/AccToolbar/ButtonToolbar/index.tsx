@@ -11,39 +11,39 @@ interface Icon {
 export default function ButtonTollbar({ icon, alt, onClick }: Icon) {
   return (
     <div
-      className='divButton'
-      style={{
+      className='divButtonToolbar'
+      style={ {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         border: 'none',
-      }}>
+      } }>
       <button
         type='button'
-        style={{
+        style={ {
           padding: '2px 4px',
           borderRadius: '7px',
           cursor: 'pointer',
           background: 'transparent',
-        }}
+        } }
         className='a11yIcon'
-        onClick={onClick}>
+        onClick={ onClick }>
         <Image
-          alt={alt}
-          src={icon}
-          width={25}
-          height={25}
-          quality={100}
+          alt={ alt }
+          src={ icon }
+          width={ 25 }
+          height={ 25 }
+          quality={ 100 }
         />
       </button>
       <p
-        style={{
+        style={ {
           margin: '0',
           padding: '0',
           fontSize: '8px',
           color: 'black',
-        }}>
-        {alt}
+        } }>
+        { alt }
       </p>
     </div>
   );
