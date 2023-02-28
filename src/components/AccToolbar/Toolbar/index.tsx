@@ -1,4 +1,5 @@
 import ContrastButton from '../Contrast';
+import TextSize from '../TextSize';
 
 export default function Toolbar() {
   return (
@@ -16,6 +17,7 @@ export default function Toolbar() {
         zIndex: '999',
       }}>
       <ContrastButton />
+      <TextSize/>
     </div>
   );
 }
