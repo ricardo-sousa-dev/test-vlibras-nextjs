@@ -5,9 +5,9 @@ export default function FloatingIcon({ setShowToolbar, showToolbar }: React.Comp
     <button
       type='button'
       className='floatingIcon'
-      onClick={ () => setShowToolbar(!showToolbar) }
-      style={ {
-        display:'flex',
+      onClick={() => setShowToolbar(!showToolbar)}
+      style={{
+        display: 'flex',
         position: 'fixed',
         bottom: '60%',
         right: '0',
@@ -17,18 +17,18 @@ export default function FloatingIcon({ setShowToolbar, showToolbar }: React.Comp
         border: 'none',
         cursor: 'pointer',
         zIndex: '999',
-        background:'transparent',
-        padding:'0'
-      } }>
+        background: 'transparent',
+        padding: '0',
+      }}>
       <Image
         alt='Acessibility Toolbar'
-        src='/a11y-symbol.webp'
-        width={ 30 }
-        height={ 30 }
-        quality={ 100 }
-        style={ {
+        src='/img/a11y-symbol.webp'
+        width={30}
+        height={30}
+        quality={100}
+        style={{
           borderRadius: '10px',
-        } }
+        }}
       />
     </button>
   );

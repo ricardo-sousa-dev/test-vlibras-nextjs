@@ -6,7 +6,7 @@ export default function Toolbar() {
     <div
       id='toolbar'
       style={{
-        backgroundColor: '#f1f1f1',
+        backgroundColor: '#F6F7F9',
         display: 'flex',
         justifyContent: 'center',
         padding: '5px',
@@ -17,7 +17,7 @@ export default function Toolbar() {
         zIndex: '999',
       }}>
       <ContrastButton />
-      <TextSize/>
+      <TextSize />
     </div>
   );
 }

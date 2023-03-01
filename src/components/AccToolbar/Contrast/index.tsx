@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import ButtonTollbar from '../ButtonToolbar';
 
+/*eslint-disable */
 export default function ContrastButton() {
   let tagsH1: HTMLCollectionOf<HTMLElement>;
   let tagsH2: HTMLCollectionOf<HTMLElement>;
@@ -16,108 +17,106 @@ export default function ContrastButton() {
   let iconsToolbar: HTMLCollectionOf<HTMLElement>;
   const toolbar: HTMLElement | null = typeof window !== 'undefined' ? document.getElementById('toolbar') : null;
 
-  const [ contrast, setContrast ] = useState(1);
+  const [contrast, setContrast] = useState(1);
   /*eslint-disable */
   const modifyingContrastClear = () => {
     for (let i = 0; i < arrayTags.length; i += 1) {
-      const tag = arrayTags[ i ];
+      const tag = arrayTags[i];
 
       for (let t = 0; t < tag.length; t += 1) {
-        tag[ t ].style.removeProperty('color');
-        tag[ t ].style.removeProperty('background');
-        tag[ t ].style.removeProperty('border');
-        if (tag[ t ].classList.contains('floatingIcon')) {
-          tag[ t ].style.border = 'none';
+        tag[t].style.removeProperty('color');
+        tag[t].style.removeProperty('background');
+        tag[t].style.removeProperty('border');
+        if (tag[t].classList.contains('floatingIcon')) {
+          tag[t].style.border = 'none';
         }
       }
     }
 
     const divs = document.querySelectorAll('div');
     for (let i = 0; i < divs.length; i += 1) {
-      divs[ i ].style.removeProperty('background');
-      divs[ i ].style.removeProperty('color');
-      divs[ i ].style.removeProperty('border');
+      divs[i].style.removeProperty('background');
+      divs[i].style.removeProperty('color');
+      divs[i].style.removeProperty('border');
     }
     toolbar ? (toolbar.style.background = '#f1f1f1') : null;
     for (let i = 0; i < iconsToolbar.length; i += 1) {
-      iconsToolbar[ i ].style.border = '1px solid black';
-      iconsToolbar[ i ].style.background = 'white';
+      iconsToolbar[i].style.border = '1px solid black';
+      iconsToolbar[i].style.background = 'white';
     }
   };
 
   const modifyingContrast2 = () => {
     for (let i = 0; i < arrayTags.length; i += 1) {
-      const tag = arrayTags[ i ];
+      const tag = arrayTags[i];
       for (let t = 0; t < tag.length; t += 1) {
-        tag[ t ].style.color = 'blue';
+        tag[t].style.color = 'blue';
 
-        if (tag[ t ].tagName === 'BUTTON' &&
-          !tag[ t ].classList.contains('a11yIcon') &&
-          !tag[ t ].classList.contains('floatingIcon')) {
-          tag[ t ].style.background = 'blue';
-          tag[ t ].style.color = 'white';
+        if (tag[t].tagName === 'BUTTON' && !tag[t].classList.contains('a11yIcon') && !tag[t].classList.contains('floatingIcon')) {
+          tag[t].style.background = 'blue';
+          tag[t].style.color = 'white';
         }
-        if (tag[ t ].classList.contains('floatingIcon')) {
-          tag[ t ].style.border = 'none';
+        if (tag[t].classList.contains('floatingIcon')) {
+          tag[t].style.border = 'none';
         }
-        if (tag[ t ].tagName === 'P' && tag[ t ].parentElement?.classList.contains('divButtonToolbar')) {
-          tag[ t ].style.color = 'black';
+        if (tag[t].tagName === 'P' && tag[t].parentElement?.classList.contains('divButtonToolbar')) {
+          tag[t].style.color = 'black';
         }
       }
     }
     const divs = document.querySelectorAll('div');
     for (let i = 0; i < divs.length; i += 1) {
-      divs[ i ].style.color = 'blue';
+      divs[i].style.color = 'blue';
     }
   };
 
   const modifyingContrast3 = () => {
     for (let i = 0; i < arrayTags.length; i += 1) {
-      const tag = arrayTags[ i ];
+      const tag = arrayTags[i];
 
       for (let t = 0; t < tag.length; t += 1) {
-        tag[ t ].style.color = 'black';
-        if (tag[ t ].tagName === 'BUTTON') {
-          tag[ t ].style.background = 'black';
-          tag[ t ].style.color = 'yellow';
+        tag[t].style.color = 'black';
+        if (tag[t].tagName === 'BUTTON') {
+          tag[t].style.background = 'black';
+          tag[t].style.color = 'yellow';
         }
       }
     }
     const divs = document.querySelectorAll('div');
     for (let i = 0; i < divs.length; i += 1) {
-      divs[ i ].style.background = 'yellow';
-      divs[ i ].style.removeProperty('color');
+      divs[i].style.background = 'yellow';
+      divs[i].style.removeProperty('color');
     }
     for (let i = 0; i < iconsToolbar.length; i += 1) {
-      iconsToolbar[ i ].style.border = '1px solid black';
-      iconsToolbar[ i ].style.background = 'yellow';
+      iconsToolbar[i].style.border = '1px solid black';
+      iconsToolbar[i].style.background = 'yellow';
     }
     toolbar ? (toolbar.style.border = '1px solid black') : null;
   };
 
   const modifyingContrast4 = () => {
     for (let i = 0; i < arrayTags.length; i += 1) {
-      const tag = arrayTags[ i ];
+      const tag = arrayTags[i];
 
       for (let t = 0; t < tag.length; t += 1) {
-        tag[ t ].style.color = 'white';
-        if (tag[ t ].tagName === 'BUTTON') {
-          tag[ t ].style.background = 'black';
-          tag[ t ].style.color = 'white';
-          tag[ t ].style.border = '1px solid white';
+        tag[t].style.color = 'white';
+        if (tag[t].tagName === 'BUTTON') {
+          tag[t].style.background = 'black';
+          tag[t].style.color = 'white';
+          tag[t].style.border = '1px solid white';
         }
       }
     }
     const divs = document.querySelectorAll('div');
     for (let i = 0; i < divs.length; i += 1) {
-      divs[ i ].style.background = 'black';
-      divs[ i ].style.color = 'white';
-      if (!divs[ i ].classList.contains('divButtonToolbar')) {
-        divs[ i ].style.border = '1px solid white';
+      divs[i].style.background = 'black';
+      divs[i].style.color = 'white';
+      if (!divs[i].classList.contains('divButtonToolbar')) {
+        divs[i].style.border = '1px solid white';
       }
     }
     for (let i = 0; i < iconsToolbar.length; i += 1) {
-      iconsToolbar[ i ].style.background = 'white';
+      iconsToolbar[i].style.background = 'white';
     }
     toolbar ? (toolbar.style.border = 'none') : null;
   };
@@ -133,7 +132,7 @@ export default function ContrastButton() {
     tagsButton = document.getElementsByTagName('button');
     storageContrast = localStorage.getItem('storageContrast') || null;
     iconsToolbar = document.getElementsByClassName('a11yIcon') as HTMLCollectionOf<HTMLElement>;
-    arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsButton ];
+    arrayTags = [tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsButton];
   }
 
   useEffect(() => {
@@ -185,9 +184,9 @@ export default function ContrastButton() {
 
   return (
     <ButtonTollbar
-      icon='/contrast_icon.svg'
+      icon='/img/contrast_icon.svg'
       alt='Contrast'
-      onClick={ changeContrast }
+      onClick={changeContrast}
     />
   );
 }
