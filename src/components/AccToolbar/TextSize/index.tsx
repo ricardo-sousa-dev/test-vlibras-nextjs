@@ -4,19 +4,19 @@ import ButtonTollbar from '../ButtonToolbar';
 
 /*eslint-disable */
 export default function TextSize() {
-  let tagsH1: HTMLCollectionOf<HTMLElement>;
-  let tagsH2: HTMLCollectionOf<HTMLElement>;
-  let tagsH3: HTMLCollectionOf<HTMLElement>;
-  let tagsH4: HTMLCollectionOf<HTMLElement>;
-  let tagsH5: HTMLCollectionOf<HTMLElement>;
-  let tagsH6: HTMLCollectionOf<HTMLElement>;
-  let tagsP: HTMLCollectionOf<HTMLElement>;
-  let tagHeader: HTMLCollectionOf<HTMLElement>;
+  let tagsH1: HTMLHeadingElement[];
+  let tagsH2: HTMLHeadingElement[];
+  let tagsH3: HTMLHeadingElement[];
+  let tagsH4: HTMLHeadingElement[];
+  let tagsH5: HTMLHeadingElement[];
+  let tagsH6: HTMLHeadingElement[];
+  let tagsP: HTMLHeadingElement[];
+  let tagsDiv: HTMLDivElement[];
+  let tagsButton: HTMLButtonElement[];
   let storageTextSize: string | null;
-  let arrayTags: HTMLCollectionOf<HTMLElement>[];
+  let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLDivElement)[] ;
 
-  const [textSize, setTextSize] = useState(1);
-  const regexSize = /\d+\.\d+/;
+  const [ textSize, setTextSize ] = useState(1);
   const PERCENT_10 = 0.1;
   const PERCENT_15 = 0.15;
   const PERCENT_20 = 0.2;
@@ -33,20 +33,11 @@ export default function TextSize() {
     console.log('TextSize: ', textSize);
 
     for (let i = 0; i < arrayTags.length; i += 1) {
-      const tag = arrayTags[i];
+      const tag = arrayTags[ i ];
 
-      for (let t = 0; t < tag.length; t += 1) {
-        if (!tag[t].parentElement?.classList.contains('divButtonToolbar')) {
-          tag[t].style.removeProperty('font-size');
+        if (!tag.parentElement?.classList.contains('divButtonToolbar')) {
+          tag.style.removeProperty('font-size');
         }
-      }
-    }
-
-    const divs = document.querySelectorAll('div');
-    for (let i = 0; i < divs.length; i += 1) {
-      if (!divs[i].parentElement?.classList.contains('divButtonToolbar')) {
-        divs[i].style.removeProperty('font-size');
-      }
     }
   };
 
@@ -54,75 +45,59 @@ export default function TextSize() {
     console.log('TextSize: ', textSize);
 
     for (let i = 0; i < arrayTags.length; i += 1) {
-      const tag = arrayTags[i];
+      const tag = arrayTags[ i ];
+      const fontSizeOriginal = Number(getComputedStyle(tag).fontSize.replace('px', ''));
 
-      for (let t = 0; t < tag.length; t += 1) {
-        if (!tag[t].parentElement?.classList.contains('divButtonToolbar')) {
-          const originSize = parseFloat(Number(regexSize.exec(getComputedStyle(tag[t]).fontSize)).toFixed(2));
+      if (!tag.parentElement?.classList.contains('divButtonToolbar')) {
 
-          if (!originSize) {
-            switch (tag[t].tagName) {
+        if (fontSizeOriginal) {
+          tag.style.fontSize = `${ fontSizeOriginal + (fontSizeOriginal * size) }`.slice(0, 5) + 'px';
+        }else{
+                switch (tag.tagName) {
               case 'H1':
-                tag[t].style.fontSize = `${sizeH1 + sizeH1 * size}`.slice(0, 5) + 'px';
+                tag.style.fontSize = `${ sizeH1 + (sizeH1 * size) }`.slice(0, 5) + 'px';
                 break;
               case 'H2':
-                tag[t].style.fontSize = `${sizeH2 + sizeH2 * size}`.slice(0, 5) + 'px';
+                tag.style.fontSize = `${ sizeH2 + (sizeH2 * size) }`.slice(0, 5) + 'px';
                 break;
               case 'H3':
-                tag[t].style.fontSize = `${sizeH3 + sizeH3 * size}`.slice(0, 5) + 'px';
+                tag.style.fontSize = `${ sizeH3 + (sizeH3 * size) }`.slice(0, 5) + 'px';
                 break;
               case 'H4':
-                tag[t].style.fontSize = `${sizeH4 + sizeH4 * size}`.slice(0, 5) + 'px';
+                tag.style.fontSize = `${ sizeH4 + (sizeH4 * size) }`.slice(0, 5) + 'px';
                 break;
               case 'H5':
-                tag[t].style.fontSize = `${sizeH5 + sizeH5 * size}`.slice(0, 5) + 'px';
+                tag.style.fontSize = `${ sizeH5 + (sizeH5 * size) }`.slice(0, 5) + 'px';
                 break;
               case 'P':
-                tag[t].style.fontSize = `${sizeP + sizeP * size}`.slice(0, 5) + 'px';
+                tag.style.fontSize = `${ sizeP + (sizeP * size) }`.slice(0, 5) + 'px';
                 break;
               case 'LI':
-                console.log(tag[t].childNodes);
-                tag[t].style.fontSize = `${sizeLi + sizeLi * size}`.slice(0, 5) + 'px';
+                tag.style.fontSize = `${ sizeLi + (sizeLi * size) }`.slice(0, 5) + 'px';
                 break;
               case 'A':
-                tag[t].style.fontSize = `${sizeA + sizeA * size}`.slice(0, 5) + 'px';
+                tag.style.fontSize = `${ sizeA + (sizeA * size) }`.slice(0, 5) + 'px';
                 break;
               default:
                 break;
             }
-          } else {
-            tag[t].style.fontSize = `${originSize + originSize * size}`.slice(0, 5) + 'px';
-          }
         }
       }
     }
-    const divs = document.querySelectorAll('div');
-    const drillingTag = (div: string | any[] | NodeListOf<HTMLDivElement>) => {
-      for (let i = 0; i < div.length; i += 1) {
-        if (!div[i].classList.contains('divButtonToolbar')) {
-          if (div[i].childNodes.length == 0) {
-            const originSize = parseFloat(Number(regexSize.exec(getComputedStyle(div[i]).fontSize)).toFixed(2));
-            div[i].style.fontSize = `${originSize + originSize * size}`.slice(0, 5) + 'px';
-          } else {
-            drillingTag(div[i]);
-          }
-        }
-      }
-    };
-    drillingTag(divs);
   };
 
   if (typeof window !== 'undefined') {
-    tagsH1 = document.getElementsByTagName('h1');
-    tagsH2 = document.getElementsByTagName('h2');
-    tagsH3 = document.getElementsByTagName('h3');
-    tagsH4 = document.getElementsByTagName('h4');
-    tagsH5 = document.getElementsByTagName('h5');
-    tagsH6 = document.getElementsByTagName('h6');
-    tagsP = document.getElementsByTagName('p');
-    tagHeader = document.getElementsByTagName('header');
+    tagsH1 = Array.from(document.querySelectorAll('h1'));
+    tagsH2 = Array.from(document.querySelectorAll('h2'));
+    tagsH3 = Array.from(document.querySelectorAll('h3'));
+    tagsH4 = Array.from(document.querySelectorAll('h4'));
+    tagsH5 = Array.from(document.querySelectorAll('h5'));
+    tagsH6 = Array.from(document.querySelectorAll('h6'));
+    tagsP = Array.from(document.querySelectorAll('p'));
+    tagsDiv = Array.from(document.querySelectorAll('div'));
+    tagsButton = Array.from(document.querySelectorAll('button'));
     storageTextSize = localStorage.getItem('storageTextSize') || null;
-    arrayTags = [tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP];
+    arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsDiv, tagsButton ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement>(tag => tag );
   }
 
   useEffect(() => {
@@ -176,7 +151,7 @@ export default function TextSize() {
     <ButtonTollbar
       icon='format_size'
       alt='Font Size'
-      onClick={changeTextSize}
+      onClick={ changeTextSize }
     />
   );
 }
