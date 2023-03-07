@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 import React, { MouseEventHandler } from 'react';
 
 interface Icon {
@@ -22,19 +20,16 @@ export default function ButtonTollbar({ icon, alt, onClick }: Icon) {
         type='button'
         style={{
           padding: '2px 4px',
+          border: '1px solid black',
           borderRadius: '7px',
           cursor: 'pointer',
           background: 'transparent',
         }}
         className='a11yIcon'
         onClick={onClick}>
-        <Image
-          alt={alt}
-          src={icon}
-          width={25}
-          height={25}
-          quality={100}
-        />
+        <span className="material-symbols-outlined">
+          {icon}
+        </span>
       </button>
       <p
         style={{
@@ -42,6 +37,7 @@ export default function ButtonTollbar({ icon, alt, onClick }: Icon) {
           padding: '0',
           fontSize: '8px',
           color: 'black',
+          fontFamily: 'Lexend Deca, sans-serif'
         }}>
         {alt}
       </p>

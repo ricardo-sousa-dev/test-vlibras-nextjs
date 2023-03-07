@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function FloatingIcon({ setShowToolbar, showToolbar }: React.ComponentState) {
+export default function FloatingIcon({ setShowToolbar, showToolbar, icon }: React.ComponentState) {
   return (
     <button
       type='button'
@@ -8,6 +8,8 @@ export default function FloatingIcon({ setShowToolbar, showToolbar }: React.Comp
       onClick={() => setShowToolbar(!showToolbar)}
       style={{
         display: 'flex',
+        justifyContent:'center',
+        alignItems:'center',
         position: 'fixed',
         bottom: '60%',
         right: '0',
@@ -17,10 +19,14 @@ export default function FloatingIcon({ setShowToolbar, showToolbar }: React.Comp
         border: 'none',
         cursor: 'pointer',
         zIndex: '999',
-        background: 'transparent',
+        background: 'blue',
         padding: '0',
+        color:'white'
       }}>
-      <Image
+      <span className="material-symbols-outlined">
+        { icon }
+      </span>
+      {/* <Image
         alt='Acessibility Toolbar'
         src='/img/a11y-symbol.webp'
         width={30}
@@ -29,7 +35,7 @@ export default function FloatingIcon({ setShowToolbar, showToolbar }: React.Comp
         style={{
           borderRadius: '10px',
         }}
-      />
+      /> */}
     </button>
   );
 }
