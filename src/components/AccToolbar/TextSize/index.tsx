@@ -11,7 +11,6 @@ export default function TextSize() {
   let tagsH5: HTMLCollectionOf<HTMLElement>;
   let tagsH6: HTMLCollectionOf<HTMLElement>;
   let tagsP: HTMLCollectionOf<HTMLElement>;
-  let tagsA: HTMLCollectionOf<HTMLElement>;
   let tagHeader: HTMLCollectionOf<HTMLElement>;
   let storageTextSize: string | null;
   let arrayTags: HTMLCollectionOf<HTMLElement>[];
@@ -98,7 +97,7 @@ export default function TextSize() {
       }
     }
     const divs = document.querySelectorAll('div');
-    const drillingTag = (div) => {
+    const drillingTag = (div: string | any[] | NodeListOf<HTMLDivElement>) => {
       for (let i = 0; i < div.length; i += 1) {
         if (!div[i].classList.contains('divButtonToolbar')) {
           if (div[i].childNodes.length == 0) {
@@ -121,7 +120,6 @@ export default function TextSize() {
     tagsH5 = document.getElementsByTagName('h5');
     tagsH6 = document.getElementsByTagName('h6');
     tagsP = document.getElementsByTagName('p');
-    tagsA = document.getElementsByTagName('a');
     tagHeader = document.getElementsByTagName('header');
     storageTextSize = localStorage.getItem('storageTextSize') || null;
     arrayTags = [tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP];
@@ -176,7 +174,7 @@ export default function TextSize() {
 
   return (
     <ButtonTollbar
-      icon='/img/format_size.svg'
+      icon='format_size'
       alt='Font Size'
       onClick={changeTextSize}
     />
