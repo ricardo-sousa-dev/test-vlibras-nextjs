@@ -13,8 +13,9 @@ export default function TextSize() {
   let tagsP: HTMLHeadingElement[];
   let tagsDiv: HTMLDivElement[];
   let tagsButton: HTMLButtonElement[];
+  let tagHeader: HTMLElement[];
   let storageTextSize: string | null;
-  let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLDivElement)[] ;
+  let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement)[] ;
 
   const [ textSize, setTextSize ] = useState(1);
   const PERCENT_10 = 0.1;
@@ -96,8 +97,9 @@ export default function TextSize() {
     tagsP = Array.from(document.querySelectorAll('p'));
     tagsDiv = Array.from(document.querySelectorAll('div'));
     tagsButton = Array.from(document.querySelectorAll('button'));
+    tagHeader = Array.from(document.querySelectorAll('header'));
     storageTextSize = localStorage.getItem('storageTextSize') || null;
-    arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsDiv, tagsButton ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement>(tag => tag );
+    arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsDiv, tagsButton, tagHeader ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag );
   }
 
   useEffect(() => {
