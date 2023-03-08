@@ -4,16 +4,18 @@ import ButtonTollbar from '../ButtonToolbar';
 
 /*eslint-disable */
 export default function TextStyle() {
-  let tagsH1: HTMLCollectionOf<HTMLElement>;
-  let tagsH2: HTMLCollectionOf<HTMLElement>;
-  let tagsH3: HTMLCollectionOf<HTMLElement>;
-  let tagsH4: HTMLCollectionOf<HTMLElement>;
-  let tagsH5: HTMLCollectionOf<HTMLElement>;
-  let tagsH6: HTMLCollectionOf<HTMLElement>;
-  let tagsP: HTMLCollectionOf<HTMLElement>;
-  let tagHeader: HTMLCollectionOf<HTMLElement>;
+  let tagsH1: HTMLHeadingElement[];
+  let tagsH2: HTMLHeadingElement[];
+  let tagsH3: HTMLHeadingElement[];
+  let tagsH4: HTMLHeadingElement[];
+  let tagsH5: HTMLHeadingElement[];
+  let tagsH6: HTMLHeadingElement[];
+  let tagsP: HTMLHeadingElement[];
+  let tagsDiv: HTMLDivElement[];
+  let tagsButton: HTMLButtonElement[];
+  let tagHeader: HTMLElement[];
   let storageTextStyle: string | null;
-  let arrayTags: HTMLCollectionOf<HTMLElement>[];
+  let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement)[];
 
   const [ textStyle, setTextStyle ] = useState(1);
 
@@ -23,18 +25,9 @@ export default function TextStyle() {
     for (let i = 0; i < arrayTags.length; i += 1) {
       const tag = arrayTags[ i ];
 
-      for (let t = 0; t < tag.length; t += 1) {
-        if (!tag[ t ].parentElement?.classList.contains('divButtonToolbar')) {
-          tag[ t ].style.removeProperty('font-family');
+        if (!tag.parentElement?.classList.contains('divButtonToolbar')) {
+          tag.style.removeProperty('font-family');
         }
-      }
-    }
-
-    const divs = document.querySelectorAll('div');
-    for (let i = 0; i < divs.length; i += 1) {
-      if (!divs[ i ].parentElement?.classList.contains('divButtonToolbar')) {
-        divs[ i ].style.removeProperty('font-family');
-      }
     }
   }
 
@@ -44,39 +37,25 @@ export default function TextStyle() {
     for (let i = 0; i < arrayTags.length; i += 1) {
       const tag = arrayTags[ i ];
 
-      for (let t = 0; t < tag.length; t += 1) {
-        if (!tag[ t ].parentElement?.classList.contains('divButtonToolbar')) {
-          tag[ t ].style.fontFamily = `${ family }, sans-serif`
+        if (!tag.parentElement?.classList.contains('divButtonToolbar')) {
+          tag.style.fontFamily = `${ family }, sans-serif`
         }
-      }
     }
-
-    const divs = document.querySelectorAll('div');
-    const drillingTag = (div: string | any[] | NodeListOf<HTMLDivElement>) => {
-      for (let i = 0; i < div.length; i += 1) {
-        if (!div[ i ].classList.contains('divButtonToolbar')) {
-          if (div[ i ].childNodes.length == 0) {
-            div[ i ].style.fontFamily = `${ family }, sans-serif`
-          } else {
-            drillingTag(div[ i ]);
-          }
-        }
-      }
-    };
-    drillingTag(divs);
   };
 
   if (typeof window !== 'undefined') {
-    tagsH1 = document.getElementsByTagName('h1');
-    tagsH2 = document.getElementsByTagName('h2');
-    tagsH3 = document.getElementsByTagName('h3');
-    tagsH4 = document.getElementsByTagName('h4');
-    tagsH5 = document.getElementsByTagName('h5');
-    tagsH6 = document.getElementsByTagName('h6');
-    tagsP = document.getElementsByTagName('p');
-    tagHeader = document.getElementsByTagName('header');
+    tagsH1 = Array.from(document.querySelectorAll('h1'));
+    tagsH2 = Array.from(document.querySelectorAll('h2'));
+    tagsH3 = Array.from(document.querySelectorAll('h3'));
+    tagsH4 = Array.from(document.querySelectorAll('h4'));
+    tagsH5 = Array.from(document.querySelectorAll('h5'));
+    tagsH6 = Array.from(document.querySelectorAll('h6'));
+    tagsP = Array.from(document.querySelectorAll('p'));
+    tagsDiv = Array.from(document.querySelectorAll('div'));
+    tagsButton = Array.from(document.querySelectorAll('button'));
+    tagHeader = Array.from(document.querySelectorAll('header'));
     storageTextStyle = localStorage.getItem('storageTextStyle') || null;
-    arrayTags = [ tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP ];
+    arrayTags = [ tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsDiv, tagsButton ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);;
   }
 
   useEffect(() => {
