@@ -62,9 +62,15 @@ export default function ContrastButton() {
           break;
 
         case 4:
-          tag.style.color = 'white';
           tag.style.background = 'black';
-      
+          tag.style.color = 'white';
+          tag.style.border = '1px solid white'
+
+          if(tag.parentElement?.classList.contains('toolbar')
+            || tag.parentElement?.classList.contains('divButtonToolbar')){
+            tag.style.border = '1px solid black'
+          }
+
           if (tag.tagName === 'BUTTON' || tag.classList.contains('allyIcon')) {
             tag.style.removeProperty('background')
             tag.style.background = 'white';
