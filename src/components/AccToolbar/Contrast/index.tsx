@@ -11,11 +11,12 @@ export default function ContrastButton() {
   let tagsH5: HTMLHeadingElement[];
   let tagsH6: HTMLHeadingElement[];
   let tagsP: HTMLHeadingElement[];
+  let tagsA: HTMLAnchorElement[];
   let tagsDiv: HTMLDivElement[];
   let tagsButton: HTMLButtonElement[];
   let tagHeader: HTMLElement[];
   let storageContrast: string | null;
-  let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement)[];
+  let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLAnchorElement | HTMLDivElement | HTMLElement)[];
 
   const [ contrast, setContrast ] = useState(1);
   /*eslint-disable */
@@ -31,6 +32,7 @@ export default function ContrastButton() {
       if (tag.classList.contains('floatingIcon')) {
         tag.style.background = 'blue'
         tag.style.color = 'white'
+        tag.style.border = '1px solid white'
       }
       
       if (tag.parentElement?.classList.contains('divButtonToolbar')) {
@@ -46,18 +48,30 @@ export default function ContrastButton() {
       switch (option) {
         case 2:
           tag.style.color = 'blue';
+          tag.style.border = '1px solid white !important'
+          tag.style.background = 'white'
+
           if (tag.tagName === 'BUTTON') {
             tag.style.background = 'blue';
             tag.style.color = 'white';
+            tag.style.border = '1px solid white'
           }
+          if (tag.classList.contains('toolbar')) tag.style.border = '1px solid blue'
           break;
 
         case 3:
           tag.style.color = 'black';
           tag.style.background = 'yellow';
+
           if (tag.tagName === 'BUTTON') {
             tag.style.background = 'black';
             tag.style.color = 'yellow';
+          }
+          if (tag.classList.contains('toolbar')) {
+            tag.style.border = '1px solid black'
+          }
+          if (tag.classList.contains('a11yIcon')) {
+            tag.style.border = '1px solid yellow'
           }
           break;
 
@@ -92,10 +106,13 @@ export default function ContrastButton() {
     tagsH5 = Array.from(document.querySelectorAll('h5'));
     tagsH6 = Array.from(document.querySelectorAll('h6'));
     tagsP = Array.from(document.querySelectorAll('p'));
+    tagsA= Array.from(document.querySelectorAll('a'));
     tagsDiv = Array.from(document.querySelectorAll('div'));
     tagsButton = Array.from(document.querySelectorAll('button'));
     tagHeader = Array.from(document.querySelectorAll('header'));
-    arrayTags = [ tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsDiv, tagsButton ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);
+    arrayTags = [ 
+      tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP,tagsA, tagsDiv, tagsButton 
+    ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);
     storageContrast = localStorage.getItem('storageContrast') || null;
   }
 

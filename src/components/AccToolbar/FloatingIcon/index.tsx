@@ -28,7 +28,7 @@ export default function FloatingIcon({ setShowToolbar, showToolbar, icon }: Reac
         width: '30px',
         height: '30px',
         borderRadius: '10px',
-        border: 'none',
+        border: '1px solid white',
         cursor: 'pointer',
         zIndex: '999',
         background: 'blue',
