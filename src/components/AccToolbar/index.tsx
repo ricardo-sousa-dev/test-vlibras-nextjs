@@ -6,18 +6,13 @@ import Toolbar from './Toolbar';
 
 export default function AccToolbar() {
   const [ showToolbar, setShowToolbar ] = useState(false);
-
+  
   useEffect(() => {
-    const textSize = localStorage.getItem('storageTextSize');
-    const contrast = localStorage.getItem('storageContrast');
+    const storageContrast = localStorage.getItem('storageContrast') || null;
+    const storageTextSize = localStorage.getItem('storageTextSize') || null;
+    const storageTextStyle = localStorage.getItem('storageTextStyle') || null;
 
-    if ((textSize || contrast) === null) {
-      setShowToolbar(false);
-    } else if ((textSize || contrast) !== '1') {
-      setShowToolbar(true);
-    } else {
-      setShowToolbar(false);
-    }
+    if((storageContrast || storageTextSize || storageTextStyle) !== '1') setShowToolbar(true)
   }, []);
 
   return (

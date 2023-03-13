@@ -4,140 +4,93 @@ import ButtonTollbar from '../ButtonToolbar';
 
 /*eslint-disable */
 export default function ContrastButton() {
-  let tagsH1: HTMLCollectionOf<HTMLElement>;
-  let tagsH2: HTMLCollectionOf<HTMLElement>;
-  let tagsH3: HTMLCollectionOf<HTMLElement>;
-  let tagsH4: HTMLCollectionOf<HTMLElement>;
-  let tagsH5: HTMLCollectionOf<HTMLElement>;
-  let tagsH6: HTMLCollectionOf<HTMLElement>;
-  let tagsP: HTMLCollectionOf<HTMLElement>;
-  let tagsButton: HTMLCollectionOf<HTMLElement>;
+  let tagsH1: HTMLHeadingElement[];
+  let tagsH2: HTMLHeadingElement[];
+  let tagsH3: HTMLHeadingElement[];
+  let tagsH4: HTMLHeadingElement[];
+  let tagsH5: HTMLHeadingElement[];
+  let tagsH6: HTMLHeadingElement[];
+  let tagsP: HTMLHeadingElement[];
+  let tagsDiv: HTMLDivElement[];
+  let tagsButton: HTMLButtonElement[];
+  let tagHeader: HTMLElement[];
   let storageContrast: string | null;
-  let arrayTags: HTMLCollectionOf<HTMLElement>[];
-  let iconsToolbar: HTMLCollectionOf<HTMLElement>;
-  const toolbar: HTMLElement | null = typeof window !== 'undefined' ? document.getElementById('toolbar') : null;
+  let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement)[];
 
   const [ contrast, setContrast ] = useState(1);
   /*eslint-disable */
-  const modifyingContrastClear = () => {
+  const modifyContrastClear = () => {
+
     for (let i = 0; i < arrayTags.length; i += 1) {
       const tag = arrayTags[ i ];
 
-      for (let t = 0; t < tag.length; t += 1) {
-        tag[ t ].style.removeProperty('color');
-        tag[ t ].style.removeProperty('background');
-        tag[ t ].style.removeProperty('border');
-        if (tag[ t ].classList.contains('floatingIcon')) {
-          tag[ t ].style.border = 'none';
-          tag[ t ].style.background = 'blue';
-          tag[ t ].style.color = 'white';
-        }
-      }
-    }
+      tag.style.removeProperty('color');
+      tag.style.removeProperty('background');
+      tag.style.removeProperty('border');
 
-    const divs = document.querySelectorAll('div');
-    for (let i = 0; i < divs.length; i += 1) {
-      divs[ i ].style.removeProperty('background');
-      divs[ i ].style.removeProperty('color');
-      divs[ i ].style.removeProperty('border');
-    }
-    toolbar ? (toolbar.style.background = '#f1f1f1') : null;
-    for (let i = 0; i < iconsToolbar.length; i += 1) {
-      iconsToolbar[ i ].style.border = '1px solid black';
-      iconsToolbar[ i ].style.background = 'white';
+      if (tag.classList.contains('floatingIcon')) {
+        tag.style.background = 'blue'
+        tag.style.color = 'white'
+      }
+      
+      if (tag.parentElement?.classList.contains('divButtonToolbar')) {
+        tag.style.background = 'white'
+      }
     }
   };
 
-  const modifyingContrast2 = () => {
-    for (let i = 0; i < arrayTags.length; i += 1) {
-      const tag = arrayTags[ i ];
-      for (let t = 0; t < tag.length; t += 1) {
-        tag[ t ].style.color = 'blue';
-
-        if (tag[ t ].tagName === 'BUTTON' && !tag[ t ].classList.contains('a11yIcon') && !tag[ t ].classList.contains('floatingIcon')) {
-          tag[ t ].style.background = 'blue';
-          tag[ t ].style.color = 'white';
-        }
-        if (tag[ t ].classList.contains('floatingIcon')) {
-          tag[ t ].style.border = 'none';
-          tag[ t ].style.color = 'white';
-        }
-        if (tag[ t ].tagName === 'P' && tag[ t ].parentElement?.classList.contains('divButtonToolbar')) {
-          tag[ t ].style.color = 'black';
-        }
-      }
-    }
-    const divs = document.querySelectorAll('div');
-    for (let i = 0; i < divs.length; i += 1) {
-      divs[ i ].style.color = 'blue';
-    }
-  };
-
-  const modifyingContrast3 = () => {
+  const modifyContrast = (option: number) => {
     for (let i = 0; i < arrayTags.length; i += 1) {
       const tag = arrayTags[ i ];
 
-      for (let t = 0; t < tag.length; t += 1) {
-        tag[ t ].style.color = 'black';
-        if (tag[ t ].tagName === 'BUTTON') {
-          tag[ t ].style.background = 'black';
-          tag[ t ].style.color = 'yellow';
-        }
-      }
-    }
-    const divs = document.querySelectorAll('div');
-    for (let i = 0; i < divs.length; i += 1) {
-      divs[ i ].style.background = 'yellow';
-      divs[ i ].style.removeProperty('color');
-    }
-    for (let i = 0; i < iconsToolbar.length; i += 1) {
-      iconsToolbar[ i ].style.border = '1px solid black';
-      iconsToolbar[ i ].style.background = 'yellow';
-      iconsToolbar[ i ].style.color = 'black';
-    }
-    toolbar ? (toolbar.style.border = '1px solid black') : null;
-  };
+      switch (option) {
+        case 2:
+          tag.style.color = 'blue';
+          if (tag.tagName === 'BUTTON') {
+            tag.style.background = 'blue';
+            tag.style.color = 'white';
+          }
+          break;
 
-  const modifyingContrast4 = () => {
-    for (let i = 0; i < arrayTags.length; i += 1) {
-      const tag = arrayTags[ i ];
+        case 3:
+          tag.style.color = 'black';
+          tag.style.background = 'yellow';
+          if (tag.tagName === 'BUTTON') {
+            tag.style.background = 'black';
+            tag.style.color = 'yellow';
+          }
+          break;
 
-      for (let t = 0; t < tag.length; t += 1) {
-        tag[ t ].style.color = 'white';
-        if (tag[ t ].tagName === 'BUTTON') {
-          tag[ t ].style.background = 'black';
-          tag[ t ].style.color = 'white';
-          tag[ t ].style.border = '1px solid white';
-        }
+        case 4:
+          tag.style.color = 'white';
+          tag.style.background = 'black';
+      
+          if (tag.tagName === 'BUTTON' || tag.classList.contains('allyIcon')) {
+            tag.style.removeProperty('background')
+            tag.style.background = 'white';
+            tag.style.color = 'black';
+          }
+          break;
+
+        default:
+          break;
       }
     }
-    const divs = document.querySelectorAll('div');
-    for (let i = 0; i < divs.length; i += 1) {
-      divs[ i ].style.background = 'black';
-      divs[ i ].style.color = 'white';
-      if (!divs[ i ].classList.contains('divButtonToolbar')) {
-        divs[ i ].style.border = '1px solid white';
-      }
-    }
-    for (let i = 0; i < iconsToolbar.length; i += 1) {
-      iconsToolbar[ i ].style.background = 'white';
-      iconsToolbar[ i ].style.color = 'black';
-    }
-    toolbar ? (toolbar.style.border = 'none') : null;
-  };
+  }
 
   if (typeof window !== 'undefined') {
-    tagsH1 = document.getElementsByTagName('h1');
-    tagsH2 = document.getElementsByTagName('h2');
-    tagsH3 = document.getElementsByTagName('h3');
-    tagsH4 = document.getElementsByTagName('h4');
-    tagsH5 = document.getElementsByTagName('h5');
-    tagsH6 = document.getElementsByTagName('h6');
-    tagsP = document.getElementsByTagName('p');
-    tagsButton = document.getElementsByTagName('button');
+    tagsH1 = Array.from(document.querySelectorAll('h1'));
+    tagsH2 = Array.from(document.querySelectorAll('h2'));
+    tagsH3 = Array.from(document.querySelectorAll('h3'));
+    tagsH4 = Array.from(document.querySelectorAll('h4'));
+    tagsH5 = Array.from(document.querySelectorAll('h5'));
+    tagsH6 = Array.from(document.querySelectorAll('h6'));
+    tagsP = Array.from(document.querySelectorAll('p'));
+    tagsDiv = Array.from(document.querySelectorAll('div'));
+    tagsButton = Array.from(document.querySelectorAll('button'));
+    tagHeader = Array.from(document.querySelectorAll('header'));
+    arrayTags = [ tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsDiv, tagsButton ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);
     storageContrast = localStorage.getItem('storageContrast') || null;
-    iconsToolbar = document.getElementsByClassName('a11yIcon') as HTMLCollectionOf<HTMLElement>;
-    arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsButton ];
   }
 
   useEffect(() => {
@@ -147,19 +100,19 @@ export default function ContrastButton() {
       switch (JSON.parse(storageContrast)) {
         case 1:
           setContrast(1);
-          modifyingContrastClear();
+          modifyContrastClear();
           break;
         case 2:
           setContrast(2);
-          modifyingContrast2();
+          modifyContrast(2);
           break;
         case 3:
           setContrast(3);
-          modifyingContrast3();
+          modifyContrast(3);
           break;
         case 4:
           setContrast(4);
-          modifyingContrast4();
+          modifyContrast(4);
           break;
         default:
           break;
@@ -170,19 +123,19 @@ export default function ContrastButton() {
   const changeContrast = () => {
     if (contrast === 1) {
       setContrast(2);
-      modifyingContrast2();
+      modifyContrast(2);
       localStorage.setItem('storageContrast', JSON.stringify(2));
     } else if (contrast === 2) {
       setContrast(3);
-      modifyingContrast3();
+      modifyContrast(3);
       localStorage.setItem('storageContrast', JSON.stringify(3));
     } else if (contrast === 3) {
       setContrast(4);
-      modifyingContrast4();
+      modifyContrast(4);
       localStorage.setItem('storageContrast', JSON.stringify(4));
     } else if (contrast === 4) {
       setContrast(1);
-      modifyingContrastClear();
+      modifyContrastClear();
       localStorage.setItem('storageContrast', JSON.stringify(1));
     }
   };

@@ -55,7 +55,7 @@ export default function TextStyle() {
     tagsButton = Array.from(document.querySelectorAll('button'));
     tagHeader = Array.from(document.querySelectorAll('header'));
     storageTextStyle = localStorage.getItem('storageTextStyle') || null;
-    arrayTags = [ tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsDiv, tagsButton ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);;
+    arrayTags = [ tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsDiv, tagsButton ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);
   }
 
   useEffect(() => {

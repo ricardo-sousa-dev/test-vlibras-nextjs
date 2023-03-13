@@ -15,7 +15,7 @@ export default function TextSize() {
   let tagsButton: HTMLButtonElement[];
   let tagHeader: HTMLElement[];
   let storageTextSize: string | null;
-  let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement)[] ;
+  let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement)[];
 
   const [ textSize, setTextSize ] = useState(1);
   const PERCENT_10 = 0.1;
@@ -36,9 +36,9 @@ export default function TextSize() {
     for (let i = 0; i < arrayTags.length; i += 1) {
       const tag = arrayTags[ i ];
 
-        if (!tag.parentElement?.classList.contains('divButtonToolbar')) {
-          tag.style.removeProperty('font-size');
-        }
+      if (!tag.parentElement?.classList.contains('divButtonToolbar')) {
+        tag.style.removeProperty('font-size');
+      }
     }
   };
 
@@ -53,35 +53,35 @@ export default function TextSize() {
 
         if (fontSizeOriginal) {
           tag.style.fontSize = `${ fontSizeOriginal + (fontSizeOriginal * size) }`.slice(0, 5) + 'px';
-        }else{
-                switch (tag.tagName) {
-              case 'H1':
-                tag.style.fontSize = `${ sizeH1 + (sizeH1 * size) }`.slice(0, 5) + 'px';
-                break;
-              case 'H2':
-                tag.style.fontSize = `${ sizeH2 + (sizeH2 * size) }`.slice(0, 5) + 'px';
-                break;
-              case 'H3':
-                tag.style.fontSize = `${ sizeH3 + (sizeH3 * size) }`.slice(0, 5) + 'px';
-                break;
-              case 'H4':
-                tag.style.fontSize = `${ sizeH4 + (sizeH4 * size) }`.slice(0, 5) + 'px';
-                break;
-              case 'H5':
-                tag.style.fontSize = `${ sizeH5 + (sizeH5 * size) }`.slice(0, 5) + 'px';
-                break;
-              case 'P':
-                tag.style.fontSize = `${ sizeP + (sizeP * size) }`.slice(0, 5) + 'px';
-                break;
-              case 'LI':
-                tag.style.fontSize = `${ sizeLi + (sizeLi * size) }`.slice(0, 5) + 'px';
-                break;
-              case 'A':
-                tag.style.fontSize = `${ sizeA + (sizeA * size) }`.slice(0, 5) + 'px';
-                break;
-              default:
-                break;
-            }
+        } else {
+          switch (tag.tagName) {
+            case 'H1':
+              tag.style.fontSize = `${ sizeH1 + (sizeH1 * size) }`.slice(0, 5) + 'px';
+              break;
+            case 'H2':
+              tag.style.fontSize = `${ sizeH2 + (sizeH2 * size) }`.slice(0, 5) + 'px';
+              break;
+            case 'H3':
+              tag.style.fontSize = `${ sizeH3 + (sizeH3 * size) }`.slice(0, 5) + 'px';
+              break;
+            case 'H4':
+              tag.style.fontSize = `${ sizeH4 + (sizeH4 * size) }`.slice(0, 5) + 'px';
+              break;
+            case 'H5':
+              tag.style.fontSize = `${ sizeH5 + (sizeH5 * size) }`.slice(0, 5) + 'px';
+              break;
+            case 'P':
+              tag.style.fontSize = `${ sizeP + (sizeP * size) }`.slice(0, 5) + 'px';
+              break;
+            case 'LI':
+              tag.style.fontSize = `${ sizeLi + (sizeLi * size) }`.slice(0, 5) + 'px';
+              break;
+            case 'A':
+              tag.style.fontSize = `${ sizeA + (sizeA * size) }`.slice(0, 5) + 'px';
+              break;
+            default:
+              break;
+          }
         }
       }
     }
@@ -99,7 +99,7 @@ export default function TextSize() {
     tagsButton = Array.from(document.querySelectorAll('button'));
     tagHeader = Array.from(document.querySelectorAll('header'));
     storageTextSize = localStorage.getItem('storageTextSize') || null;
-    arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsDiv, tagsButton, tagHeader ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag );
+    arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsDiv, tagsButton, tagHeader ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);
   }
 
   useEffect(() => {

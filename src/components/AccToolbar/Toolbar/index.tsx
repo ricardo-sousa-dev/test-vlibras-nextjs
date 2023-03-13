@@ -5,9 +5,9 @@ import TextStyle from '../TextStyle';
 export default function Toolbar() {
   return (
     <div
-      id='toolbar'
+      className='toolbar'
       style={ {
-        backgroundColor: '#F6F7F9',
+        backgroundColor: 'white',
         display: 'flex',
         justifyContent: 'center',
         padding: '5px',
