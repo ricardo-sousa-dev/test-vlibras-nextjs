@@ -34,8 +34,10 @@ export default function ContrastButton() {
         tag.style.color = 'white'
         tag.style.border = '1px solid white'
       }
-      
       if (tag.parentElement?.classList.contains('divButtonToolbar')) {
+        tag.style.background = 'white'
+      }
+      if (tag.classList.contains('toolbar')) {
         tag.style.background = 'white'
       }
     }
@@ -56,16 +58,28 @@ export default function ContrastButton() {
             tag.style.color = 'white';
             tag.style.border = '1px solid white'
           }
-          if (tag.classList.contains('toolbar')) tag.style.border = '1px solid blue'
+          if (tag.tagName === 'A') {
+            tag.style.textDecoration = 'underline blue'
+          }
+          if (tag.classList.contains('toolbar')){
+            tag.style.border = '1px solid blue'
+          }
           break;
 
         case 3:
           tag.style.color = 'black';
           tag.style.background = 'yellow';
 
+          if (tag.tagName === 'DIV' && !tag.classList.contains('divButtonToolbar')) {
+            tag.style.border = '1px solid black'
+          }
           if (tag.tagName === 'BUTTON') {
             tag.style.background = 'black';
+            tag.style.border = 'black';
             tag.style.color = 'yellow';
+          }
+          if (tag.tagName === 'A') {
+            tag.style.textDecoration = 'underline black'
           }
           if (tag.classList.contains('toolbar')) {
             tag.style.border = '1px solid black'
@@ -78,17 +92,24 @@ export default function ContrastButton() {
         case 4:
           tag.style.background = 'black';
           tag.style.color = 'white';
-          tag.style.border = '1px solid white'
 
-          if(tag.parentElement?.classList.contains('toolbar')
-            || tag.parentElement?.classList.contains('divButtonToolbar')){
-            tag.style.border = '1px solid black'
+          if (tag.tagName === 'DIV') {
+            tag.style.border = '1px solid white'
           }
-
           if (tag.tagName === 'BUTTON' || tag.classList.contains('allyIcon')) {
             tag.style.removeProperty('background')
             tag.style.background = 'white';
             tag.style.color = 'black';
+          }
+          if (tag.tagName === 'A') {
+            tag.style.textDecoration = 'underline white'
+          }
+          if (tag.parentElement?.classList.contains('toolbar')
+            || tag.parentElement?.classList.contains('divButtonToolbar')) {
+            tag.style.border = '1px solid black'
+          }
+          if (tag.classList.contains('floatingIcon')) {
+            tag.style.border = '1px solid black'
           }
           break;
 
@@ -106,12 +127,12 @@ export default function ContrastButton() {
     tagsH5 = Array.from(document.querySelectorAll('h5'));
     tagsH6 = Array.from(document.querySelectorAll('h6'));
     tagsP = Array.from(document.querySelectorAll('p'));
-    tagsA= Array.from(document.querySelectorAll('a'));
+    tagsA = Array.from(document.querySelectorAll('a'));
     tagsDiv = Array.from(document.querySelectorAll('div'));
     tagsButton = Array.from(document.querySelectorAll('button'));
     tagHeader = Array.from(document.querySelectorAll('header'));
-    arrayTags = [ 
-      tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP,tagsA, tagsDiv, tagsButton 
+    arrayTags = [
+      tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsA, tagsDiv, tagsButton
     ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);
     storageContrast = localStorage.getItem('storageContrast') || null;
   }
