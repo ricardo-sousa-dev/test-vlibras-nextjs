@@ -1,18 +1,25 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 
-import FloatingIcon from './FloatingIcon';
+import FloatingIcon from './ButtonFloatingIcon';
 import Toolbar from './Toolbar';
 
 export default function AccToolbar() {
   const [ showToolbar, setShowToolbar ] = useState(false);
-  
+
   useEffect(() => {
     const storageContrast = localStorage.getItem('storageContrast') || null;
-    const storageTextSize = localStorage.getItem('storageTextSize') || null;
     const storageTextStyle = localStorage.getItem('storageTextStyle') || null;
+    const storageZoom = localStorage.getItem('storageZoomPage') || null;
 
-    if((storageContrast || storageTextSize || storageTextStyle) !== '1') setShowToolbar(true)
+    // document.body.appendChild()
+    console.log(typeof document.getElementsByClassName('toolbar')[ 0 ])
+    if (
+      (storageContrast
+        || storageTextStyle
+        || storageZoom
+      ) !== '1'
+    ) setShowToolbar(true)
   }, []);
 
   return (

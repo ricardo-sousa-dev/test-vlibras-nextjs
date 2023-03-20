@@ -18,6 +18,7 @@ export default function Home() {
         <div>Div2
           <div>Div intern</div>
         </div>
+        <img src='/img/a11y-symbol.webp'></img>
       </div>
     </>
   )

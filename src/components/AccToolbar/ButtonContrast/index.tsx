@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import ButtonTollbar from '../ButtonToolbar';
+import ButtonTollbar from '../ToolbarButton';
 
 /*eslint-disable */
 export default function ContrastButton() {
@@ -28,6 +28,7 @@ export default function ContrastButton() {
       tag.style.removeProperty('color');
       tag.style.removeProperty('background');
       tag.style.removeProperty('border');
+      tag.style.removeProperty('text-decoration');
 
       if (tag.classList.contains('floatingIcon')) {
         tag.style.background = 'blue'
@@ -61,7 +62,7 @@ export default function ContrastButton() {
           if (tag.tagName === 'A') {
             tag.style.textDecoration = 'underline blue'
           }
-          if (tag.classList.contains('toolbar')){
+          if (tag.classList.contains('toolbar')) {
             tag.style.border = '1px solid blue'
           }
           break;

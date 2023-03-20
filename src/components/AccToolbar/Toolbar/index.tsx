@@ -1,6 +1,7 @@
-import ContrastButton from '../Contrast';
-import TextSize from '../TextSize';
-import TextStyle from '../TextStyle';
+import ButtonContrast from '../ButtonContrast';
+import ButtonTextStyle from '../ButtonTextStyle';
+import ButtonZoomPage from '../ButtonZoomPage';
+import ButtonReset from '../ButtonReset'
 
 export default function Toolbar() {
   return (
@@ -16,10 +17,12 @@ export default function Toolbar() {
         top: '0',
         boxShadow: '1px 3px 10px 3px rgba(0, 0, 0, 0.20)',
         zIndex: '999',
+        height:'fit-content'
       } }>
-      <ContrastButton />
-      <TextSize />
-      <TextStyle />
+      <ButtonContrast />
+      <ButtonTextStyle />
+      <ButtonZoomPage/>
+      <ButtonReset/>
     </div>
   );
 }

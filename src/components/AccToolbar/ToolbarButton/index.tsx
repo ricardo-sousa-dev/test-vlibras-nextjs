@@ -20,7 +20,7 @@ export default function ButtonTollbar({ icon, alt, onClick }: Icon) {
         type='button'
         style={{
           padding: '2px 4px',
-          border: '1px solid black',
+          border: '2px solid black',
           borderRadius: '7px',
           cursor: 'pointer',
           background: 'transparent',

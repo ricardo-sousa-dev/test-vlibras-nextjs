@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import ButtonTollbar from '../ButtonToolbar';
+import ButtonTollbar from '../ToolbarButton';
 
 /*eslint-disable */
 export default function TextStyle() {
@@ -25,9 +25,9 @@ export default function TextStyle() {
     for (let i = 0; i < arrayTags.length; i += 1) {
       const tag = arrayTags[ i ];
 
-        if (!tag.parentElement?.classList.contains('divButtonToolbar')) {
-          tag.style.removeProperty('font-family');
-        }
+      if (!tag.parentElement?.classList.contains('divButtonToolbar')) {
+        tag.style.removeProperty('font-family');
+      }
     }
   }
 
@@ -37,9 +37,9 @@ export default function TextStyle() {
     for (let i = 0; i < arrayTags.length; i += 1) {
       const tag = arrayTags[ i ];
 
-        if (!tag.parentElement?.classList.contains('divButtonToolbar')) {
-          tag.style.fontFamily = `${ family }, sans-serif`
-        }
+      if (!tag.parentElement?.classList.contains('divButtonToolbar')) {
+        tag.style.fontFamily = `${ family }, sans-serif`
+      }
     }
   };
 
@@ -108,7 +108,7 @@ export default function TextStyle() {
   return (
     <ButtonTollbar
       icon='text_format'
-      alt='Text Style'
+      alt='Style'
       onClick={ changeTextStyle }
     />
   );
