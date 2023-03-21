@@ -33,7 +33,7 @@ export default function AccToolbar() {
     for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
       const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
       if (element.getAttribute('class') === 'access-button') {
-        if (storageLibras !== '1') element.click()
+        if (storageLibras !== '2') element.click()
       }
     }
   }, []);
