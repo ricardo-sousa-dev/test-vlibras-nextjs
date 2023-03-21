@@ -1,14 +1,11 @@
 import styles from '@/styles/Home.module.scss'
-import VLibras from '../components/VLibras';
+import VLibras from '../components/AccToolbar/VLibras';
 
 export default function Home() {
 
   return (
     <>
-      { process.env.NODE_ENV === "production" && <VLibras forceOnload /> }
-      {/* <VLibras forceOnload /> */}
-
-      <div className={ styles.section }>
+           <div className={ styles.section }>
         <h1><a href="">Teste de ferramentas de acessibilidade - NextJS</a></h1>
         <h1>Teste h1</h1>
         <h2>Teste h2</h2>

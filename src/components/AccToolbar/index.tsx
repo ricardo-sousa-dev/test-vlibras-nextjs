@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import FloatingIcon from './ButtonFloatingIcon';
 import Toolbar from './Toolbar';
+import VLibras from './VLibras';
 
 export default function AccToolbar() {
   const [ showToolbar, setShowToolbar ] = useState(false);
@@ -29,6 +30,12 @@ export default function AccToolbar() {
       || storageLibras !== '1'
     ) setShowToolbar(true)
 
+    for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
+      const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
+      if (element.getAttribute('class') === 'access-button') {
+        if (storageLibras !== '1') element.click()
+      }
+    }
   }, []);
 
   const closeToolbar = () => {
@@ -41,6 +48,10 @@ export default function AccToolbar() {
 
   return (
     <>
+      { process.env.NODE_ENV === "production" && <VLibras forceOnload /> }
+      {/* modo dev */ }
+      {/* <VLibras forceOnload />  */}
+      
       <Head>
         <title>AccToolbar</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
