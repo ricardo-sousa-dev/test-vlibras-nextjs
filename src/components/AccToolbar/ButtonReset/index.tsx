@@ -1,5 +1,5 @@
 
-import ButtonTollbar from '../ToolbarButton';
+import ToolbarButton from '../ToolbarButton';
 
 /*eslint-disable */
 export default function Reset() {
@@ -32,12 +32,12 @@ export default function Reset() {
     tagsButton = Array.from(document.querySelectorAll('button'));
     tagHeader = Array.from(document.querySelectorAll('header'));
     storageZoomPage = localStorage.getItem('storageZoomPage') || null;
-    arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsA,tagsDiv, tagsImg, tagsButton, tagHeader ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);
+    arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsA, tagsDiv, tagsImg, tagsButton, tagHeader ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);
   }
 
   const reset = () => {
-   
-//contrast
+
+    //contrast
     for (let i = 0; i < arrayTags.length; i += 1) {
       const tag = arrayTags[ i ];
 
@@ -61,7 +61,7 @@ export default function Reset() {
     localStorage.setItem('storageContrast', JSON.stringify(1));
 
 
-// text style
+    // text style
     for (let i = 0; i < arrayTags.length; i += 1) {
       const tag = arrayTags[ i ];
 
@@ -81,13 +81,23 @@ export default function Reset() {
       }
     }
     localStorage.setItem('storageZoomPage', JSON.stringify(1));
+
+    // Libras
+    localStorage.setItem('storageLibras', JSON.stringify(1))
+
+    if (typeof window != 'undefined') {
+      for (let index = 0; index < document.getElementsByTagName('DIV').length; index++) {
+        const element = document.getElementsByTagName('DIV')[ index ];
+        if (element.getAttribute('vw-plugin-wrapper')) element.removeAttribute('class')
+      }
+    }
   };
 
   return (
-    <ButtonTollbar
+    <ToolbarButton
       icon='cleaning_services'
-      alt='Clear'
-      onClick={reset }
+      alt='Limpar'
+      onClick={ reset }
     />
   );
 }

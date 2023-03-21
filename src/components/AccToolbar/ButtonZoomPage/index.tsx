@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import ButtonTollbar from '../ToolbarButton';
+import ToolbarButton from '../ToolbarButton';
 
 /*eslint-disable */
 export default function ZoomPage() {
@@ -155,7 +155,7 @@ export default function ZoomPage() {
   };
 
   return (
-    <ButtonTollbar
+    <ToolbarButton
       icon='zoom_out_map'
       alt='Zoom'
       onClick={ changeZoomPage }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import ButtonTollbar from '../ToolbarButton';
+import ToolbarButton from '../ToolbarButton';
 
 /*eslint-disable */
 export default function ContrastButton() {
@@ -186,9 +186,9 @@ export default function ContrastButton() {
   };
 
   return (
-    <ButtonTollbar
+    <ToolbarButton
       icon='contrast'
-      alt='Contrast'
+      alt='Contraste'
       onClick={ changeContrast }
     />
   );

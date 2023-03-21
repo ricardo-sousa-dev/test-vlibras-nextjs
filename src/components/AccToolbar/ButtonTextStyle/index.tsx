@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import ButtonTollbar from '../ToolbarButton';
+import ToolbarButton from '../ToolbarButton';
 
 /*eslint-disable */
 export default function TextStyle() {
@@ -106,9 +106,9 @@ export default function TextStyle() {
   };
 
   return (
-    <ButtonTollbar
+    <ToolbarButton
       icon='text_format'
-      alt='Style'
+      alt='Fonte'
       onClick={ changeTextStyle }
     />
   );

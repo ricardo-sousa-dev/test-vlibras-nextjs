@@ -1,18 +1,5 @@
 export default function FloatingIcon({ setShowToolbar, showToolbar, icon }: React.ComponentState) {
-  let storageContrast;
-  let storageTextStyle;
-  let storageZoomPage;
-
-  if (typeof window !== 'undefined') {
-    storageContrast = localStorage.getItem('storageContrast') || null;
-    storageTextStyle = localStorage.getItem('storageTextStyle') || null;
-    storageZoomPage = localStorage.getItem('storageZoomPage') || null;
-
-    if (!storageContrast) localStorage.setItem('storageContrast', JSON.stringify(1))
-    if (!storageTextStyle) localStorage.setItem('storageTextStyle', JSON.stringify(1))
-    if (!storageZoomPage) localStorage.setItem('storageZoomPage', JSON.stringify(1))
-  }
-
+ 
   return (
     <button
       type='button'
@@ -23,10 +10,10 @@ export default function FloatingIcon({ setShowToolbar, showToolbar, icon }: Reac
         justifyContent: 'center',
         alignItems: 'center',
         position: 'fixed',
-        bottom: '60%',
+        bottom: '75%',
         right: '0',
-        width: '30px',
-        height: '30px',
+        width: '35px',
+        height: '35px',
         borderRadius: '10px',
         border: '1px solid white',
         cursor: 'pointer',
