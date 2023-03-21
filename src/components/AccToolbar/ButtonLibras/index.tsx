@@ -2,7 +2,7 @@ import ToolbarButton from '../ToolbarButton';
 
 /*eslint-disable */
 export default function Libras() {
-  
+
   const setLibras = () => {
     for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
       const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
@@ -11,12 +11,18 @@ export default function Libras() {
       }
     }
 
-   if (localStorage.getItem('storageLibras') == '1') {
+    const storageLibras = localStorage.getItem('storageLibras');
+
+    if (storageLibras == '1') {
       localStorage.setItem('storageLibras', JSON.stringify(2))
 
-    } else if (localStorage.getItem('storageLibras') == '2') {
+    } else if (storageLibras == '2') {
       localStorage.setItem('storageLibras', JSON.stringify(1))
-    } 
+    }
+
+    document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]?.addEventListener('click', () => {
+      localStorage.setItem('storageLibras', JSON.stringify(1))
+      })
   }
 
 
