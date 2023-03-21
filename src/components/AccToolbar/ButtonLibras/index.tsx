@@ -25,12 +25,16 @@ export default function Libras() {
       const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
       if (element.getAttribute('class') === 'vpw-settings-btn-close') {
         console.log(element)
-      }else{
-      console.log('não encontrou')}
+        element.addEventListener('click', () => {
+          localStorage.setItem('storageLibras', JSON.stringify(1))
+        })
+      } else {
+        console.log('não encontrou')
+      }
     }
-    
+
   }
-  
+
   // useEffect(() => {
   //  document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]?.addEventListener('click', () => {
   //   localStorage.setItem('storageLibras', JSON.stringify(1))
