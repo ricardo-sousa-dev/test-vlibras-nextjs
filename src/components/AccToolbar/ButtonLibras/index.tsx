@@ -10,7 +10,15 @@ export default function Libras() {
         element.click()
       }
     }
+
+   if (localStorage.getItem('storageLibras') == '1') {
+      localStorage.setItem('storageLibras', JSON.stringify(2))
+
+    } else if (localStorage.getItem('storageLibras') == '2') {
+      localStorage.setItem('storageLibras', JSON.stringify(1))
+    } 
   }
+
 
   return (
     <ToolbarButton
