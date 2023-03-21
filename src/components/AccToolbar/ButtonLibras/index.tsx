@@ -21,15 +21,21 @@ export default function Libras() {
       localStorage.setItem('storageLibras', JSON.stringify(1))
     }
 
-      console.log(document.getElementsByClassName('vpw-settings-btn-close')[ 0 ])
+    for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
+      const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
+      if (element.getAttribute('class') === 'vpw-settings-btn-close') {
+        console.log(element)
+      }else{
+      console.log('não encontrou')}
+    }
     
   }
   
-  useEffect(() => {
-   document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]?.addEventListener('click', () => {
-    localStorage.setItem('storageLibras', JSON.stringify(1))
-    })
-  }, [ setLibras ])
+  // useEffect(() => {
+  //  document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]?.addEventListener('click', () => {
+  //   localStorage.setItem('storageLibras', JSON.stringify(1))
+  //   })
+  // }, [ setLibras ])
 
 
   return (
