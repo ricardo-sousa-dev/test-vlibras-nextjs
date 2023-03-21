@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import ToolbarButton from '../ToolbarButton';
 
 /*eslint-disable */
@@ -20,10 +21,15 @@ export default function Libras() {
       localStorage.setItem('storageLibras', JSON.stringify(1))
     }
 
-    document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]?.addEventListener('click', () => {
-      localStorage.setItem('storageLibras', JSON.stringify(1))
-      })
+      console.log(document.getElementsByClassName('vpw-settings-btn-close')[ 0 ])
+    
   }
+  
+  useEffect(() => {
+   document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]?.addEventListener('click', () => {
+    localStorage.setItem('storageLibras', JSON.stringify(1))
+    })
+  }, [ setLibras ])
 
 
   return (
