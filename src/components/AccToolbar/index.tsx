@@ -8,19 +8,36 @@ export default function AccToolbar() {
   const [ showToolbar, setShowToolbar ] = useState(false);
 
   useEffect(() => {
-    const storageContrast = localStorage.getItem('storageContrast') || null;
-    const storageTextStyle = localStorage.getItem('storageTextStyle') || null;
-    const storageZoom = localStorage.getItem('storageZoomPage') || null;
+    for (let index = 0; index < document.getElementsByTagName('DIV').length; index++) {
+      const element = document.getElementsByTagName('DIV')[ index ];
+      if (element.getAttribute('vw-access-button')) element.remove();
+    }
+    const storageContrast = localStorage.getItem('storageContrast')
+    const storageTextStyle = localStorage.getItem('storageTextStyle')
+    const storageZoomPage = localStorage.getItem('storageZoomPage')
+    const storageLibras = localStorage.getItem('storageLibras')
 
-    // document.body.appendChild()
-    console.log(typeof document.getElementsByClassName('toolbar')[ 0 ])
-    if (
-      (storageContrast
-        || storageTextStyle
-        || storageZoom
-      ) !== '1'
+    if (!storageContrast) localStorage.setItem('storageContrast', JSON.stringify(1))
+    if (!storageTextStyle) localStorage.setItem('storageTextStyle', JSON.stringify(1))
+    if (!storageZoomPage) localStorage.setItem('storageZoomPage', JSON.stringify(1))
+    if (!storageLibras) localStorage.setItem('storageLibras', JSON.stringify(1))
+
+    if (storageContrast !== '1'
+      || storageTextStyle !== '1'
+      || storageZoomPage !== '1'
+      || storageLibras !== '1'
+      || storageLibras !== '1'
     ) setShowToolbar(true)
+
   }, []);
+
+  const closeToolbar = () => {
+    setShowToolbar(false)
+  }
+
+  useEffect(() => {
+    document.getElementById('closeToolbar')?.addEventListener('click', closeToolbar)
+  }, [ showToolbar ])
 
   return (
     <>
