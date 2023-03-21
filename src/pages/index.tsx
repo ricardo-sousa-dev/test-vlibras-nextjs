@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       { process.env.NODE_ENV === "production" && <VLibras forceOnload /> }
-      <VLibras forceOnload />
+      {/* <VLibras forceOnload /> */}
 
       <div className={ styles.section }>
         <h1><a href="">Teste de ferramentas de acessibilidade - NextJS</a></h1>
