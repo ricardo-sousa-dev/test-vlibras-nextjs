@@ -8,10 +8,10 @@ export default function AccToolbar() {
   const [ showToolbar, setShowToolbar ] = useState(false);
 
   useEffect(() => {
-    for (let index = 0; index < document.getElementsByTagName('DIV').length; index++) {
-      const element = document.getElementsByTagName('DIV')[ index ];
-      if (element.getAttribute('vw-access-button')) element.remove();
-    }
+    // for (let index = 0; index < document.getElementsByTagName('DIV').length; index++) {
+    //   const element = document.getElementsByTagName('DIV')[ index ];
+    //   if (element.getAttribute('vw-access-button')) element.remove();
+    // }
     const storageContrast = localStorage.getItem('storageContrast')
     const storageTextStyle = localStorage.getItem('storageTextStyle')
     const storageZoomPage = localStorage.getItem('storageZoomPage')
