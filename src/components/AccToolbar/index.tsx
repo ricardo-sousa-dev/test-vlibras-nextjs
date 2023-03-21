@@ -23,11 +23,11 @@ export default function AccToolbar() {
     if (!storageZoomPage) localStorage.setItem('storageZoomPage', JSON.stringify(1))
     if (!storageLibras) localStorage.setItem('storageLibras', JSON.stringify(1))
 
-    if (storageContrast !== '1'
-      || storageTextStyle !== '1'
-      || storageZoomPage !== '1'
-      || storageLibras !== '1'
-      || storageLibras !== '1'
+    if (storageContrast && storageContrast !== '1'
+      || storageTextStyle && storageTextStyle !== '1'
+      || storageZoomPage && storageZoomPage !== '1'
+      || storageLibras && storageLibras !== '1'
+      || storageLibras && storageLibras !== '1'
     ) setShowToolbar(true)
 
     for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
