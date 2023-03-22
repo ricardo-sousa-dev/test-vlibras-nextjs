@@ -59,10 +59,10 @@ export default function ZoomPage() {
         && tag.tagName != 'IMG') {
         const fontSizeOriginal = Number(getComputedStyle(tag).fontSize.replace('px', ''));
 
-        if (fontSizeOriginal) {
-          tag.style.fontSize = `${ genSizeCalc(fontSizeOriginal) }`.slice(0, 5) + 'px';
+        // if (fontSizeOriginal) {
+        //   tag.style.fontSize = `${ genSizeCalc(fontSizeOriginal) }`.slice(0, 5) + 'px';
 
-        } else {
+        // } else {
           switch (tag.tagName) {
             case 'H1':
               tag.style.fontSize = `${ genSizeCalc(sizeH1) }`.slice(0, 5) + 'px';
@@ -92,7 +92,7 @@ export default function ZoomPage() {
               break;
           }
         }
-      }
+      // }
       if (tag.tagName == 'IMG') tag.style.setProperty('transform', `scale(1.${ size })`)
     }
   };
