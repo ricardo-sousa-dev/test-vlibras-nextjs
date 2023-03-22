@@ -32,7 +32,18 @@ export default function ContrastButton() {
       if (tag.classList.contains('toolbar')) {
         tag.style.border = '1px solid grey'
       }
+
+      if (tag.parentElement?.classList.contains('divButtonToolbar')
+        && tag.tagName === 'BUTTON') {
+        tag.style.border = '2px solid grey'
+      }
+
+      if (tag.classList.contains('floatingIcon')) {
+        tag.style.background = 'blue'
+        tag.style.color = 'white'
+      }
     }
+
   };
 
   const modifyContrast = (option: number) => {
@@ -52,7 +63,7 @@ export default function ContrastButton() {
           if (tag.parentElement?.classList.contains('divButtonToolbar')
             && tag.tagName !== 'P'
             && tag.tagName !== 'DIV'
-            ) {
+          ) {
             tag.style.background = 'blue';
             tag.style.color = 'white';
           }
@@ -101,8 +112,7 @@ export default function ContrastButton() {
             tag.style.background = 'yellow';
             tag.style.color = 'black';
           }
-          if (tag.getAttribute('id') =='closeToolbar')
-           {
+          if (tag.getAttribute('id') == 'closeToolbar') {
             tag.style.removeProperty('background')
           }
           if (tag.tagName === 'A') {
@@ -143,7 +153,7 @@ export default function ContrastButton() {
           if (tag.parentElement?.classList.contains('divButtonToolbar')
             && tag.tagName !== 'P'
             && tag.tagName !== 'DIV'
-            ) {
+          ) {
             tag.style.background = 'black';
             tag.style.color = 'white';
           }
