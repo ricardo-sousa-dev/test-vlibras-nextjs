@@ -29,8 +29,6 @@ export default function Libras() {
           element.addEventListener('click', () => {
             localStorage.setItem('storageLibras', JSON.stringify(1))
           })
-        } else {
-          console.log('não encontrou')
         }
       }
     }, 3000);
