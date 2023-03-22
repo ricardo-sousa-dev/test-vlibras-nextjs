@@ -45,7 +45,7 @@ export default function ContrastButton() {
           tag.style.background = 'white'
 
           if (tag.tagName === 'BUTTON') {
-            tag.style.background = 'blue';
+            tag.style.background = 'blue !important';
             tag.style.color = 'white';
             tag.style.border = '2px solid blue'
           }
@@ -65,8 +65,7 @@ export default function ContrastButton() {
             && !tag.parentElement?.classList.contains('toolbar')
             && !tag.classList.contains('containerToolbar')
             && !tag.classList.contains('closeToolbar')
-            && !tag.classList.contains('divButtonToolbar')
-            && !tag.parentElement?.classList.contains('toolbar')) {
+            && !tag.classList.contains('divButtonToolbar')) {
             tag.style.border = '1px solid blue'
           }
           if (tag.classList.contains('floatingIcon')) {
@@ -92,6 +91,11 @@ export default function ContrastButton() {
             tag.style.background = 'black';
             tag.style.color = 'yellow';
             tag.style.border = '2px solid black';
+          }
+          if (tag.tagName === 'BUTTON'
+            && tag.parentElement?.classList.contains('divButtonToolbar')) {
+            tag.style.background = 'yellow';
+            tag.style.color = 'black';
           }
           if (tag.tagName === 'A') {
             tag.style.textDecoration = 'underline black'
@@ -122,12 +126,16 @@ export default function ContrastButton() {
             tag.style.color = 'white';
 
           }
-
           if (tag.tagName === 'BUTTON') {
             tag.style.removeProperty('background')
             tag.style.background = 'white';
             tag.style.color = 'black';
             tag.style.border = '2px solid black'
+          }
+          if (tag.tagName === 'BUTTON'
+            && tag.parentElement?.classList.contains('divButtonToolbar')) {
+            tag.style.background = 'black';
+            tag.style.color = 'white';
           }
           if (tag.tagName === 'A') {
             tag.style.textDecoration = 'underline white'

@@ -15,7 +15,6 @@ export default function Reset() {
   let tagsImg: HTMLHeadingElement[];
   let tagsButton: HTMLButtonElement[];
   let tagHeader: HTMLElement[];
-  let storageZoomPage: string | null;
   let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement)[];
 
   if (typeof window !== 'undefined') {
@@ -31,7 +30,6 @@ export default function Reset() {
     tagsImg = Array.from(document.querySelectorAll('img'));
     tagsButton = Array.from(document.querySelectorAll('button'));
     tagHeader = Array.from(document.querySelectorAll('header'));
-    storageZoomPage = localStorage.getItem('storageZoomPage') || null;
     arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsA, tagsDiv, tagsImg, tagsButton, tagHeader ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);
   }
 
