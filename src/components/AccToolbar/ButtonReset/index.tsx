@@ -43,18 +43,19 @@ export default function Reset() {
 
       tag.style.removeProperty('color');
       tag.style.removeProperty('background');
-      tag.style.removeProperty('border');
       tag.style.removeProperty('text-decoration');
-
+      if (!tag.classList.contains('toolbar')){
+        tag.style.removeProperty('border');
+      }else{
+        tag.style.border = '1px solid gray'
+      }
       if (tag.classList.contains('floatingIcon')) {
         tag.style.background = 'blue'
         tag.style.color = 'white'
         tag.style.border = '1px solid white'
       }
-      if (tag.parentElement?.classList.contains('divButtonToolbar')) {
-        tag.style.background = 'white'
-      }
-      if (tag.classList.contains('toolbar')) {
+      if (tag.parentElement?.classList.contains('divButtonToolbar')
+        && tag.classList.contains('toolbar')) {
         tag.style.background = 'white'
       }
     }
@@ -98,6 +99,7 @@ export default function Reset() {
       icon='cleaning_services'
       alt='Limpar'
       onClick={ reset }
+      id='clearButtonToolbar'
     />
   );
 }

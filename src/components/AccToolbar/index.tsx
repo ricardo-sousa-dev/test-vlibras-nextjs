@@ -28,7 +28,7 @@ export default function AccToolbar() {
       || storageZoomPage && storageZoomPage !== '1'
       || storageLibras && storageLibras !== '1'
       || storageLibras && storageLibras !== '1'
-    ) setShowToolbar(true)
+    ) setTimeout(() => setShowToolbar(true), 3000);
 
     setTimeout(() => {
       for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {

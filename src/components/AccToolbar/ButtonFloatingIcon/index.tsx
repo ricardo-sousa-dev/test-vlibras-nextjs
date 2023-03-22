@@ -1,4 +1,5 @@
 export default function FloatingIcon({ setShowToolbar, showToolbar, icon }: React.ComponentState) {
+ if(!icon)return null;
  
   return (
     <button

@@ -18,7 +18,6 @@ export default function ZoomPage() {
   let storageZoomPage: string | null;
   let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement)[];
 
-  const [ zoomPage, setZoomPage ] = useState(1);
   const PERCENT_10 = 1.1;
   const PERCENT_20 = 1.2;
   const PERCENT_30 = 1.3;
@@ -32,7 +31,6 @@ export default function ZoomPage() {
   const sizeA = 16; //'1rem'
 
   const modifyingZoomPageClear = () => {
-    console.log('ZoomPage: ', zoomPage);
 
     for (let i = 0; i < arrayTags.length; i += 1) {
       const tag = arrayTags[ i ];
@@ -45,7 +43,6 @@ export default function ZoomPage() {
   };
 
   const modifyingZoomPage = (size: number) => {
-    console.log('ZoomPage: ', zoomPage);
 
     for (let i = 0; i < arrayTags.length; i += 1) {
       const tag = arrayTags[ i ];
@@ -113,20 +110,20 @@ export default function ZoomPage() {
     } else {
       switch (JSON.parse(storageZoomPage)) {
         case 1:
-          setZoomPage(1);
+          localStorage.setItem('storageZoomPage', JSON.stringify(1))
           modifyingZoomPageClear();
           break;
         case 2:
-          setZoomPage(2);
+           localStorage.setItem('storageZoomPage', JSON.stringify(2))
           modifyingZoomPage(PERCENT_10);
           break;
         case 3:
-          setZoomPage(3);
+           localStorage.setItem('storageZoomPage', JSON.stringify(3))
           modifyingZoomPage(PERCENT_20);
           break;
         case 4:
-          setZoomPage(4);
-          modifyingZoomPage(3);
+          localStorage.setItem('storageZoomPage', JSON.stringify(4))
+          modifyingZoomPage(PERCENT_30);
           break;
         default:
           break;
@@ -135,20 +132,16 @@ export default function ZoomPage() {
   }, []);
 
   const changeZoomPage = () => {
-    if (zoomPage == 1) {
-      setZoomPage(2);
+    if (localStorage.getItem('storageZoomPage') == '1') {
       modifyingZoomPage(PERCENT_10);
       localStorage.setItem('storageZoomPage', JSON.stringify(2));
-    } else if (zoomPage == 2) {
-      setZoomPage(3);
+    } else if (localStorage.getItem('storageZoomPage') == '2') {
       modifyingZoomPage(PERCENT_20);
       localStorage.setItem('storageZoomPage', JSON.stringify(3));
-    } else if (zoomPage == 3) {
-      setZoomPage(4);
+    } else if (localStorage.getItem('storageZoomPage') == '3') {
       modifyingZoomPage(PERCENT_30);
       localStorage.setItem('storageZoomPage', JSON.stringify(4));
-    } else if (zoomPage == 4) {
-      setZoomPage(1);
+    } else if (localStorage.getItem('storageZoomPage') == '4') {
       modifyingZoomPageClear();
       localStorage.setItem('storageZoomPage', JSON.stringify(1));
     }

@@ -17,10 +17,7 @@ export default function TextStyle() {
   let storageTextStyle: string | null;
   let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement)[];
 
-  const [ textStyle, setTextStyle ] = useState(1);
-
   const modifyingTextStyleClear = () => {
-    console.log('TextStyle: ', textStyle);
 
     for (let i = 0; i < arrayTags.length; i += 1) {
       const tag = arrayTags[ i ];
@@ -32,7 +29,6 @@ export default function TextStyle() {
   }
 
   const modifyingTextStyle = (family: string) => {
-    console.log('TextStyle: ', textStyle);
 
     for (let i = 0; i < arrayTags.length; i += 1) {
       const tag = arrayTags[ i ];
@@ -64,19 +60,19 @@ export default function TextStyle() {
     } else {
       switch (JSON.parse(storageTextStyle)) {
         case 1:
-          setTextStyle(1);
+          localStorage.setItem('storageTextStyle', JSON.stringify(1));
           modifyingTextStyleClear();
           break;
         case 2:
-          setTextStyle(2);
+          localStorage.setItem('storageTextStyle', JSON.stringify(2));
           modifyingTextStyle('Lexend Deca');
           break;
         case 3:
-          setTextStyle(3);
+          localStorage.setItem('storageTextStyle', JSON.stringify(3));
           modifyingTextStyle('Lexend Peta');
           break;
         case 4:
-          setTextStyle(4);
+          localStorage.setItem('storageTextStyle', JSON.stringify(4));
           modifyingTextStyle('Montserrat');
           break;
         default:
@@ -86,20 +82,16 @@ export default function TextStyle() {
   }, []);
 
   const changeTextStyle = () => {
-    if (textStyle == 1) {
-      setTextStyle(2);
+    if (localStorage.getItem('storageTextStyle') == '1') {
       modifyingTextStyle('Lexend Deca');
       localStorage.setItem('storageTextStyle', JSON.stringify(2));
-    } else if (textStyle == 2) {
-      setTextStyle(3);
+    } else if (localStorage.getItem('storageTextStyle') == '2') {
       modifyingTextStyle('Lexend Peta');
       localStorage.setItem('storageTextStyle', JSON.stringify(3));
-    } else if (textStyle == 3) {
-      setTextStyle(4);
+    } else if (localStorage.getItem('storageTextStyle') == '3') {
       modifyingTextStyle('Open-Dyslexic');
       localStorage.setItem('storageTextStyle', JSON.stringify(4));
-    } else if (textStyle == 4) {
-      setTextStyle(1);
+    } else if (localStorage.getItem('storageTextStyle') == '4') {
       modifyingTextStyleClear();
       localStorage.setItem('storageTextStyle', JSON.stringify(1));
     }

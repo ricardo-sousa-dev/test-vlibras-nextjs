@@ -20,13 +20,17 @@ export default function Toolbar() {
         top: '0',
         boxShadow: '1px 3px 10px 3px rgba(0, 0, 0, 0.20)',
         zIndex: '999',
-        height: 'fit-content'
+        height: 'fit-content',
+        border:'1px solid gray',
+        margin:'0'
       } }>
-      <div style={ {
+      <div
+      className='containerToolbar' 
+      style={ {
         display: 'flex',
         justifyContent: 'center',
         width: '100%',
-        gap: '5px',
+        gap: '5px'
       } }>
         <ButtonContrast />
         <ButtonTextStyle />
@@ -38,7 +42,7 @@ export default function Toolbar() {
         <ToolbarButton
           icon='close'
           alt='Fechar'
-        />
+          />
       </div>
     </div>
   );

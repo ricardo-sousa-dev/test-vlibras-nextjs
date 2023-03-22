@@ -4,9 +4,10 @@ interface Icon {
   icon: string;
   alt: string;
   onClick?: MouseEventHandler<HTMLElement>;
+  id?: string;
 }
 
-export default function ToolbarButton({ icon, alt, onClick }: Icon) {
+export default function ToolbarButton({ icon, alt, onClick, id}: Icon) {
   return (
     <div
       className='divButtonToolbar'
@@ -20,14 +21,18 @@ export default function ToolbarButton({ icon, alt, onClick }: Icon) {
         type='button'
         style={ {
           padding: '2px 4px',
-          border: '2px solid black',
+          border: '2px solid gray',
           borderRadius: '7px',
           cursor: 'pointer',
           background: 'transparent',
         } }
         className='a11yIcon'
         onClick={ onClick }>
-        <span className="material-symbols-outlined">
+        <span 
+        style={{
+            borderRadius: '7px'
+          }}
+        className="material-symbols-outlined">
           { icon }
         </span>
       </button>
