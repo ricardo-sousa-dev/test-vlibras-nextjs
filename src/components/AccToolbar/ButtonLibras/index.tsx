@@ -21,18 +21,19 @@ export default function Libras() {
       localStorage.setItem('storageLibras', JSON.stringify(1))
     }
 
-    for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
-      const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
-      if (element.getAttribute('class') === 'vpw-settings-btn-close') {
-        console.log(element)
-        element.addEventListener('click', () => {
-          localStorage.setItem('storageLibras', JSON.stringify(1))
-        })
-      } else {
-        console.log('não encontrou')
+    setTimeout(() => {
+      for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
+        const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
+        if (element.getAttribute('class') === 'vpw-settings-btn-close') {
+          console.log(element)
+          element.addEventListener('click', () => {
+            localStorage.setItem('storageLibras', JSON.stringify(1))
+          })
+        } else {
+          console.log('não encontrou')
+        }
       }
-    }
-
+    }, 3000);
   }
 
   // useEffect(() => {
