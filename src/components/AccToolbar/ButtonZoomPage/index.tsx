@@ -19,14 +19,6 @@ export default function ZoomPage() {
   let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement)[];
 
   const PERCENT_10 = 1.05;
-  const sizeH1 = 48.832; //'3.052rem'
-  const sizeH2 = 39.056; //'2.441rem'
-  const sizeH3 = 31.248; //'1.953rem'
-  const sizeH4 = 25.008; //'1.563rem'
-  const sizeH5 = 20; //'1.25rem'
-  const sizeP = 16; //'1rem'
-  const sizeLi = 16; //'1rem'
-  const sizeA = 16; //'1rem'
 
   const modifyingZoomPageClear = () => {
 
@@ -58,41 +50,9 @@ export default function ZoomPage() {
       if (!tag.parentElement?.classList.contains('divButtonToolbar')
         && tag.tagName != 'IMG') {
         const fontSizeOriginal = Number(getComputedStyle(tag).fontSize.replace('px', ''));
+        tag.style.fontSize = `${ genSizeCalc(fontSizeOriginal) }`.slice(0, 5) + 'px';
+      }
 
-        // if (fontSizeOriginal) {
-        //   tag.style.fontSize = `${ genSizeCalc(fontSizeOriginal) }`.slice(0, 5) + 'px';
-
-        // } else {
-          switch (tag.tagName) {
-            case 'H1':
-              tag.style.fontSize = `${ genSizeCalc(sizeH1) }`.slice(0, 5) + 'px';
-              break;
-            case 'H2':
-              tag.style.fontSize = `${ genSizeCalc(sizeH2) }`.slice(0, 5) + 'px';
-              break;
-            case 'H3':
-              tag.style.fontSize = `${ genSizeCalc(sizeH3) }`.slice(0, 5) + 'px';
-              break;
-            case 'H4':
-              tag.style.fontSize = `${ genSizeCalc(sizeH4) }`.slice(0, 5) + 'px';
-              break;
-            case 'H5':
-              tag.style.fontSize = `${ genSizeCalc(sizeH5) }`.slice(0, 5) + 'px';
-              break;
-            case 'P':
-              tag.style.fontSize = `${ genSizeCalc(sizeP) }`.slice(0, 5) + 'px';
-              break;
-            case 'LI':
-              tag.style.fontSize = `${ genSizeCalc(sizeLi) }`.slice(0, 5) + 'px';
-              break;
-            case 'A':
-              tag.style.fontSize = `${ genSizeCalc(sizeA) }`.slice(0, 5) + 'px';
-              break;
-            default:
-              break;
-          }
-        }
-      // }
       if (tag.tagName == 'IMG') tag.style.setProperty('transform', `scale(1.${ size })`)
     }
   };
