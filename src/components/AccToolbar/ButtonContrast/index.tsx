@@ -49,8 +49,10 @@ export default function ContrastButton() {
             tag.style.color = 'white';
             tag.style.border = '2px solid blue'
           }
-          if (tag.tagName === 'BUTTON'
-            && tag.parentElement?.classList.contains('divButtonToolbar')) {
+          if (tag.parentElement?.classList.contains('divButtonToolbar')
+            && tag.tagName !== 'P'
+            && tag.tagName !== 'DIV'
+            ) {
             tag.style.background = 'blue';
             tag.style.color = 'white';
           }
@@ -92,10 +94,16 @@ export default function ContrastButton() {
             tag.style.color = 'yellow';
             tag.style.border = '2px solid black';
           }
-          if (tag.tagName === 'BUTTON'
-            && tag.parentElement?.classList.contains('divButtonToolbar')) {
+          if (tag.parentElement?.classList.contains('divButtonToolbar')
+            && tag.tagName !== 'P'
+            && tag.tagName !== 'DIV'
+          ) {
             tag.style.background = 'yellow';
             tag.style.color = 'black';
+          }
+          if (tag.getAttribute('id') =='closeToolbar')
+           {
+            tag.style.removeProperty('background')
           }
           if (tag.tagName === 'A') {
             tag.style.textDecoration = 'underline black'
@@ -132,8 +140,10 @@ export default function ContrastButton() {
             tag.style.color = 'black';
             tag.style.border = '2px solid black'
           }
-          if (tag.tagName === 'BUTTON'
-            && tag.parentElement?.classList.contains('divButtonToolbar')) {
+          if (tag.parentElement?.classList.contains('divButtonToolbar')
+            && tag.tagName !== 'P'
+            && tag.tagName !== 'DIV'
+            ) {
             tag.style.background = 'black';
             tag.style.color = 'white';
           }
@@ -200,6 +210,22 @@ export default function ContrastButton() {
           break;
       }
     }
+
+    tagsH1 = Array.from(document.querySelectorAll('h1'));
+    tagsH2 = Array.from(document.querySelectorAll('h2'));
+    tagsH3 = Array.from(document.querySelectorAll('h3'));
+    tagsH4 = Array.from(document.querySelectorAll('h4'));
+    tagsH5 = Array.from(document.querySelectorAll('h5'));
+    tagsH6 = Array.from(document.querySelectorAll('h6'));
+    tagsP = Array.from(document.querySelectorAll('p'));
+    tagsA = Array.from(document.querySelectorAll('a'));
+    tagsDiv = Array.from(document.querySelectorAll('div'));
+    tagsButton = Array.from(document.querySelectorAll('button'));
+    tagHeader = Array.from(document.querySelectorAll('header'));
+    arrayTags = [
+      tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsA, tagsDiv, tagsButton
+    ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);
+    storageContrast = localStorage.getItem('storageContrast') || null;
   }, []);
 
   const changeContrast = () => {

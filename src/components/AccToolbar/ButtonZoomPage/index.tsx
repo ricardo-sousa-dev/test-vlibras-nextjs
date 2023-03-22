@@ -111,24 +111,39 @@ export default function ZoomPage() {
       switch (JSON.parse(storageZoomPage)) {
         case 1:
           localStorage.setItem('storageZoomPage', JSON.stringify(1))
-          modifyingZoomPageClear();
+          setTimeout(() => modifyingZoomPageClear(), 1000); 
           break;
         case 2:
            localStorage.setItem('storageZoomPage', JSON.stringify(2))
-          modifyingZoomPage(PERCENT_10);
+          setTimeout(() => modifyingZoomPage(PERCENT_10), 1000);
           break;
         case 3:
            localStorage.setItem('storageZoomPage', JSON.stringify(3))
-          modifyingZoomPage(PERCENT_20);
+          setTimeout(() => modifyingZoomPage(PERCENT_20), 1000);
           break;
         case 4:
           localStorage.setItem('storageZoomPage', JSON.stringify(4))
-          modifyingZoomPage(PERCENT_30);
+          setTimeout(() => modifyingZoomPage(PERCENT_30), 1000);
           break;
         default:
           break;
       }
     }
+
+    tagsH1 = Array.from(document.querySelectorAll('h1'));
+    tagsH2 = Array.from(document.querySelectorAll('h2'));
+    tagsH3 = Array.from(document.querySelectorAll('h3'));
+    tagsH4 = Array.from(document.querySelectorAll('h4'));
+    tagsH5 = Array.from(document.querySelectorAll('h5'));
+    tagsH6 = Array.from(document.querySelectorAll('h6'));
+    tagsP = Array.from(document.querySelectorAll('p'));
+    tagsDiv = Array.from(document.querySelectorAll('div'));
+    tagsImg = Array.from(document.querySelectorAll('img'));
+    tagsButton = Array.from(document.querySelectorAll('button'));
+    tagHeader = Array.from(document.querySelectorAll('header'));
+    storageZoomPage = localStorage.getItem('storageZoomPage') || null;
+    arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsDiv, tagsImg, tagsButton, tagHeader ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);
+  
   }, []);
 
   const changeZoomPage = () => {

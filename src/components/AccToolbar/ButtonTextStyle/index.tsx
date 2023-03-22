@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import ToolbarButton from '../ToolbarButton';
 
@@ -61,24 +61,37 @@ export default function TextStyle() {
       switch (JSON.parse(storageTextStyle)) {
         case 1:
           localStorage.setItem('storageTextStyle', JSON.stringify(1));
-          modifyingTextStyleClear();
+          setTimeout(() => modifyingTextStyleClear(), 1000);
           break;
         case 2:
           localStorage.setItem('storageTextStyle', JSON.stringify(2));
-          modifyingTextStyle('Lexend Deca');
+          setTimeout(() => modifyingTextStyle('Lexend Deca'), 1000);
           break;
         case 3:
           localStorage.setItem('storageTextStyle', JSON.stringify(3));
-          modifyingTextStyle('Lexend Peta');
+          setTimeout(() => modifyingTextStyle('Lexend Peta'), 1000);
           break;
         case 4:
           localStorage.setItem('storageTextStyle', JSON.stringify(4));
-          modifyingTextStyle('Montserrat');
+          setTimeout(() => modifyingTextStyle('Open-Dyslexic'), 1000);
           break;
         default:
           break;
       }
     }
+
+    tagsH1 = Array.from(document.querySelectorAll('h1'));
+    tagsH2 = Array.from(document.querySelectorAll('h2'));
+    tagsH3 = Array.from(document.querySelectorAll('h3'));
+    tagsH4 = Array.from(document.querySelectorAll('h4'));
+    tagsH5 = Array.from(document.querySelectorAll('h5'));
+    tagsH6 = Array.from(document.querySelectorAll('h6'));
+    tagsP = Array.from(document.querySelectorAll('p'));
+    tagsDiv = Array.from(document.querySelectorAll('div'));
+    tagsButton = Array.from(document.querySelectorAll('button'));
+    tagHeader = Array.from(document.querySelectorAll('header'));
+    storageTextStyle = localStorage.getItem('storageTextStyle') || null;
+    arrayTags = [ tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsDiv, tagsButton ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);
   }, []);
 
   const changeTextStyle = () => {

@@ -24,7 +24,7 @@ export default function ToolbarButton({ icon, alt, onClick, id}: Icon) {
           border: '2px solid gray',
           borderRadius: '7px',
           cursor: 'pointer',
-          background: 'transparent',
+          background: '#f1f1f1',
         } }
         className='a11yIcon'
         onClick={ onClick }>

@@ -27,8 +27,7 @@ export default function AccToolbar() {
       || storageTextStyle && storageTextStyle !== '1'
       || storageZoomPage && storageZoomPage !== '1'
       || storageLibras && storageLibras !== '1'
-      || storageLibras && storageLibras !== '1'
-    ) setTimeout(() => setShowToolbar(true), 3000);
+    ) setTimeout(() => setShowToolbar(true), 2000);
 
     setTimeout(() => {
       for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
@@ -37,7 +36,7 @@ export default function AccToolbar() {
           if (storageLibras == '2') element.click()
         }
       }
-    }, 3000);
+    }, 2000);
   }, []);
 
   const closeToolbar = () => {
