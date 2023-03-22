@@ -49,6 +49,11 @@ export default function ContrastButton() {
             tag.style.color = 'white';
             tag.style.border = '2px solid blue'
           }
+          if (tag.tagName === 'BUTTON'
+            && tag.parentElement?.classList.contains('divButtonToolbar')) {
+            tag.style.background = 'blue';
+            tag.style.color = 'white';
+          }
           if (tag.tagName === 'A') {
             tag.style.textDecoration = 'underline blue'
           }
@@ -136,7 +141,7 @@ export default function ContrastButton() {
             && !tag.parentElement?.classList.contains('toolbar')) {
             tag.style.border = '1px solid white'
           }
-         
+
           if (tag.classList.contains('toolbar')) {
             tag.style.border = '1px solid black'
           }
