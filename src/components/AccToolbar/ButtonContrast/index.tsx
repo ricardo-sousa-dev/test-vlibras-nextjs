@@ -54,7 +54,29 @@ export default function ContrastButton() {
       switch (option) {
         case 2:
           tag.style.color = 'blue';
-          tag.style.background = 'white'
+          if (!tag.getAttributeNames().filter((item) =>
+            item == (
+              'vw'
+              || 'vw-access-button'
+              || 'vw-plugin-wraper'
+              || 'settings-btn'
+              || 'settings-btn-close'
+              || 'vp'
+              || 'vp-box'
+              || 'vp-message-box'
+              || 'vp-settings'
+              || 'vp-settings-btn'
+              || 'vp-info-screen'
+              || 'vp-dictionary'
+              || 'vp-suggestion-screen'
+              || 'vp-suggestion-area'
+              || 'vp-suggestion-button'
+              || 'vp-rate-box'
+              || 'vp-rate-button'
+              || 'vp-container'
+              || 'vp-controll'
+              || 'vp-change-avatar'
+            ))) tag.style.background = 'white'
 
           if (tag.tagName === 'BUTTON') {
             tag.style.background = 'blue !important';
