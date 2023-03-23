@@ -123,11 +123,13 @@ export default function ContrastButton() {
             tag.style.color = 'white'
             tag.style.border = '2px solid blue'
           }
-          if (tag.parentElement?.classList.contains('toolbar')
-            || tag.classList.contains('containerToolbar')
+          // tag.parentElement?.classList.contains('toolbar')
+          if (
+            tag.classList.contains('containerToolbar')
             || tag.classList.contains('closeToolbar')
             || tag.classList.contains('divButtonToolbar')
-            || tag.getAttribute('id') !== ('__next')) {
+            // || tag.getAttribute('id') !== ('__next')
+            ) {
             tag.style.removeProperty('border')
           }
           setTimeout(() => {
