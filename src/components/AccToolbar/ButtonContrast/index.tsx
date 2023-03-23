@@ -77,7 +77,7 @@ export default function ContrastButton() {
               || 'vp-controll'
               || 'vp-change-avatar'
             ))
-            || tag.parentElement?.getAttribute('id') !== 'gameContainer') {
+            && tag.parentElement?.getAttribute('id') !== 'gameContainer') {
             tag.style.color = 'blue';
             tag.style.background = 'white'
           }
