@@ -86,7 +86,7 @@ export default function ContrastButton() {
         case 2:
           
           
-          if (notChangeIfAttributeLibras(tag)) {
+          if (!notChangeIfAttributeLibras(tag)) {
             tag.style.color = 'blue';
             tag.style.background = 'white'
         }
