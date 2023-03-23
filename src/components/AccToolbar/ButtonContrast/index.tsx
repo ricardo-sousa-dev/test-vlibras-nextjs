@@ -131,7 +131,7 @@ export default function ContrastButton() {
             && !tag.classList.contains('containerToolbar')
             && !tag.classList.contains('closeToolbar')
             && !tag.classList.contains('divButtonToolbar')
-            && notChangeIfAttributeLibras(tag)
+            && notChangeStyle(tag)
           ) {
             tag.style.background = 'yellow';
           }
@@ -160,7 +160,7 @@ export default function ContrastButton() {
             && !tag.classList.contains('containerToolbar')
             && !tag.classList.contains('closeToolbar')
             && !tag.classList.contains('divButtonToolbar')
-            && notChangeIfAttributeLibras(tag)
+            && notChangeStyle(tag)
           ) {
             tag.style.border = '1px solid black'
           }
@@ -177,7 +177,7 @@ export default function ContrastButton() {
             && !tag.classList.contains('containerToolbar')
             && !tag.classList.contains('closeToolbar')
             && !tag.classList.contains('divButtonToolbar')
-            && notChangeIfAttributeLibras(tag)
+            && notChangeStyle(tag)
           ) {
             tag.style.background = 'black';
             tag.style.color = 'white';
@@ -205,7 +205,7 @@ export default function ContrastButton() {
             && !tag.classList.contains('containerToolbar')
             && !tag.classList.contains('closeToolbar')
             && !tag.classList.contains('divButtonToolbar')
-            && notChangeIfAttributeLibras(tag)
+            && notChangeStyle(tag)
           ) {
             tag.style.border = '1px solid white'
           }
