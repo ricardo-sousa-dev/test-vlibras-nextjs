@@ -43,11 +43,12 @@ export default function ContrastButton() {
         || 'vp-controll'
         || 'vp-change-avatar'
       ))
-      || element.parentElement?.classList.contains('toolbar')
-      || element.classList.contains('containerToolbar')
-      || element.classList.contains('closeToolbar')
-      || element.classList.contains('divButtonToolbar')
-      || element.getAttribute('id') !== ('__next')) {
+      // || element.parentElement?.classList.contains('toolbar')
+      // || element.classList.contains('containerToolbar')
+      // || element.classList.contains('closeToolbar')
+      // || element.classList.contains('divButtonToolbar')
+      // || element.getAttribute('id') !== ('__next')
+      ) {
       return true
     } else {
       return false
