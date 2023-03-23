@@ -74,30 +74,36 @@ export default function ContrastButton() {
           if (tag.classList.contains('toolbar')) {
             tag.style.border = '1px solid blue'
           }
-          if (tag.getAttribute('id') !== ('__next' && 'gameContainer')
+          if (tag.getAttribute('id') !== ('__next' && 'gameContainer' && '#canvas')
             && tag.tagName === 'DIV'
             && !tag.parentElement?.classList.contains('toolbar')
             && !tag.classList.contains('containerToolbar')
             && !tag.classList.contains('closeToolbar')
             && !tag.classList.contains('divButtonToolbar')
-            && !tag.getAttributeNames().filter((item) => 
-            item == (
-              'vw'
-              || 'vw-access-button'
-              || 'vw-plugin-wraper'
-              || 'vp'
-              || 'vp-box'
-              ||'settings-btn'
-              ||'settings-btn-close'
-              ||'vp-message-box'
+            && !tag.getAttributeNames().filter((item) =>
+              item == (
+                'vw'
+                || 'vw-access-button'
+                || 'vw-plugin-wraper'
+                || 'settings-btn'
+                || 'settings-btn-close'
+                || 'vp'
+                || 'vp-box'
+                || 'vp-message-box'
                 || 'vp-settings'
                 || 'vp-settings-btn'
                 || 'vp-info-screen'
-                ||'vp-dictionary'
+                || 'vp-dictionary'
                 || 'vp-suggestion-screen'
+                || 'vp-suggestion-area'
                 || 'vp-suggestion-button'
+                || 'vp-rate-box'
+                || 'vp-rate-button'
+                || 'vp-container'
+                || 'vp-controll'
+                || 'vp-change-avatar'
               ))
-            ) {
+          ) {
             tag.style.border = '1px solid blue'
           }
           if (tag.classList.contains('floatingIcon')) {
