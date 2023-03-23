@@ -95,10 +95,10 @@ export default function ContrastButton() {
           //   tag.style.border = '1px solid blue'
           //   tag.style.background = 'white'
           // }
-          // if (!notChangeStyle(tag)) {
-          //   tag.style.removeProperty('background')
-          //   tag.style.removeProperty('border')
-          // }
+          if (!notChangeStyle(tag)) {
+            tag.style.removeProperty('background')
+            tag.style.removeProperty('border')
+          }
             if (tag.tagName === 'BUTTON') {
             tag.style.background = 'blue';
             tag.style.color = 'white';
