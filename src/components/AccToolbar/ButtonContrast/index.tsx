@@ -80,7 +80,9 @@ export default function ContrastButton() {
             && !tag.classList.contains('containerToolbar')
             && !tag.classList.contains('closeToolbar')
             && !tag.classList.contains('divButtonToolbar')
-            && !tag.parentElement?.classList.contains('vw-plugin-wraper')) {
+            && !tag.parentElement?.classList.contains('vw-plugin-wraper')
+            && !tag.getAttribute('vp')
+            ) {
             tag.style.border = '1px solid blue'
           }
           if (tag.classList.contains('floatingIcon')) {
