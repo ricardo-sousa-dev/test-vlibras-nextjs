@@ -74,14 +74,13 @@ export default function ContrastButton() {
           if (tag.classList.contains('toolbar')) {
             tag.style.border = '1px solid blue'
           }
-          if (tag.getAttribute('id') !== '__next'
+          if (tag.getAttribute('id') !== ('__next' || '#canvas')
             && tag.tagName === 'DIV'
             && !tag.parentElement?.classList.contains('toolbar')
             && !tag.classList.contains('containerToolbar')
             && !tag.classList.contains('closeToolbar')
             && !tag.classList.contains('divButtonToolbar')
             && !tag.parentElement?.classList.contains('vw-plugin-wraper')
-            && !tag.getAttribute('vp')
             ) {
             tag.style.border = '1px solid blue'
           }
