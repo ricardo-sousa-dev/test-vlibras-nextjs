@@ -95,10 +95,7 @@ export default function ContrastButton() {
           //   tag.style.border = '1px solid blue'
           //   tag.style.background = 'white'
           // }
-          if (!notChangeStyle(tag)) {
-            tag.style.removeProperty('background')
-            tag.style.removeProperty('border')
-          }
+         
             if (tag.tagName === 'BUTTON') {
             tag.style.background = 'blue';
             tag.style.color = 'white';
@@ -138,6 +135,7 @@ export default function ContrastButton() {
           setTimeout(() => {
             document.getElementsByClassName('vpw-mes')[ 0 ].setAttribute('style', 'color: white')
             if (notChangeStyle(tag)) {
+            tag.style.removeProperty('background')
               tag.style.removeProperty('border')
             }
           }, 5000)
