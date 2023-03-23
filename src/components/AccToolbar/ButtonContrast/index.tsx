@@ -133,9 +133,9 @@ export default function ContrastButton() {
             tag.style.removeProperty('border')
           }
           setTimeout(() => {
-            document.getElementsByClassName('vpw-settings-btn')[ 0 ].setAttribute('style', 'background: blue')
+            // document.getElementsByClassName('vpw-settings-btn')[ 0 ].setAttribute('style', 'background: blue')
             document.getElementsByClassName('vpw-mes')[ 0 ].setAttribute('style', 'color: white')
-            document.getElementById('#canvas')?.setAttribute('style', 'color:gray')
+            document.getElementById('#canvas')?.setAttribute('style', 'background:gray')
             }, 5000)
           break;
         case 3:
