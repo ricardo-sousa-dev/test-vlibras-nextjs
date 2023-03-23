@@ -113,14 +113,15 @@ export default function ContrastButton() {
           if (tag.classList.contains('toolbar')) {
             tag.style.border = '1px solid blue'
           }
-          if (tag.tagName === 'DIV' && !notChangeStyle(tag))tag.style.border = '1px solid blue'
-          
+          if (tag.tagName === 'DIV' && !notChangeStyle(tag)) tag.style.border = '1px solid blue'
+
           if (tag.classList.contains('floatingIcon')) {
             tag.style.background = 'blue'
             tag.style.color = 'white'
             tag.style.border = '2px solid blue'
           }
-          document.getElementsByClassName('vpw-mes')[0].setAttribute('style', 'color: white')
+          setTimeout(() => document.getElementsByClassName('vpw-mes')[ 0 ]
+            .setAttribute('style', 'color: white'), 5000)
           break;
         case 3:
 
