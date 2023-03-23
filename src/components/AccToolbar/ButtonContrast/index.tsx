@@ -88,7 +88,9 @@ export default function ContrastButton() {
           
           if (!notChangeIfAttributeLibras(tag)) {
             tag.style.background = 'white'
-          }
+          }else{
+            tag.style.color = 'white';
+        }
 
           if (tag.tagName === 'BUTTON') {
             tag.style.background = 'blue !important';
