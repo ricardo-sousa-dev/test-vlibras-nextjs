@@ -95,13 +95,15 @@ export default function ContrastButton() {
             tag.style.border = '2px solid blue'
           }
           if (tag.tagName === 'DIV') {
+            if (!notChangeStyle(tag)) {
             tag.style.background = 'white';
             tag.style.border = '1px solid blue'
           }
-          if (!notChangeStyle(tag)) {
-            tag.style.removeProperty('background')
-            tag.style.removeProperty('border')
           }
+          // if (!notChangeStyle(tag)) {
+          //   tag.style.removeProperty('background')
+          //   tag.style.removeProperty('border')
+          // }
           if (tag.tagName === 'A') {
             tag.style.textDecoration = 'underline blue'
           }
