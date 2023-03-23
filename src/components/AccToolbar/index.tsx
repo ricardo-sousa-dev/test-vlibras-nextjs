@@ -51,9 +51,10 @@ export default function AccToolbar() {
 
   return (
     <>
-      { process.env.NODE_ENV === "production" && <VLibras forceOnload /> } 
+      {/* { process.env.NODE_ENV === "production" && <VLibras forceOnload /> }  */}
       {/* modo dev */ }
-      {/* <VLibras forceOnload /> */}
+      {/* <VLibras forceOnload /> */ }
+      <VLibras />
       
       <Head>
         <title>AccToolbar</title>
