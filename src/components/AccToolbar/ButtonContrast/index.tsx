@@ -53,7 +53,7 @@ export default function ContrastButton() {
 
       switch (option) {
         case 2:
-          tag.style.color = 'blue';
+
           if (!tag.getAttributeNames().filter((item) =>
             item == (
               'vw'
@@ -76,7 +76,11 @@ export default function ContrastButton() {
               || 'vp-container'
               || 'vp-controll'
               || 'vp-change-avatar'
-            ))) tag.style.background = 'white'
+            ))
+            || tag.parentElement?.getAttribute('id') !== 'gameContainer') {
+            tag.style.color = 'blue';
+            tag.style.background = 'white'
+          }
 
           if (tag.tagName === 'BUTTON') {
             tag.style.background = 'blue !important';
