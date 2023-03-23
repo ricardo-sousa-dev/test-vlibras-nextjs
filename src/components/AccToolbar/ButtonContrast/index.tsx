@@ -48,7 +48,7 @@ export default function ContrastButton() {
       // || element.classList.contains('closeToolbar')
       // || element.classList.contains('divButtonToolbar')
       // || element.getAttribute('id') !== ('__next')
-      ) {
+    ) {
       return true
     } else {
       return false
@@ -99,9 +99,13 @@ export default function ContrastButton() {
             tag.style.color = 'white';
             tag.style.border = '2px solid blue'
           }
-          if (!notChangeStyle(tag)&&tag.tagName === 'DIV'){
+          if (tag.tagName === 'DIV') {
             tag.style.background = 'white';
             tag.style.border = '1px solid blue'
+          }
+          if (!notChangeStyle(tag)){
+          tag.style.removeProperty('background')
+          tag.style.removeProperty('border')
           }
           if (tag.tagName === 'A') {
             tag.style.textDecoration = 'underline blue'
@@ -114,7 +118,7 @@ export default function ContrastButton() {
             tag.style.background = 'blue';
             tag.style.color = 'white';
           }
-          
+
           if (tag.classList.contains('toolbar')) {
             tag.style.border = '1px solid blue'
           }
