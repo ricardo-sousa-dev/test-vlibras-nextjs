@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import ToolbarButton from '../ToolbarButton';
 
+type ElementDom = HTMLHeadingElement | HTMLAnchorElement | HTMLDivElement | HTMLButtonElement | HTMLElement
 /*eslint-disable */
 export default function ContrastButton() {
   let tagsH1: HTMLHeadingElement[];
@@ -18,6 +19,32 @@ export default function ContrastButton() {
   let storageContrast: string | null;
   let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLAnchorElement | HTMLDivElement | HTMLElement)[];
 
+  const notChangeIfAttributeLibras = (element: ElementDom)=>{
+    if (!element.getAttributeNames().filter((attributte) =>
+      attributte == (
+        'vw'
+        || 'vw-access-button'
+        || 'vw-plugin-wraper'
+        || 'settings-btn'
+        || 'settings-btn-close'
+        || 'vp'
+        || 'vp-box'
+        || 'vp-message-box'
+        || 'vp-settings'
+        || 'vp-settings-btn'
+        || 'vp-info-screen'
+        || 'vp-dictionary'
+        || 'vp-suggestion-screen'
+        || 'vp-suggestion-area'
+        || 'vp-suggestion-button'
+        || 'vp-rate-box'
+        || 'vp-rate-button'
+        || 'vp-container'
+        || 'vp-controll'
+        || 'vp-change-avatar'
+      ))
+      && element.parentElement?.getAttribute('id') !== 'gameContainer') return true
+  }
   /*eslint-disable */
   const modifyContrastClear = () => {
 
@@ -54,30 +81,7 @@ export default function ContrastButton() {
       switch (option) {
         case 2:
 
-          if (!tag.getAttributeNames().filter((item) =>
-            item == (
-              'vw'
-              || 'vw-access-button'
-              || 'vw-plugin-wraper'
-              || 'settings-btn'
-              || 'settings-btn-close'
-              || 'vp'
-              || 'vp-box'
-              || 'vp-message-box'
-              || 'vp-settings'
-              || 'vp-settings-btn'
-              || 'vp-info-screen'
-              || 'vp-dictionary'
-              || 'vp-suggestion-screen'
-              || 'vp-suggestion-area'
-              || 'vp-suggestion-button'
-              || 'vp-rate-box'
-              || 'vp-rate-button'
-              || 'vp-container'
-              || 'vp-controll'
-              || 'vp-change-avatar'
-            ))
-            && tag.parentElement?.getAttribute('id') !== 'gameContainer') {
+          if (!notChangeIfAttributeLibras(tag)) {
             tag.style.color = 'blue';
             tag.style.background = 'white'
           }
@@ -100,35 +104,13 @@ export default function ContrastButton() {
           if (tag.classList.contains('toolbar')) {
             tag.style.border = '1px solid blue'
           }
-          if (tag.getAttribute('id') !== ('__next' && 'gameContainer' && '#canvas')
+          if (tag.getAttribute('id') !== ('__next')
             && tag.tagName === 'DIV'
             && !tag.parentElement?.classList.contains('toolbar')
             && !tag.classList.contains('containerToolbar')
             && !tag.classList.contains('closeToolbar')
             && !tag.classList.contains('divButtonToolbar')
-            && !tag.getAttributeNames().filter((item) =>
-              item == (
-                'vw'
-                || 'vw-access-button'
-                || 'vw-plugin-wraper'
-                || 'settings-btn'
-                || 'settings-btn-close'
-                || 'vp'
-                || 'vp-box'
-                || 'vp-message-box'
-                || 'vp-settings'
-                || 'vp-settings-btn'
-                || 'vp-info-screen'
-                || 'vp-dictionary'
-                || 'vp-suggestion-screen'
-                || 'vp-suggestion-area'
-                || 'vp-suggestion-button'
-                || 'vp-rate-box'
-                || 'vp-rate-button'
-                || 'vp-container'
-                || 'vp-controll'
-                || 'vp-change-avatar'
-              ))
+            && !notChangeIfAttributeLibras(tag)
           ) {
             tag.style.border = '1px solid blue'
           }
@@ -142,11 +124,13 @@ export default function ContrastButton() {
         case 3:
           tag.style.color = 'black';
 
-          if (!tag.classList.contains('toolbar')
+          if (tag.getAttribute('id') !== ('__next')
+            && tag.tagName === 'DIV'
+            && !tag.parentElement?.classList.contains('toolbar')
             && !tag.classList.contains('containerToolbar')
             && !tag.classList.contains('closeToolbar')
             && !tag.classList.contains('divButtonToolbar')
-            && !tag.parentElement?.classList.contains('divButtonToolbar')
+            && !notChangeIfAttributeLibras(tag)
           ) {
             tag.style.background = 'yellow';
           }
@@ -169,13 +153,14 @@ export default function ContrastButton() {
           if (tag.tagName === 'A') {
             tag.style.textDecoration = 'underline black'
           }
-          if (tag.getAttribute('id') !== '__next'
+           if (tag.getAttribute('id') !== ('__next')
             && tag.tagName === 'DIV'
             && !tag.parentElement?.classList.contains('toolbar')
             && !tag.classList.contains('containerToolbar')
             && !tag.classList.contains('closeToolbar')
             && !tag.classList.contains('divButtonToolbar')
-            && !tag.parentElement?.classList.contains('toolbar')) {
+            && !notChangeIfAttributeLibras(tag)
+          ) {
             tag.style.border = '1px solid black'
           }
           if (tag.classList.contains('toolbar')) {
@@ -185,11 +170,13 @@ export default function ContrastButton() {
 
         case 4:
 
-          if (!tag.classList.contains('toolbar')
+          if (tag.getAttribute('id') !== ('__next')
+            && tag.tagName === 'DIV'
+            && !tag.parentElement?.classList.contains('toolbar')
             && !tag.classList.contains('containerToolbar')
             && !tag.classList.contains('closeToolbar')
             && !tag.classList.contains('divButtonToolbar')
-            && !tag.parentElement?.classList.contains('divButtonToolbar')
+            && !notChangeIfAttributeLibras(tag)
           ) {
             tag.style.background = 'black';
             tag.style.color = 'white';
@@ -211,13 +198,14 @@ export default function ContrastButton() {
           if (tag.tagName === 'A') {
             tag.style.textDecoration = 'underline white'
           }
-          if (tag.getAttribute('id') !== '__next'
+          if (tag.getAttribute('id') !== ('__next')
             && tag.tagName === 'DIV'
             && !tag.parentElement?.classList.contains('toolbar')
             && !tag.classList.contains('containerToolbar')
             && !tag.classList.contains('closeToolbar')
             && !tag.classList.contains('divButtonToolbar')
-            && !tag.parentElement?.classList.contains('toolbar')) {
+            && !notChangeIfAttributeLibras(tag)
+          ) {
             tag.style.border = '1px solid white'
           }
 
