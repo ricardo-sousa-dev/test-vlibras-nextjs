@@ -19,7 +19,7 @@ export default function ContrastButton() {
   let storageContrast: string | null;
   let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLAnchorElement | HTMLDivElement | HTMLElement)[];
 
-  const notChangeIfAttributeLibras = (element: ElementDom) => {
+  const notChangeStyle = (element: ElementDom) => {
     if (element.getAttributeNames().filter((attributte) =>
       attributte == (
         'vw'
@@ -42,7 +42,12 @@ export default function ContrastButton() {
         || 'vp-container'
         || 'vp-controll'
         || 'vp-change-avatar'
-      ))) {
+      ))
+      || element.parentElement?.classList.contains('toolbar')
+      || element.classList.contains('containerToolbar')
+      || element.classList.contains('closeToolbar')
+      || element.classList.contains('divButtonToolbar')
+      || element.getAttribute('id') !== ('__next')) {
       return true
     } else {
       return false
@@ -86,11 +91,11 @@ export default function ContrastButton() {
 
           tag.style.color = 'blue'
 
-          if (!notChangeIfAttributeLibras(tag)){
+          if (!notChangeStyle(tag)) {
             tag.style.background = 'white'
           }
-          
-          if (tag.tagName === 'BUTTON' && !notChangeIfAttributeLibras(tag)) {
+
+          if (tag.tagName === 'BUTTON' && !notChangeStyle(tag)) {
             tag.style.background = 'blue !important';
             tag.style.color = 'white';
             tag.style.border = '2px solid blue'
@@ -108,16 +113,8 @@ export default function ContrastButton() {
           if (tag.classList.contains('toolbar')) {
             tag.style.border = '1px solid blue'
           }
-          if (tag.getAttribute('id') !== ('__next')
-            && tag.tagName === 'DIV'
-            && !tag.parentElement?.classList.contains('toolbar')
-            && !tag.classList.contains('containerToolbar')
-            && !tag.classList.contains('closeToolbar')
-            && !tag.classList.contains('divButtonToolbar')
-            && !notChangeIfAttributeLibras(tag)
-          ) {
-            tag.style.border = '1px solid blue'
-          }
+          if (tag.tagName === 'DIV' && !notChangeStyle(tag))tag.style.border = '1px solid blue'
+          
           if (tag.classList.contains('floatingIcon')) {
             tag.style.background = 'blue'
             tag.style.color = 'white'
