@@ -123,20 +123,21 @@ export default function ContrastButton() {
             tag.style.color = 'white'
             tag.style.border = '2px solid blue'
           }
+          if (tag.parentElement?.classList.contains('toolbar')
+            || tag.classList.contains('containerToolbar')
+            || tag.classList.contains('closeToolbar')
+            || tag.classList.contains('divButtonToolbar')
+            || tag.getAttribute('id') !== ('__next')) {
+            tag.style.removeProperty('border')
+          }
           setTimeout(() => {
             document.getElementsByClassName('vpw-mes')[ 0 ].setAttribute('style', 'color: white')
             if (!notChangeStyle(tag)) {
               tag.style.removeProperty('background')
               tag.style.removeProperty('border')
             }
-            if (tag.parentElement?.classList.contains('toolbar')
-              || tag.classList.contains('containerToolbar')
-              || tag.classList.contains('closeToolbar')
-              || tag.classList.contains('divButtonToolbar')
-              || tag.getAttribute('id') !== ('__next')) {
-              tag.style.removeProperty('border')
-            }
-          }, 4000)
+            
+          }, 5000)
           break;
         case 3:
 
