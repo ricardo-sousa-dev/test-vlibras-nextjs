@@ -74,13 +74,29 @@ export default function ContrastButton() {
           if (tag.classList.contains('toolbar')) {
             tag.style.border = '1px solid blue'
           }
-          if (tag.getAttribute('id') !== ('__next' || '#canvas')
+          if (tag.getAttribute('id') !== ('__next' && 'gameContainer')
             && tag.tagName === 'DIV'
             && !tag.parentElement?.classList.contains('toolbar')
             && !tag.classList.contains('containerToolbar')
             && !tag.classList.contains('closeToolbar')
             && !tag.classList.contains('divButtonToolbar')
-            && !tag.parentElement?.classList.contains('vw-plugin-wraper')
+            && !tag.getAttributeNames().filter((item) => 
+            item == (
+              'vw'
+              || 'vw-access-button'
+              || 'vw-plugin-wraper'
+              || 'vp'
+              || 'vp-box'
+              ||'settings-btn'
+              ||'settings-btn-close'
+              ||'vp-message-box'
+                || 'vp-settings'
+                || 'vp-settings-btn'
+                || 'vp-info-screen'
+                ||'vp-dictionary'
+                || 'vp-suggestion-screen'
+                || 'vp-suggestion-button'
+              ))
             ) {
             tag.style.border = '1px solid blue'
           }
