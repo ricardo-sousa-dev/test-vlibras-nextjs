@@ -115,7 +115,6 @@ export default function ContrastButton() {
             && !tag.classList.contains('containerToolbar')
             && !tag.classList.contains('closeToolbar')
             && !tag.classList.contains('divButtonToolbar')
-            && notChangeIfAttributeLibras(tag)
           ) {
             tag.style.border = '1px solid blue'
           }
