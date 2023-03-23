@@ -43,11 +43,6 @@ export default function ContrastButton() {
         || 'vp-controll'
         || 'vp-change-avatar'
       ))
-      // || element.parentElement?.classList.contains('toolbar')
-      // || element.classList.contains('containerToolbar')
-      // || element.classList.contains('closeToolbar')
-      // || element.classList.contains('divButtonToolbar')
-      // || element.getAttribute('id') !== ('__next')
     ) {
       return true
     } else {
@@ -103,9 +98,9 @@ export default function ContrastButton() {
             tag.style.background = 'white';
             tag.style.border = '1px solid blue'
           }
-          if (!notChangeStyle(tag)){
-          tag.style.removeProperty('background')
-          tag.style.removeProperty('border')
+          if (!notChangeStyle(tag)) {
+            tag.style.removeProperty('background')
+            tag.style.removeProperty('border')
           }
           if (tag.tagName === 'A') {
             tag.style.textDecoration = 'underline blue'
@@ -128,8 +123,20 @@ export default function ContrastButton() {
             tag.style.color = 'white'
             tag.style.border = '2px solid blue'
           }
-          setTimeout(() => document.getElementsByClassName('vpw-mes')[ 0 ]
-            .setAttribute('style', 'color: white'), 4000)
+          setTimeout(() => {
+            document.getElementsByClassName('vpw-mes')[ 0 ].setAttribute('style', 'color: white')
+            if (!notChangeStyle(tag)) {
+              tag.style.removeProperty('background')
+              tag.style.removeProperty('border')
+            }
+            if (tag.parentElement?.classList.contains('toolbar')
+              || tag.classList.contains('containerToolbar')
+              || tag.classList.contains('closeToolbar')
+              || tag.classList.contains('divButtonToolbar')
+              || tag.getAttribute('id') !== ('__next')) {
+              tag.style.removeProperty('border')
+            }
+          }, 4000)
           break;
         case 3:
 
