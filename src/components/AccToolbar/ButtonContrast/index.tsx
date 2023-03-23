@@ -128,6 +128,7 @@ export default function ContrastButton() {
             tag.classList.contains('containerToolbar')
             || tag.classList.contains('closeToolbar')
             || tag.classList.contains('divButtonToolbar')
+            || notChangeStyle(tag)
             // || tag.getAttribute('id') !== ('__next')
             ) {
             tag.style.removeProperty('border')
