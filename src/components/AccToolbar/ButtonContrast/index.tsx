@@ -43,7 +43,7 @@ export default function ContrastButton() {
         || 'vp-controll'
         || 'vp-change-avatar'
       ))
-      && element.parentElement?.getAttribute('id') == 'gameContainer') {
+      || element.parentElement?.getAttribute('id') == 'gameContainer') {
       return true
     } else {
       return false
