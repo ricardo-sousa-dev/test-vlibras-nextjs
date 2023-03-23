@@ -1,10 +1,11 @@
 import styles from '@/styles/Home.module.scss'
-import VLibras from '../components/AccToolbar/VLibras';
+import AccToolbar from '../components/AccToolbar'
 
 export default function Home() {
 
   return (
     <>
+      <AccToolbar />
            <div className={ styles.section }>
         <h1><a href="">Teste de ferramentas de acessibilidade - NextJS</a></h1>
         <h1>Teste h1</h1>

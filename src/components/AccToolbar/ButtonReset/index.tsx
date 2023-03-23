@@ -84,12 +84,12 @@ export default function Reset() {
     // Libras
     localStorage.setItem('storageLibras', JSON.stringify(1))
 
-    if (typeof window != 'undefined') {
-      for (let index = 0; index < document.getElementsByTagName('DIV').length; index++) {
-        const element = document.getElementsByTagName('DIV')[ index ];
-        if (element.getAttribute('vw-plugin-wrapper')) element.removeAttribute('class')
-      }
-    }
+    // if (typeof window != 'undefined') {
+    //   for (let index = 0; index < document.getElementsByTagName('DIV').length; index++) {
+    //     const element = document.getElementsByTagName('DIV')[ index ];
+    //     if (element.getAttribute('vw-plugin-wrapper')) element.removeAttribute('class')
+    //   }
+    // }
   };
 
   return (

@@ -31,6 +31,7 @@ export default function ContrastButton() {
 
       if (tag.classList.contains('toolbar')) {
         tag.style.border = '1px solid grey'
+        tag.style.background = 'white'
       }
 
       if (tag.parentElement?.classList.contains('divButtonToolbar')

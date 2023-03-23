@@ -46,7 +46,7 @@ function Libras({ forceOnload }: Props): JSX.Element {
     () => {
       const script = document.createElement('script');
 
-      script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+      script.src = 'src/components/AccToolbar/VLibras/js/libras.js';
       script.async = true;
       const widgetUrl = 'https://vlibras.gov.br/app';
 

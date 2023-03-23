@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { DetailedHTMLProps, HTMLAttributes, useEffect, useState } from 'react';
 import Head from 'next/head';
 
 import FloatingIcon from './ButtonFloatingIcon';
 import Toolbar from './Toolbar';
-import VLibras from './VLibras';
+// import VLibras from './VLibras';
+import VLibras from '@djpfs/react-vlibras'
+
 
 export default function AccToolbar() {
   const [ showToolbar, setShowToolbar ] = useState(false);
@@ -49,9 +51,9 @@ export default function AccToolbar() {
 
   return (
     <>
-      { process.env.NODE_ENV === "production" && <VLibras forceOnload /> }
+      {/* { process.env.NODE_ENV === "production" && <VLibras forceOnload /> }  */}
       {/* modo dev */ }
-      <VLibras forceOnload /> 
+      <VLibras forceOnload />
       
       <Head>
         <title>AccToolbar</title>
