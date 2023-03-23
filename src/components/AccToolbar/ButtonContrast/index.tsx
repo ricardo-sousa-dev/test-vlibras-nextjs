@@ -120,6 +120,7 @@ export default function ContrastButton() {
             tag.style.color = 'white'
             tag.style.border = '2px solid blue'
           }
+          document.getElementsByClassName('vpw-mes')[0].setAttribute('style', 'color: white')
           break;
         case 3:
 
