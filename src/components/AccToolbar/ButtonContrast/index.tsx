@@ -19,7 +19,7 @@ export default function ContrastButton() {
   let storageContrast: string | null;
   let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLAnchorElement | HTMLDivElement | HTMLElement)[];
 
-  const notChangeIfAttributeLibras = (element: ElementDom)=>{
+  const notChangeIfAttributeLibras = (element: ElementDom) => {
     if (element.getAttributeNames().filter((attributte) =>
       attributte == (
         'vw'
@@ -42,13 +42,12 @@ export default function ContrastButton() {
         || 'vp-container'
         || 'vp-controll'
         || 'vp-change-avatar'
-      ))){
-        console.log('LIBRAS', element)
-        return false
-      }else{
+      ))
+      && element.parentElement?.getAttribute('id') == 'gameContainer') {
       return true
+    } else {
+      return false
     }
-      // && element.parentElement?.getAttribute('id') !== 'gameContainer') return true
   }
   /*eslint-disable */
   const modifyContrastClear = () => {
@@ -86,13 +85,12 @@ export default function ContrastButton() {
       switch (option) {
         case 2:
 
-          tag.style.color = 'blue';
-          
           if (notChangeIfAttributeLibras(tag)) {
+            tag.style.color = 'white'
+          } else {
+            tag.style.color = 'blue';
             tag.style.background = 'white'
-          }else{
-          tag.style.color = 'white'
-        }
+          }
 
           if (tag.tagName === 'BUTTON') {
             tag.style.background = 'blue !important';
@@ -161,7 +159,7 @@ export default function ContrastButton() {
           if (tag.tagName === 'A') {
             tag.style.textDecoration = 'underline black'
           }
-           if (tag.getAttribute('id') !== ('__next')
+          if (tag.getAttribute('id') !== ('__next')
             && tag.tagName === 'DIV'
             && !tag.parentElement?.classList.contains('toolbar')
             && !tag.classList.contains('containerToolbar')
