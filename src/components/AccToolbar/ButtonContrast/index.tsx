@@ -132,13 +132,10 @@ export default function ContrastButton() {
             ) {
             tag.style.removeProperty('border')
           }
-          // if (notChangeStyle(tag)) {
           setTimeout(() => {
             document.getElementsByClassName('vpw-mes')[ 0 ].setAttribute('style', 'color: white')
-            // tag.style.removeProperty('background')
-            //   tag.style.removeProperty('border')
+            document.getElementsByClassName('vpw-settings-btn')[ 0 ].setAttribute('style', 'background: blue')
             }, 5000)
-          // }
           break;
         case 3:
 
