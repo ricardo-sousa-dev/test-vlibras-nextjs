@@ -42,7 +42,8 @@ export default function ContrastButton() {
         || 'vp-container'
         || 'vp-controll'
         || 'vp-change-avatar'
-      ))) {
+      ))
+      || element.classList.contains('vpw-mes')) {
       return true
     } else {
       return false
