@@ -89,9 +89,8 @@ export default function ContrastButton() {
           if (!notChangeIfAttributeLibras(tag)){
             tag.style.background = 'white'
           }
-          if (notChangeIfAttributeLibras(tag)) tag.style.color = 'white'
-
-          if (tag.tagName === 'BUTTON') {
+          
+          if (tag.tagName === 'BUTTON' && !notChangeIfAttributeLibras(tag)) {
             tag.style.background = 'blue !important';
             tag.style.color = 'white';
             tag.style.border = '2px solid blue'
@@ -115,6 +114,7 @@ export default function ContrastButton() {
             && !tag.classList.contains('containerToolbar')
             && !tag.classList.contains('closeToolbar')
             && !tag.classList.contains('divButtonToolbar')
+            && !notChangeIfAttributeLibras(tag)
           ) {
             tag.style.border = '1px solid blue'
           }
