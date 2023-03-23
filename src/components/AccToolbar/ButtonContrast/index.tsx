@@ -87,7 +87,7 @@ export default function ContrastButton() {
 
           tag.style.color = 'blue'
 
-          if (!notChangeStyle(tag)) tag.style.background = 'white'
+          if (!notChangeStyle(tag)) tag.style.background = 'white !important'
 
           if (tag.tagName === 'BUTTON') {
             tag.style.background = 'blue';
