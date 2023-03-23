@@ -20,7 +20,7 @@ export default function ContrastButton() {
   let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLAnchorElement | HTMLDivElement | HTMLElement)[];
 
   const notChangeIfAttributeLibras = (element: ElementDom)=>{
-    if (!element.getAttributeNames().filter((attributte) =>
+    if (element.getAttributeNames().filter((attributte) =>
       attributte == (
         'vw'
         || 'vw-access-button'
@@ -42,7 +42,12 @@ export default function ContrastButton() {
         || 'vp-container'
         || 'vp-controll'
         || 'vp-change-avatar'
-      )))return true
+      ))){
+        console.log('LIBRAS', element)
+        return false
+      }else{
+      return true
+    }
       // && element.parentElement?.getAttribute('id') !== 'gameContainer') return true
   }
   /*eslint-disable */
