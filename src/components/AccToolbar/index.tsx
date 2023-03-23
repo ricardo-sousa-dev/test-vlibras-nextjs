@@ -5,7 +5,7 @@ import FloatingIcon from './ButtonFloatingIcon';
 import Toolbar from './Toolbar';
 // import VLibras from './VLibras';
 // import VLibras from '@djpfs/react-vlibras'
-import VLibras from '../AccToolbar/VLibras'
+import VLibras from '../AccToolbar/VLibras/js2'
 
 
 export default function AccToolbar() {
