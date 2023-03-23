@@ -81,12 +81,11 @@ export default function ContrastButton() {
     for (let i = 0; i < arrayTags.length; i += 1) {
       const tag = arrayTags[ i ];
 
-      if (notChangeIfAttributeLibras(tag)) {
       switch (option) {
         case 2:
-          console.log(notChangeIfAttributeLibras(tag))
           tag.style.color = 'blue';
-          tag.style.background = 'white'
+
+          if (!notChangeIfAttributeLibras(tag)) tag.style.background = 'white'
           
           if (tag.tagName === 'BUTTON') {
             tag.style.background = 'blue !important';
@@ -217,7 +216,6 @@ export default function ContrastButton() {
 
         default:
           break;
-      }
       }
     }
   }
