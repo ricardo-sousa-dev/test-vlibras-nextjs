@@ -95,10 +95,18 @@ export default function ContrastButton() {
           if (!notChangeStyle(tag)) tag.style.background = 'white'
 
           if (tag.tagName === 'BUTTON') {
-            tag.style.background = 'blue !important';
+            tag.style.background = 'blue';
             tag.style.color = 'white';
             tag.style.border = '2px solid blue'
           }
+          if (tag.tagName === 'DIV' && !notChangeStyle(tag)){
+            tag.style.background = 'white !important';
+            tag.style.border = '1px solid blue'
+          }
+          if (tag.tagName === 'A') {
+            tag.style.textDecoration = 'underline blue'
+          }
+
           if (tag.parentElement?.classList.contains('divButtonToolbar')
             && tag.tagName !== 'P'
             && tag.tagName !== 'DIV'
@@ -106,14 +114,8 @@ export default function ContrastButton() {
             tag.style.background = 'blue';
             tag.style.color = 'white';
           }
-          if (tag.tagName === 'A') {
-            tag.style.textDecoration = 'underline blue'
-          }
+          
           if (tag.classList.contains('toolbar')) {
-            tag.style.border = '1px solid blue'
-          }
-          if (tag.tagName === 'DIV' && !notChangeStyle(tag)){
-            tag.style.background = 'white'
             tag.style.border = '1px solid blue'
           }
 
