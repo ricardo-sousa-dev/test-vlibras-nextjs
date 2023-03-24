@@ -123,7 +123,7 @@ export default function ContrastButton() {
           }
 
           if (tag.classList.contains('divButtonToolbar')){
-            tag.style.removeProperty('border')
+            tag.style.border = '1px solid white'
           }
           // if (tag.classList.contains(
           // 'containerToolbar'
