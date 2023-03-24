@@ -122,63 +122,63 @@ export default function ContrastButton() {
             tag.style.border = '2px solid blue'
           }
 
-          if (tag.classList.contains(
-          'containerToolbar'
-          ||'closeToolbar'
-          ||'divButtonToolbar'
-          || 'vp'
-          )) tag.style.removeProperty('border')
+          // if (tag.classList.contains(
+          // 'containerToolbar'
+          // ||'closeToolbar'
+          // ||'divButtonToolbar'
+          // || 'vp'
+          // )) tag.style.removeProperty('border')
         
           break;
-        case 3:
+        // case 3:
 
-          tag.style.color = 'black';
+        //   tag.style.color = 'black';
 
-          if (tag.getAttribute('id') !== ('__next')
-            && tag.tagName === 'DIV'
-            && !tag.parentElement?.classList.contains('toolbar')
-            && !tag.classList.contains('containerToolbar')
-            && !tag.classList.contains('closeToolbar')
-            && !tag.classList.contains('divButtonToolbar')
-            && notChangeStyle(tag)
-          ) {
-            tag.style.background = 'yellow';
-          }
+        //   if (tag.getAttribute('id') !== ('__next')
+        //     && tag.tagName === 'DIV'
+        //     && !tag.parentElement?.classList.contains('toolbar')
+        //     && !tag.classList.contains('containerToolbar')
+        //     && !tag.classList.contains('closeToolbar')
+        //     && !tag.classList.contains('divButtonToolbar')
+        //     && notChangeStyle(tag)
+        //   ) {
+        //     tag.style.background = 'yellow';
+        //   }
 
-          if (tag.tagName === 'BUTTON') {
-            tag.style.background = 'black';
-            tag.style.color = 'yellow';
-            tag.style.border = '2px solid black';
-          }
-          if (tag.parentElement?.classList.contains('divButtonToolbar')
-            && tag.tagName !== 'P'
-            && tag.tagName !== 'DIV'
-          ) {
-            tag.style.background = 'yellow';
-            tag.style.color = 'black';
-          }
-          if (tag.getAttribute('id') == 'closeToolbar') {
-            tag.style.removeProperty('background')
-          }
-          if (tag.tagName === 'A') {
-            tag.style.textDecoration = 'underline black'
-          }
-          if (tag.getAttribute('id') !== ('__next')
-            && tag.tagName === 'DIV'
-            && !tag.parentElement?.classList.contains('toolbar')
-            && !tag.classList.contains('containerToolbar')
-            && !tag.classList.contains('closeToolbar')
-            && !tag.classList.contains('divButtonToolbar')
-            && notChangeStyle(tag)
-          ) {
-            tag.style.border = '1px solid black'
-          }
-          if (tag.classList.contains('toolbar')) {
-            tag.style.border = '1px solid black'
-          }
-          break;
+        //   if (tag.tagName === 'BUTTON') {
+        //     tag.style.background = 'black';
+        //     tag.style.color = 'yellow';
+        //     tag.style.border = '2px solid black';
+        //   }
+        //   if (tag.parentElement?.classList.contains('divButtonToolbar')
+        //     && tag.tagName !== 'P'
+        //     && tag.tagName !== 'DIV'
+        //   ) {
+        //     tag.style.background = 'yellow';
+        //     tag.style.color = 'black';
+        //   }
+        //   if (tag.getAttribute('id') == 'closeToolbar') {
+        //     tag.style.removeProperty('background')
+        //   }
+        //   if (tag.tagName === 'A') {
+        //     tag.style.textDecoration = 'underline black'
+        //   }
+        //   if (tag.getAttribute('id') !== ('__next')
+        //     && tag.tagName === 'DIV'
+        //     && !tag.parentElement?.classList.contains('toolbar')
+        //     && !tag.classList.contains('containerToolbar')
+        //     && !tag.classList.contains('closeToolbar')
+        //     && !tag.classList.contains('divButtonToolbar')
+        //     && notChangeStyle(tag)
+        //   ) {
+        //     tag.style.border = '1px solid black'
+        //   }
+        //   if (tag.classList.contains('toolbar')) {
+        //     tag.style.border = '1px solid black'
+        //   }
+        //   break;
 
-        case 4:
+        // case 4:
 
           if (tag.getAttribute('id') !== ('__next')
             && tag.tagName === 'DIV'
