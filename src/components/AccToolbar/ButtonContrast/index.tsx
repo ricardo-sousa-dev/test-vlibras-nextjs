@@ -122,6 +122,7 @@ export default function ContrastButton() {
             tag.style.border = '2px solid blue'
           }
 
+          if (tag.classList.contains('closeToolbar'))tag.style.removeProperty('border')
           // if (tag.classList.contains(
           // 'containerToolbar'
           // ||'closeToolbar'
