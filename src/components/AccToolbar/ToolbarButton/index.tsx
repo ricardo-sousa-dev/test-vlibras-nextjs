@@ -15,13 +15,13 @@ export default function ToolbarButton({ icon, alt, onClick, id}: Icon) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        border: 'none',
+        border: '1px solid transparent',
       } }>
       <button
         type='button'
         style={ {
           padding: '2px 4px',
-          border: '2px solid gray',
+          border: '1px solid gray',
           borderRadius: '7px',
           cursor: 'pointer',
           background: '#f1f1f1',

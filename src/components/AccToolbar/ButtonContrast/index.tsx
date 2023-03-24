@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import ToolbarButton from '../ToolbarButton';
 
 /*eslint-disable */
@@ -17,63 +16,22 @@ export default function ContrastButton() {
   let storageContrast: string | null;
   let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLAnchorElement | HTMLDivElement | HTMLElement)[];
 
-  if (typeof window !== 'undefined') {
-    tagsH1 = Array.from(document.querySelectorAll('h1'));
-    tagsH2 = Array.from(document.querySelectorAll('h2'));
-    tagsH3 = Array.from(document.querySelectorAll('h3'));
-    tagsH4 = Array.from(document.querySelectorAll('h4'));
-    tagsH5 = Array.from(document.querySelectorAll('h5'));
-    tagsH6 = Array.from(document.querySelectorAll('h6'));
-    tagsP = Array.from(document.querySelectorAll('p'));
-    tagsA = Array.from(document.querySelectorAll('a'));
-    tagsDiv = Array.from(document.querySelectorAll('div'));
-    tagsButton = Array.from(document.querySelectorAll('button'));
-    tagHeader = Array.from(document.querySelectorAll('header'));
-    arrayTags = [
-      tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsA, tagsDiv, tagsButton
-    ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);
-    storageContrast = localStorage.getItem('storageContrast') || null;
-  }
-
-  useEffect(() => {
-    if (!storageContrast) {
-      localStorage.setItem('storageContrast', JSON.stringify(1));
-    } else {
-      changeContrast(true)
-    }
-
-    tagsH1 = Array.from(document.querySelectorAll('h1'));
-    tagsH2 = Array.from(document.querySelectorAll('h2'));
-    tagsH3 = Array.from(document.querySelectorAll('h3'));
-    tagsH4 = Array.from(document.querySelectorAll('h4'));
-    tagsH5 = Array.from(document.querySelectorAll('h5'));
-    tagsH6 = Array.from(document.querySelectorAll('h6'));
-    tagsP = Array.from(document.querySelectorAll('p'));
-    tagsA = Array.from(document.querySelectorAll('a'));
-    tagsDiv = Array.from(document.querySelectorAll('div'));
-    tagsButton = Array.from(document.querySelectorAll('button'));
-    tagHeader = Array.from(document.querySelectorAll('header'));
-    arrayTags = [
-      tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsA, tagsDiv, tagsButton
-    ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);
-    storageContrast = localStorage.getItem('storageContrast') || null;
-  }, []);
-
-  const changeContrast = (init=false) => {
+  const changeContrast = (init = false) => {
     const storageContrast = localStorage.getItem('storageContrast')
-    
-    if(!init){
-    if (storageContrast == '1') localStorage.setItem('storageContrast', JSON.stringify(2))
-    if (storageContrast == '2') localStorage.setItem('storageContrast', JSON.stringify(3))
-    if (storageContrast == '3') localStorage.setItem('storageContrast', JSON.stringify(4))
-    if (storageContrast == '4') localStorage.setItem('storageContrast', JSON.stringify(1))
+
+    if (!init) {
+      console.log('entrou no init')
+      if (storageContrast == '1') localStorage.setItem('storageContrast', JSON.stringify(2))
+      if (storageContrast == '2') localStorage.setItem('storageContrast', JSON.stringify(3))
+      if (storageContrast == '3') localStorage.setItem('storageContrast', JSON.stringify(4))
+      if (storageContrast == '4') localStorage.setItem('storageContrast', JSON.stringify(1))
     }
 
     if (localStorage.getItem('storageContrast') != '1') {
       let primary = '';
       let secondary = '';
 
-      switch (localStorage.getItem('storageContrast')){
+      switch (localStorage.getItem('storageContrast')) {
         case '2':
           primary = 'blue'
           secondary = 'white'
@@ -93,7 +51,7 @@ export default function ContrastButton() {
 
         tag.style.color = primary
         tag.style.background = secondary
-        
+
         if (tag.tagName !== 'H1'
           && tag.tagName !== 'H2'
           && tag.tagName !== 'H3'
@@ -102,21 +60,21 @@ export default function ContrastButton() {
           && tag.tagName !== 'H6'
           && tag.tagName !== 'P'
           && tag.tagName !== 'A'
-        ) tag.style.border = `1px solid ${primary}`
+        ) tag.style.border = `1px solid ${ primary }`
 
         if (tag.tagName === 'DIV') {
-          tag.style.border = `1px solid ${ secondary}!important`
+          tag.style.border = `1px solid ${ secondary }!important`
           tag.style.background = secondary
         }
 
         if (tag.tagName === 'BUTTON') {
           tag.style.background = primary;
           tag.style.color = secondary;
-          tag.style.border = `2px solid ${secondary}`
+          tag.style.border = `1px solid ${ secondary }`
         }
 
         if (tag.tagName === 'A') {
-          tag.style.textDecoration = `underline ${secondary}`
+          tag.style.textDecoration = `underline ${ secondary }`
         }
 
         if (tag.parentElement?.classList.contains('divButtonToolbar')
@@ -128,24 +86,22 @@ export default function ContrastButton() {
         }
 
         if (tag.classList.contains('toolbar')) {
-          tag.style.border = `1px solid ${primary}`
+          tag.style.border = `1px solid ${ primary }`
         }
 
         if (tag.classList.contains('floatingIcon')) {
           tag.style.background = primary
           tag.style.color = secondary
-          tag.style.border = `2px solid ${primary}`
+          tag.style.border = `2px solid ${ primary }`
         }
 
-        if (
-          tag.classList.contains('divButtonToolbar')
+        if (tag.classList.contains('divButtonToolbar')
           || tag.getAttribute('id') === 'closeToolbar'
           || tag.parentElement?.classList.contains('divButtonToolbar')
           || tag.parentElement?.classList.contains('toolbar')
-          || tag.getAttribute('id') == '__next'
           || tag.tagName == 'body'
         ) {
-          tag.style.border = `1px solid ${secondary}`
+          tag.style.border = `1px solid ${ secondary }`
         }
       }
     } else {
@@ -154,9 +110,10 @@ export default function ContrastButton() {
 
         tag.style.removeProperty('color');
         tag.style.removeProperty('background');
-        tag.style.removeProperty('border');
         tag.style.removeProperty('text-decoration');
-
+        
+        if (!tag.parentElement?.classList.contains('toolbar')) tag.style.removeProperty('border');
+        
         if (tag.classList.contains('toolbar')) {
           tag.style.border = '1px solid black'
           tag.style.background = 'white'
@@ -164,23 +121,63 @@ export default function ContrastButton() {
 
         if (tag.parentElement?.classList.contains('divButtonToolbar')
           && tag.tagName === 'BUTTON') {
-          tag.style.border = '2px solid black'
+          tag.style.border = '1px solid gray'
         }
 
         if (tag.classList.contains('floatingIcon')) {
           tag.style.background = '#003F86'
           tag.style.color = 'white'
-          tag.style.border = '2px solid black'
+          tag.style.border = '1px solid gray'
+        }
+
+        if ((tag.parentElement?.classList.contains('divButtonToolbar')
+          && tag.tagName == 'P') || tag.classList.contains('containerToolbar')) tag.style.border = '1px solid transparent'
+
+        if (tag.classList.contains('divToolbarButton')) {
+          tag.style.border = '1px solid transparent'
+        }
+
+        if (tag.classList.contains('divButtonToolbar')
+          || tag.parentElement?.classList.contains('toolbar')
+          || tag.tagName == 'body'
+        ) {
+          tag.style.border = `1px solid transparent`
         }
       }
     }
   };
 
+  if (typeof window !== 'undefined') {
+
+    tagsH1 = Array.from(document.querySelectorAll('h1'));
+    tagsH2 = Array.from(document.querySelectorAll('h2'));
+    tagsH3 = Array.from(document.querySelectorAll('h3'));
+    tagsH4 = Array.from(document.querySelectorAll('h4'));
+    tagsH5 = Array.from(document.querySelectorAll('h5'));
+    tagsH6 = Array.from(document.querySelectorAll('h6'));
+    tagsP = Array.from(document.querySelectorAll('p'));
+    tagsA = Array.from(document.querySelectorAll('a'));
+    tagsDiv = Array.from(document.querySelectorAll('div'));
+    tagsButton = Array.from(document.querySelectorAll('button'));
+    tagHeader = Array.from(document.querySelectorAll('header'));
+    arrayTags = [
+      tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsA, tagsDiv, tagsButton
+    ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);
+    storageContrast = localStorage.getItem('storageContrast') || null;
+
+    if (!storageContrast) {
+      localStorage.setItem('storageContrast', JSON.stringify(1));
+    } else if (localStorage.getItem('storageContrast') != '1') {
+      changeContrast(true)
+    }
+
+  }
+
   return (
     <ToolbarButton
       icon='contrast'
       alt='Contraste'
-      onClick={ ()=>changeContrast() }
+      onClick={ () => changeContrast() }
     />
   );
 }
