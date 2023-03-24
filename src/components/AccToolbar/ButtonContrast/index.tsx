@@ -122,15 +122,7 @@ export default function ContrastButton() {
             tag.style.border = '2px solid blue'
           }
 
-          // if (
-          //   tag.classList.contains('containerToolbar')
-          //   || tag.classList.contains('closeToolbar')
-          //   || tag.classList.contains('divButtonToolbar')
-          //   || !notChangeStyle(tag)
-          // ) {
-          //   tag.style.removeProperty('border')
-          // }
-          
+        
           break;
         case 3:
 
@@ -229,6 +221,11 @@ export default function ContrastButton() {
         default:
           break;
       }
+       document.getElementsByClassName('containerToolbar')[0].style.removeProperty('border')
+       document.getElementsByClassName('closeToolbar')[0].style.removeProperty('border')
+       document.getElementsByClassName('divButtonToolbar')[0].style.removeProperty('border')
+       document.getElementsByClassName('vp')[0].style.removeProperty('border')
+          
     }
   }
 
