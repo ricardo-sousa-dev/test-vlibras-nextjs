@@ -221,10 +221,20 @@ export default function ContrastButton() {
         default:
           break;
       }
-      Array.from(document.getElementsByClassName('containerToolbar') as HTMLCollectionOf<HTMLElement>)[0].style.removeProperty('border')
-      Array.from(document.getElementsByClassName('closeToolbar') as HTMLCollectionOf<HTMLElement>)[0].style.removeProperty('border')
-      Array.from(document.getElementsByClassName('divButtonToolbar') as HTMLCollectionOf<HTMLElement>)[0].style.removeProperty('border')
-      Array.from(document.getElementsByClassName('vp') as HTMLCollectionOf<HTMLElement>)[0].style.removeProperty('border')
+      for (let index = 0; index < arrayTags.length; index++) {
+        const element = arrayTags[index];
+        if (arrayTags[ index ].classList.contains(
+          'containerToolbar'
+          ||'closeToolbar'
+          ||'divButtonToolbar'
+          || 'vp'
+          )) arrayTags[index].style.removeProperty(border)
+        
+      }
+      // Array.from(document.getElementsByClassName('containerToolbar') as HTMLCollectionOf<HTMLElement>)[0].style.removeProperty('border')
+      // Array.from(document.getElementsByClassName('closeToolbar') as HTMLCollectionOf<HTMLElement>)[0].style.removeProperty('border')
+      // Array.from(document.getElementsByClassName('divButtonToolbar') as HTMLCollectionOf<HTMLElement>)[0].style.removeProperty('border')
+      // Array.from(document.getElementsByClassName('vp') as HTMLCollectionOf<HTMLElement>)[0].style.removeProperty('border')
           
     }
   }
