@@ -87,16 +87,15 @@ export default function ContrastButton() {
 
           tag.style.color = 'blue'
 
-          // tag.style.background = 'white'
-          if (notChangeStyle(tag)) tag.style.background = 'white'
+          tag.style.background = 'white'
+          // if (notChangeStyle(tag)) tag.style.background = 'white'
 
-        
           if (tag.tagName === 'DIV') {
             tag.style.border = '1px solid blue'
             tag.style.background = 'white'
           }
-         
-            if (tag.tagName === 'BUTTON') {
+
+          if (tag.tagName === 'BUTTON') {
             tag.style.background = 'blue';
             tag.style.color = 'white';
             tag.style.border = '2px solid blue'
@@ -129,14 +128,14 @@ export default function ContrastButton() {
             || tag.classList.contains('divButtonToolbar')
             || notChangeStyle(tag)
             // || tag.getAttribute('id') !== ('__next')
-            ) {
+          ) {
             tag.style.removeProperty('border')
           }
-          setTimeout(() => {
-            document.getElementsByClassName('vpw-settings-btn')[ 0 ].setAttribute('style', 'background: blue, color:blue')
-            // document.getElementsByClassName('vpw-mes')[ 0 ].setAttribute('style', 'color: white')
-            document.getElementById('#canvas')?.setAttribute('style', 'background:#f1f1f1')
-            }, 5000)
+          // setTimeout(() => {
+          //   document.getElementsByClassName('vpw-settings-btn')[ 0 ].setAttribute('style', 'background:blue, color:blue')
+          //   // document.getElementsByClassName('vpw-mes')[ 0 ].setAttribute('style', 'color: white')
+          //   document.getElementById('#canvas')?.setAttribute('style', 'background:#f1f1f1')
+          // }, 5000)
           break;
         case 3:
 
