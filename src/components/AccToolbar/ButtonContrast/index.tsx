@@ -90,8 +90,7 @@ export default function ContrastButton() {
           tag.style.border = '1px solid blue'
 
           if (tag.tagName === 'DIV') {
-            console.log('entrou DIV')
-            tag.style.border = '5px solid blue !important'
+            tag.style.border = '10px solid blue !important'
             tag.style.background = 'white'
           }
 
@@ -123,14 +122,14 @@ export default function ContrastButton() {
             tag.style.border = '2px solid blue'
           }
 
-          if (
-            tag.classList.contains('containerToolbar')
-            || tag.classList.contains('closeToolbar')
-            || tag.classList.contains('divButtonToolbar')
-            || notChangeStyle(tag)
-          ) {
-            tag.style.removeProperty('border')
-          }
+          // if (
+          //   tag.classList.contains('containerToolbar')
+          //   || tag.classList.contains('closeToolbar')
+          //   || tag.classList.contains('divButtonToolbar')
+          //   || !notChangeStyle(tag)
+          // ) {
+          //   tag.style.removeProperty('border')
+          // }
           
           break;
         case 3:
