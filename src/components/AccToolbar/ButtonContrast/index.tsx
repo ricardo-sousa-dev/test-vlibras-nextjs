@@ -122,7 +122,7 @@ export default function ContrastButton() {
             tag.style.border = '2px solid blue'
           }
 
-          if (tag.classList.contains('divButtonToolbar')){
+          if (tag.classList.contains('divButtonToolbar'||'containerToolbar')){
             tag.style.border = '1px solid white'
           }
           // if (tag.classList.contains(
