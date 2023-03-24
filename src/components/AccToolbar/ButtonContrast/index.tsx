@@ -123,14 +123,14 @@ export default function ContrastButton() {
             tag.style.border = '2px solid blue'
           }
 
-          // if (
-          //   tag.classList.contains('containerToolbar')
-          //   || tag.classList.contains('closeToolbar')
-          //   || tag.classList.contains('divButtonToolbar')
-          //   || notChangeStyle(tag)
-          // ) {
-          //   tag.style.removeProperty('border')
-          // }
+          if (
+            tag.classList.contains('containerToolbar')
+            || tag.classList.contains('closeToolbar')
+            || tag.classList.contains('divButtonToolbar')
+            || notChangeStyle(tag)
+          ) {
+            tag.style.removeProperty('border')
+          }
           
           break;
         case 3:
