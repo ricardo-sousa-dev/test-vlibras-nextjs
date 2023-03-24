@@ -28,7 +28,8 @@ export default function AccToolbar() {
       || storageTextStyle && storageTextStyle !== '1'
       || storageZoomPage && storageZoomPage !== '1'
       || storageLibras && storageLibras !== '1'
-    ) setTimeout(() => setShowToolbar(true), 2000);
+    // ) setTimeout(() => setShowToolbar(true), 2000);
+    ) setShowToolbar(true);
 
     setTimeout(() => {
       for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
