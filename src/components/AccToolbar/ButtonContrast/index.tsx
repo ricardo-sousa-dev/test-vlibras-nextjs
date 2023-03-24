@@ -89,7 +89,7 @@ export default function ContrastButton() {
           tag.style.background = 'white'
 
           if (tag.tagName === 'DIV') {
-            tag.style.border = '1px solid blue !important'
+            tag.style.border = '5px solid blue !important'
             tag.style.background = 'white'
           }
 
