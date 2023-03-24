@@ -87,6 +87,7 @@ export default function ContrastButton() {
 
           tag.style.color = 'blue'
           tag.style.background = 'white'
+          tag.style.border = '1px solid blue'
 
           if (tag.tagName === 'DIV') {
             console.log('entrou DIV')
