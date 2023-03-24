@@ -122,6 +122,12 @@ export default function ContrastButton() {
             tag.style.border = '2px solid blue'
           }
 
+          if (tag.classList.contains(
+          'containerToolbar'
+          ||'closeToolbar'
+          ||'divButtonToolbar'
+          || 'vp'
+          )) tag.style.removeProperty('border')
         
           break;
         case 3:
@@ -221,16 +227,7 @@ export default function ContrastButton() {
         default:
           break;
       }
-      for (let index = 0; index < arrayTags.length; index++) {
-        const element = arrayTags[index];
-        if (arrayTags[ index ].classList.contains(
-          'containerToolbar'
-          ||'closeToolbar'
-          ||'divButtonToolbar'
-          || 'vp'
-          )) arrayTags[index].style.removeProperty('border')
-        
-      }
+
       // Array.from(document.getElementsByClassName('containerToolbar') as HTMLCollectionOf<HTMLElement>)[0].style.removeProperty('border')
       // Array.from(document.getElementsByClassName('closeToolbar') as HTMLCollectionOf<HTMLElement>)[0].style.removeProperty('border')
       // Array.from(document.getElementsByClassName('divButtonToolbar') as HTMLCollectionOf<HTMLElement>)[0].style.removeProperty('border')
