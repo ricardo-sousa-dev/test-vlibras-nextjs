@@ -228,7 +228,7 @@ export default function ContrastButton() {
           ||'closeToolbar'
           ||'divButtonToolbar'
           || 'vp'
-          )) arrayTags[index].style.removeProperty(border)
+          )) arrayTags[index].style.removeProperty('border')
         
       }
       // Array.from(document.getElementsByClassName('containerToolbar') as HTMLCollectionOf<HTMLElement>)[0].style.removeProperty('border')
