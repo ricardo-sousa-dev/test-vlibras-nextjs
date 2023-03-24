@@ -19,7 +19,7 @@ export default function FloatingIcon({ setShowToolbar, showToolbar, icon }: Reac
         border: '1px solid white',
         cursor: 'pointer',
         zIndex: '999',
-        background: 'blue',
+        background: '#003F86',
         padding: '0',
         color: 'white'
       } }>
