@@ -119,10 +119,10 @@ export default function ContrastButton() {
           if (tag.classList.contains('floatingIcon')) {
             tag.style.background = 'blue'
             tag.style.color = 'white'
-            tag.style.border = '2px solid red'
+            tag.style.border = '2px solid blue'
           }
 
-          if (tag.classList.contains('closeToolbar'))tag.style.removeProperty('border')
+          if (tag.classList.contains('divButtonToolbar'))tag.style.removeProperty('border')
           // if (tag.classList.contains(
           // 'containerToolbar'
           // ||'closeToolbar'
