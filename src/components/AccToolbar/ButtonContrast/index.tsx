@@ -221,10 +221,10 @@ export default function ContrastButton() {
         default:
           break;
       }
-       document.getElementsByClassName('containerToolbar')[0].style.removeProperty('border')
-       document.getElementsByClassName('closeToolbar')[0].style.removeProperty('border')
-       document.getElementsByClassName('divButtonToolbar')[0].style.removeProperty('border')
-       document.getElementsByClassName('vp')[0].style.removeProperty('border')
+      Array.from(document.getElementsByClassName('containerToolbar') as HTMLCollectionOf<HTMLElement>)[0].style.removeProperty('border')
+      Array.from(document.getElementsByClassName('closeToolbar') as HTMLCollectionOf<HTMLElement>)[0].style.removeProperty('border')
+      Array.from(document.getElementsByClassName('divButtonToolbar') as HTMLCollectionOf<HTMLElement>)[0].style.removeProperty('border')
+      Array.from(document.getElementsByClassName('vp') as HTMLCollectionOf<HTMLElement>)[0].style.removeProperty('border')
           
     }
   }
