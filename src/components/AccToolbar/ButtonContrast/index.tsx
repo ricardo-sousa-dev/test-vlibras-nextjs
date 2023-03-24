@@ -86,7 +86,6 @@ export default function ContrastButton() {
         case 2:
 
           tag.style.color = 'blue'
-
           tag.style.background = 'white'
 
           if (tag.tagName === 'DIV') {
@@ -99,6 +98,7 @@ export default function ContrastButton() {
             tag.style.color = 'white';
             tag.style.border = '2px solid blue'
           }
+
           if (tag.tagName === 'A') {
             tag.style.textDecoration = 'underline blue'
           }
@@ -120,16 +120,15 @@ export default function ContrastButton() {
             tag.style.color = 'white'
             tag.style.border = '2px solid blue'
           }
-          // tag.parentElement?.classList.contains('toolbar')
-          if (
-            tag.classList.contains('containerToolbar')
-            || tag.classList.contains('closeToolbar')
-            || tag.classList.contains('divButtonToolbar')
-            || notChangeStyle(tag)
-            // || tag.getAttribute('id') !== ('__next')
-          ) {
-            tag.style.removeProperty('border')
-          }
+
+          // if (
+          //   tag.classList.contains('containerToolbar')
+          //   || tag.classList.contains('closeToolbar')
+          //   || tag.classList.contains('divButtonToolbar')
+          //   || notChangeStyle(tag)
+          // ) {
+          //   tag.style.removeProperty('border')
+          // }
           
           break;
         case 3:
