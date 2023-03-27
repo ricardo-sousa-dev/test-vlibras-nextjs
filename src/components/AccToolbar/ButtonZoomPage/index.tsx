@@ -1,141 +1,81 @@
-import React, { useEffect } from 'react';
-
 import ToolbarButton from '../ToolbarButton';
+import tags from '../utils/tags';
 
 /*eslint-disable */
 export default function ZoomPage() {
-  let tagsH1: HTMLHeadingElement[];
-  let tagsH2: HTMLHeadingElement[];
-  let tagsH3: HTMLHeadingElement[];
-  let tagsH4: HTMLHeadingElement[];
-  let tagsH5: HTMLHeadingElement[];
-  let tagsH6: HTMLHeadingElement[];
-  let tagsP: HTMLHeadingElement[];
-  let tagsDiv: HTMLDivElement[];
-  let tagsImg: HTMLHeadingElement[];
-  let tagsButton: HTMLButtonElement[];
-  let tagHeader: HTMLElement[];
+
   let storageZoomPage: string | null;
-  let arrayTags: (HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement)[];
+  let elements: string | any[]
+  
+  const PERCENT = 1.05;
 
-  const PERCENT_10 = 1.05;
+  const changeZoomPage = (init:boolean) => {
+    const storageZoomPage = localStorage.getItem('storageZoomPage')
 
-  const modifyingZoomPageClear = () => {
-
-    for (let i = 0; i < arrayTags.length; i += 1) {
-      const tag = arrayTags[ i ];
-
-      if (!tag.parentElement?.classList.contains('divButtonToolbar')) {
-        tag.style.removeProperty('font-size');
-        tag.style.removeProperty('transform')
-      }
-    }
-  };
-
-  const modifyingZoomPage = (size: number) => {
-
-    const genSizeCalc = (sizeTag: number) => {
-      if (size == 1) {
-        return sizeTag * PERCENT_10
-      } else if (size == 2) {
-        return sizeTag * Math.pow(PERCENT_10, 2)
-      } else if (size == 3) {
-        return sizeTag * Math.pow(PERCENT_10, 3)
-      }
+    if (!init) {
+      if (storageZoomPage == '1') localStorage.setItem('storageZoomPage', JSON.stringify(2))
+      if (storageZoomPage == '2') localStorage.setItem('storageZoomPage', JSON.stringify(3))
+      if (storageZoomPage == '3') localStorage.setItem('storageZoomPage', JSON.stringify(4))
+      if (storageZoomPage == '4') localStorage.setItem('storageZoomPage', JSON.stringify(1))
     }
 
-    for (let i = 0; i < arrayTags.length; i += 1) {
-      const tag = arrayTags[ i ];
+    if (localStorage.getItem('storageZoomPage') != '1') {
 
-      if (!tag.parentElement?.classList.contains('divButtonToolbar')
-        && tag.tagName != 'IMG') {
-        const fontSizeOriginal = Number(getComputedStyle(tag).fontSize.replace('px', ''));
-        tag.style.fontSize = `${ genSizeCalc(fontSizeOriginal) }`.slice(0, 5) + 'px';
+      const genSizeCalc = (sizeTag: number) => {
+        switch (localStorage.getItem('storageZoomPage')) {
+          case '2':
+            return sizeTag * PERCENT
+          case '3':
+            return sizeTag * Math.pow(PERCENT, 2)
+          case '4':
+            return sizeTag * Math.pow(PERCENT, 3)
+          default:
+            break;
+        }
       }
+      for (let i = 0; i < elements.length; i += 1) {
 
-      if (tag.tagName == 'IMG') tag.style.setProperty('transform', `scale(1.${ size })`)
-    }
-  };
+        const tag = elements[ i ];
+        console.log(tag.tagName)
+        if (!tag.parentElement?.classList.contains('divButtonToolbar')
+          && tag.tagName != 'IMG') {
+          const fontSizeOriginal = Number(getComputedStyle(tag).fontSize.replace('px', ''));
+          tag.style.fontSize = `${ genSizeCalc(Number(fontSizeOriginal)) }`.slice(0, 5) + 'px';
+        }
 
-  if (typeof window !== 'undefined') {
-    tagsH1 = Array.from(document.querySelectorAll('h1'));
-    tagsH2 = Array.from(document.querySelectorAll('h2'));
-    tagsH3 = Array.from(document.querySelectorAll('h3'));
-    tagsH4 = Array.from(document.querySelectorAll('h4'));
-    tagsH5 = Array.from(document.querySelectorAll('h5'));
-    tagsH6 = Array.from(document.querySelectorAll('h6'));
-    tagsP = Array.from(document.querySelectorAll('p'));
-    tagsDiv = Array.from(document.querySelectorAll('div'));
-    tagsImg = Array.from(document.querySelectorAll('img'));
-    tagsButton = Array.from(document.querySelectorAll('button'));
-    tagHeader = Array.from(document.querySelectorAll('header'));
-    storageZoomPage = localStorage.getItem('storageZoomPage') || null;
-    arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsDiv, tagsImg, tagsButton, tagHeader ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);
+        if (tag.tagName == 'IMG') {
+          tag.style.transform = `scale(1.${localStorage.getItem('storageZoomPage')})`
+        }
+      }
+    } else {
+
+      for (let i = 0; i < elements.length; i += 1) {
+        const tag = elements[ i ];
+
+        if (!tag.parentElement?.classList.contains('divButtonToolbar')) {
+          tag.style.removeProperty('font-size');
+          tag.style.removeProperty('transform')
+        }
+      }
+    };
   }
 
-  useEffect(() => {
+  if (typeof window !== 'undefined') {
+    storageZoomPage = localStorage.getItem('storageZoomPage') || null;
+    elements = tags();
+
     if (!storageZoomPage) {
       localStorage.setItem('storageZoomPage', JSON.stringify(1));
-    } else {
-      switch (JSON.parse(storageZoomPage)) {
-        case 1:
-          localStorage.setItem('storageZoomPage', JSON.stringify(1))
-          setTimeout(() => modifyingZoomPageClear(), 1000);
-          break;
-        case 2:
-          localStorage.setItem('storageZoomPage', JSON.stringify(2))
-          setTimeout(() => modifyingZoomPage(1), 1000);
-          break;
-        case 3:
-          localStorage.setItem('storageZoomPage', JSON.stringify(3))
-          setTimeout(() => modifyingZoomPage(2), 1000);
-          break;
-        case 4:
-          localStorage.setItem('storageZoomPage', JSON.stringify(4))
-          setTimeout(() => modifyingZoomPage(3), 1000);
-          break;
-        default:
-          break;
-      }
+    } else if (localStorage.getItem(storageZoomPage) != '1'){
+      changeZoomPage(true)
     }
-
-    tagsH1 = Array.from(document.querySelectorAll('h1'));
-    tagsH2 = Array.from(document.querySelectorAll('h2'));
-    tagsH3 = Array.from(document.querySelectorAll('h3'));
-    tagsH4 = Array.from(document.querySelectorAll('h4'));
-    tagsH5 = Array.from(document.querySelectorAll('h5'));
-    tagsH6 = Array.from(document.querySelectorAll('h6'));
-    tagsP = Array.from(document.querySelectorAll('p'));
-    tagsDiv = Array.from(document.querySelectorAll('div'));
-    tagsImg = Array.from(document.querySelectorAll('img'));
-    tagsButton = Array.from(document.querySelectorAll('button'));
-    tagHeader = Array.from(document.querySelectorAll('header'));
-    storageZoomPage = localStorage.getItem('storageZoomPage') || null;
-    arrayTags = [ tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsDiv, tagsImg, tagsButton, tagHeader ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>(tag => tag);
-
-  }, []);
-
-  const changeZoomPage = () => {
-    if (localStorage.getItem('storageZoomPage') == '1') {
-      modifyingZoomPage(1);
-      localStorage.setItem('storageZoomPage', JSON.stringify(2));
-    } else if (localStorage.getItem('storageZoomPage') == '2') {
-      modifyingZoomPage(2);
-      localStorage.setItem('storageZoomPage', JSON.stringify(3));
-    } else if (localStorage.getItem('storageZoomPage') == '3') {
-      modifyingZoomPage(3);
-      localStorage.setItem('storageZoomPage', JSON.stringify(4));
-    } else if (localStorage.getItem('storageZoomPage') == '4') {
-      modifyingZoomPageClear();
-      localStorage.setItem('storageZoomPage', JSON.stringify(1));
-    }
-  };
+  }
 
   return (
     <ToolbarButton
       icon='zoom_out_map'
       alt='Zoom'
-      onClick={ changeZoomPage }
+      onClick={ ()=> changeZoomPage(false) }
     />
   );
 }
