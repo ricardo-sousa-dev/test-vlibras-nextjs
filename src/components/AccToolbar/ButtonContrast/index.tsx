@@ -41,7 +41,7 @@ export default function ContrastButton() {
 
         tag.style.color = primary
         tag.style.background = secondary
-        // if(!tag.parentElement.getAttribute('vw'))console.log(tag)
+
         if (tag.tagName !== 'H1'
           && tag.tagName !== 'H2'
           && tag.tagName !== 'H3'
@@ -102,7 +102,6 @@ export default function ContrastButton() {
           || tag.classList.contains('vw-plugin-top-wrapper')
         ) {
           tag.style.removeProperty('background');
-          tag.style.removeProperty('font-family');
           tag.style.removeProperty('border');
           tag.style.removeProperty('color');
         }
