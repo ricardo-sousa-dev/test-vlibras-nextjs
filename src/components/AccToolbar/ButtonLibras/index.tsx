@@ -27,8 +27,7 @@ export default function Libras() {
     }
 
     Array.from(document.getElementsByTagName('div')).forEach(element => {
-      if (element.getAttribute('vw')
-        || element.getAttribute('vw-plugin-wrapper')
+      if (element.getAttribute('vw-plugin-wrapper')
         || element.getAttribute('vw-access-button')
         || element.classList.contains('vw-plugin-top-wrapper')
       ) {
