@@ -39,6 +39,9 @@ export default function ContrastButton() {
       for (let i = 0; i < elements.length; i += 1) {
         const tag = elements[ i ];
 
+        if(!tag.classList.contains('vpw-box')
+        || !tag.classList.contains('vpw-settings-btn')
+        ){
         tag.style.color = primary
         tag.style.background = secondary
 
@@ -95,6 +98,8 @@ export default function ContrastButton() {
           tag.style.border = `1px solid ${ secondary }`
         }
       }
+      }
+
     } else {
       for (let i = 0; i < elements.length; i += 1) {
         const tag = elements[ i ];
