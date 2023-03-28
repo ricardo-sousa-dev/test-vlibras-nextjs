@@ -25,9 +25,32 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
   tagsDiv = Array.from(document.querySelectorAll('div'));
   tagsButton = Array.from(document.querySelectorAll('button'));
   tagHeader = Array.from(document.querySelectorAll('header'));
-  arrayTags = [tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsA, tagsIMG, tagsDiv, tagsButton].flatMap<
-    HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement
-  >((tag) => tag);
+  arrayTags = [
+    tagHeader,
+    tagsH1,
+    tagsH2,
+    tagsH3,
+    tagsH4,
+    tagsH5,
+    tagsH6,
+    tagsP,
+    tagsA,
+    tagsIMG,
+    tagsDiv,
+    tagsButton,
+  ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>((tag) => tag);
 
-  return arrayTags;
+  return arrayTags.filter(
+    (tag) =>
+      tag.tagName !== 'body' &&
+      tag.getAttribute('id') !== '__next' &&
+      !tag.classList.contains('toolbar') &&
+      tag.getAttribute('id') !== 'closeToolbar' &&
+      !tag.classList.contains('containerToolbar') &&
+      !tag.classList.contains('divButtonToolbar') &&
+      !tag.getAttribute('vw') &&
+      !tag.getAttribute('vw-plugin-wrapper') &&
+      !tag.getAttribute('vw-access-button') &&
+      !tag.classList.contains('vw-plugin-top-wrapper'),
+  );
 }

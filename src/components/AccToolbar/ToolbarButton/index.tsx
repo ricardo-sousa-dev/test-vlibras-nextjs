@@ -24,7 +24,7 @@ export default function ToolbarButton({ icon, alt, onClick, id}: Icon) {
           border: '1px solid gray',
           borderRadius: '7px',
           cursor: 'pointer',
-          background: '#f1f1f1',
+          background: localStorage.getItem('storageLibras') == '2' && !document.getElementsByClassName('vpw-settings-btn')[ 0 ]? 'red': '#f1f1f1',
         } }
         className='a11yIcon'
         onClick={ onClick }>

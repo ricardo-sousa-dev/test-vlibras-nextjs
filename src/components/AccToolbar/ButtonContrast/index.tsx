@@ -5,7 +5,7 @@ import tags from '../utils/tags';
 export default function ContrastButton() {
 
   let storageContrast: string | null;
-  let elements: string | any[]
+  let elements: string | any[] = tags();
 
   const changeContrast = (init: boolean) => {
     const storageContrast = localStorage.getItem('storageContrast')
@@ -102,19 +102,6 @@ export default function ContrastButton() {
 
   if (typeof window !== 'undefined') {
     storageContrast = localStorage.getItem('storageContrast') || null;
-
-    elements = tags().filter((tag) =>
-      // tag.tagName !== 'body'
-      tag.getAttribute('id') !== '__next'
-      && !tag.classList.contains('toolbar')
-      && tag.getAttribute('id') !== 'closeToolbar'
-      && !tag.classList.contains('containerToolbar')
-      && !tag.classList.contains('divButtonToolbar')
-      && !tag.getAttribute('vw')
-      && !tag.getAttribute('vw-plugin-wrapper')
-      && !tag.getAttribute('vw-access-button')
-      && !tag.classList.contains('vw-plugin-top-wrapper')
-    )
 
     if (!storageContrast) {
       localStorage.setItem('storageContrast', JSON.stringify(1));
