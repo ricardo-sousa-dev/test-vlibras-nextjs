@@ -110,6 +110,10 @@ export default function ContrastButton() {
       && tag.getAttribute('id') !== 'closeToolbar'
       && !tag.classList.contains('containerToolbar')
       && !tag.classList.contains('divButtonToolbar')
+      && !tag.getAttribute('vw')
+      && !tag.getAttribute('vw-plugin-wrapper')
+      && !tag.getAttribute('vw-access-button')
+      && !tag.classList.contains('vw-plugin-top-wrapper')
     )
 
     if (!storageContrast) {
