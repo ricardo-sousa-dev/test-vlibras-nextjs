@@ -39,12 +39,9 @@ export default function ContrastButton() {
       for (let i = 0; i < elements.length; i += 1) {
         const tag = elements[ i ];
 
-       
-        if (!tag.getAttribute('vw')
-          && !tag.getAttribute('vw-plugin-wrapper')) tag.style.color = primary
-        if (!tag.getAttribute('vw')
-          && !tag.getAttribute('vw-plugin-wrapper')) tag.style.background = secondary
-          // if(!tag.parentElement.getAttribute('vw'))console.log(tag)
+        tag.style.color = primary
+        tag.style.background = secondary
+        // if(!tag.parentElement.getAttribute('vw'))console.log(tag)
         if (tag.tagName !== 'H1'
           && tag.tagName !== 'H2'
           && tag.tagName !== 'H3'
@@ -53,8 +50,7 @@ export default function ContrastButton() {
           && tag.tagName !== 'H6'
           && tag.tagName !== 'P'
           && tag.tagName !== 'A'
-          && !tag.getAttribute('vw')
-            && !tag.getAttribute('vw-plugin-wrapper')
+
         ) tag.style.border = `1px solid ${ primary }`
 
         if (tag.tagName === 'DIV') {
@@ -76,7 +72,7 @@ export default function ContrastButton() {
           && tag.tagName !== 'P'
           && tag.tagName !== 'DIV'
         ) {
-          tag.style.background = `${primary} !important`;
+          tag.style.background = `${ primary } !important`;
           tag.style.color = secondary;
         }
 
@@ -98,6 +94,17 @@ export default function ContrastButton() {
           || tag.tagName == 'body'
         ) {
           tag.style.border = `1px solid ${ secondary }`
+        }
+
+        if (tag.getAttribute('vw')
+          || tag.getAttribute('vw-plugin-wrapper')
+          || tag.getAttribute('vw-access-button')
+          || tag.classList.contains('vw-plugin-top-wrapper')
+        ) {
+          tag.style.removeProperty('background');
+          tag.style.removeProperty('font-family');
+          tag.style.removeProperty('border');
+          tag.style.removeProperty('color');
         }
       }
 
