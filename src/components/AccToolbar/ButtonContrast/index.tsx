@@ -39,11 +39,11 @@ export default function ContrastButton() {
       for (let i = 0; i < elements.length; i += 1) {
         const tag = elements[ i ];
 
-        if(!tag.getAttribute('vw')
-        && !tag.getAttribute('vw-plugin-wrapper')
-        ){
-        tag.style.color = primary
-        tag.style.background = secondary
+       
+        if (!tag.getAttribute('vw')
+          && !tag.getAttribute('vw-plugin-wrapper')) tag.style.color = primary
+        if (!tag.getAttribute('vw')
+          && !tag.getAttribute('vw-plugin-wrapper')) tag.style.background = secondary
           // if(!tag.parentElement.getAttribute('vw'))console.log(tag)
         if (tag.tagName !== 'H1'
           && tag.tagName !== 'H2'
@@ -53,6 +53,8 @@ export default function ContrastButton() {
           && tag.tagName !== 'H6'
           && tag.tagName !== 'P'
           && tag.tagName !== 'A'
+          && !tag.getAttribute('vw')
+            && !tag.getAttribute('vw-plugin-wrapper')
         ) tag.style.border = `1px solid ${ primary }`
 
         if (tag.tagName === 'DIV') {
@@ -97,7 +99,6 @@ export default function ContrastButton() {
         ) {
           tag.style.border = `1px solid ${ secondary }`
         }
-      }
       }
 
     } else {
