@@ -39,12 +39,12 @@ export default function ContrastButton() {
       for (let i = 0; i < elements.length; i += 1) {
         const tag = elements[ i ];
 
-        if(!tag.classList.contains('vpw-box')
-        || !tag.classList.contains('vpw-settings-btn')
+        if(!tag.getAttribute('vw')
+        && !tag.getAttribute('vw-plugin-wrapper')
         ){
         tag.style.color = primary
         tag.style.background = secondary
-
+          // if(!tag.parentElement.getAttribute('vw'))console.log(tag)
         if (tag.tagName !== 'H1'
           && tag.tagName !== 'H2'
           && tag.tagName !== 'H3'
