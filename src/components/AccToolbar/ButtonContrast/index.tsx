@@ -104,8 +104,8 @@ export default function ContrastButton() {
     storageContrast = localStorage.getItem('storageContrast') || null;
 
     elements = tags().filter((tag) =>
-      tag.tagName !== 'body'
-      && tag.getAttribute('id') !== '__next'
+      // tag.tagName !== 'body'
+      tag.getAttribute('id') !== '__next'
       && !tag.classList.contains('toolbar')
       && tag.getAttribute('id') !== 'closeToolbar'
       && !tag.classList.contains('containerToolbar')

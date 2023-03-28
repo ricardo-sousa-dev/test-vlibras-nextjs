@@ -26,17 +26,17 @@ export default function Libras() {
       localStorage.setItem('storageLibras', JSON.stringify(1))
     }
 
-    Array.from(document.getElementsByTagName('div')).forEach(element => {
-      if (element.getAttribute('vw-plugin-wrapper')
-        || element.getAttribute('vw-access-button')
-        || element.classList.contains('vw-plugin-top-wrapper')
-      ) {
-        element.style.removeProperty('background');
-        element.style.removeProperty('border');
-        element.style.removeProperty('color');
-      }
+    // Array.from(document.getElementsByTagName('div')).forEach(element => {
+    //   if (element.getAttribute('vw-plugin-wrapper')
+    //     || element.getAttribute('vw-access-button')
+    //     || element.classList.contains('vw-plugin-top-wrapper')
+    //   ) {
+    //     element.style.removeProperty('background');
+    //     element.style.removeProperty('border');
+    //     element.style.removeProperty('color');
+    //   }
       
-    });
+    // });
     
   }
 
