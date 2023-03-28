@@ -53,11 +53,6 @@ export default function ContrastButton() {
 
         ) tag.style.border = `1px solid ${ primary }`
 
-        if (tag.tagName === 'DIV') {
-          tag.style.border = `1px solid ${ secondary }!important`
-          tag.style.background = secondary
-        }
-
         if (tag.tagName === 'BUTTON') {
           tag.style.background = primary;
           tag.style.color = secondary;
@@ -68,27 +63,11 @@ export default function ContrastButton() {
           tag.style.textDecoration = 'underline';
         }
 
-        if (tag.classList.contains('toolbar')) {
-          tag.style.border = `1px solid ${ primary } !important`
-          tag.style.background = `${ primary } !important`
-        }
-
-        if (tag.classList.contains('divButtonToolbar')) {
-          tag.style.background = `${ primary } !important`;
-          tag.style.color = secondary;
-          tag.style.border = `1px solid transparent !important`;
-        }
-
         if (tag.classList.contains('floatingIcon')) {
           tag.style.background = `${ primary } !important`
           tag.style.color = secondary
           tag.style.border = `2px solid ${ primary } !important`
           if (localStorage.getItem('storageContrast') === '4') tag.style.border = `2px solid ${ secondary }`
-        }
-
-        if (tag.getAttribute('id') === 'closeToolbar'
-        || tag.classList.contains('containerToolbar')) {
-          tag.style.border = `1px solid ${ secondary }`
         }
 
         if (tag.getAttribute('vw')
@@ -112,39 +91,10 @@ export default function ContrastButton() {
 
         if (tag.tagName === 'BUTTON') tag.style.removeProperty('border');
 
-        if (!tag.parentElement?.classList.contains('toolbar')) tag.style.removeProperty('border');
-
-        if (tag.classList.contains('toolbar')) {
-          tag.style.border = '1px solid black'
-          // tag.style.background = 'white'
-        }
-
-        if (tag.parentElement?.classList.contains('divButtonToolbar')
-          && tag.tagName === 'BUTTON') {
-          tag.style.border = '1px solid gray'
-        }
-
         if (tag.classList.contains('floatingIcon')) {
           tag.style.background = '#003F86'
           tag.style.color = 'white'
           tag.style.border = '1px solid #003F86'
-        }
-
-        if ((tag.parentElement?.classList.contains('divButtonToolbar')
-          && tag.tagName == 'P')
-          || tag.classList.contains('containerToolbar')) {
-          tag.style.border = '1px solid transparent'
-        }
-
-        if (tag.classList.contains('divToolbarButton')) {
-          tag.style.border = '1px solid transparent'
-        }
-
-        if (tag.classList.contains('divButtonToolbar')
-          || tag.parentElement?.classList.contains('toolbar')
-          || tag.tagName == 'body'
-        ) {
-          tag.style.border = `1px solid transparent`
         }
       }
     }
@@ -152,7 +102,15 @@ export default function ContrastButton() {
 
   if (typeof window !== 'undefined') {
     storageContrast = localStorage.getItem('storageContrast') || null;
-    elements = tags();
+
+    elements = tags().filter((tag) =>
+      tag.tagName !== 'body'
+      && tag.getAttribute('id') !== '__next'
+      && !tag.classList.contains('toolbar')
+      && tag.getAttribute('id') !== 'closeToolbar'
+      && !tag.classList.contains('containerToolbar')
+      && !tag.classList.contains('divButtonToolbar')
+    )
 
     if (!storageContrast) {
       localStorage.setItem('storageContrast', JSON.stringify(1));
