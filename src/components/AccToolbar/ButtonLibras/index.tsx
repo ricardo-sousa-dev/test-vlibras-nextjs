@@ -12,6 +12,7 @@ export default function Libras() {
           document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
             .addEventListener('click', () =>
               localStorage.setItem('storageLibras', JSON.stringify(1)))
+
           , 5000);
       }
     }
@@ -24,6 +25,20 @@ export default function Libras() {
     } else if (storageLibras == '2') {
       localStorage.setItem('storageLibras', JSON.stringify(1))
     }
+
+    Array.from(document.getElementsByTagName('div')).forEach(element => {
+      if (element.getAttribute('vw')
+        || element.getAttribute('vw-plugin-wrapper')
+        || element.getAttribute('vw-access-button')
+        || element.classList.contains('vw-plugin-top-wrapper')
+      ) {
+        element.style.removeProperty('background');
+        element.style.removeProperty('border');
+        element.style.removeProperty('color');
+      }
+      
+    });
+    
   }
 
   return (
