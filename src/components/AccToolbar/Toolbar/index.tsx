@@ -32,10 +32,10 @@ export default function Toolbar() {
         width: '100%',
         gap: '5px'
       } }>
-        <ButtonContrast />
+        <ButtonLibras />
         <ButtonTextStyle />
         <ButtonZoomPage />
-        <ButtonLibras />
+        <ButtonContrast />
         <ButtonReset />
       </div>
       <div id='closeToolbar'>

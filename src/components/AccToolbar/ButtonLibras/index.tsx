@@ -4,18 +4,27 @@ import ToolbarButton from '../ToolbarButton';
 export default function Libras() {
 
   const setLibras = () => {
-    for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
-      const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
-      if (element.getAttribute('class') === 'access-button') {
-        element.click()
-        setTimeout(() =>
-          document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
-            .addEventListener('click', () =>
-              localStorage.setItem('storageLibras', JSON.stringify(1)))
+    // for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
+    //   const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
+    //   if (element.getAttribute('class') === 'access-button') {
+    //     element.click()
+    //     setTimeout(() =>
+    //       document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
+    //         .addEventListener('click', () =>
+    //           localStorage.setItem('storageLibras', JSON.stringify(1)))
 
-          , 5000);
-      }
-    }
+    //       , 5000);
+    //   }
+    // }
+
+    const openLibras = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement;
+    openLibras.click();
+
+    setTimeout(() =>
+      document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
+        .addEventListener('click', () =>
+          localStorage.setItem('storageLibras', JSON.stringify(1)))
+      , 5000);
 
     const storageLibras = localStorage.getItem('storageLibras');
 
@@ -25,19 +34,6 @@ export default function Libras() {
     } else if (storageLibras == '2') {
       localStorage.setItem('storageLibras', JSON.stringify(1))
     }
-
-    // Array.from(document.getElementsByTagName('div')).forEach(element => {
-    //   if (element.getAttribute('vw-plugin-wrapper')
-    //     || element.getAttribute('vw-access-button')
-    //     || element.classList.contains('vw-plugin-top-wrapper')
-    //   ) {
-    //     element.style.removeProperty('background');
-    //     element.style.removeProperty('border');
-    //     element.style.removeProperty('color');
-    //   }
-      
-    // });
-    
   }
 
   return (
