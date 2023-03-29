@@ -24,7 +24,7 @@ export default function Libras() {
       document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
         .addEventListener('click', () =>
           localStorage.setItem('storageLibras', JSON.stringify(1)))
-      , 10000);
+      , 15000);
 
     const storageLibras = localStorage.getItem('storageLibras');
 
