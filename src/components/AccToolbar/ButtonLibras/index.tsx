@@ -4,21 +4,21 @@ import ToolbarButton from '../ToolbarButton';
 export default function Libras() {
 
   const setLibras = () => {
-    // for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
-    //   const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
-    //   if (element.getAttribute('class') === 'access-button') {
-    //     element.click()
-    //     setTimeout(() =>
-    //       document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
-    //         .addEventListener('click', () =>
-    //           localStorage.setItem('storageLibras', JSON.stringify(1)))
+    for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
+      const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
+      if (element.getAttribute('class') === 'access-button') {
+        element.click()
+        setTimeout(() =>
+          document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
+            .addEventListener('click', () =>
+              localStorage.setItem('storageLibras', JSON.stringify(1)))
 
-    //       , 5000);
-    //   }
-    // }
+          , 5000);
+      }
+    }
 
-    const openLibras = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement;
-    openLibras.click();
+    // const openLibras = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement;
+    // openLibras.click();
 
     setTimeout(() =>
       document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
