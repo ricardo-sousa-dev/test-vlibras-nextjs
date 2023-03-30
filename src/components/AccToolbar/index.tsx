@@ -21,13 +21,14 @@ export default function AccToolbar() {
       if (element.getAttribute('vw-access-button')) element.setAttribute('style', 'display:none');
     }
 
-    for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
-      const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
-      if (element.getAttribute('class') === 'access-button') {
-        // if (storageLibras == '2') element.click()
-        element.click()
+      setTimeout(() => {
+      for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
+        const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
+        if (element.getAttribute('class') === 'access-button') {
+          if (storageLibras == '2') element.click()
+        }
       }
-    }
+    }, 2000);
   
     // for (let index = 0; index < document.getElementsByTagName('div').length; index++) {
     //   const element: HTMLElement = document.getElementsByTagName('div')[ index ] as HTMLElement;
@@ -49,14 +50,7 @@ export default function AccToolbar() {
       // ) setTimeout(() => setShowToolbar(true), 2000);
     ) setShowToolbar(true);
 
-  //   setTimeout(() => {
-  //     for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
-  //       const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
-  //       if (element.getAttribute('class') === 'access-button') {
-  //         if (storageLibras == '2') element.click()
-  //       }
-  //     }
-  //   }, 2000);
+  
   }, []);
 
   const closeToolbar = () => {
