@@ -33,15 +33,16 @@ export default function AccToolbar() {
       // ) setTimeout(() => setShowToolbar(true), 2000);
     ) setShowToolbar(true);
 
-    setTimeout(() => {
-      for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
-        const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
-        if (element.getAttribute('class') === 'access-button') {
-          element.click()
+    if (storageLibras && storageLibras !== '1') {
+      setTimeout(() => {
+        for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
+          const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
+          if (element.getAttribute('class') === 'access-button') {
+            element.click()
+          }
         }
-      }
-    }, 5000);
-
+      }, 5000);
+    }
   }, []);
 
   const closeToolbar = () => {
