@@ -21,18 +21,18 @@ export default function AccToolbar() {
       if (element.getAttribute('vw-access-button')) element.setAttribute('style', 'display:none');
     }
 
-    // setTimeout(() => {
-      for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
-        const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
-        if (element.getAttribute('class') === 'access-button') {
-          element.click()
-        }
+    for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
+      const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
+      if (element.getAttribute('class') === 'access-button') {
+        element.click()
       }
+    }
+    setTimeout(() => {
       for (let index = 0; index < document.getElementsByTagName('DIV').length; index++) {
         const element: HTMLElement = document.getElementsByTagName('DIV')[ index ] as HTMLElement;
         if (element.getAttribute('vw-plugin-wrapper')) element.setAttribute('style', 'display:none');
       }
-    // }, 2000);
+    }, 2000);
 
     if (!storageContrast) localStorage.setItem('storageContrast', JSON.stringify(1))
     if (!storageTextStyle) localStorage.setItem('storageTextStyle', JSON.stringify(1))
