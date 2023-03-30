@@ -13,7 +13,7 @@ export default function Libras() {
       console.log('LIBRAS: 1')
       localStorage.setItem('storageLibras', JSON.stringify(2))
       document.getElementById('toolbarLibras')?.setAttribute('disabled', 'true');
-      document.getElementById('toolbarLibras')?.setAttribute('style', 'opacity: 0.5');
+      document.getElementById('toolbarLibras')?.setAttribute('style', 'color: red');
 
       for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
         const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
@@ -28,7 +28,7 @@ export default function Libras() {
           .addEventListener('click', () =>{
             localStorage.setItem('storageLibras', JSON.stringify(1))
             document.getElementById('toolbarLibras')?.removeAttribute('disabled')
-            document.getElementById('toolbarLibras')?.setAttribute('style', 'opacity: 1');
+            document.getElementById('toolbarLibras')?.setAttribute('style', 'color:green');
           })
         , 5000);
 
