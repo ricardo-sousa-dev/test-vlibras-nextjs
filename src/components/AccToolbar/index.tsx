@@ -5,7 +5,6 @@ import FloatingIcon from './ButtonFloatingIcon';
 import Toolbar from './Toolbar';
 import VLibras from './VLibras'
 
-
 export default function AccToolbar() {
   const [ showToolbar, setShowToolbar ] = useState(false);
 
@@ -34,8 +33,6 @@ export default function AccToolbar() {
     ) setShowToolbar(true);
 
     if (storageLibras && storageLibras == '2') {
-      document.getElementById('toolbarLibras')?.setAttribute('disabled', 'true');
-      document.getElementById('toolbarLibras')?.setAttribute('style', 'color:red');
 
       setTimeout(() => {
         for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
@@ -50,12 +47,9 @@ export default function AccToolbar() {
             .addEventListener('click', () =>
               localStorage.setItem('storageLibras', JSON.stringify(1))
             )
-          document.getElementById('toolbarLibras')?.removeAttribute('disabled')
-          document.getElementById('toolbarLibras')?.setAttribute('style', 'color:green');
         }, 5000);
-        
-      }, 3000);
 
+      }, 3000);
      
     }
   }, []);
