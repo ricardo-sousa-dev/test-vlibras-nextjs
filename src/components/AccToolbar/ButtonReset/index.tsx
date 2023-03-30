@@ -5,11 +5,12 @@ import tags from '../utils/tags';
 /*eslint-disable */
 export default function Reset() {
 
-  let elements: string | any[]
+  let elements: string | any[]|null;
 
   const reset = () => {
 
     //contrast
+    if(elements)
     for (let i = 0; i < elements.length; i += 1) {
       const tag = elements[ i ];
 
@@ -44,6 +45,7 @@ export default function Reset() {
 
 
     // text style
+    if (elements)
     for (let i = 0; i < elements.length; i += 1) {
       const tag = elements[ i ];
 
@@ -54,6 +56,7 @@ export default function Reset() {
     localStorage.setItem('storageTextStyle', JSON.stringify(1));
 
     // zoom page
+    if (elements)
     for (let i = 0; i < elements.length; i += 1) {
       const tag = elements[ i ];
 

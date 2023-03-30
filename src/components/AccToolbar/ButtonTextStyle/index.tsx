@@ -5,7 +5,7 @@ import tags from '../utils/tags';
 export default function TextStyle() {
 
   let storageTextStyle: string | null;
-  let elements: string | any[]
+  let elements: string | any[]|null;
 
   const changeTextStyle = (init:boolean) => {
     const storageTextStyle = localStorage.getItem('storageTextStyle')
@@ -33,6 +33,7 @@ export default function TextStyle() {
           break
       }
 
+      if (elements)
       for (let i = 0; i < elements.length; i += 1) {
         const tag = elements[ i ]
 
@@ -42,6 +43,7 @@ export default function TextStyle() {
       }
 
     } else {
+      if (elements)
       for (let i = 0; i < elements.length; i += 1) {
         const tag = elements[ i ];
 

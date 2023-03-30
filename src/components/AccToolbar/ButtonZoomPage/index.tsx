@@ -5,7 +5,7 @@ import tags from '../utils/tags';
 export default function ZoomPage() {
 
   let storageZoomPage: string | null;
-  let elements: string | any[]
+  let elements: string | any[]|null;
   
   const PERCENT = 1.05;
 
@@ -33,6 +33,7 @@ export default function ZoomPage() {
             break;
         }
       }
+      if (elements)
       for (let i = 0; i < elements.length; i += 1) {
 
         const tag = elements[ i ];
@@ -49,6 +50,7 @@ export default function ZoomPage() {
       }
     } else {
 
+      if (elements)
       for (let i = 0; i < elements.length; i += 1) {
         const tag = elements[ i ];
 

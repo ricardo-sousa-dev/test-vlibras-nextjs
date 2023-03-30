@@ -5,7 +5,7 @@ import tags from '../utils/tags';
 export default function ContrastButton() {
 
   let storageContrast: string | null;
-  let elements: string | any[] = tags();
+  let elements: string | any[] | null= tags();
 
   const changeContrast = (init: boolean) => {
     const storageContrast = localStorage.getItem('storageContrast')
@@ -35,7 +35,7 @@ export default function ContrastButton() {
           secondary = 'black'
           break
       }
-
+      if (elements)
       for (let i = 0; i < elements.length; i += 1) {
         const tag = elements[ i ];
 
@@ -82,6 +82,7 @@ export default function ContrastButton() {
       }
 
     } else {
+      if (elements)
       for (let i = 0; i < elements.length; i += 1) {
         const tag = elements[ i ];
 
