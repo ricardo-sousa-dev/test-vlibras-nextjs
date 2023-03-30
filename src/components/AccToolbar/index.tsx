@@ -13,8 +13,11 @@ export default function AccToolbar() {
    Head()
 
     for (let index = 0; index < document.getElementsByTagName('DIV').length; index++) {
-      const element = document.getElementsByTagName('DIV')[ index ];
-      if (element.getAttribute('vw-access-button')) element.setAttribute('style','display:none');
+      const element: HTMLElement = document.getElementsByTagName('DIV')[ index ] as HTMLElement;
+      if (element.getAttribute('vw-access-button')){
+        element.setAttribute('style','display:none');
+        element.click();
+      }
     }
     const storageContrast = localStorage.getItem('storageContrast')
     const storageTextStyle = localStorage.getItem('storageTextStyle')
@@ -53,18 +56,7 @@ export default function AccToolbar() {
 
   return (
     <>
-      {/* { process.env.NODE_ENV === "production" && <VLibras forceOnload /> }  */}
       <VLibras />
-      
-      {/* <Head>
-        <title>AccToolbar</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin='anonymous' />
-        <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-        <link href="https://fonts.cdnfonts.com/css/open-dyslexic" rel="stylesheet" />
-      </Head> */}
       <FloatingIcon
         setShowToolbar={ setShowToolbar }
         showToolbar={ showToolbar }
