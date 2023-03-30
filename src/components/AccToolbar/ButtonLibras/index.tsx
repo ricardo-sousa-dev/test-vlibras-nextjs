@@ -11,6 +11,7 @@ export default function Libras() {
     const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
     if (element.getAttribute('class') === 'access-button') {
      openLibrasButton =  element
+      if (localStorage.getItem('storageLibras') === '2') openLibrasButton.click();
     }
   }
 
