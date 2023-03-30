@@ -5,16 +5,18 @@ import ToolbarButton from '../ToolbarButton';
 export default function Libras() {
 
   const storageLibras = localStorage.getItem('storageLibras');
-  let openLibrasButton:HTMLElement;
+  let openLibrasButton: HTMLElement;
 
   const setLibras = () => {
 
     if (storageLibras == '1') {
+      console.log('LIBRAS: 1')
       localStorage.setItem('storageLibras', JSON.stringify(2))
       for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
         const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
         if (element.getAttribute('class') === 'access-button') {
-          openLibrasButton.click()
+          console.log('if clica')
+          element.click()
         }
       }
 
@@ -25,6 +27,7 @@ export default function Libras() {
         , 5000);
 
     } else if (storageLibras == '2') {
+      console.log('LIBRAS: 2')
       localStorage.setItem('storageLibras', JSON.stringify(1))
       const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
       closeWidget.click()

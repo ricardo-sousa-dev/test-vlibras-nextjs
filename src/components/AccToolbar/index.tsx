@@ -33,7 +33,7 @@ export default function AccToolbar() {
       // ) setTimeout(() => setShowToolbar(true), 2000);
     ) setShowToolbar(true);
 
-    if (storageLibras && storageLibras !== '2') {
+    if (storageLibras && storageLibras == '2') {
       setTimeout(() => {
         for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
           const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
