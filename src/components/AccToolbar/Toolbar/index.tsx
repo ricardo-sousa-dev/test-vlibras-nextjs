@@ -21,17 +21,17 @@ export default function Toolbar() {
         boxShadow: '1px 3px 10px 3px rgba(0, 0, 0, 0.20)',
         zIndex: '999',
         height: 'fit-content',
-        border:'1px solid gray',
-        margin:'0'
+        border: '1px solid gray',
+        margin: '0'
       } }>
       <div
-      className='containerToolbar' 
-      style={ {
-        display: 'flex',
-        justifyContent: 'center',
-        width: '100%',
-        gap: '5px'
-      } }>
+        className='containerToolbar'
+        style={ {
+          display: 'flex',
+          justifyContent: 'center',
+          width: '100%',
+          gap: '5px'
+        } }>
         <ButtonLibras />
         <ButtonTextStyle />
         <ButtonZoomPage />
@@ -42,7 +42,7 @@ export default function Toolbar() {
         <ToolbarButton
           icon='close'
           alt='Fechar'
-          />
+        />
       </div>
     </div>
   );

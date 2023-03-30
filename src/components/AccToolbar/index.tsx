@@ -16,10 +16,10 @@ export default function AccToolbar() {
     const storageZoomPage = localStorage.getItem('storageZoomPage')
     const storageLibras = localStorage.getItem('storageLibras')
 
-    // for (let index = 0; index < document.getElementsByTagName('DIV').length; index++) {
-    //   const element: HTMLElement = document.getElementsByTagName('DIV')[ index ] as HTMLElement;
-    //   if (element.getAttribute('vw-access-button')) element.setAttribute('style', 'display:none');
-    // }
+    for (let index = 0; index < document.getElementsByTagName('DIV').length; index++) {
+      const element: HTMLElement = document.getElementsByTagName('DIV')[ index ] as HTMLElement;
+      if (element.getAttribute('vw-access-button')) element.setAttribute('style', 'opacity:0');
+    }
 
     if (!storageContrast) localStorage.setItem('storageContrast', JSON.stringify(1))
     if (!storageTextStyle) localStorage.setItem('storageTextStyle', JSON.stringify(1))
