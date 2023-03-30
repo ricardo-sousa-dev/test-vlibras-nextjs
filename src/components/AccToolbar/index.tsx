@@ -28,13 +28,13 @@ export default function AccToolbar() {
       }
     }
   
-    for (let index = 0; index < document.getElementsByTagName('div').length; index++) {
-      const element: HTMLElement = document.getElementsByTagName('div')[ index ] as HTMLElement;
-      if (element.getAttribute('class') === 'vw-plugin-wrapper') {
-        // if (storageLibras == '2') element.click()
-        element.style.display = 'none';
-      }
-    }
+    // for (let index = 0; index < document.getElementsByTagName('div').length; index++) {
+    //   const element: HTMLElement = document.getElementsByTagName('div')[ index ] as HTMLElement;
+    //   if (element.getAttribute('class') === 'vw-plugin-wrapper') {
+    //     // if (storageLibras == '2') element.click()
+    //     element.style.display = 'none';
+    //   }
+    // }
 
     if (!storageContrast) localStorage.setItem('storageContrast', JSON.stringify(1))
     if (!storageTextStyle) localStorage.setItem('storageTextStyle', JSON.stringify(1))
