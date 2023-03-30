@@ -41,6 +41,18 @@ export default function AccToolbar() {
             element.click()
           }
         }
+
+        document.getElementById('toolbarLibras')?.setAttribute('disabled', 'true');
+        document.getElementById('toolbarLibras')?.setAttribute('style', 'opacity: 0.5');
+        setTimeout(() =>
+          document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
+            .addEventListener('click', () => {
+              localStorage.setItem('storageLibras', JSON.stringify(1))
+              document.getElementById('toolbarLibras')?.removeAttribute('disabled')
+              document.getElementById('toolbarLibras')?.setAttribute('style', 'opacity: 1');
+            })
+          , 5000);
+
       }, 3000);
     }
   }, []);
