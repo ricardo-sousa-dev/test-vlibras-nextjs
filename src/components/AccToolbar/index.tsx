@@ -32,7 +32,7 @@ export default function AccToolbar() {
       // ) setTimeout(() => setShowToolbar(true), 2000);
     ) setShowToolbar(true);
 
-    if (storageLibras && storageLibras == '2') {
+    if (storageLibras == '2') {
 
       setTimeout(() => {
         for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
@@ -41,6 +41,15 @@ export default function AccToolbar() {
             element.click()
           }
         }
+
+        const toolbarLibras: HTMLButtonElement = document.getElementById('toolbarLibras') as HTMLButtonElement;
+
+        if (toolbarLibras) toolbarLibras.disabled = true;
+
+        setTimeout(() => {
+          document.getElementById('toolbarLibras')?.removeAttribute('disabled')
+        }, 5000);
+
 
         setTimeout(() => {
           document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
