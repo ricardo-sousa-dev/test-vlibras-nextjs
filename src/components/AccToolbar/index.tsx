@@ -34,6 +34,9 @@ export default function AccToolbar() {
     ) setShowToolbar(true);
 
     if (storageLibras && storageLibras == '2') {
+      document.getElementById('toolbarLibras')?.setAttribute('disabled', 'true');
+      document.getElementById('toolbarLibras')?.setAttribute('style', 'opacity: 0.5');
+      
       setTimeout(() => {
         for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
           const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
@@ -42,8 +45,7 @@ export default function AccToolbar() {
           }
         }
 
-        document.getElementById('toolbarLibras')?.setAttribute('disabled', 'true');
-        document.getElementById('toolbarLibras')?.setAttribute('style', 'opacity: 0.5');
+        
         setTimeout(() =>
           document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
             .addEventListener('click', () => {

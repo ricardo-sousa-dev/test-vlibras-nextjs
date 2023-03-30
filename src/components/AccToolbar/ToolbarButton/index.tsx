@@ -7,7 +7,7 @@ interface Icon {
   id?: string;
 }
 
-export default function ToolbarButton({ icon, alt, onClick, id}: Icon) {
+export default function ToolbarButton({ icon, alt, onClick, id }: Icon) {
   return (
     <div
       className='divButtonToolbar'
@@ -27,12 +27,13 @@ export default function ToolbarButton({ icon, alt, onClick, id}: Icon) {
           background: '#f1f1f1',
         } }
         className='a11yIcon'
+        id={id}
         onClick={ onClick }>
-        <span 
-        style={{
+        <span
+          style={ {
             borderRadius: '7px'
-          }}
-        className="material-symbols-outlined">
+          } }
+          className="material-symbols-outlined">
           { icon }
         </span>
       </button>
