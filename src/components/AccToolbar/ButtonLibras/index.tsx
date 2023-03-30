@@ -22,16 +22,17 @@ export default function Libras() {
           element.click()
         }
       }
-      
-      setTimeout(() =>
-        document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
-          .addEventListener('click', () =>{
-            localStorage.setItem('storageLibras', JSON.stringify(1))
-            document.getElementById('toolbarLibras')?.removeAttribute('disabled')
-            document.getElementById('toolbarLibras')?.setAttribute('style', 'color:green');
-          })
-        , 5000);
 
+
+      setTimeout(() => {
+        document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
+          .addEventListener('click', () =>
+            localStorage.setItem('storageLibras', JSON.stringify(1))
+          )
+        document.getElementById('toolbarLibras')?.removeAttribute('disabled')
+        document.getElementById('toolbarLibras')?.setAttribute('style', 'color:green');
+      }, 5000);
+      
     } else if (storageLibras == '2') {
       console.log('LIBRAS: 2')
       localStorage.setItem('storageLibras', JSON.stringify(1))
