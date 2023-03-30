@@ -5,18 +5,7 @@ import ToolbarButton from '../ToolbarButton';
 export default function Libras() {
 
   const storageLibras = localStorage.getItem('storageLibras');
-  useEffect(() => {
-    if (storageLibras == '2') {
-
-      for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
-        const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
-        if (element.getAttribute('class') === 'access-button') {
-          element.click()
-        }
-      }
-    }
-  }, [])
-
+ 
   const setLibras = () => {
 
     if (storageLibras == '1') {
@@ -28,7 +17,7 @@ export default function Libras() {
           element.click()
         }
       }
-      
+
       setTimeout(() =>
         document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
           .addEventListener('click', () =>
