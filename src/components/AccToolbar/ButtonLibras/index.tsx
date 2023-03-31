@@ -28,17 +28,24 @@ export default function Libras() {
         const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
         if (element.getAttribute('class') === 'access-button') {
           console.log('if clica')
-          element.click()
+          try {
+            element.click()
+          } catch (error) {
+            console.log(error)            
+          }
         }
       }
 
       setTimeout(() => {
-        document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
-          .addEventListener('click', () =>
-            localStorage.setItem('storageLibras', JSON.stringify(1))
-          )
+        try {
+          document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
+            .addEventListener('click', () =>
+              localStorage.setItem('storageLibras', JSON.stringify(1))
+            )
+        } catch (error) {
+          console.log(error);
+        }
       }, 5000);
-
     }
 
     if (storageLibras == '2') {
