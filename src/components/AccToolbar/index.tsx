@@ -45,7 +45,6 @@ export default function AccToolbar() {
         const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
         if (element.getAttribute('class') === 'access-button') {
           element.click()
-
         }
       }
       }, 3000);

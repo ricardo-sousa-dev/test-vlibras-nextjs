@@ -1,42 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ToolbarButton from '../ToolbarButton';
 
 /*eslint-disable */
 export default function Libras() {
+  const [ disabledLibras, setDisabledLibras ] = useState(true);
 
   const storageLibras = localStorage.getItem('storageLibras');
-  const toolbarLibras: HTMLButtonElement = document.getElementById('toolbarLibras') as HTMLButtonElement;
-  
-  if (toolbarLibras){
-    toolbarLibras.disabled = true;
-    console.log('{{{{{{{{{{{ ᕙ༼~_~༽ᕗ }}}}}}}}}}} ->  toolbarLibras:', toolbarLibras);
-    // toolbarLibras.style.color= 'red';
-  }
 
-  setTimeout(() =>{
-    document.getElementById('toolbarLibras')?.removeAttribute('disabled')
-    // toolbarLibras.style.removeProperty('color');
-    console.log('{{{{{{{{{{{ ᕙ༼~_~༽ᕗ }}}}}}}}}}} ->  toolbarLibras:', toolbarLibras);
-
-  },5000)
+  setTimeout(() => {
+    setDisabledLibras(false);
+  }, 5000);
 
   const setLibras = () => {
-
     if (storageLibras == '1') {
       console.log('ToolbarButton LIBRAS: 1')
 
       localStorage.setItem('storageLibras', JSON.stringify(2))
 
-      for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
-        const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
-        if (element.getAttribute('class') === 'access-button') {
-            element.click()
-        }
-      }
+      const openWidget = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement
+      openWidget.click();
+      setDisabledLibras(true);
 
       setTimeout(() => {
-        document.getElementById('toolbarLibras')?.removeAttribute('disabled')
-
+        setDisabledLibras(false);
         document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
           .addEventListener('click', () =>
             localStorage.setItem('storageLibras', JSON.stringify(1))
@@ -46,17 +32,21 @@ export default function Libras() {
 
     if (storageLibras == '2') {
       console.log('ToolbarButton LIBRAS: 2')
+      localStorage.setItem('storageLibras', JSON.stringify(1))
       const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
-        closeWidget.click()
+      closeWidget.click()
     }
   }
 
   return (
-    <ToolbarButton
+    disabledLibras ? <ToolbarButton
+      icon='sign_language'
+      alt='Libras'
+      color='#DCDCDC'
+    /> : <ToolbarButton
       icon='sign_language'
       alt='Libras'
       onClick={ setLibras }
-      id='toolbarLibras'
     />
   );
 }
