@@ -39,7 +39,7 @@ export default function AccToolbar() {
       if (toolbarLibras) toolbarLibras.disabled = true;
 
       localStorage.setItem('storageLibras', JSON.stringify(2))
-      
+
       setTimeout(() => {
       for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
         const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
@@ -56,7 +56,7 @@ export default function AccToolbar() {
           .addEventListener('click', () =>
             localStorage.setItem('storageLibras', JSON.stringify(1))
           )
-      }, 6000);
+      }, 10000);
     }
   }, []);
 
