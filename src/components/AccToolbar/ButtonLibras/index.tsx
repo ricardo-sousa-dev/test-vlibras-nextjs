@@ -7,11 +7,21 @@ export default function Libras() {
   const storageLibras = localStorage.getItem('storageLibras');
   const toolbarLibras: HTMLButtonElement = document.getElementById('toolbarLibras') as HTMLButtonElement;
 
+  if (toolbarLibras){
+    toolbarLibras.disabled = true;
+    toolbarLibras.style.color= 'red';
+  }
+
+  setTimeout(() =>{
+    document.getElementById('toolbarLibras')?.removeAttribute('disabled')
+    toolbarLibras.style.removeProperty('color');
+
+  },5000)
+
   const setLibras = () => {
 
     if (storageLibras == '1') {
       console.log('ToolbarButton LIBRAS: 1')
-      if (toolbarLibras) toolbarLibras.disabled = true;
 
       localStorage.setItem('storageLibras', JSON.stringify(2))
 

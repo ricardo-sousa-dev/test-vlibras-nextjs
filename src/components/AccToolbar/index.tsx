@@ -45,6 +45,7 @@ export default function AccToolbar() {
         const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
         if (element.getAttribute('class') === 'access-button') {
           element.click()
+          
         }
       }
       }, 3000);
@@ -56,6 +57,7 @@ export default function AccToolbar() {
           .addEventListener('click', () =>
             localStorage.setItem('storageLibras', JSON.stringify(1))
           )
+        console.log('EVENT LISTENER vpw-settings-btn-close')
       }, 10000);
     }
   }, []);
