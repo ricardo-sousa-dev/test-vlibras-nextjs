@@ -6,15 +6,17 @@ export default function Libras() {
 
   const storageLibras = localStorage.getItem('storageLibras');
   const toolbarLibras: HTMLButtonElement = document.getElementById('toolbarLibras') as HTMLButtonElement;
-
+  
   if (toolbarLibras){
     toolbarLibras.disabled = true;
-    toolbarLibras.style.color= 'red';
+    console.log('{{{{{{{{{{{ ᕙ༼~_~༽ᕗ }}}}}}}}}}} ->  toolbarLibras:', toolbarLibras);
+    // toolbarLibras.style.color= 'red';
   }
 
   setTimeout(() =>{
     document.getElementById('toolbarLibras')?.removeAttribute('disabled')
-    toolbarLibras.style.removeProperty('color');
+    // toolbarLibras.style.removeProperty('color');
+    console.log('{{{{{{{{{{{ ᕙ༼~_~༽ᕗ }}}}}}}}}}} ->  toolbarLibras:', toolbarLibras);
 
   },5000)
 
