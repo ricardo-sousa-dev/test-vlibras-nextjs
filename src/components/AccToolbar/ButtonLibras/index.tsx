@@ -45,7 +45,11 @@ export default function Libras() {
       console.log('LIBRAS: 2')
       localStorage.setItem('storageLibras', JSON.stringify(1))
       const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
-      closeWidget.click()
+      try {
+        closeWidget.click()
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 
