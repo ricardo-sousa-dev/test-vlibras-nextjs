@@ -33,6 +33,12 @@ export default function Libras() {
     if (storageLibras == '2') {
       console.log('ToolbarButton LIBRAS: 2')
       localStorage.setItem('storageLibras', JSON.stringify(1))
+      setDisabledLibras(true);
+
+      setTimeout(() => {
+        setDisabledLibras(false);
+      }, 6000);
+      
       const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
       closeWidget.click()
     }
