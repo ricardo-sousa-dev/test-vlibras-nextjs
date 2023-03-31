@@ -33,33 +33,28 @@ export default function AccToolbar() {
     ) setShowToolbar(true);
 
     if (storageLibras == '2') {
+      console.log('INICIO LIBRAS: 2')
+
+      const toolbarLibras: HTMLButtonElement = document.getElementById('toolbarLibras') as HTMLButtonElement;
+      if (toolbarLibras) toolbarLibras.disabled = true;
+
+      localStorage.setItem('storageLibras', JSON.stringify(2))
+
+      for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
+        const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
+        if (element.getAttribute('class') === 'access-button') {
+          element.click()
+        }
+      }
 
       setTimeout(() => {
-        for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
-          const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
-          if (element.getAttribute('class') === 'access-button') {
-            element.click()
-          }
-        }
+        document.getElementById('toolbarLibras')?.removeAttribute('disabled')
 
-        const toolbarLibras: HTMLButtonElement = document.getElementById('toolbarLibras') as HTMLButtonElement;
-
-        if (toolbarLibras) toolbarLibras.disabled = true;
-
-        setTimeout(() => {
-          document.getElementById('toolbarLibras')?.removeAttribute('disabled')
-        }, 5000);
-
-
-        setTimeout(() => {
-          document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
-            .addEventListener('click', () =>
-              localStorage.setItem('storageLibras', JSON.stringify(1))
-            )
-        }, 5000);
-
-      }, 3000);
-     
+        document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
+          .addEventListener('click', () =>
+            localStorage.setItem('storageLibras', JSON.stringify(1))
+          )
+      }, 6000);
     }
   }, []);
 

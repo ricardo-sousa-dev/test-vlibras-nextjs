@@ -5,58 +5,37 @@ import ToolbarButton from '../ToolbarButton';
 export default function Libras() {
 
   const storageLibras = localStorage.getItem('storageLibras');
-
-  // if (storageLibras == '2') {
-  //   const toolbarLibras: HTMLButtonElement = document.getElementById('toolbarLibras') as HTMLButtonElement;
-
-  //   if (toolbarLibras) toolbarLibras.disabled = true;
-  //   console.log(toolbarLibras)
-
-  //   setTimeout(() => {
-  //     document.getElementById('toolbarLibras')?.removeAttribute('disabled')
-  //     console.log(document.getElementById('toolbarLibras'))
-  //   }, 5000);
-  // }
+  const toolbarLibras: HTMLButtonElement = document.getElementById('toolbarLibras') as HTMLButtonElement;
 
   const setLibras = () => {
 
     if (storageLibras == '1') {
-      console.log('LIBRAS: 1')
+      console.log('ToolbarButton LIBRAS: 1')
+      if (toolbarLibras) toolbarLibras.disabled = true;
+
       localStorage.setItem('storageLibras', JSON.stringify(2))
 
       for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
         const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
         if (element.getAttribute('class') === 'access-button') {
-          console.log('if clica')
-          try {
             element.click()
-          } catch (error) {
-            console.log(error)            
-          }
         }
       }
 
       setTimeout(() => {
-        try {
-          document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
-            .addEventListener('click', () =>
-              localStorage.setItem('storageLibras', JSON.stringify(1))
-            )
-        } catch (error) {
-          console.log(error);
-        }
-      }, 5000);
+        document.getElementById('toolbarLibras')?.removeAttribute('disabled')
+
+        document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
+          .addEventListener('click', () =>
+            localStorage.setItem('storageLibras', JSON.stringify(1))
+          )
+      }, 6000);
     }
 
     if (storageLibras == '2') {
-      console.log('LIBRAS: 2')
-      localStorage.setItem('storageLibras', JSON.stringify(1))
+      console.log('ToolbarButton LIBRAS: 2')
       const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
-      try {
         closeWidget.click()
-      } catch (error) {
-        console.log(error);
-      }
     }
   }
 
