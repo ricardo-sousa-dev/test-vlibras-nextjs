@@ -9,7 +9,7 @@ export default function Libras() {
 
   setTimeout(() => {
     setDisabledLibras(false);
-  }, 5000);
+  }, storageLibras == '1' ? 3000 : 6000);
 
   const setLibras = () => {
     if (storageLibras == '1') {
