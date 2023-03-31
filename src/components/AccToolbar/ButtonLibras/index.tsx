@@ -27,7 +27,7 @@ export default function Libras() {
           .addEventListener('click', () =>
             localStorage.setItem('storageLibras', JSON.stringify(1))
           )
-      }, 6000);
+      }, 10000);
     }
 
     if (storageLibras == '2') {
@@ -37,8 +37,8 @@ export default function Libras() {
 
       setTimeout(() => {
         setDisabledLibras(false);
-      }, 6000);
-      
+      }, 10000);
+
       const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
       closeWidget.click()
     }

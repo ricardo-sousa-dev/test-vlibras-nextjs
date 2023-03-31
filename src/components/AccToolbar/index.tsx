@@ -41,21 +41,19 @@ export default function AccToolbar() {
       localStorage.setItem('storageLibras', JSON.stringify(2))
 
       setTimeout(() => {
-      for (let index = 0; index < document.getElementsByTagName('IMG').length; index++) {
-        const element: HTMLElement = document.getElementsByTagName('IMG')[ index ] as HTMLElement;
-        if (element.getAttribute('class') === 'access-button') {
-          element.click()
-        }
-      }
+        const openWidget: HTMLElement = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement;
+        if (openWidget) openWidget.click()
       }, 3000);
 
       setTimeout(() => {
         document.getElementById('toolbarLibras')?.removeAttribute('disabled')
 
-        document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
-          .addEventListener('click', () =>
+        const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]as HTMLElement
+          
+        if(closeWidget) closeWidget.addEventListener('click', () =>
             localStorage.setItem('storageLibras', JSON.stringify(1))
           )
+          
         console.log('EVENT LISTENER vpw-settings-btn-close')
       }, 15000);
     }
