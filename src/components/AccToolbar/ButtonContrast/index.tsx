@@ -54,7 +54,7 @@ export default function ContrastButton() {
               && tag.tagName !== 'A'
             ) tag.style.border = `1px solid ${ primary }`
 
-            if(tag.tagName === 'DIV') tag.style.background = primary;
+          if (tag.tagName === 'DIV') tag.style.background = `${ primary } !important`
             if (tag.tagName === 'BUTTON') {
               tag.style.background = primary;
               tag.style.color = secondary;
@@ -72,15 +72,12 @@ export default function ContrastButton() {
               if (localStorage.getItem('storageContrast') === '4') tag.style.border = `2px solid ${ secondary }`
             }
 
-          // console.log('ENCONTROU', tag.parentElement.getAttribute('vw-plugin-wrapper'))
-
-          // if (tag.parentElement.getAttribute('vp')
-          // ) {
-          //   console.log('ENTROU')
-          //   tag.style.removeProperty('background');
-          //   tag.style.removeProperty('border');
-          //   tag.style.removeProperty('color');
-          // }
+          if (tag.parentElement.classList.contains('divButtonToolbar')
+          ) {
+            tag.style.removeProperty('background');
+            tag.style.removeProperty('border');
+            tag.style.removeProperty('color');
+          }
         }
 
     } else {
