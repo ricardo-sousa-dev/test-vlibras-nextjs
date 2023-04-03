@@ -71,11 +71,12 @@ export default function ContrastButton() {
             if (localStorage.getItem('storageContrast') === '4') tag.style.border = `2px solid ${ secondary }`
           }
           
-          if (tag.getAttribute('vw-plugin-wrapper') == 'true'
+          if (tag.getAttribute('vw-plugin-wrapper')
             // || tag.getAttribute('vw')
             // || tag.getAttribute('vw-access-button')
             // || tag.classList.contains('vw-plugin-top-wrapper')
           ) {
+            console.log('ENTROU')
             tag.style.removeProperty('background');
             tag.style.removeProperty('border');
             tag.style.removeProperty('color');
