@@ -61,15 +61,14 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
       (tag) =>
         tag.tagName !== 'body' &&
         tag.getAttribute('id') !== '__next' &&
-        tag.getAttribute('id') !== 'closeToolbar' &&
+        !tag.classList.contains('toolbar') &&
+        !tag.parentElement?.classList.contains('toolbar') &&
         !tag.classList.contains('containerToolbar') &&
-        !tag.classList.contains('emscripten') &&
-        !tag.parentElement?.getAttribute('vp') &&
-        !tag.parentElement?.getAttribute('vw') &&
-        !tag.parentElement?.classList.contains('vpw-box'),
-      //   !tag.parentElement?.classList.contains('vpw-message-box') &&
-      // !tag.parentElement?.classList.contains('vpw-settings')&&
-      //   !tag.parentElement?.classList.contains('vpw-settings-btn')
+        !tag.parentElement?.classList.contains('containerToolbar') &&
+        !tag.classList.contains('vw-access-button') &&
+        !tag.parentElement?.classList.contains('vw-access-button') &&
+        !tag.classList.contains('vw-plugin-wrapper') &&
+        !tag.parentElement?.classList.contains('vw-plugin-wrapper') &&
     );
   } else {
     return null;
