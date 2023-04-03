@@ -73,10 +73,7 @@ export default function ContrastButton() {
           
           // console.log('ENCONTROU', tag.parentElement.getAttribute('vw-plugin-wrapper'))
 
-          if (tag.parentElement.getAttribute('vw')
-            || tag.parentElement.getAttribute('vw-plugin-wrapper')
-            || tag.parentElement.getAttribute('vw-access-button')
-            || tag.parentElement.classList.contains('vw-plugin-top-wrapper')
+          if (tag.parentElement.getAttribute('vpw-box')
           ) {
             console.log('ENTROU')
             tag.style.removeProperty('background');
