@@ -40,7 +40,7 @@ export default function ContrastButton() {
       if (elements)
         for (let i = 0; i < elements.length; i += 1) {
           const tag = elements[ i ];
-       
+
           tag.style.color = primary
           tag.style.background = secondary
 
@@ -70,10 +70,11 @@ export default function ContrastButton() {
             tag.style.border = `2px solid ${ primary } !important`
             if (localStorage.getItem('storageContrast') === '4') tag.style.border = `2px solid ${ secondary }`
           }
-          
+
           // console.log('ENCONTROU', tag.parentElement.getAttribute('vw-plugin-wrapper'))
 
-          if (tag.parentElement.getAttribute('vpw-box')
+          if (tag.parentElement.getAttribute('class')
+            .contains('vpw-box' || 'vpw-settings-btn')
           ) {
             console.log('ENTROU')
             tag.style.removeProperty('background');
