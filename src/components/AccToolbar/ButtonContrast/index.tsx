@@ -44,6 +44,8 @@ export default function ContrastButton() {
             && !tag.getAttribute('vw-plugin-wrapper')
             && !tag.getAttribute('vw-access-button')
             && !tag.classList.contains('vw-plugin-top-wrapper')
+            && !tag.classList.contains('vpw-settings-btn')
+            && !tag.classList.contains('vpw-settings-btn-menu')
           ){
           tag.style.color = primary
           tag.style.background = secondary
