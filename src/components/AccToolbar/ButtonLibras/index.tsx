@@ -7,10 +7,16 @@ export default function Libras() {
 
   const storageLibras = localStorage.getItem('storageLibras');
 
-  setTimeout(() => {
-    setDisabledLibras(false);
-  }, 10000);
+  const delayButton = ()=>{
+    setDisabledLibras(true);
 
+    setTimeout(() => {
+      setDisabledLibras(false);
+    }, 10000);
+  }
+
+  useEffect(()=>delayButton(),[])
+  
   const setLibras = () => {
     if (storageLibras == '1') {
       console.log('ToolbarButton LIBRAS: 1')
@@ -19,7 +25,7 @@ export default function Libras() {
 
       const openWidget = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement
       openWidget.click();
-      setDisabledLibras(true);
+      delayButton()
 
       // setTimeout(() => {
       //   setDisabledLibras(false);
@@ -33,11 +39,7 @@ export default function Libras() {
     if (storageLibras == '2') {
       console.log('ToolbarButton LIBRAS: 2')
       localStorage.setItem('storageLibras', JSON.stringify(1))
-      setDisabledLibras(true);
-
-      setTimeout(() => {
-        setDisabledLibras(false);
-      }, 10000);
+      delayButton()
 
       const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
       closeWidget.click()
