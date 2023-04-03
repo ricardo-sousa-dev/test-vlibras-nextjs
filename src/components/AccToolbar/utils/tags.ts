@@ -70,6 +70,7 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
         !tag.classList.contains('containerToolbar') &&
         !tag.classList.contains('divButtonToolbar') &&
         !tag.classList.contains('vw-plugin-top-wrapper') &&
+        !tag.classList.contains('vpw') &&
         !tag.classList.contains('vpw-settings-btn') &&
         !tag.parentElement?.classList.contains('vpw-settings-btn'),
     );
