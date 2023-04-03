@@ -40,12 +40,12 @@ export default function ContrastButton() {
       if (elements)
         for (let i = 0; i < elements.length; i += 1) {
           const tag = elements[ i ];
-          if (!tag.getAttribute('vw')
-            && !tag.getAttribute('vw-plugin-wrapper')
-            && !tag.getAttribute('vw-access-button')
-            && !tag.classList.contains('vw-plugin-top-wrapper')
-            && !tag.classList.contains('vpw-settings-btn')
-            && !tag.classList.contains('vpw-settings-btn-menu')
+          if (!tag.parentElement.getAttribute('vw')
+            // && !tag.getAttribute('vw-plugin-wrapper')
+            // && !tag.getAttribute('vw-access-button')
+            // && !tag.classList.contains('vw-plugin-top-wrapper')
+            // && !tag.classList.contains('vpw-settings-btn')
+            // && !tag.classList.contains('vpw-settings-btn-menu')
           ){
           tag.style.color = primary
           tag.style.background = secondary
