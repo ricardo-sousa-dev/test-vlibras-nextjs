@@ -41,6 +41,9 @@ export default function ContrastButton() {
         for (let i = 0; i < elements.length; i += 1) {
           const tag = elements[ i ];
 
+          if(!tag.classList.contains('vp-boundaries')
+          && !tag.classList.contains('vp-enabled'))
+
           tag.style.color = primary
           tag.style.background = secondary
 
@@ -73,13 +76,13 @@ export default function ContrastButton() {
 
           // console.log('ENCONTROU', tag.parentElement.getAttribute('vw-plugin-wrapper'))
 
-          if (tag.parentElement.getAttribute('vp')
-          ) {
-            console.log('ENTROU')
-            tag.style.removeProperty('background');
-            tag.style.removeProperty('border');
-            tag.style.removeProperty('color');
-          }
+          // if (tag.parentElement.getAttribute('vp')
+          // ) {
+          //   console.log('ENTROU')
+          //   tag.style.removeProperty('background');
+          //   tag.style.removeProperty('border');
+          //   tag.style.removeProperty('color');
+          // }
         }
 
     } else {
