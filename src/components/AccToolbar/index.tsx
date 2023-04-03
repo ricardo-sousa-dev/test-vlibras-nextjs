@@ -45,17 +45,17 @@ export default function AccToolbar() {
         if (openWidget) openWidget.click()
       }, 3000);
 
-      setTimeout(() => {
-        document.getElementById('toolbarLibras')?.removeAttribute('disabled')
+      // setTimeout(() => {
+      //   document.getElementById('toolbarLibras')?.removeAttribute('disabled')
 
-        const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]as HTMLElement
+      //   const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]as HTMLElement
           
-        if(closeWidget) closeWidget.addEventListener('click', () =>
-            localStorage.setItem('storageLibras', JSON.stringify(1))
-          )
-          
-        console.log('EVENT LISTENER vpw-settings-btn-close')
-      }, 15000);
+      //   if(closeWidget) closeWidget.addEventListener('click', () =>
+      //       localStorage.setItem('storageLibras', JSON.stringify(1))
+      //     )
+
+      //   console.log('EVENT LISTENER vpw-settings-btn-close')
+      // }, 15000);
     }
   }, []);
 

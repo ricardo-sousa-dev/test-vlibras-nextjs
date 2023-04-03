@@ -9,7 +9,7 @@ export default function Libras() {
 
   setTimeout(() => {
     setDisabledLibras(false);
-  }, storageLibras == '1' ? 3000 : 10000);
+  }, 10000);
 
   const setLibras = () => {
     if (storageLibras == '1') {
@@ -21,13 +21,13 @@ export default function Libras() {
       openWidget.click();
       setDisabledLibras(true);
 
-      setTimeout(() => {
-        setDisabledLibras(false);
-        document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
-          .addEventListener('click', () =>
-            localStorage.setItem('storageLibras', JSON.stringify(1))
-          )
-      }, 10000);
+      // setTimeout(() => {
+      //   setDisabledLibras(false);
+      //   document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]
+      //     .addEventListener('click', () =>
+      //       localStorage.setItem('storageLibras', JSON.stringify(1))
+      //     )
+      // }, 10000);
     }
 
     if (storageLibras == '2') {
