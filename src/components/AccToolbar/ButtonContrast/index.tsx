@@ -54,6 +54,7 @@ export default function ContrastButton() {
               && tag.tagName !== 'A'
             ) tag.style.border = `1px solid ${ primary }`
 
+            if(tag.tagName === 'DIV') tag.style.background = primary;
             if (tag.tagName === 'BUTTON') {
               tag.style.background = primary;
               tag.style.color = secondary;
