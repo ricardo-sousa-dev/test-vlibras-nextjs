@@ -8,6 +8,11 @@ export default function Libras() {
   const storageLibras = localStorage.getItem('storageLibras');
 
   const delayButton = ()=>{
+    const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
+    if(closeWidget) {
+      closeWidget.style.opacity = '0';
+      closeWidget.setAttribute('src', '');
+    }
     setDisabledLibras(true);
 
     setTimeout(() => {
@@ -16,16 +21,21 @@ export default function Libras() {
   }
 
   useEffect(()=>delayButton(),[])
-  
+
   const setLibras = () => {
     if (storageLibras == '1') {
       console.log('ToolbarButton LIBRAS: 1')
-
+      delayButton()
       localStorage.setItem('storageLibras', JSON.stringify(2))
 
-      const openWidget = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement
-      openWidget.click();
-      delayButton()
+      const showWidget = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement
+      
+      try {
+        showWidget.click();
+      } catch (error) {
+        console.log('error: ' + error)
+      }
+      
 
       // setTimeout(() => {
       //   setDisabledLibras(false);
@@ -38,11 +48,18 @@ export default function Libras() {
 
     if (storageLibras == '2') {
       console.log('ToolbarButton LIBRAS: 2')
-      localStorage.setItem('storageLibras', JSON.stringify(1))
       delayButton()
+      localStorage.setItem('storageLibras', JSON.stringify(1))
 
-      const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
-      closeWidget.click()
+      const showWidget = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement
+
+      try {
+        showWidget.click();
+      } catch (error) {
+        console.log('error: ' + error)
+      }
+      // const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
+      // closeWidget.click()
     }
   }
 
