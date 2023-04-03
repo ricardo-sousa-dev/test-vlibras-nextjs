@@ -40,13 +40,7 @@ export default function ContrastButton() {
       if (elements)
         for (let i = 0; i < elements.length; i += 1) {
           const tag = elements[ i ];
-          if (!tag.parentElement.getAttribute('vw')
-            // && !tag.getAttribute('vw-plugin-wrapper')
-            // && !tag.getAttribute('vw-access-button')
-            // && !tag.classList.contains('vw-plugin-top-wrapper')
-            // && !tag.classList.contains('vpw-settings-btn')
-            // && !tag.classList.contains('vpw-settings-btn-menu')
-          ){
+       
           tag.style.color = primary
           tag.style.background = secondary
 
@@ -76,35 +70,35 @@ export default function ContrastButton() {
             tag.style.border = `2px solid ${ primary } !important`
             if (localStorage.getItem('storageContrast') === '4') tag.style.border = `2px solid ${ secondary }`
           }
+          
+          if (tag.getAttribute('vw-plugin-wrapper') == 'true'
+            // || tag.getAttribute('vw')
+            // || tag.getAttribute('vw-access-button')
+            // || tag.classList.contains('vw-plugin-top-wrapper')
+          ) {
+            tag.style.removeProperty('background');
+            tag.style.removeProperty('border');
+            tag.style.removeProperty('color');
+          }
         }
-          // if (tag.getAttribute('vw')
-          //   || tag.getAttribute('vw-plugin-wrapper')
-          //   || tag.getAttribute('vw-access-button')
-          //   || tag.classList.contains('vw-plugin-top-wrapper')
-          // ) {
-          //   tag.style.removeProperty('background');
-          //   tag.style.removeProperty('border');
-          //   tag.style.removeProperty('color');
-          // }
+
+    } else {
+      if (elements)
+        for (let i = 0; i < elements.length; i += 1) {
+          const tag = elements[ i ];
+
+          tag.style.removeProperty('color');
+          tag.style.removeProperty('background');
+          tag.style.removeProperty('text-decoration');
+
+          if (tag.tagName === 'BUTTON') tag.style.removeProperty('border');
+
+          if (tag.classList.contains('floatingIcon')) {
+            tag.style.background = '#003F86'
+            tag.style.color = 'white'
+            tag.style.border = '1px solid #003F86'
+          }
         }
-
-    // } else {
-    //   if (elements)
-    //     for (let i = 0; i < elements.length; i += 1) {
-    //       const tag = elements[ i ];
-
-    //       tag.style.removeProperty('color');
-    //       tag.style.removeProperty('background');
-    //       tag.style.removeProperty('text-decoration');
-
-    //       if (tag.tagName === 'BUTTON') tag.style.removeProperty('border');
-
-    //       if (tag.classList.contains('floatingIcon')) {
-    //         tag.style.background = '#003F86'
-    //         tag.style.color = 'white'
-    //         tag.style.border = '1px solid #003F86'
-    //       }
-    //     }
     }
   };
 
