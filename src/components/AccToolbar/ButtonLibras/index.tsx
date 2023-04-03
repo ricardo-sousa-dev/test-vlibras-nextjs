@@ -57,13 +57,13 @@ export default function Libras() {
       localStorage.setItem('storageLibras', JSON.stringify(1))
 
       try {
-        const showWidget = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement
-        showWidget.click();
+        // const showWidget = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement
+        // showWidget.click();
+        const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
+        closeWidget.click()
       } catch (error) {
         console.log('error: ' + error)
       }
-      // const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
-      // closeWidget.click()
     }
   }
 
