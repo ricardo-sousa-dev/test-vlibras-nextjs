@@ -56,13 +56,17 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
         !element.classList.contains('containerToolbar') ||
         !element.parentElement?.classList.contains('containerToolbar') ||
         !element.classList.contains('divButtonToolbar') ||
+        !element.parentElement?.classList.contains('divButtonToolbar') ||
         !element.classList.contains('a11yIcon') ||
+        !element.parentElement?.classList.contains('a11yIcon') ||
         !element.getAttributeNames().includes('vw') ||
         !element.parentElement?.getAttributeNames().includes('vw') ||
         !element.classList.contains('vw-access-button') ||
         !element.parentElement?.classList.contains('vw-access-button') ||
         !element.classList.contains('vw-plugin-wrapper') ||
-        !element.parentElement?.classList.contains('vw-plugin-wrapper')
+        !element.parentElement?.classList.contains('vw-plugin-wrapper') ||
+        !element.classList.contains('vpw-settings-btn') ||
+        !element.parentElement?.classList.contains('vpw-settings-btn')
       )
         arrayTags.splice(index, 1);
     }
