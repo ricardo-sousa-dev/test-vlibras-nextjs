@@ -6,10 +6,10 @@ export default function Libras() {
   const [ disabledLibras, setDisabledLibras ] = useState(true);
 
   const storageLibras = localStorage.getItem('storageLibras');
-  const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
-  const showWidget = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement
 
   const delayButton = () => {
+
+    const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
     if (closeWidget) {
       closeWidget.style.opacity = '0';
       closeWidget.setAttribute('src', '');
@@ -18,6 +18,8 @@ export default function Libras() {
 
     setTimeout(() => {
       setDisabledLibras(false);
+
+      const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
       if (closeWidget) {
         closeWidget.style.opacity = '0';
         closeWidget.setAttribute('src', '');
@@ -34,6 +36,7 @@ export default function Libras() {
       localStorage.setItem('storageLibras', JSON.stringify(2))
 
       try {
+        const showWidget = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement
         showWidget.click();
       } catch (error) {
         console.log('error: ' + error)
@@ -54,6 +57,7 @@ export default function Libras() {
       localStorage.setItem('storageLibras', JSON.stringify(1))
 
       try {
+        const showWidget = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement
         showWidget.click();
       } catch (error) {
         console.log('error: ' + error)
