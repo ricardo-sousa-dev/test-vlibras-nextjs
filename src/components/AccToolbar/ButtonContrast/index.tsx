@@ -71,8 +71,33 @@ export const changeContrast = (init: boolean) => {
         if (tag.parentElement.classList.contains('toolbar') ||
           tag.parentElement.classList.contains('containerToolbar') ||
           tag.parentElement.classList.contains('divButtonToolbar') ||
-          tag.classList.contains('enabled') ||
-          (tag.tagName == 'p' && tag.parentElement.classList.contains('divButtonToolbar'))
+          (tag.tagName == 'p' && tag.parentElement.classList.contains('divButtonToolbar')) ||
+          tag.getAttribute('id') == '__next' ||
+          tag.classList.contains('toolbar') ||
+          tag.parentElement?.classList.contains('toolbar') ||
+          tag.classList.contains('containerToolbar') ||
+          tag.parentElement?.classList.contains('containerToolbar') ||
+          tag.classList.contains('divButtonToolbar') ||
+          tag.parentElement?.classList.contains('divButtonToolbar') ||
+          tag.classList.contains('a11yIcon') ||
+          tag.parentElement?.classList.contains('a11yIcon') ||
+          tag.getAttributeNames().includes('vw') ||
+          tag.getAttributeNames().includes('vw-access-button') ||
+          tag.parentElement?.classList.contains('vw-access-button') ||
+          tag.classList.contains('vw-plugin-wrapper') ||
+          tag.parentElement?.classList.contains('vw-plugin-wrapper') ||
+          tag.classList.contains('vpw-settings') ||
+          tag.parentElement?.classList.contains('vpw-settings') ||
+          tag.classList.contains('vpw-settings-btn') ||
+          tag.parentElement?.classList.contains('vpw-settings-btn') ||
+          tag.classList.contains('vpw-settings-btn-close') ||
+          tag.parentElement?.classList.contains('vpw-settings-btn-close') ||
+          tag.classList.contains('vpw-box') ||
+          tag.parentElement?.classList.contains('vpw-box') ||
+          tag.getAttribute('id') == 'gameContainer' ||
+          tag.parentElement?.getAttribute('id') == 'gameContainer' ||
+          tag.parentElement?.getAttributeNames().includes('vp-rate-button') ||
+          tag.parentElement?.classList.contains('vp-rate-button')
         ) {
           tag.style.removeProperty('background');
           tag.style.removeProperty('border');
