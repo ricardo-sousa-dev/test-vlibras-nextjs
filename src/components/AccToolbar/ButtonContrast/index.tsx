@@ -40,40 +40,35 @@ export default function ContrastButton() {
       if (elements)
         for (let i = 0; i < elements.length; i += 1) {
           const tag = elements[ i ];
-
-          if (!tag.classList.contains('vp-boundaries')
-            && !tag.classList.contains('vp-enabled')){
-
             tag.style.color = primary
-          tag.style.background = secondary
+            tag.style.background = secondary
 
-          if (tag.tagName !== 'H1'
-            && tag.tagName !== 'H2'
-            && tag.tagName !== 'H3'
-            && tag.tagName !== 'H4'
-            && tag.tagName !== 'H5'
-            && tag.tagName !== 'H6'
-            && tag.tagName !== 'P'
-            && tag.tagName !== 'A'
-          ) tag.style.border = `1px solid ${ primary }`
+            if (tag.tagName !== 'H1'
+              && tag.tagName !== 'H2'
+              && tag.tagName !== 'H3'
+              && tag.tagName !== 'H4'
+              && tag.tagName !== 'H5'
+              && tag.tagName !== 'H6'
+              && tag.tagName !== 'P'
+              && tag.tagName !== 'A'
+            ) tag.style.border = `1px solid ${ primary }`
 
-          if (tag.tagName === 'BUTTON') {
-            tag.style.background = primary;
-            tag.style.color = secondary;
-            tag.style.border = `1px solid ${ primary }`
-          }
-
-          if (tag.tagName === 'A') {
-            tag.style.textDecoration = 'underline';
-          }
-
-          if (tag.classList.contains('floatingIcon')) {
-            tag.style.background = `${ primary } !important`
-            tag.style.color = secondary
-            tag.style.border = `2px solid ${ primary } !important`
-            if (localStorage.getItem('storageContrast') === '4') tag.style.border = `2px solid ${ secondary }`
+            if (tag.tagName === 'BUTTON') {
+              tag.style.background = primary;
+              tag.style.color = secondary;
+              tag.style.border = `1px solid ${ primary }`
             }
-          }
+
+            if (tag.tagName === 'A') {
+              tag.style.textDecoration = 'underline';
+            }
+
+            if (tag.classList.contains('floatingIcon')) {
+              tag.style.background = `${ primary } !important`
+              tag.style.color = secondary
+              tag.style.border = `2px solid ${ primary } !important`
+              if (localStorage.getItem('storageContrast') === '4') tag.style.border = `2px solid ${ secondary }`
+            }
 
           // console.log('ENCONTROU', tag.parentElement.getAttribute('vw-plugin-wrapper'))
 
