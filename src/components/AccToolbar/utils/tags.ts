@@ -46,14 +46,16 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
         tag.tagName !== 'body' &&
         tag.getAttribute('id') !== '__next' &&
         tag.getAttribute('id') !== 'closeToolbar' &&
+        tag.getAttribute('id') !== '#canvas' &&
         !tag.getAttribute('vw') &&
         !tag.getAttribute('vw-plugin-wrapper') &&
         !tag.getAttribute('vw-access-button') &&
         !tag.classList.contains('toolbar') &&
         !tag.classList.contains('containerToolbar') &&
         !tag.classList.contains('divButtonToolbar') &&
-        !tag.classList.contains('vw-plugin-top-wrapper')&&
-        !tag.parentElement?.classList.contains('vpw-settings-btn')
+        !tag.classList.contains('vw-plugin-top-wrapper') &&
+        !tag.classList.contains('vpw-settings-btn') &&
+        !tag.parentElement?.classList.contains('vpw-settings-btn'),
     );
   } else {
     return null;
