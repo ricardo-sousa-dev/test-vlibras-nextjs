@@ -71,12 +71,12 @@ export default function ContrastButton() {
             if (localStorage.getItem('storageContrast') === '4') tag.style.border = `2px solid ${ secondary }`
           }
           
-          console.log('ENCONTROU', tag.parentElement.getAttribute('vw-plugin-wrapper'))
+          // console.log('ENCONTROU', tag.parentElement.getAttribute('vw-plugin-wrapper'))
 
-          if (tag.getAttribute('vw-plugin-wrapper')
-            // || tag.getAttribute('vw')
-            // || tag.getAttribute('vw-access-button')
-            // || tag.classList.contains('vw-plugin-top-wrapper')
+          if (tag.parentElement.getAttribute('vw-plugin-wrapper')
+            || tag.parentElement.getAttribute('vw')
+            || tag.parentElement.getAttribute('vw-access-button')
+            || tag.parentElement.classList.contains('vw-plugin-top-wrapper')
           ) {
             console.log('ENTROU')
             tag.style.removeProperty('background');
