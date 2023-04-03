@@ -14,7 +14,7 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
   let arrayTags: (HTMLButtonElement | HTMLElement | HTMLHeadingElement | HTMLDivElement)[];
 
   if (typeof window !== 'undefined') {
-    console.log('ENTROU NO TAGS')
+    console.log('ENTROU NO TAGS');
     tagsH1 = Array.from(document.querySelectorAll('h1'));
     tagsH2 = Array.from(document.querySelectorAll('h2'));
     tagsH3 = Array.from(document.querySelectorAll('h3'));
@@ -27,20 +27,9 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
     tagsDiv = Array.from(document.querySelectorAll('div'));
     tagsButton = Array.from(document.querySelectorAll('button'));
     tagHeader = Array.from(document.querySelectorAll('header'));
-    arrayTags = [
-      tagHeader,
-      tagsH1,
-      tagsH2,
-      tagsH3,
-      tagsH4,
-      tagsH5,
-      tagsH6,
-      tagsP,
-      tagsA,
-      tagsIMG,
-      tagsDiv,
-      tagsButton,
-    ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>((tag) => tag);
+    arrayTags = [tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsA, tagsIMG, tagsButton].flatMap<
+      HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement
+    >((tag) => tag);
 
     const outElements = [
       'body',
@@ -57,25 +46,47 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
       'vpw-settings-btn',
     ];
 
-    return arrayTags.filter(
-      (tag) =>
-        tag.tagName !== 'body' &&
-        tag.getAttribute('id') !== '__next' &&
-        !tag.classList.contains('toolbar') &&
-        !tag.parentElement?.classList.contains('toolbar') &&
-        !tag.classList.contains('containerToolbar') &&
-        !tag.parentElement?.classList.contains('containerToolbar') &&
-        !tag.classList.contains('divButtonToolbar') &&
-        !tag.parentElement?.classList.contains('divButtonToolbar') &&
-       
-        !tag.getAttributeNames().includes('vw') &&
-        !tag.parentElement?.getAttributeNames().includes('vw')
-        
-        // !tag.classList.contains('vw-access-button') &&
-        // !tag.parentElement?.classList.contains('vw-access-button') &&
-        // !tag.classList.contains('vw-plugin-wrapper') &&
-        // !tag.parentElement?.classList.contains('vw-plugin-wrapper'),
-    );
+    for (let index = 0; index < arrayTags.length; index++) {
+      const element = arrayTags[index];
+      if (
+        element.tagName !== 'body' ||
+        element.getAttribute('id') !== '__next' ||
+        !element.classList.contains('toolbar') ||
+        !element.parentElement?.classList.contains('toolbar') ||
+        !element.classList.contains('containerToolbar') ||
+        !element.parentElement?.classList.contains('containerToolbar') ||
+        !element.classList.contains('divButtonToolbar') ||
+        !element.parentElement?.classList.contains('divButtonToolbar') ||
+        !element.getAttributeNames().includes('vw') ||
+        !element.parentElement?.getAttributeNames().includes('vw') ||
+        !element.classList.contains('vw-access-button') ||
+        !element.parentElement?.classList.contains('vw-access-button') ||
+        !element.classList.contains('vw-plugin-wrapper') ||
+        !element.parentElement?.classList.contains('vw-plugin-wrapper')
+      )
+        arrayTags.splice(index, 1);
+    }
+
+    return arrayTags;
+    // return arrayTags.filter(
+    //   (tag) =>
+    //     tag.tagName !== 'body' &&
+    //     tag.getAttribute('id') !== '__next' &&
+    //     !tag.classList.contains('toolbar') &&
+    //     !tag.parentElement?.classList.contains('toolbar') &&
+    //     !tag.classList.contains('containerToolbar') &&
+    //     !tag.parentElement?.classList.contains('containerToolbar') &&
+    //     !tag.classList.contains('divButtonToolbar') &&
+    //     !tag.parentElement?.classList.contains('divButtonToolbar') &&
+
+    //     !tag.getAttributeNames().includes('vw') &&
+    //     !tag.parentElement?.getAttributeNames().includes('vw')
+
+    //     // !tag.classList.contains('vw-access-button') &&
+    //     // !tag.parentElement?.classList.contains('vw-access-button') &&
+    //     // !tag.classList.contains('vw-plugin-wrapper') &&
+    //     // !tag.parentElement?.classList.contains('vw-plugin-wrapper'),
+    // );
   } else {
     return null;
   }
