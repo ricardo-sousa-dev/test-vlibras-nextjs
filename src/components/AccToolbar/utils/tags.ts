@@ -14,7 +14,6 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
   let arrayTags: (HTMLButtonElement | HTMLElement | HTMLHeadingElement | HTMLDivElement)[];
 
   if (typeof window !== 'undefined') {
-    console.log('ENTROU NO TAGS');
     tagsH1 = Array.from(document.querySelectorAll('h1'));
     tagsH2 = Array.from(document.querySelectorAll('h2'));
     tagsH3 = Array.from(document.querySelectorAll('h3'));
@@ -27,7 +26,7 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
     tagsDiv = Array.from(document.querySelectorAll('div'));
     tagsButton = Array.from(document.querySelectorAll('button'));
     tagHeader = Array.from(document.querySelectorAll('header'));
-    arrayTags = [tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsA, tagsIMG, tagsButton].flatMap<
+    arrayTags = [tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsA, tagsDiv, tagsIMG, tagsButton].flatMap<
       HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement
     >((tag) => tag);
 
@@ -48,25 +47,28 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
 
     for (let index = 0; index < arrayTags.length; index++) {
       const element = arrayTags[index];
+
       if (
-        element.tagName !== 'body' &&
-        element.getAttribute('id') !== '__next' &&
-        (element.classList.contains('toolbar') ||
-          element.parentElement?.classList.contains('toolbar') ||
-          element.classList.contains('containerToolbar') ||
-          element.parentElement?.classList.contains('containerToolbar') ||
-          element.classList.contains('divButtonToolbar') ||
-          element.parentElement?.classList.contains('divButtonToolbar') ||
-          element.classList.contains('a11yIcon') ||
-          element.parentElement?.classList.contains('a11yIcon') ||
-          element.getAttributeNames().includes('vw') ||
-          element.parentElement?.getAttributeNames().includes('vw') ||
-          element.classList.contains('vw-access-button') ||
-          element.parentElement?.classList.contains('vw-access-button') ||
-          element.classList.contains('vw-plugin-wrapper') ||
-          element.parentElement?.classList.contains('vw-plugin-wrapper') ||
-          element.classList.contains('vpw-settings-btn') ||
-          element.parentElement?.classList.contains('vpw-settings-btn'))
+        element.getAttribute('id') == '__next' ||
+        element.classList.contains('toolbar') ||
+        element.parentElement?.classList.contains('toolbar') ||
+        element.classList.contains('containerToolbar') ||
+        element.parentElement?.classList.contains('containerToolbar') ||
+        element.classList.contains('divButtonToolbar') ||
+        element.parentElement?.classList.contains('divButtonToolbar') ||
+        element.classList.contains('a11yIcon') ||
+        element.parentElement?.classList.contains('a11yIcon') ||
+        element.getAttributeNames().includes('vw') ||
+        element.getAttributeNames().includes('vw-access-button') ||
+        element.parentElement?.classList.contains('vw-access-button') ||
+        element.classList.contains('vw-plugin-wrapper') ||
+        element.parentElement?.classList.contains('vw-plugin-wrapper') ||
+        element.classList.contains('vpw-settings-btn') ||
+        element.parentElement?.classList.contains('vpw-settings-btn') ||
+        element.getAttribute('id') == 'gameContainer' ||
+        element.parentElement?.getAttribute('id') == 'gameContainer'||
+        element.parentElement?.getAttributeNames().includes('vp-rate-button') ||
+        element.parentElement?.classList.contains('vp-rate-button')
       )
         arrayTags.splice(index, 1);
     }

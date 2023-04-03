@@ -22,7 +22,7 @@ export default function ToolbarButton({ icon, alt, onClick, id, color }: Icon) {
         type='button'
         style={ {
           padding: '2px 4px',
-          border: '1px solid gray',
+          border: '1px solid black !important',
           borderRadius: '7px',
           cursor: 'pointer',
           background: '#f1f1f1',

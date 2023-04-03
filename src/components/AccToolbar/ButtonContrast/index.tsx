@@ -9,7 +9,6 @@ export default function ContrastButton() {
 
   const changeContrast = (init: boolean) => {
     elements = tags()
-    console.log('{{{{{{{{{{{ ᕙ༼~_~༽ᕗ }}}}}}}}}}} ->  elements:', elements);
     const storageContrast = localStorage.getItem('storageContrast')
 
     if (!init) {
@@ -41,38 +40,42 @@ export default function ContrastButton() {
       if (elements)
         for (let i = 0; i < elements.length; i += 1) {
           const tag = elements[ i ];
-            tag.style.color = primary
-            tag.style.background = secondary
+          tag.style.color = primary
+          tag.style.background = secondary
 
-            if (tag.tagName !== 'H1'
-              && tag.tagName !== 'H2'
-              && tag.tagName !== 'H3'
-              && tag.tagName !== 'H4'
-              && tag.tagName !== 'H5'
-              && tag.tagName !== 'H6'
-              && tag.tagName !== 'P'
-              && tag.tagName !== 'A'
-            ) tag.style.border = `1px solid ${ primary }`
+          if (tag.tagName !== 'H1'
+            && tag.tagName !== 'H2'
+            && tag.tagName !== 'H3'
+            && tag.tagName !== 'H4'
+            && tag.tagName !== 'H5'
+            && tag.tagName !== 'H6'
+            && tag.tagName !== 'P'
+            && tag.tagName !== 'A'
+          ) tag.style.border = `1px solid ${ primary }`
 
-          if (tag.tagName === 'DIV') tag.style.background = `${ primary } !important`
-            if (tag.tagName === 'BUTTON') {
-              tag.style.background = primary;
-              tag.style.color = secondary;
-              tag.style.border = `1px solid ${ primary }`
-            }
 
-            if (tag.tagName === 'A') {
-              tag.style.textDecoration = 'underline';
-            }
+          if (tag.tagName === 'BUTTON') {
+            tag.style.background = primary;
+            tag.style.color = secondary;
+            tag.style.border = `1px solid ${ primary } important`
+          }
 
-            if (tag.classList.contains('floatingIcon')) {
-              tag.style.background = `${ primary } !important`
-              tag.style.color = secondary
-              tag.style.border = `2px solid ${ primary } !important`
-              if (localStorage.getItem('storageContrast') === '4') tag.style.border = `2px solid ${ secondary }`
-            }
+          if (tag.tagName === 'A') {
+            tag.style.textDecoration = 'underline';
+          }
 
-          if (tag.parentElement.classList.contains('divButtonToolbar')
+          if (tag.classList.contains('floatingIcon')) {
+            tag.style.background = `${ primary } !important`
+            tag.style.color = secondary
+            tag.style.border = `2px solid ${ primary } !important`
+            if (localStorage.getItem('storageContrast') === '4') tag.style.border = `2px solid ${ secondary }`
+          }
+
+          if (tag.parentElement.classList.contains('toolbar') ||
+          tag.parentElement.classList.contains('containerToolbar') ||
+            tag.parentElement.classList.contains('divButtonToolbar') ||
+            tag.classList.contains('enabled') ||
+          (tag.tagName == 'p' && tag.parentElement.classList.contains('divButtonToolbar'))
           ) {
             tag.style.removeProperty('background');
             tag.style.removeProperty('border');
