@@ -14,6 +14,7 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
   let arrayTags: (HTMLButtonElement | HTMLElement | HTMLHeadingElement | HTMLDivElement)[];
 
   if (typeof window !== 'undefined') {
+    console.log('ENTROU NO TAGS')
     tagsH1 = Array.from(document.querySelectorAll('h1'));
     tagsH2 = Array.from(document.querySelectorAll('h2'));
     tagsH3 = Array.from(document.querySelectorAll('h3'));
@@ -40,6 +41,21 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
       tagsDiv,
       tagsButton,
     ].flatMap<HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement>((tag) => tag);
+
+    const outElements = [
+      'body',
+      '__next',
+      'closeToolbar',
+      '#canvas',
+      'vw',
+      'vw-plugin-wrapper',
+      'vw-access-button',
+      'toolbar',
+      'containerToolbar',
+      'divButtonToolbar',
+      'vw-plugin-top-wrapper',
+      'vpw-settings-btn',
+    ];
 
     return arrayTags.filter(
       (tag) =>

@@ -9,6 +9,7 @@ export default function ContrastButton() {
 
   const changeContrast = (init: boolean) => {
     elements = tags()
+    console.log('{{{{{{{{{{{ ᕙ༼~_~༽ᕗ }}}}}}}}}}} ->  elements:', elements);
     const storageContrast = localStorage.getItem('storageContrast')
 
     if (!init) {
