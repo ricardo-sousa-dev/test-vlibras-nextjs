@@ -63,10 +63,16 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
         element.parentElement?.classList.contains('vw-access-button') ||
         element.classList.contains('vw-plugin-wrapper') ||
         element.parentElement?.classList.contains('vw-plugin-wrapper') ||
+        element.classList.contains('vpw-settings') ||
+        element.parentElement?.classList.contains('vpw-settings') ||
         element.classList.contains('vpw-settings-btn') ||
         element.parentElement?.classList.contains('vpw-settings-btn') ||
+        element.classList.contains('vpw-settings-btn-close') ||
+        element.parentElement?.classList.contains('vpw-settings-btn-close') ||
+        element.classList.contains('vpw-box') ||
+        element.parentElement?.classList.contains('vpw-box') ||
         element.getAttribute('id') == 'gameContainer' ||
-        element.parentElement?.getAttribute('id') == 'gameContainer'||
+        element.parentElement?.getAttribute('id') == 'gameContainer' ||
         element.parentElement?.getAttributeNames().includes('vp-rate-button') ||
         element.parentElement?.classList.contains('vp-rate-button')
       )
