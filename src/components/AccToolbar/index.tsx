@@ -29,12 +29,9 @@ export default function AccToolbar() {
       || storageTextStyle && storageTextStyle !== '1'
       || storageZoomPage && storageZoomPage !== '1'
       || storageLibras && storageLibras !== '1'
-      // ) setTimeout(() => setShowToolbar(true), 2000);
     ) setShowToolbar(true);
 
     if (storageLibras == '2') {
-      console.log('INICIO LIBRAS: 2')
-
       const toolbarLibras: HTMLButtonElement = document.getElementById('toolbarLibras') as HTMLButtonElement;
       if (toolbarLibras) toolbarLibras.disabled = true;
 
@@ -44,18 +41,6 @@ export default function AccToolbar() {
         const openWidget: HTMLElement = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement;
         if (openWidget) openWidget.click()
       }, 3000);
-
-      // setTimeout(() => {
-      //   document.getElementById('toolbarLibras')?.removeAttribute('disabled')
-
-      //   const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]as HTMLElement
-          
-      //   if(closeWidget) closeWidget.addEventListener('click', () =>
-      //       localStorage.setItem('storageLibras', JSON.stringify(1))
-      //     )
-
-      //   console.log('EVENT LISTENER vpw-settings-btn-close')
-      // }, 15000);
     }
   }, []);
 

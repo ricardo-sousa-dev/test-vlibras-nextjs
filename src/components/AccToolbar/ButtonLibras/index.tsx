@@ -12,7 +12,6 @@ export default function Libras() {
     const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
     if (closeWidget) {
       closeWidget.style.opacity = '0';
-      // closeWidget.setAttribute('src', '');
     }
     setDisabledLibras(true);
 
@@ -22,7 +21,6 @@ export default function Libras() {
       const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
       if (closeWidget) {
         closeWidget.style.opacity = '0';
-        // closeWidget.setAttribute('src', '');
       }
     }, 10000);
   }
