@@ -62,14 +62,14 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
         tag.tagName !== 'body' &&
         tag.getAttribute('id') !== '__next' &&
         tag.getAttribute('id') !== 'closeToolbar' &&
-        tag.getAttribute('id') !== '#canvas' &&
-        !tag.parentElement?.getAttribute('vp')&&
-        !tag.parentElement?.getAttribute('vw')&&
-        !tag.parentElement?.classList.contains('vpw-box')
+        !tag.classList.contains('containerToolbar') &&
+        !tag.classList.contains('emscripten') &&
+        !tag.parentElement?.getAttribute('vp') &&
+        !tag.parentElement?.getAttribute('vw') &&
+        !tag.parentElement?.classList.contains('vpw-box'),
       //   !tag.parentElement?.classList.contains('vpw-message-box') &&
       // !tag.parentElement?.classList.contains('vpw-settings')&&
       //   !tag.parentElement?.classList.contains('vpw-settings-btn')
-
     );
   } else {
     return null;
