@@ -71,6 +71,8 @@ export default function ContrastButton() {
             if (localStorage.getItem('storageContrast') === '4') tag.style.border = `2px solid ${ secondary }`
           }
           
+          console.log('ENCONTROU', tag.parentElement.getAttribute('vw-plugin-wrapper'))
+
           if (tag.getAttribute('vw-plugin-wrapper')
             // || tag.getAttribute('vw')
             // || tag.getAttribute('vw-access-button')
