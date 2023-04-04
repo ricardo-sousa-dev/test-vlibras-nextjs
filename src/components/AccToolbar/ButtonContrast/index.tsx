@@ -93,7 +93,8 @@ export const changeContrast = (init: boolean) => {
           tag.classList.contains('vpw-component-pause') ||
           tag.classList.contains('vpw-component-restart') ||
           tag.parentElement?.getAttributeNames().includes('vp-change-avatar') ||
-          tag.getAttribute('id') == 'gameContainer'||
+          tag.getAttribute('id') == 'gameContainer' ||
+          tag.parentElement?.getAttribute('id') == 'gameContainer' ||
           tag.classList.contains('noUi-base') ||
           tag.classList.contains('noUi-origin') ||
           tag.classList.contains('noUi-handle') ||
