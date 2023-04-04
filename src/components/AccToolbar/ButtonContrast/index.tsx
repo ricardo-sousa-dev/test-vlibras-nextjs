@@ -7,7 +7,6 @@ let elements: string | any[] | null;
 type LoadLibras = (any & false) | (any & true)
 
 export default function ContrastButton(loadLibras:LoadLibras=false) {
-  const [ disabledContrast, setDisabledContrast ] = useState(false);
   
   const changeContrast = (init: boolean) => {
     try {
@@ -247,7 +246,7 @@ export default function ContrastButton(loadLibras:LoadLibras=false) {
   }
 
   return (
-    disabledContrast ? <ToolbarButton
+    loadLibras ? <ToolbarButton
       icon='contrast'
       alt='Contraste'
       color='#DCDCDC'
