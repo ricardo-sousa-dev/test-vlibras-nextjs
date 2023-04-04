@@ -4,11 +4,12 @@ interface Icon {
   icon: string;
   alt: string;
   onClick?: MouseEventHandler<HTMLElement>;
+  idButton?: string;
   id?: string;
   color?:string;
 }
 
-export default function ToolbarButton({ icon, alt, onClick, id, color }: Icon) {
+export default function ToolbarButton({ icon, alt, onClick, idButton, color }: Icon) {
   return (
     <div
       className='divButtonToolbar'
@@ -28,7 +29,7 @@ export default function ToolbarButton({ icon, alt, onClick, id, color }: Icon) {
           background: '#f1f1f1',
         } }
         className='a11yIcon'
-        id={ id }
+        id={ idButton }
         onClick={ onClick }>
         <span
           style={ {

@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import ToolbarButton from '../ToolbarButton';
-import ButtonContrast from '../ButtonContrast'
+import buttonContrast from '../ButtonContrast'
 
 /*eslint-disable */
 export default function Libras() {
   const [ disabledLibras, setDisabledLibras ] = useState(true);
-  const [ disabledContrast, setDisabledContrast ] = useState(true);
 
   const storageLibras = localStorage.getItem('storageLibras');
   const delayButton = () => {
@@ -15,21 +14,16 @@ export default function Libras() {
       closeWidget.style.opacity = '0';
     }
     setDisabledLibras(true);
-    setDisabledContrast(true);
 
     setTimeout(() => {
       setDisabledLibras(false);
 
       const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
       if (closeWidget) closeWidget.style.opacity = '0';
-      
-      const titleWidget: HTMLElement = document.getElementsByClassName('vpw-mes')[0]as HTMLElement;
+
+      const titleWidget: HTMLElement = document.getElementsByClassName('vpw-mes')[ 0 ] as HTMLElement;
       if (titleWidget) titleWidget.innerText = 'LIBRAS'
     }, 10000);
-
-    setTimeout(() => {
-      setDisabledContrast(false);
-    }, 5000);
   }
 
   useEffect(() => delayButton(), [])
@@ -45,8 +39,8 @@ export default function Libras() {
         const selectText = document.getElementsByClassName('vw-text')
 
         for (let index = 0; index < selectText.length; index++) {
-          const element = selectText[index];
-          if(!element.parentElement?.classList.contains('material-symbols-outlined')){
+          const element = selectText[ index ];
+          if (!element.parentElement?.classList.contains('material-symbols-outlined')) {
             element.remove();
           }
         }
@@ -59,7 +53,7 @@ export default function Libras() {
     if (storageLibras == '2') {
       delayButton()
       localStorage.setItem('storageLibras', JSON.stringify(1))
-     
+
       try {
         const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
         closeWidget.click()
@@ -80,16 +74,15 @@ export default function Libras() {
 
   return (
     <>
-      <ButtonContrast loadLibras={ disabledContrast }/>
-    {disabledLibras ? <ToolbarButton
-      icon='sign_language'
-      alt='Libras'
-      color='#DCDCDC'
+      { disabledLibras ? <ToolbarButton
+        icon='sign_language'
+        alt='Libras'
+        color='#DCDCDC'
       /> : <ToolbarButton
-      icon='sign_language'
-      alt='Libras'
-      onClick={ setLibras }
-      />}
-      </>
+        icon='sign_language'
+        alt='Libras'
+        onClick={ setLibras }
+      /> }
+    </>
   );
 }

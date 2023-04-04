@@ -1,14 +1,40 @@
-import { useState } from 'react';
 import ToolbarButton from '../ToolbarButton';
 import tags from '../utils/tags';
 
 /*eslint-disable */
 let elements: string | any[] | null;
-type LoadLibras = (any & false) | (any & true)
 
-export default function ContrastButton(loadLibras:LoadLibras=false) {
+export default function ContrastButton() {
+  const delayButton = () => {
+     const buttonContrast = document.getElementById('buttonContrast');
+    if (buttonContrast) {
+      buttonContrast.setAttribute('style', 'color:#DCDCDC');
+      buttonContrast.style.border = '1px solid black !important'
+      buttonContrast.style.padding = '2px 4px'
+      buttonContrast.style.borderRadius = '7px'
+      buttonContrast.style.cursor = 'pointer'
+      buttonContrast.style.background = '#f1f1f1'
+    }
+   
+    setTimeout(() => {
+      if (buttonContrast) {
+      buttonContrast.setAttribute('style', 'color:black');
+      buttonContrast.style.border = '1px solid black !important'
+      buttonContrast.style.padding = '2px 4px'
+      buttonContrast.style.borderRadius = '7px'
+      buttonContrast.style.cursor = 'pointer'
+      buttonContrast.style.background = '#f1f1f1'
+      }
+    }, 5000);
+  }
   
   const changeContrast = (init: boolean) => {
+   
+    if (localStorage.getItem('storageContrast') === '2' 
+    && !document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]){
+      delayButton()
+    }else{
+
     try {
 
       elements = tags()
@@ -230,7 +256,7 @@ export default function ContrastButton(loadLibras:LoadLibras=false) {
     } catch (error) {
       console.log('ERROR CONTRAST', error);
     }
-
+  }
   };
 
   let storageContrast: string | null;
@@ -246,14 +272,12 @@ export default function ContrastButton(loadLibras:LoadLibras=false) {
   }
 
   return (
-    loadLibras ? <ToolbarButton
-      icon='contrast'
-      alt='Contraste'
-      color='#DCDCDC'
-    /> : <ToolbarButton
+   <ToolbarButton
       icon='contrast'
       alt='Contraste'
       onClick={ () => changeContrast(false) }
+      idButton='buttonContrast'
+      id='divButtonContrast'
     />
   );
 }

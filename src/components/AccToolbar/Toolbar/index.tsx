@@ -34,7 +34,7 @@ export default function Toolbar() {
         } }>
         <ButtonTextStyle />
         <ButtonZoomPage />
-        {/* <ButtonContrast /> */}
+        <ButtonContrast />
         <ButtonLibras />
         <ButtonReset />
       </div>
