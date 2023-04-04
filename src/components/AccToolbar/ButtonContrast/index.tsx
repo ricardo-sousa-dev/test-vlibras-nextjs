@@ -158,7 +158,6 @@ export default function ContrastButton() {
 
             if (
               tag.getAttribute('id') == '__next' ||
-              tag.getAttribute('id') == 'gameContainer' ||
               tag.classList.contains('toolbar') ||
               tag.classList.contains('containerToolbar') ||
               tag.classList.contains('divButtonToolbar') ||
@@ -177,6 +176,7 @@ export default function ContrastButton() {
               tag.classList.contains('vpw-component-play') ||
               tag.classList.contains('vpw-component-pause') ||
               tag.classList.contains('vpw-component-restart') ||
+              // tag.getAttribute('id') == 'gameContainer' ||
               tag.classList.contains('noUi-base') ||
               tag.classList.contains('noUi-origin') ||
               tag.classList.contains('noUi-handle') ||
