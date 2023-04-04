@@ -88,12 +88,17 @@ export const changeContrast = (init: boolean) => {
           tag.parentElement?.getAttributeNames().includes('vp-rate-box') ||
           tag.parentElement?.getAttributeNames().includes('vp-rate-button') ||
           tag.parentElement?.getAttributeNames().includes('vp-controls') ||
+          tag.parentElement?.classList.contains('vp-controls-play')||
+          tag.classList.contains('vpw-component-play') ||
+          tag.classList.contains('vpw-component-pause') ||
+          tag.classList.contains('vpw-component-restart') ||
           tag.parentElement?.getAttributeNames().includes('vp-change-avatar') ||
-          tag.parentElement?.getAttribute('id') == 'gameContainer'||
+          tag.getAttribute('id') == 'gameContainer'||
           tag.classList.contains('noUi-base') ||
+          tag.classList.contains('noUi-origin') ||
+          tag.classList.contains('noUi-handle') ||
           tag.classList.contains('vpw-slider') ||
           tag.parentElement?.classList.contains('vpw-slider')||
-          tag.parentElement?.classList.contains('vp-controls-play')||
           tag.classList.contains('vp-settings-btn')||
           tag.parentElement?.classList.contains('vp-settings-btn')
 
