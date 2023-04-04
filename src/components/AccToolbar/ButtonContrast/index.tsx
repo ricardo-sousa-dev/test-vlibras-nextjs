@@ -31,7 +31,7 @@ export default function ContrastButton() {
   const changeContrast = (init: boolean) => {
    
     if (localStorage.getItem('storageContrast') === '2' 
-    && !document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]){
+    && !document.getElementsByClassName('vpw-box')[ 0 ]){
       delayButton()
     }else{
 
