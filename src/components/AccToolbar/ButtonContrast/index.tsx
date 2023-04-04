@@ -102,10 +102,19 @@ export const changeContrast = (init: boolean) => {
           tag.parentElement?.classList.contains('vpw-slider')||
           tag.classList.contains('vp-settings-btn') ||
           tag.classList.contains('vp-container') ||
+          tag.classList.contains('vpw-content') ||
+          tag.classList.contains('vpw-regions') ||
+          tag.classList.contains('vpw-cont') ||
+          tag.classList.contains('vpw-flag') ||
+          tag.classList.contains('vpw-container-regions') ||
+          tag.parentElement?.classList.contains('vpw-content') ||
+          tag.parentElement?.classList.contains('vpw-localism') ||
+          tag.parentElement?.classList.contains('vpw-national') ||
           tag.parentElement?.classList.contains('vp-settings-btn') ||
           tag.parentElement?.classList.contains('vpw-controls-speed') ||
           tag.parentElement?.classList.contains('vp-close-button') ||
           tag.parentElement?.classList.contains('vpw-controls-subtitles') ||
+          tag.parentElement?.classList.contains('vpw-btn-close') ||
           tag.parentElement?.classList.contains('vp-container')
 
         ) {
