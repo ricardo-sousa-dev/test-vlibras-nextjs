@@ -225,6 +225,7 @@ export default function ContrastButton() {
             if (tag.classList.contains('toolbar')) tag.style.background = 'white';
           }
         }
+        console.log('================================')
       } else {
         if (elements){
 
@@ -246,7 +247,6 @@ export default function ContrastButton() {
           }
         }
       }
-      console.log('================================')
 
     } catch (error) {
       console.log('ERROR CONTRAST', error);
