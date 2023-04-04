@@ -116,6 +116,7 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
         !tag.classList.contains('vpw-container-regions') ||
         !tag.classList.contains('vpw-border-default') ||
         !tag.classList.contains('vpw-img-default') ||
+        !tag.classList.contains('vp-settings-menu') ||
         !tag.parentElement?.getAttributeNames().includes('vw') ||
         tag.parentElement?.getAttribute('id') !== 'gameContainer' ||
         !tag.parentElement?.getAttributeNames().includes('vp') ||
