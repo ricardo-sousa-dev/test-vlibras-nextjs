@@ -92,8 +92,8 @@ export const changeContrast = (init: boolean) => {
           tag.classList.contains('vpw-container-regions') ||
           tag.classList.contains('vpw-border-default') ||
           tag.classList.contains('vpw-img-default') ||
-          tag.classList.contains('vp-settings-btn-menu') ||
-          tag.classList.contains('vp-settings-btn-close') ||
+          tag.classList.contains('vpw-settings-btn-menu') ||
+          tag.classList.contains('vpw-settings-btn-close') ||
           tag.parentElement?.getAttributeNames().includes('vw') ||
           tag.parentElement?.getAttribute('id') == 'gameContainer' ||
           tag.parentElement?.getAttributeNames().includes('vp') ||
