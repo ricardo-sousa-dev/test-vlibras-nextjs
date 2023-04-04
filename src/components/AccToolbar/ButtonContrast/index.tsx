@@ -78,22 +78,17 @@ export const changeContrast = (init: boolean) => {
           tag.classList.contains('divButtonToolbar') ||
           (tag.tagName == 'p' && tag.parentElement.classList.contains('divButtonToolbar')) ||
           tag.getAttributeNames().includes('vw') ||
-          tag.getAttributeNames().includes('vw-access-button') ||
-          tag.parentElement?.classList.contains('vw-access-button') ||
-          tag.classList.contains('vw-plugin-wrapper') ||
-          tag.parentElement?.classList.contains('vw-plugin-wrapper') ||
-          tag.classList.contains('vpw-settings') ||
-          tag.parentElement?.classList.contains('vpw-settings') ||
-          tag.classList.contains('vpw-settings-btn') ||
-          tag.parentElement?.classList.contains('vpw-settings-btn') ||
-          tag.classList.contains('vpw-settings-btn-close') ||
-          tag.parentElement?.classList.contains('vpw-settings-btn-close') ||
-          tag.classList.contains('vpw-box') ||
-          tag.parentElement?.classList.contains('vpw-box') ||
-          tag.getAttribute('id') == 'gameContainer' ||
-          tag.parentElement?.getAttribute('id') == 'gameContainer' ||
+          tag.parentElement?.getAttributeNames().includes('vw') ||
+          tag.getAttributeNames().includes('vp') ||
+          tag.parentElement?.getAttributeNames().includes('vp') ||
+          tag.parentElement?.getAttributeNames().includes('vp-info-screen') ||
+          tag.parentElement?.getAttributeNames().includes('vp-suggestion-screen') ||
+          tag.parentElement?.getAttributeNames().includes('vp-suggestion-button') ||
+          tag.parentElement?.getAttributeNames().includes('vp-rate-box') ||
           tag.parentElement?.getAttributeNames().includes('vp-rate-button') ||
-          tag.parentElement?.classList.contains('vp-rate-button')
+          tag.parentElement?.getAttributeNames().includes('vp-controls') ||
+          tag.parentElement?.getAttributeNames().includes('vp-change-avatar') ||
+          tag.parentElement?.getAttribute('id') == 'gameContainer'
         ) {
           tag.style.removeProperty('background');
           tag.style.removeProperty('border');
