@@ -137,7 +137,7 @@ export default function ContrastButton() {
               ) tag.style.border = `1px solid ${ primary }`
 
 
-              if (tag.tagName === 'BUTTON') {
+              if (tag.tagName === 'BUTTON' && !tag.classList.contains('a11yIcons')) {
                 tag.style.background = primary;
                 tag.style.color = secondary;
                 tag.style.border = `1px solid ${ primary } important`
