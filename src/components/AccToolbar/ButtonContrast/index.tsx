@@ -62,7 +62,8 @@ export default function ContrastButton() {
             break
         }
 
-        if (elements)
+        if (elements){
+          console.log(elements)
           for (let i = 0; i < elements.length; i += 1) {
             const tag = elements[ i ];
             console.log('IF CONTRAST FOR ' + tag)
@@ -98,9 +99,9 @@ export default function ContrastButton() {
               !tag.parentElement?.getAttributeNames().includes('vp-box') ||
               !tag.parentElement?.getAttributeNames().includes('vp-info-screen') ||
               !tag.parentElement?.getAttributeNames().includes('vp-suggestion-screen') ||
-              // !tag.parentElement?.getAttributeNames().includes('vp-suggestion-button') ||
+              !tag.parentElement?.getAttributeNames().includes('vp-suggestion-button') ||
               !tag.parentElement?.getAttributeNames().includes('vp-rate-box') ||
-              // !tag.parentElement?.getAttributeNames().includes('vp-rate-button') ||
+              !tag.parentElement?.getAttributeNames().includes('vp-rate-button') ||
               !tag.parentElement?.getAttributeNames().includes('vp-controls') ||
               !(tag.tagName == 'p' && tag.parentElement?.classList.contains('divButtonToolbar')) ||
               !tag.parentElement?.classList.contains('divButtonToolbar') ||
@@ -111,16 +112,16 @@ export default function ContrastButton() {
               !tag.parentElement?.classList.contains('vpw-content') ||
               !tag.parentElement?.classList.contains('vpw-localism') ||
               !tag.parentElement?.classList.contains('vpw-national') ||
-              // !tag.parentElement?.classList.contains('vp-settings-btn') ||
+              !tag.parentElement?.classList.contains('vp-settings-btn') ||
               !tag.parentElement?.classList.contains('vpw-controls-speed') ||
-              // !tag.parentElement?.classList.contains('vp-close-button') ||
+              !tag.parentElement?.classList.contains('vp-close-button') ||
               !tag.parentElement?.classList.contains('vpw-controls-subtitles') ||
-              // !tag.parentElement?.classList.contains('vpw-btn-close') ||
+              !tag.parentElement?.classList.contains('vpw-btn-close') ||
               !tag.parentElement?.classList.contains('vpw-clickable') ||
               !tag.parentElement?.classList.contains('vpw-container-opacity') ||
               !tag.parentElement?.classList.contains('vpw-vlibras-logo') ||
-              // !tag.parentElement?.classList.contains('vp-button-change-avatar') ||
-              // !tag.parentElement?.classList.contains('vp-button') ||
+              !tag.parentElement?.classList.contains('vp-button-change-avatar') ||
+              !tag.parentElement?.classList.contains('vp-button') ||
               !tag.parentElement?.classList.contains('vp-container')) {
               tag.style.color = primary
               tag.style.background = secondary
@@ -136,11 +137,11 @@ export default function ContrastButton() {
               ) tag.style.border = `1px solid ${ primary }`
 
 
-              // if (tag.tagName === 'BUTTON') {
-              //   if (tag.style.background) tag.style.background = primary;
-              //   if (tag.style.color) tag.style.color = secondary;
-              //   if (tag.style.border) tag.style.border = `1px solid ${ primary } important`
-              // }
+              if (tag.tagName === 'BUTTON') {
+                tag.style.background = primary;
+                tag.style.color = secondary;
+                tag.style.border = `1px solid ${ primary } important`
+              }
 
               if (tag.tagName === 'A') {
                 tag.style.textDecoration = 'underline';
@@ -225,9 +226,11 @@ export default function ContrastButton() {
 
             if (tag.classList.contains('toolbar')) tag.style.background = 'white';
           }
-
+        }
       } else {
-        if (elements)
+        if (elements){
+          console.log(elements)
+
           for (let i = 0; i < elements.length; i += 1) {
             const tag = elements[ i ];
             console.log('ELSE CONTRAST FOR ' + tag)
@@ -235,16 +238,17 @@ export default function ContrastButton() {
             tag.style.removeProperty('background');
             tag.style.removeProperty('text-decoration');
 
-            // if (tag.tagName === 'BUTTON' && tag.style.border) tag.style.removeProperty('border');
+            if (tag.tagName === 'BUTTON') tag.style.removeProperty('border');
 
             if (tag.classList.contains('floatingIcon')) {
               tag.style.background = '#003F86'
               tag.style.color = 'white'
               tag.style.border = '1px solid #003F86'
             }
-
             if (tag.classList.contains('toolbar')) tag.style.background = 'white';
+
           }
+        }
       }
     } catch (error) {
       console.log('ERROR CONTRAST', error);
