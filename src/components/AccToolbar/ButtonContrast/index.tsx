@@ -81,6 +81,7 @@ export const changeContrast = (init: boolean) => {
           tag.parentElement?.getAttributeNames().includes('vw') ||
           tag.getAttributeNames().includes('vp') ||
           tag.parentElement?.getAttributeNames().includes('vp') ||
+          tag.parentElement?.getAttributeNames().includes('vp-box') ||
           tag.parentElement?.getAttributeNames().includes('vp-info-screen') ||
           tag.parentElement?.getAttributeNames().includes('vp-suggestion-screen') ||
           tag.parentElement?.getAttributeNames().includes('vp-suggestion-button') ||
@@ -88,7 +89,14 @@ export const changeContrast = (init: boolean) => {
           tag.parentElement?.getAttributeNames().includes('vp-rate-button') ||
           tag.parentElement?.getAttributeNames().includes('vp-controls') ||
           tag.parentElement?.getAttributeNames().includes('vp-change-avatar') ||
-          tag.parentElement?.getAttribute('id') == 'gameContainer'
+          tag.parentElement?.getAttribute('id') == 'gameContainer'||
+          tag.classList.contains('noUi-base') ||
+          tag.classList.contains('vpw-slider') ||
+          tag.parentElement?.classList.contains('vpw-slider')||
+          tag.parentElement?.classList.contains('vp-controls-play')||
+          tag.classList.contains('vp-settings-btn')||
+          tag.parentElement?.classList.contains('vp-settings-btn')
+
         ) {
           tag.style.removeProperty('background');
           tag.style.removeProperty('border');
