@@ -8,24 +8,27 @@ export default function ContrastButton() {
   const delayButton = () => {
      const buttonContrast = document.getElementById('buttonContrast');
     if (buttonContrast) {
-      buttonContrast.setAttribute('style', 'color:#DCDCDC');
+      buttonContrast.setAttribute('disabled', 'true')
+      buttonContrast.style.color = '#DCDCDC';
       buttonContrast.style.border = '1px solid black !important'
       buttonContrast.style.padding = '2px 4px'
       buttonContrast.style.borderRadius = '7px'
       buttonContrast.style.cursor = 'pointer'
       buttonContrast.style.background = '#f1f1f1'
+
     }
    
     setTimeout(() => {
       if (buttonContrast) {
-      buttonContrast.setAttribute('style', 'color:black');
+        buttonContrast.removeAttribute('disabled')
+      buttonContrast.style.color = 'black';
       buttonContrast.style.border = '1px solid black !important'
       buttonContrast.style.padding = '2px 4px'
       buttonContrast.style.borderRadius = '7px'
       buttonContrast.style.cursor = 'pointer'
       buttonContrast.style.background = '#f1f1f1'
       }
-    }, 5000);
+    }, 8000);
   }
   
   const changeContrast = (init: boolean) => {
