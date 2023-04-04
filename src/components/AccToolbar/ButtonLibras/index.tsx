@@ -21,9 +21,10 @@ export default function Libras() {
       changeContrast(true)
 
       const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
-      if (closeWidget) {
-        closeWidget.style.opacity = '0';
-      }
+      if (closeWidget) closeWidget.style.opacity = '0';
+      
+      const titleWidget: HTMLElement = document.getElementsByClassName('vpw-mes')[0]as HTMLElement;
+      if (titleWidget) titleWidget.innerText = 'LIBRAS'
     }, 10000);
   }
 
