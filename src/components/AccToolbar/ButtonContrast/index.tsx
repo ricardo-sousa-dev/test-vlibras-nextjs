@@ -119,7 +119,7 @@ export const changeContrast = (init: boolean) => {
           tag.parentElement?.classList.contains('vpw-btn-close') ||
           tag.parentElement?.classList.contains('vpw-clickable') ||
           tag.parentElement?.classList.contains('vpw-container-opacity') ||
-          tag.parentElement?.classList.contains('vpw-vlibras-span') ||
+          tag.parentElement?.classList.contains('vpw-vlibras-logo') ||
           tag.parentElement?.classList.contains('vp-container')
 
         ) {
