@@ -9,10 +9,10 @@ export default function Libras() {
   const storageLibras = localStorage.getItem('storageLibras');
   const delayButton = () => {
 
-    const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
-    if (closeWidget) {
-      closeWidget.style.opacity = '0';
-    }
+    // const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
+    // if (closeWidget) {
+    //   closeWidget.style.opacity = '0';
+    // }
     setDisabledLibras(true);
 
     setTimeout(() => {
@@ -73,8 +73,7 @@ export default function Libras() {
   }
 
   return (
-    <>
-      { disabledLibras ? <ToolbarButton
+      disabledLibras ? <ToolbarButton
         icon='sign_language'
         alt='Libras'
         color='#DCDCDC'
@@ -82,7 +81,6 @@ export default function Libras() {
         icon='sign_language'
         alt='Libras'
         onClick={ setLibras }
-      /> }
-    </>
+      />
   );
 }

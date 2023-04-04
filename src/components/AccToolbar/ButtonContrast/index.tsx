@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import ToolbarButton from '../ToolbarButton';
 import tags from '../utils/tags';
 
@@ -5,39 +6,23 @@ import tags from '../utils/tags';
 let elements: string | any[] | null;
 
 export default function ContrastButton() {
+  const [ disabledContrast, setDisabledContrast ] = useState(true);
 
   const delayButton = () => {
-     const buttonContrast = document.getElementById('buttonContrast');
-    if (buttonContrast) {
-      buttonContrast.setAttribute('disabled', 'true')
-      buttonContrast.style.color = '#DCDCDC';
-      buttonContrast.style.border = '1px solid black !important'
-      buttonContrast.style.padding = '2px 4px'
-      buttonContrast.style.borderRadius = '7px'
-      buttonContrast.style.cursor = 'pointer'
-      buttonContrast.style.background = '#f1f1f1'
-
+    if (localStorage.getItem('storageLibras') === '2'
+      && !document.getElementsByClassName('vpw-box')[ 0 ]) {
+      setDisabledContrast(true)
+      setTimeout(() => {
+        setDisabledContrast(false)
+      }, 10000);
     }
-   
-    setTimeout(() => {
-      if (buttonContrast) {
-        buttonContrast.removeAttribute('disabled')
-      buttonContrast.style.color = 'black';
-      buttonContrast.style.border = '1px solid black !important'
-      buttonContrast.style.padding = '2px 4px'
-      buttonContrast.style.borderRadius = '7px'
-      buttonContrast.style.cursor = 'pointer'
-      buttonContrast.style.background = '#f1f1f1'
-      }
-    }, 10000);
   }
-  
+
+  useEffect(() => delayButton(), [])
+
   const changeContrast = (init: boolean) => {
-   
-    if (localStorage.getItem('storageLibras') === '2' 
-    && !document.getElementsByClassName('vpw-box')[ 0 ]){
-      delayButton()
-    }else{
+
+    delayButton()
 
     try {
 
@@ -234,7 +219,7 @@ export default function ContrastButton() {
             if (tag.classList.contains('toolbar')) tag.style.background = 'white';
           }
         }
-        
+
       } else {
         if (elements) {
 
@@ -261,33 +246,16 @@ export default function ContrastButton() {
       console.log('ERROR CONTRAST', error);
     }
   }
-  };
-
-  let storageContrast: string | null;
-
-  if (typeof window !== 'undefined') {
-    storageContrast = localStorage.getItem('storageContrast') || null;
-
-    if (!storageContrast) {
-      localStorage.setItem('storageContrast', JSON.stringify(1));
-    }
-    if (localStorage.getItem('storageLibras') === '2'
-      && !document.getElementsByClassName('vpw-box')[ 0 ]) {
-      delayButton()
-    }else{
-      if (localStorage.getItem('storageContrast') != '1') {
-        changeContrast(true)
-      }
-    }    
-  }
 
   return (
-   <ToolbarButton
+    disabledContrast ? <ToolbarButton
+      icon='contrast'
+      alt='Contraste'
+      color='#DCDCDC'
+    /> : <ToolbarButton
       icon='contrast'
       alt='Contraste'
       onClick={ () => changeContrast(false) }
-      idButton='buttonContrast'
-      id='divButtonContrast'
     />
   );
 }
