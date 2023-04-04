@@ -30,6 +30,8 @@ export default function ContrastButton() {
     //     }
     //   }
     // }
+    setTimeout(() => {
+      
     try {
 
 
@@ -225,7 +227,6 @@ export default function ContrastButton() {
             if (tag.classList.contains('toolbar')) tag.style.background = 'white';
           }
         }
-        console.log('================================')
       } else {
         if (elements){
 
@@ -251,6 +252,8 @@ export default function ContrastButton() {
     } catch (error) {
       console.log('ERROR CONTRAST', error);
     }
+    }, 500);
+
   };
 
   let storageContrast: string | null;
