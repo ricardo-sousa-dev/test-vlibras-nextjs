@@ -15,6 +15,8 @@ export default function ContrastButton() {
       setTimeout(() => {
         setDisabledContrast(false)
       }, 10000);
+    }else{
+      setDisabledContrast(false)
     }
   }
 

@@ -73,14 +73,14 @@ export default function Libras() {
   }
 
   return (
-      disabledLibras ? <ToolbarButton
-        icon='sign_language'
-        alt='Libras'
-        color='#DCDCDC'
-      /> : <ToolbarButton
-        icon='sign_language'
-        alt='Libras'
-        onClick={ setLibras }
-      />
+    disabledLibras ? <ToolbarButton
+      icon='sign_language'
+      alt='Libras'
+      color='#DCDCDC'
+    /> : <ToolbarButton
+      icon='sign_language'
+      alt='Libras'
+      onClick={ setLibras }
+    />
   );
 }
