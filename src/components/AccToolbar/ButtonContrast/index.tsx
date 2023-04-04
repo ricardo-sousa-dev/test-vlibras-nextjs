@@ -28,7 +28,7 @@ export default function ContrastButton() {
       buttonContrast.style.cursor = 'pointer'
       buttonContrast.style.background = '#f1f1f1'
       }
-    }, 8000);
+    }, 10000);
   }
   
   const changeContrast = (init: boolean) => {
