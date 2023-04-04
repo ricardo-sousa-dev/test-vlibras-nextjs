@@ -68,19 +68,15 @@ export const changeContrast = (init: boolean) => {
           if (localStorage.getItem('storageContrast') === '4') tag.style.border = `2px solid ${ secondary }`
         }
 
-        if (tag.parentElement.classList.contains('toolbar') ||
-          tag.parentElement.classList.contains('containerToolbar') ||
-          tag.parentElement.classList.contains('divButtonToolbar') ||
-          (tag.tagName == 'p' && tag.parentElement.classList.contains('divButtonToolbar')) ||
+        if (
           tag.getAttribute('id') == '__next' ||
+          tag.parentElement.classList.contains('toolbar') ||
           tag.classList.contains('toolbar') ||
-          tag.parentElement?.classList.contains('toolbar') ||
+          tag.parentElement.classList.contains('containerToolbar') ||
           tag.classList.contains('containerToolbar') ||
-          tag.parentElement?.classList.contains('containerToolbar') ||
+          tag.parentElement.classList.contains('divButtonToolbar') ||
           tag.classList.contains('divButtonToolbar') ||
-          tag.parentElement?.classList.contains('divButtonToolbar') ||
-          tag.classList.contains('a11yIcon') ||
-          tag.parentElement?.classList.contains('a11yIcon') ||
+          (tag.tagName == 'p' && tag.parentElement.classList.contains('divButtonToolbar')) ||
           tag.getAttributeNames().includes('vw') ||
           tag.getAttributeNames().includes('vw-access-button') ||
           tag.parentElement?.classList.contains('vw-access-button') ||
