@@ -8,19 +8,17 @@ let elements: string | any[] | null;
 export default function ContrastButton() {
   const [ disabledContrast, setDisabledContrast ] = useState(true);
 
-  const delayButton = () => {
+  useEffect(() => {
     if (localStorage.getItem('storageLibras') === '2'
       && !document.getElementsByClassName('vpw-box')[ 0 ]) {
       setDisabledContrast(true)
       setTimeout(() => {
         setDisabledContrast(false)
-      }, 10000);
-    }else{
+      }, 12000);
+    } else {
       setDisabledContrast(false)
     }
-  }
-
-  useEffect(() => delayButton(), [])
+  }, [])
 
   const changeContrast = (init: boolean) => {
 
@@ -29,7 +27,7 @@ export default function ContrastButton() {
       setDisabledContrast(true)
       setTimeout(() => {
         setDisabledContrast(false)
-      }, 10000);
+      }, 8000);
     } else {
       setDisabledContrast(false)
 
