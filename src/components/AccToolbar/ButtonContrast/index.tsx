@@ -271,10 +271,14 @@ export default function ContrastButton() {
     if (!storageContrast) {
       localStorage.setItem('storageContrast', JSON.stringify(1));
     }
-    if (localStorage.getItem('storageContrast') != '1') {
-      changeContrast(true)
-    }
-    
+    if (localStorage.getItem('storageLibras') === '2'
+      && !document.getElementsByClassName('vpw-box')[ 0 ]) {
+      delayButton()
+    }else{
+      if (localStorage.getItem('storageContrast') != '1') {
+        changeContrast(true)
+      }
+    }    
   }
 
   return (
