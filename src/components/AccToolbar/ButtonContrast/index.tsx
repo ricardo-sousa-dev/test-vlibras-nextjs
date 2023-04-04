@@ -64,9 +64,11 @@ export default function ContrastButton() {
 
         if (elements){
           console.log(elements)
+          let cont = 0;
           for (let i = 0; i < elements.length; i += 1) {
             const tag = elements[ i ];
-            console.log('IF CONTRAST FOR ' + tag)
+            cont= cont+1
+            console.log('IF CONTRAST FOR - CONT'+cont + tag)
 
             if (
               tag.getAttribute('id') !== '__next' ||
