@@ -4,36 +4,13 @@ import tags from '../utils/tags';
 
 /*eslint-disable */
 let elements: string | any[] | null;
+type LoadLibras = (any & false) | (any & true)
 
-
-export default function ContrastButton() {
+export default function ContrastButton(loadLibras:LoadLibras=false) {
   const [ disabledContrast, setDisabledContrast ] = useState(false);
-
-  // const delayButton = () => {
-  //   setDisabledContrast(true)
-  //   setTimeout(() => {
-  //     setDisabledContrast(false)
-  //   }, 1000);
-  // }
-
+  
   const changeContrast = (init: boolean) => {
-
-    // const searchDivLibras = document.getElementsByTagName('div');
-    // let librasComplete = true;
-
-    // for (let index = 0; index < searchDivLibras.length; index++) {
-    //   const element = searchDivLibras[ index ];
-    //   if (element.getAttributeNames().includes('vw-access-button') &&
-    //     !element.classList.contains('active')) {
-    //     if (!document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]) {
-    //       librasComplete = false;
-    //     }
-    //   }
-    // }
-    setTimeout(() => {
-      
     try {
-
 
       elements = tags()
       const storageContrast = localStorage.getItem('storageContrast')
@@ -46,6 +23,7 @@ export default function ContrastButton() {
       }
 
       if (localStorage.getItem('storageContrast') != '1') {
+
         let primary = '';
         let secondary = '';
 
@@ -64,7 +42,7 @@ export default function ContrastButton() {
             break
         }
 
-        if (elements){
+        if (elements) {
           for (let i = 0; i < elements.length; i += 1) {
             const tag = elements[ i ];
 
@@ -227,8 +205,9 @@ export default function ContrastButton() {
             if (tag.classList.contains('toolbar')) tag.style.background = 'white';
           }
         }
+        
       } else {
-        if (elements){
+        if (elements) {
 
           for (let i = 0; i < elements.length; i += 1) {
             const tag = elements[ i ];
@@ -252,7 +231,6 @@ export default function ContrastButton() {
     } catch (error) {
       console.log('ERROR CONTRAST', error);
     }
-    }, 1000);
 
   };
 

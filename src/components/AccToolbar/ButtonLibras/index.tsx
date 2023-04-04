@@ -5,6 +5,7 @@ import ButtonContrast from '../ButtonContrast'
 /*eslint-disable */
 export default function Libras() {
   const [ disabledLibras, setDisabledLibras ] = useState(true);
+  const [ disabledContrast, setDisabledContrast ] = useState(true);
 
   const storageLibras = localStorage.getItem('storageLibras');
   const delayButton = () => {
@@ -14,10 +15,10 @@ export default function Libras() {
       closeWidget.style.opacity = '0';
     }
     setDisabledLibras(true);
+    setDisabledContrast(true);
 
     setTimeout(() => {
       setDisabledLibras(false);
-      // changeContrast(true)
 
       const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
       if (closeWidget) closeWidget.style.opacity = '0';
@@ -25,13 +26,16 @@ export default function Libras() {
       const titleWidget: HTMLElement = document.getElementsByClassName('vpw-mes')[0]as HTMLElement;
       if (titleWidget) titleWidget.innerText = 'LIBRAS'
     }, 10000);
+
+    setTimeout(() => {
+      setDisabledContrast(false);
+    }, 5000);
   }
 
   useEffect(() => delayButton(), [])
 
   const setLibras = () => {
     if (storageLibras == '1') {
-      console.log('ToolbarButton LIBRAS: 1')
       delayButton()
       localStorage.setItem('storageLibras', JSON.stringify(2))
 
@@ -53,7 +57,6 @@ export default function Libras() {
     }
 
     if (storageLibras == '2') {
-      console.log('ToolbarButton LIBRAS: 2')
       delayButton()
       localStorage.setItem('storageLibras', JSON.stringify(1))
      
@@ -76,14 +79,17 @@ export default function Libras() {
   }
 
   return (
-    disabledLibras ? <ToolbarButton
+    <>
+      <ButtonContrast loadLibras={ disabledContrast }/>
+    {disabledLibras ? <ToolbarButton
       icon='sign_language'
       alt='Libras'
       color='#DCDCDC'
-    /> : <ToolbarButton
+      /> : <ToolbarButton
       icon='sign_language'
       alt='Libras'
       onClick={ setLibras }
-    />
+      />}
+      </>
   );
 }
