@@ -9,28 +9,27 @@ let elements: string | any[] | null;
 export default function ContrastButton() {
   const [ disabledContrast, setDisabledContrast ] = useState(false);
 
-  const delayButton = () => {
-    setDisabledContrast(true)
-    setTimeout(() => {
-      setDisabledContrast(false)
-    }, 1000);
-  }
+  // const delayButton = () => {
+  //   setDisabledContrast(true)
+  //   setTimeout(() => {
+  //     setDisabledContrast(false)
+  //   }, 1000);
+  // }
 
   const changeContrast = (init: boolean) => {
 
-    const searchDivLibras = document.getElementsByTagName('div');
-    let librasComplete = true;
+    // const searchDivLibras = document.getElementsByTagName('div');
+    // let librasComplete = true;
 
-    for (let index = 0; index < searchDivLibras.length; index++) {
-      const element = searchDivLibras[ index ];
-      if (element.getAttributeNames().includes('vw-access-button') &&
-        !element.classList.contains('active')) {
-        if (!document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]) {
-          librasComplete = false;
-        }
-      }
-    }
-    if (librasComplete) {
+    // for (let index = 0; index < searchDivLibras.length; index++) {
+    //   const element = searchDivLibras[ index ];
+    //   if (element.getAttributeNames().includes('vw-access-button') &&
+    //     !element.classList.contains('active')) {
+    //     if (!document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]) {
+    //       librasComplete = false;
+    //     }
+    //   }
+    // }
       elements = tags()
       const storageContrast = localStorage.getItem('storageContrast')
 
@@ -97,63 +96,72 @@ export default function ContrastButton() {
             if (
               tag.getAttribute('id') == '__next' ||
               tag.getAttribute('id') == 'gameContainer' ||
-              tag.getAttributeNames().includes('vp') ||
-              tag.getAttributeNames().includes('vw') ||
               tag.classList.contains('toolbar') ||
               tag.classList.contains('containerToolbar') ||
               tag.classList.contains('divButtonToolbar') ||
-              tag.classList.contains('vpw-component-play') ||
-              tag.classList.contains('vpw-component-pause') ||
-              tag.classList.contains('vpw-component-restart') ||
-              tag.classList.contains('noUi-base') ||
-              tag.classList.contains('noUi-origin') ||
-              tag.classList.contains('noUi-handle') ||
-              tag.classList.contains('vpw-slider') ||
-              tag.classList.contains('vp-settings-btn') ||
-              tag.classList.contains('vp-container') ||
-              tag.classList.contains('vpw-content') ||
-              tag.classList.contains('vpw-regions') ||
-              tag.classList.contains('vpw-cont') ||
-              tag.classList.contains('vpw-flag') ||
-              tag.classList.contains('vpw-container-regions') ||
-              tag.classList.contains('vpw-border-default') ||
-              tag.classList.contains('vpw-img-default') ||
-              tag.classList.contains('vpw-settings-btn-menu') ||
-              tag.classList.contains('vpw-settings-btn-close') ||
-              tag.parentElement?.getAttributeNames().includes('vw') ||
-              tag.parentElement?.getAttribute('id') == 'gameContainer' ||
-              tag.parentElement?.getAttributeNames().includes('vp') ||
-              tag.parentElement?.getAttributeNames().includes('vp-box') ||
-              tag.parentElement?.getAttributeNames().includes('vp-info-screen') ||
-              tag.parentElement?.getAttributeNames().includes('vp-suggestion-screen') ||
-              tag.parentElement?.getAttributeNames().includes('vp-suggestion-button') ||
-              tag.parentElement?.getAttributeNames().includes('vp-rate-box') ||
-              tag.parentElement?.getAttributeNames().includes('vp-rate-button') ||
-              tag.parentElement?.getAttributeNames().includes('vp-controls') ||
-              (tag.tagName == 'p' && tag.parentElement?.classList.contains('divButtonToolbar')) ||
               tag.parentElement?.classList.contains('divButtonToolbar') ||
               tag.parentElement?.classList.contains('containerToolbar') ||
-              tag.parentElement?.classList.contains('toolbar') ||
-              tag.parentElement?.classList.contains('vp-controls-play') ||
-              tag.parentElement?.classList.contains('vpw-slider') ||
-              tag.parentElement?.classList.contains('vpw-content') ||
-              tag.parentElement?.classList.contains('vpw-localism') ||
-              tag.parentElement?.classList.contains('vpw-national') ||
-              tag.parentElement?.classList.contains('vp-settings-btn') ||
-              tag.parentElement?.classList.contains('vpw-controls-speed') ||
-              tag.parentElement?.classList.contains('vp-close-button') ||
-              tag.parentElement?.classList.contains('vpw-controls-subtitles') ||
-              tag.parentElement?.classList.contains('vpw-btn-close') ||
-              tag.parentElement?.classList.contains('vpw-clickable') ||
-              tag.parentElement?.classList.contains('vpw-container-opacity') ||
-              tag.parentElement?.classList.contains('vpw-vlibras-logo') ||
-              tag.parentElement?.classList.contains('vp-button-change-avatar') ||
-              tag.parentElement?.classList.contains('vp-button') ||
-              tag.parentElement?.classList.contains('vp-container')
+              tag.parentElement?.classList.contains('toolbar')
             ) {
               tag.style.removeProperty('background');
               tag.style.removeProperty('border');
               tag.style.removeProperty('color');
+            }
+
+            if (document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]) {
+              if (
+                tag.getAttributeNames().includes('vp') ||
+                tag.getAttributeNames().includes('vw') ||
+                tag.classList.contains('vpw-component-play') ||
+                tag.classList.contains('vpw-component-pause') ||
+                tag.classList.contains('vpw-component-restart') ||
+                tag.classList.contains('noUi-base') ||
+                tag.classList.contains('noUi-origin') ||
+                tag.classList.contains('noUi-handle') ||
+                tag.classList.contains('vpw-slider') ||
+                tag.classList.contains('vp-settings-btn') ||
+                tag.classList.contains('vp-container') ||
+                tag.classList.contains('vpw-content') ||
+                tag.classList.contains('vpw-regions') ||
+                tag.classList.contains('vpw-cont') ||
+                tag.classList.contains('vpw-flag') ||
+                tag.classList.contains('vpw-container-regions') ||
+                tag.classList.contains('vpw-border-default') ||
+                tag.classList.contains('vpw-img-default') ||
+                tag.classList.contains('vpw-settings-btn-menu') ||
+                tag.classList.contains('vpw-settings-btn-close') ||
+                tag.parentElement?.getAttributeNames().includes('vw') ||
+                tag.parentElement?.getAttribute('id') == 'gameContainer' ||
+                tag.parentElement?.getAttributeNames().includes('vp') ||
+                tag.parentElement?.getAttributeNames().includes('vp-box') ||
+                tag.parentElement?.getAttributeNames().includes('vp-info-screen') ||
+                tag.parentElement?.getAttributeNames().includes('vp-suggestion-screen') ||
+                tag.parentElement?.getAttributeNames().includes('vp-suggestion-button') ||
+                tag.parentElement?.getAttributeNames().includes('vp-rate-box') ||
+                tag.parentElement?.getAttributeNames().includes('vp-rate-button') ||
+                tag.parentElement?.getAttributeNames().includes('vp-controls') ||
+                (tag.tagName == 'p' && tag.parentElement?.classList.contains('divButtonToolbar')) ||
+                tag.parentElement?.classList.contains('vp-controls-play') ||
+                tag.parentElement?.classList.contains('vpw-slider') ||
+                tag.parentElement?.classList.contains('vpw-content') ||
+                tag.parentElement?.classList.contains('vpw-localism') ||
+                tag.parentElement?.classList.contains('vpw-national') ||
+                tag.parentElement?.classList.contains('vp-settings-btn') ||
+                tag.parentElement?.classList.contains('vpw-controls-speed') ||
+                tag.parentElement?.classList.contains('vp-close-button') ||
+                tag.parentElement?.classList.contains('vpw-controls-subtitles') ||
+                tag.parentElement?.classList.contains('vpw-btn-close') ||
+                tag.parentElement?.classList.contains('vpw-clickable') ||
+                tag.parentElement?.classList.contains('vpw-container-opacity') ||
+                tag.parentElement?.classList.contains('vpw-vlibras-logo') ||
+                tag.parentElement?.classList.contains('vp-button-change-avatar') ||
+                tag.parentElement?.classList.contains('vp-button') ||
+                tag.parentElement?.classList.contains('vp-container')
+              ) {
+                tag.style.removeProperty('background');
+                tag.style.removeProperty('border');
+                tag.style.removeProperty('color');
+              }
             }
 
             if (tag.classList.contains('toolbar')) tag.style.background = 'white';
@@ -179,9 +187,7 @@ export default function ContrastButton() {
 
           }
       }
-    } else {
-      delayButton();
-    }
+   
   };
 
   let storageContrast: string | null;
