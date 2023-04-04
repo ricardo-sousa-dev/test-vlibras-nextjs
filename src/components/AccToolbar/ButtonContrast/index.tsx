@@ -235,15 +235,15 @@ export default function ContrastButton() {
             tag.style.removeProperty('background');
             tag.style.removeProperty('text-decoration');
 
-            if (tag.tagName === 'BUTTON') tag.style.removeProperty('border');
+            if (tag.tagName === 'BUTTON' && tag.style.border) tag.style.removeProperty('border');
 
             if (tag.classList.contains('floatingIcon')) {
               tag.style.background = '#003F86'
               tag.style.color = 'white'
               tag.style.border = '1px solid #003F86'
             }
-            if (tag.classList.contains('toolbar')) tag.style.background = 'white';
 
+            if (tag.classList.contains('toolbar')) tag.style.background = 'white';
           }
       }
     } catch (error) {
