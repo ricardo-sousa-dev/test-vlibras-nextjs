@@ -100,9 +100,12 @@ export const changeContrast = (init: boolean) => {
           tag.classList.contains('noUi-handle') ||
           tag.classList.contains('vpw-slider') ||
           tag.parentElement?.classList.contains('vpw-slider')||
-          tag.classList.contains('vp-settings-btn')||
-          tag.parentElement?.classList.contains('vp-settings-btn')||
-          tag.parentElement?.classList.contains('vpw-controls-speed')||
+          tag.classList.contains('vp-settings-btn') ||
+          tag.classList.contains('vp-container') ||
+          tag.parentElement?.classList.contains('vp-settings-btn') ||
+          tag.parentElement?.classList.contains('vpw-controls-speed') ||
+          tag.parentElement?.classList.contains('vp-close-button') ||
+          tag.parentElement?.classList.contains('vpw-controls-subtitles') ||
           tag.parentElement?.classList.contains('vp-container')
 
         ) {
