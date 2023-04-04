@@ -235,7 +235,7 @@ export default function ContrastButton() {
           for (let i = 0; i < elements.length; i += 1) {
             const tag = elements[ i ];
             tag.style.removeProperty('color');
-            tag.style.removeProperty('background');
+            if (tag.getAttribute('id') !== 'gameContainer') tag.style.removeProperty('background');
             tag.style.removeProperty('text-decoration');
 
             if (tag.tagName === 'BUTTON') tag.style.removeProperty('border');
