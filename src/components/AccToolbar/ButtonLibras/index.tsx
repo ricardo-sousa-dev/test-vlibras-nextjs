@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import ToolbarButton from '../ToolbarButton';
-import buttonContrast from '../ButtonContrast'
 
 /*eslint-disable */
 export default function Libras() {
@@ -9,12 +8,8 @@ export default function Libras() {
   const storageLibras = localStorage.getItem('storageLibras');
   const delayButton = () => {
 
-    // const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
-    // if (closeWidget) {
-    //   closeWidget.style.opacity = '0';
-    // }
     setDisabledLibras(true);
-
+  
     setTimeout(() => {
       setDisabledLibras(false);
 
