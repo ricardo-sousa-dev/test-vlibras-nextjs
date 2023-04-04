@@ -137,9 +137,9 @@ export default function ContrastButton() {
 
 
               if (tag.tagName === 'BUTTON') {
-                tag.style.background = primary;
-                tag.style.color = secondary;
-                tag.style.border = `1px solid ${ primary } important`
+                if (tag.style.background) tag.style.background = primary;
+                if (tag.style.color) tag.style.color = secondary;
+                if (tag.style.border) tag.style.border = `1px solid ${ primary } important`
               }
 
               if (tag.tagName === 'A') {
