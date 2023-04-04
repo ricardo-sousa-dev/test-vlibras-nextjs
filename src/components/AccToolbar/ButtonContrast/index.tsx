@@ -10,10 +10,21 @@ export default function ContrastButton() {
 
   useEffect(() => {
     const storageContrast = localStorage.getItem('storageContrast')
+
     if (storageContrast !== '1') {
+      if (localStorage.getItem('storageLibras') === '2'
+        && !document.getElementsByClassName('vpw-box')[ 0 ]) {
+        setDisabledContrast(true)
+        setTimeout(() => {
+          setDisabledContrast(false)
+        }, 12000);
+      } else {
+        setDisabledContrast(false)
+      }
       changeContrast(true)
 
     } else {
+      
       if (localStorage.getItem('storageLibras') === '2'
         && !document.getElementsByClassName('vpw-box')[ 0 ]) {
         setDisabledContrast(true)
