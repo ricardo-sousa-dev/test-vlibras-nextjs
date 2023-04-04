@@ -24,7 +24,14 @@ export default function ContrastButton() {
 
   const changeContrast = (init: boolean) => {
 
-    delayButton()
+    if (localStorage.getItem('storageLibras') === '2'
+      && !document.getElementsByClassName('vpw-box')[ 0 ]) {
+      setDisabledContrast(true)
+      setTimeout(() => {
+        setDisabledContrast(false)
+      }, 10000);
+    } else {
+      setDisabledContrast(false)
 
     try {
 
@@ -247,6 +254,8 @@ export default function ContrastButton() {
     } catch (error) {
       console.log('ERROR CONTRAST', error);
     }
+    }
+
   }
 
   return (
