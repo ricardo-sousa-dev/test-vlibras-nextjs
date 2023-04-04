@@ -24,7 +24,7 @@ export default function ContrastButton() {
       }
 
     } else {
-
+      changeContrast(true)
       if (localStorage.getItem('storageLibras') === '2'
         && !document.getElementsByClassName('vpw-box')[ 0 ]) {
         setDisabledContrast(true)
