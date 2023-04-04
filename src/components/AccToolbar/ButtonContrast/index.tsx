@@ -136,11 +136,11 @@ export default function ContrastButton() {
               ) tag.style.border = `1px solid ${ primary }`
 
 
-              if (tag.tagName === 'BUTTON') {
-                if (tag.style.background) tag.style.background = primary;
-                if (tag.style.color) tag.style.color = secondary;
-                if (tag.style.border) tag.style.border = `1px solid ${ primary } important`
-              }
+              // if (tag.tagName === 'BUTTON') {
+              //   if (tag.style.background) tag.style.background = primary;
+              //   if (tag.style.color) tag.style.color = secondary;
+              //   if (tag.style.border) tag.style.border = `1px solid ${ primary } important`
+              // }
 
               if (tag.tagName === 'A') {
                 tag.style.textDecoration = 'underline';
@@ -235,7 +235,7 @@ export default function ContrastButton() {
             tag.style.removeProperty('background');
             tag.style.removeProperty('text-decoration');
 
-            if (tag.tagName === 'BUTTON' && tag.style.border) tag.style.removeProperty('border');
+            // if (tag.tagName === 'BUTTON' && tag.style.border) tag.style.removeProperty('border');
 
             if (tag.classList.contains('floatingIcon')) {
               tag.style.background = '#003F86'
