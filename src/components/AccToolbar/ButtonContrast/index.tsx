@@ -63,12 +63,8 @@ export default function ContrastButton() {
         }
 
         if (elements){
-          console.log(elements)
-          let cont = 0;
           for (let i = 0; i < elements.length; i += 1) {
             const tag = elements[ i ];
-            cont= cont+1
-            console.log('IF CONTRAST FOR - CONT'+cont + tag)
 
             if (
               tag.getAttribute('id') !== '__next' ||
@@ -231,11 +227,9 @@ export default function ContrastButton() {
         }
       } else {
         if (elements){
-          console.log(elements)
 
           for (let i = 0; i < elements.length; i += 1) {
             const tag = elements[ i ];
-            console.log('ELSE CONTRAST FOR ' + tag)
             tag.style.removeProperty('color');
             tag.style.removeProperty('background');
             tag.style.removeProperty('text-decoration');
@@ -252,6 +246,8 @@ export default function ContrastButton() {
           }
         }
       }
+      console.log('================================')
+
     } catch (error) {
       console.log('ERROR CONTRAST', error);
     }
