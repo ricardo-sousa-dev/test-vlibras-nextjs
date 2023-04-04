@@ -92,7 +92,6 @@ export const changeContrast = (init: boolean) => {
           tag.classList.contains('vpw-component-play') ||
           tag.classList.contains('vpw-component-pause') ||
           tag.classList.contains('vpw-component-restart') ||
-          tag.parentElement?.getAttributeNames().includes('vp-change-avatar') ||
           tag.getAttribute('id') == 'gameContainer' ||
           tag.parentElement?.getAttribute('id') == 'gameContainer' ||
           tag.classList.contains('noUi-base') ||
@@ -120,6 +119,8 @@ export const changeContrast = (init: boolean) => {
           tag.parentElement?.classList.contains('vpw-clickable') ||
           tag.parentElement?.classList.contains('vpw-container-opacity') ||
           tag.parentElement?.classList.contains('vpw-vlibras-logo') ||
+          tag.parentElement?.classList.contains('vp-button-change-avatar') ||
+          tag.parentElement?.classList.contains('vp-button') ||
           tag.parentElement?.classList.contains('vp-container')
 
         ) {
