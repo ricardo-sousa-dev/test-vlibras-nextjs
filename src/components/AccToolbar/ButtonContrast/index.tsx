@@ -252,7 +252,7 @@ export default function ContrastButton() {
     } catch (error) {
       console.log('ERROR CONTRAST', error);
     }
-    }, 500);
+    }, 1000);
 
   };
 
