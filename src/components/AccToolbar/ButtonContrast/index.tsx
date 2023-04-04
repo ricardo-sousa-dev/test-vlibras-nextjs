@@ -30,6 +30,9 @@ export default function ContrastButton() {
     //     }
     //   }
     // }
+    try {
+
+
       elements = tags()
       const storageContrast = localStorage.getItem('storageContrast')
 
@@ -187,7 +190,9 @@ export default function ContrastButton() {
 
           }
       }
-   
+    } catch (error) {
+      console.log('ERROR CONTRAST', error);
+    }
   };
 
   let storageContrast: string | null;
