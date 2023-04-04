@@ -111,7 +111,6 @@ export default function ContrastButton() {
               tag.style.removeProperty('color');
             }
 
-            if (document.getElementsByClassName('vpw-settings-btn-close')[ 0 ]) {
               if (
                 tag.getAttributeNames().includes('vp') ||
                 tag.getAttributeNames().includes('vw') ||
@@ -165,7 +164,6 @@ export default function ContrastButton() {
                 tag.style.removeProperty('border');
                 tag.style.removeProperty('color');
               }
-            }
 
             if (tag.classList.contains('toolbar')) tag.style.background = 'white';
           }
