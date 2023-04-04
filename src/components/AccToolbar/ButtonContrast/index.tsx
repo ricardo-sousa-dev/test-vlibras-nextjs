@@ -107,6 +107,8 @@ export const changeContrast = (init: boolean) => {
           tag.classList.contains('vpw-cont') ||
           tag.classList.contains('vpw-flag') ||
           tag.classList.contains('vpw-container-regions') ||
+          tag.classList.contains('vpw-border-default') ||
+          tag.classList.contains('vpw-img-default') ||
           tag.parentElement?.classList.contains('vpw-content') ||
           tag.parentElement?.classList.contains('vpw-localism') ||
           tag.parentElement?.classList.contains('vpw-national') ||
@@ -115,6 +117,9 @@ export const changeContrast = (init: boolean) => {
           tag.parentElement?.classList.contains('vp-close-button') ||
           tag.parentElement?.classList.contains('vpw-controls-subtitles') ||
           tag.parentElement?.classList.contains('vpw-btn-close') ||
+          tag.parentElement?.classList.contains('vpw-clickable') ||
+          tag.parentElement?.classList.contains('vpw-container-opacity') ||
+          tag.parentElement?.classList.contains('vpw-vlibras-span') ||
           tag.parentElement?.classList.contains('vp-container')
 
         ) {
