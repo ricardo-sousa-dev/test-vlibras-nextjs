@@ -5,6 +5,7 @@ import tags from '../utils/tags';
 let elements: string | any[] | null;
 
 export default function ContrastButton() {
+
   const delayButton = () => {
      const buttonContrast = document.getElementById('buttonContrast');
     if (buttonContrast) {
@@ -33,7 +34,7 @@ export default function ContrastButton() {
   
   const changeContrast = (init: boolean) => {
    
-    if (localStorage.getItem('storageContrast') === '2' 
+    if (localStorage.getItem('storageLibras') === '2' 
     && !document.getElementsByClassName('vpw-box')[ 0 ]){
       delayButton()
     }else{
@@ -269,9 +270,11 @@ export default function ContrastButton() {
 
     if (!storageContrast) {
       localStorage.setItem('storageContrast', JSON.stringify(1));
-    } else if (localStorage.getItem('storageContrast') != '1') {
+    }
+    if (localStorage.getItem('storageContrast') != '1') {
       changeContrast(true)
     }
+    
   }
 
   return (
