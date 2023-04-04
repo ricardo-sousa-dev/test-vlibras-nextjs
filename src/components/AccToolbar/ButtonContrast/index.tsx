@@ -122,7 +122,6 @@ export const changeContrast = (init: boolean) => {
           tag.parentElement?.classList.contains('vp-button-change-avatar') ||
           tag.parentElement?.classList.contains('vp-button') ||
           tag.parentElement?.classList.contains('vp-container')
-
         ) {
           tag.style.removeProperty('background');
           tag.style.removeProperty('border');
