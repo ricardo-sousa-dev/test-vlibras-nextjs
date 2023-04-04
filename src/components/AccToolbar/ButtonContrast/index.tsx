@@ -65,6 +65,7 @@ export default function ContrastButton() {
         if (elements)
           for (let i = 0; i < elements.length; i += 1) {
             const tag = elements[ i ];
+            console.log('IF CONTRAST FOR ' + tag)
 
             if (
               tag.getAttribute('id') !== '__next' ||
@@ -229,7 +230,7 @@ export default function ContrastButton() {
         if (elements)
           for (let i = 0; i < elements.length; i += 1) {
             const tag = elements[ i ];
-
+            console.log('ELSE CONTRAST FOR ' + tag)
             tag.style.removeProperty('color');
             tag.style.removeProperty('background');
             tag.style.removeProperty('text-decoration');
