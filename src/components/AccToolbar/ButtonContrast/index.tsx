@@ -98,9 +98,9 @@ export default function ContrastButton() {
               !tag.parentElement?.getAttributeNames().includes('vp-box') ||
               !tag.parentElement?.getAttributeNames().includes('vp-info-screen') ||
               !tag.parentElement?.getAttributeNames().includes('vp-suggestion-screen') ||
-              !tag.parentElement?.getAttributeNames().includes('vp-suggestion-button') ||
+              // !tag.parentElement?.getAttributeNames().includes('vp-suggestion-button') ||
               !tag.parentElement?.getAttributeNames().includes('vp-rate-box') ||
-              !tag.parentElement?.getAttributeNames().includes('vp-rate-button') ||
+              // !tag.parentElement?.getAttributeNames().includes('vp-rate-button') ||
               !tag.parentElement?.getAttributeNames().includes('vp-controls') ||
               !(tag.tagName == 'p' && tag.parentElement?.classList.contains('divButtonToolbar')) ||
               !tag.parentElement?.classList.contains('divButtonToolbar') ||
@@ -111,16 +111,16 @@ export default function ContrastButton() {
               !tag.parentElement?.classList.contains('vpw-content') ||
               !tag.parentElement?.classList.contains('vpw-localism') ||
               !tag.parentElement?.classList.contains('vpw-national') ||
-              !tag.parentElement?.classList.contains('vp-settings-btn') ||
+              // !tag.parentElement?.classList.contains('vp-settings-btn') ||
               !tag.parentElement?.classList.contains('vpw-controls-speed') ||
-              !tag.parentElement?.classList.contains('vp-close-button') ||
+              // !tag.parentElement?.classList.contains('vp-close-button') ||
               !tag.parentElement?.classList.contains('vpw-controls-subtitles') ||
-              !tag.parentElement?.classList.contains('vpw-btn-close') ||
+              // !tag.parentElement?.classList.contains('vpw-btn-close') ||
               !tag.parentElement?.classList.contains('vpw-clickable') ||
               !tag.parentElement?.classList.contains('vpw-container-opacity') ||
               !tag.parentElement?.classList.contains('vpw-vlibras-logo') ||
-              !tag.parentElement?.classList.contains('vp-button-change-avatar') ||
-              !tag.parentElement?.classList.contains('vp-button') ||
+              // !tag.parentElement?.classList.contains('vp-button-change-avatar') ||
+              // !tag.parentElement?.classList.contains('vp-button') ||
               !tag.parentElement?.classList.contains('vp-container')) {
               tag.style.color = primary
               tag.style.background = secondary
