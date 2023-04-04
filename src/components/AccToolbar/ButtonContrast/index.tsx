@@ -11,7 +11,7 @@ export default function ContrastButton() {
   useEffect(() => {
     const storageContrast = localStorage.getItem('storageContrast')
     if (storageContrast !== '1') {
-      changeContrast(false)
+      changeContrast(true)
 
     } else {
       if (localStorage.getItem('storageLibras') === '2'
