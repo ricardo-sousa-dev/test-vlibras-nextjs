@@ -233,7 +233,7 @@ export default function ContrastButton() {
   }
 
   const delayButton = () => {
-    changeContrast(true)
+    changeContrast(false)
 
     if (localStorage.getItem('storageLibras') === '2'
       && !document.getElementsByClassName('vpw-box')[ 0 ]) {
@@ -246,7 +246,7 @@ export default function ContrastButton() {
     }
   }
 
-  useEffect(() => delayButton(), [])
+  useEffect(() => changeContrast(true), [])
 
   return (
     disabledContrast ? <ToolbarButton
