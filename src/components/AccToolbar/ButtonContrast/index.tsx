@@ -253,7 +253,7 @@ export default function ContrastButton() {
     /> : <ToolbarButton
       icon='contrast'
       alt='Contraste'
-      onClick={ () => changeContrast(true) }
+      onClick={ () => changeContrast(false) }
     />
   );
 }
