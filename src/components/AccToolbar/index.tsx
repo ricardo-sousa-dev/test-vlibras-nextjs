@@ -42,6 +42,15 @@ export default function AccToolbar() {
         if (openWidget) openWidget.click()
       }, 3000);
     }
+
+    // if (localStorage.getItem('storageContrast') !== '1') {
+    //   if (localStorage.getItem('storageLibras') == '1') {
+    //     changeContrast(true);
+    //   } else if (localStorage.getItem('storageLibras') === '2'
+    //     && document.getElementsByClassName('vpw-box')[ 0 ]) {
+    //     changeContrast(true);
+    //   }
+    // }
   }, []);
 
   const closeToolbar = () => {
