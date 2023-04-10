@@ -4,13 +4,13 @@ import ToolbarButton from '../ToolbarButton';
 /*eslint-disable */
 export default function Libras() {
   const [ disabledLibras, setDisabledLibras ] = useState(true);
-  let firstLoad = true;
+  const [ firstLoading, setFirstLoading] = useState(true);
 
   const storageLibras = localStorage.getItem('storageLibras');
 
   const delayButton = () => {
 
-    if (firstLoad) {
+    if (firstLoading) {
       setDisabledLibras(true);
 
       setTimeout(() => {
@@ -21,7 +21,7 @@ export default function Libras() {
 
         const titleWidget: HTMLElement = document.getElementsByClassName('vpw-mes')[ 0 ] as HTMLElement;
         if (titleWidget) titleWidget.innerText = 'LIBRAS'
-        firstLoad = false;
+        setFirstLoading(false);
       }, 10000);
     
     } else {
@@ -36,6 +36,7 @@ export default function Libras() {
 
   const setLibras = () => {
     delayButton()
+    
     if (storageLibras == '1') {
       localStorage.setItem('storageLibras', JSON.stringify(2))
 
