@@ -5,37 +5,41 @@ import ToolbarButton from '../ToolbarButton';
 export default function Libras() {
   const [ disabledLibras, setDisabledLibras ] = useState(false);
 
-  const storageLibras = localStorage.getItem('storageLibras');
-
   const delayButton = () => {
-    if (localStorage.getItem('storageLibras') === '2'
-      && !document.getElementsByClassName('vpw-box')[ 0 ]
-      && process.env.NODE_ENV !== 'production') {
+    const storageLibras = localStorage.getItem('storageLibras');
 
-      setTimeout(() => {
+    if (storageLibras === '1') {
+      setDisabledLibras(false);
+    }
+
+    if (storageLibras === '2') {
+
+      if (!document.getElementsByClassName('vpw-box')[ 0 ]
+        && process.env.NODE_ENV !== 'production') {
+        setDisabledLibras(true);
+
+        setTimeout(() => {
+          setDisabledLibras(false);
+          const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
+          if (closeWidget) closeWidget.style.opacity = '0';
+
+          const titleWidget: HTMLElement = document.getElementsByClassName('vpw-mes')[ 0 ] as HTMLElement;
+          if (titleWidget) titleWidget.innerText = 'LIBRAS'
+        }, 10000);
+      } else if (document.getElementsByClassName('vpw-box')[ 0 ]){
         setDisabledLibras(false);
-        const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
-        if (closeWidget) closeWidget.style.opacity = '0';
-
-        const titleWidget: HTMLElement = document.getElementsByClassName('vpw-mes')[ 0 ] as HTMLElement;
-        if (titleWidget) titleWidget.innerText = 'LIBRAS'
-      }, 10000);
-    } else {
-      setDisabledLibras(false);
-    }
-
-    if (localStorage.getItem('storageLibras') === '1'){
-      setDisabledLibras(false);
-    }
+      }
+    } 
   }
 
   useEffect(() => delayButton, [])
 
   const setLibras = () => {
-    delayButton()
-
+    const storageLibras = localStorage.getItem('storageLibras');
+    
     if (storageLibras == '1') {
       localStorage.setItem('storageLibras', JSON.stringify(2))
+      delayButton()
 
       try {
         const showWidget = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement
@@ -56,6 +60,7 @@ export default function Libras() {
 
     if (storageLibras == '2') {
       localStorage.setItem('storageLibras', JSON.stringify(1))
+      delayButton()
 
       try {
         const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
