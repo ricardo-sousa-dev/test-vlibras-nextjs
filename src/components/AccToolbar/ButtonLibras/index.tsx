@@ -14,7 +14,7 @@ export default function Libras() {
 
     if (storageLibras === '2') {
 
-      if (!document.getElementsByClassName('vpw-box')[ 0 ]) {
+      // if (!document.getElementsByClassName('vpw-box')[ 0 ]) {
         setDisabledLibras(true);
 
         setTimeout(() => {
@@ -26,9 +26,9 @@ export default function Libras() {
           if (titleWidget) titleWidget.innerText = 'LIBRAS'
         }, 10000);
 
-      } else {
-        setDisabledLibras(false);
-      }
+      // } else {
+        // setDisabledLibras(false);
+      // }
     } 
   }
 
