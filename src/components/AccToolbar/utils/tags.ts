@@ -59,7 +59,6 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
         !tag.classList.contains('noUi-origin') &&
         !tag.classList.contains('noUi-handle') &&
         !tag.classList.contains('vpw-slider') &&
-        !tag.classList.contains('vp-settings-btn') &&
         !tag.classList.contains('vpw-settings-btn') &&
         !tag.classList.contains('vp-container') &&
         !tag.classList.contains('vpw-content') &&
