@@ -17,8 +17,7 @@ export default function Libras() {
       }, 10000);
     } else {
       setTimeout(() => {
-
-      setDisabledLibras(false);
+        setDisabledLibras(false);
       }, 6000);
 
     }
@@ -30,11 +29,16 @@ export default function Libras() {
     if (storageLibras == '1') {
       localStorage.setItem('storageLibras', JSON.stringify(2))
 
-        setDisabledLibras(true)
+      setDisabledLibras(true)
+      if (!document.getElementsByClassName('vpw-box')[ 0 ]) {
+        setTimeout(() => {
+          setDisabledLibras(false)
+        }, 10000);
+      } else {
         setTimeout(() => {
           setDisabledLibras(false)
         }, 3000);
-
+      }
 
       try {
         const showWidget = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement
