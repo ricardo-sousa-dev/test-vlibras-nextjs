@@ -4,21 +4,31 @@ import ToolbarButton from '../ToolbarButton';
 /*eslint-disable */
 export default function Libras() {
   const [ disabledLibras, setDisabledLibras ] = useState(true);
+  let firstLoad = true;
 
   const storageLibras = localStorage.getItem('storageLibras');
   const delayButton = () => {
 
-    setDisabledLibras(true);
-  
-    setTimeout(() => {
-      setDisabledLibras(false);
+    if (firstLoad) {
+      setDisabledLibras(true);
 
-      const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
-      if (closeWidget) closeWidget.style.opacity = '0';
+      setTimeout(() => {
+        setDisabledLibras(false);
 
-      const titleWidget: HTMLElement = document.getElementsByClassName('vpw-mes')[ 0 ] as HTMLElement;
-      if (titleWidget) titleWidget.innerText = 'LIBRAS'
-    }, 10000);
+        const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
+        if (closeWidget) closeWidget.style.opacity = '0';
+
+        const titleWidget: HTMLElement = document.getElementsByClassName('vpw-mes')[ 0 ] as HTMLElement;
+        if (titleWidget) titleWidget.innerText = 'LIBRAS'
+        firstLoad = false;
+      }, 10000);
+    
+    } else {
+      setDisabledLibras(true);
+      setTimeout(() => {
+        setDisabledLibras(false);
+      }, 3000);
+    }
   }
 
   useEffect(() => delayButton(), [])
