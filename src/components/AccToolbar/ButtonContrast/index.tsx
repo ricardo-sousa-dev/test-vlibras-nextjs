@@ -142,16 +142,26 @@ export default function ContrastButton() {
               tag.getAttribute('id') == '__next' ||
               tag.classList.contains('toolbar') ||
               tag.classList.contains('containerToolbar') ||
-              tag.classList.contains('divButtonToolbar') ||
               tag.parentElement?.classList.contains('divButtonToolbar') ||
               tag.parentElement?.classList.contains('containerToolbar') ||
+              tag.parentElement?.classList.contains('closeToolbar') ||
               tag.parentElement?.classList.contains('toolbar')
+              && !tag.classList.contains('divButtonToolbar')
+              
             ) {
               tag.style.removeProperty('background');
               tag.style.removeProperty('border');
               tag.style.removeProperty('color');
             }
 
+            if (tag.classList.contains('divButtonToolbar')){
+              tag.style.background = 'transparent';
+              tag.style.border = '1px solid transparent';
+            }
+
+          
+          
+            // if (localStorage.getItem('storageContrast') === '4')
             if (
               tag.getAttributeNames().includes('vp') ||
               tag.getAttributeNames().includes('vw') ||
@@ -205,6 +215,10 @@ export default function ContrastButton() {
               tag.style.removeProperty('background');
               tag.style.removeProperty('border');
               tag.style.removeProperty('color');
+            }
+
+            if (tag.parentElement?.classList.contains('closeToolbar')) {
+              tag.style.color = 'black !important';
             }
 
             if (tag.classList.contains('toolbar')) tag.style.background = 'white';

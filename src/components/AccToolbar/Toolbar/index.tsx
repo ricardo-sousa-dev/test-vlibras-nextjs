@@ -21,7 +21,7 @@ export default function Toolbar() {
         boxShadow: '1px 3px 10px 3px rgba(0, 0, 0, 0.20)',
         zIndex: '999',
         height: 'fit-content',
-        border: '1px solid gray',
+        borderRadius: '8px',
         margin: '0'
       } }>
       <div
