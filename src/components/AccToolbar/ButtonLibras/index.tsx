@@ -12,7 +12,6 @@ export default function Libras() {
       && !document.getElementsByClassName('vpw-box')[ 0 ]
       && process.env.NODE_ENV !== 'production') {
 
-      setDisabledLibras(true);
       setTimeout(() => {
         setDisabledLibras(false);
         const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
