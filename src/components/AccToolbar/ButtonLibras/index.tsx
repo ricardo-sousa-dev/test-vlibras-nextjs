@@ -20,62 +20,56 @@ export default function Libras() {
     }
   }, [])
 
-
-
-
   const setLibras = () => {
     const storageLibras = localStorage.getItem('storageLibras');
 
-    if (localStorage.getItem('storageLibras') === '2'
-      && !document.getElementsByClassName('vpw-box')[ 0 ]
-      && process.env.NODE_ENV !== 'production') {
+    if (storageLibras == '1') {
+      localStorage.setItem('storageLibras', JSON.stringify(2))
 
-      setDisabledLibras(true)
-      setTimeout(() => {
-        setDisabledLibras(false)
-      }, 10000);
+      if (!document.getElementsByClassName('vpw-box')[ 0 ]
+        && process.env.NODE_ENV !== 'production') {
 
-    } else {
-      setDisabledLibras(false)
-
-      if (storageLibras == '1') {
-        localStorage.setItem('storageLibras', JSON.stringify(2))
-
-        try {
-          const showWidget = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement
-          showWidget.click();
-          const selectText = document.getElementsByClassName('vw-text')
-
-          for (let index = 0; index < selectText.length; index++) {
-            const element = selectText[ index ];
-            if (!element.parentElement?.classList.contains('material-symbols-outlined')) {
-              element.remove();
-            }
-          }
-
-        } catch (error) {
-          console.log('error: ' + error)
-        }
+        setDisabledLibras(true)
+        setTimeout(() => {
+          setDisabledLibras(false)
+        }, 10000);
       }
 
-      if (storageLibras == '2') {
-        localStorage.setItem('storageLibras', JSON.stringify(1))
 
-        try {
-          const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
-          closeWidget.click()
-          const selectText = document.getElementsByClassName('vw-text')
+      try {
+        const showWidget = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement
+        showWidget.click();
+        // const selectText = document.getElementsByClassName('vw-text')
 
-          for (let index = 0; index < selectText.length; index++) {
-            const element = selectText[ index ];
-            if (!element.parentElement?.classList.contains('material-symbols-outlined')) {
-              element.remove();
-            }
+        // for (let index = 0; index < selectText.length; index++) {
+        //   const element = selectText[ index ];
+        //   if (!element.parentElement?.classList.contains('material-symbols-outlined')) {
+        //     element.remove();
+        //   }
+        // }
+
+      } catch (error) {
+        console.log('error: ' + error)
+      }
+    }
+
+    if (storageLibras == '2') {
+      localStorage.setItem('storageLibras', JSON.stringify(1))
+
+      try {
+        const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
+        closeWidget.click()
+        const selectText = document.getElementsByClassName('vw-text')
+
+        for (let index = 0; index < selectText.length; index++) {
+          const element = selectText[ index ];
+          if (!element.parentElement?.classList.contains('material-symbols-outlined')) {
+            element.remove();
           }
-
-        } catch (error) {
-          console.log('error: ' + error)
         }
+
+      } catch (error) {
+        console.log('error: ' + error)
       }
     }
   }
