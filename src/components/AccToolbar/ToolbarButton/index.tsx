@@ -45,10 +45,12 @@ export default function ToolbarButton({ icon, alt, onClick, idButton, color }: I
           margin: '0',
           padding: '0',
           fontSize: '8px',
-          color: 'black',
+          color: '#000000 !important',
           fontFamily: 'Lexend Deca, sans-serif'
-        } }>
+        } }
+        id='legendButton'>
         { alt }
+        
       </p>
     </div>
   );
