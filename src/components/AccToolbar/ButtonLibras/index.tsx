@@ -8,13 +8,10 @@ export default function Libras() {
 
   const storageLibras = localStorage.getItem('storageLibras');
 
-  const delayButton = () => {
-
-    if (firstLoading) {
-      setDisabledLibras(true);
-
+  useEffect(() => {
+    if (localStorage.getItem('storageLibras') === '2') {
       setTimeout(() => {
-        setDisabledLibras(false);
+        setDisabledLibras(false)
 
         const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
         if (closeWidget) closeWidget.style.opacity = '0';
@@ -22,21 +19,23 @@ export default function Libras() {
         const titleWidget: HTMLElement = document.getElementsByClassName('vpw-mes')[ 0 ] as HTMLElement;
         if (titleWidget) titleWidget.innerText = 'LIBRAS'
         setFirstLoading(false);
+
       }, 10000);
-    
     } else {
+      setDisabledLibras(false);
+    }
+  }, [])
+
+  const delayButton = () => {
       setDisabledLibras(true);
       setTimeout(() => {
         setDisabledLibras(false);
       }, 3000);
     }
-  }
-
-  useEffect(() => delayButton(), [])
 
   const setLibras = () => {
     delayButton()
-    
+
     if (storageLibras == '1') {
       localStorage.setItem('storageLibras', JSON.stringify(2))
 
