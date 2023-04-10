@@ -241,12 +241,11 @@ export default function ContrastButton() {
     if (localStorage.getItem('storageLibras') === '2') {
       setTimeout(() => {
         setDisabledContrast(false);
-        changeContrast(true)
       }, 8000);
     } else {
       setDisabledContrast(false);
-      changeContrast(true)
     }
+    changeContrast(true)
 
   }, [])
 
