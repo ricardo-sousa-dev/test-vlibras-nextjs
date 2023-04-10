@@ -13,7 +13,9 @@ export default function ContrastButton() {
     setTimeout(() => {
       setDisabledContrast(false)
     }, 8000);
-  }
+  }else{
+  setDisabledContrast(false);
+}
 
   const changeContrast = (init: boolean) => {
     if (localStorage.getItem('storageLibras') === '2'
