@@ -43,10 +43,10 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
 
     return arrayTags.filter(
       (tag) =>
-      tag.getAttribute('id') !== '__next' &&
-      tag.getAttribute('id') !== 'gameContainer' &&
-      tag.getAttribute('id') !== 'legendButton' &&
-      tag.parentElement?.getAttribute('id') !== 'gameContainer' &&
+        tag.getAttribute('id') !== '__next' &&
+        tag.getAttribute('id') !== 'gameContainer' &&
+        tag.getAttribute('id') !== 'legendButton' &&
+        tag.parentElement?.getAttribute('id') !== 'gameContainer' &&
         !tag.getAttributeNames().includes('vp') &&
         !tag.getAttributeNames().includes('vw') &&
         !tag.classList.contains('toolbar') &&
@@ -60,6 +60,7 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
         !tag.classList.contains('noUi-handle') &&
         !tag.classList.contains('vpw-slider') &&
         !tag.classList.contains('vp-settings-btn') &&
+        !tag.classList.contains('vpw-settings-btn') &&
         !tag.classList.contains('vp-container') &&
         !tag.classList.contains('vpw-content') &&
         !tag.classList.contains('vpw-regions') &&
@@ -86,7 +87,7 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
         !tag.parentElement?.classList.contains('vpw-content') &&
         !tag.parentElement?.classList.contains('vpw-localism') &&
         !tag.parentElement?.classList.contains('vpw-national') &&
-        !tag.parentElement?.classList.contains('vp-settings-btn') &&
+        !tag.parentElement?.classList.contains('vpw-settings-btn') &&
         !tag.parentElement?.classList.contains('vpw-controls-speed') &&
         !tag.parentElement?.classList.contains('vp-close-button') &&
         !tag.parentElement?.classList.contains('vpw-controls-subtitles') &&
