@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ToolbarButton from '../ToolbarButton';
 import tags from '../utils/tags';
 
@@ -8,23 +8,28 @@ let elements: string | any[] | null;
 
 export default function ContrastButton() {
   const [ disabledContrast, setDisabledContrast ] = useState(true);
-  
-  if (localStorage.getItem('storageLibras') === '2'){
-    setTimeout(() => {
-      setDisabledContrast(false)
-    }, 8000);
-  }else{
-  setDisabledContrast(false);
-}
+
+  useEffect(() => {
+    if (localStorage.getItem('storageLibras') === '2') {
+      setTimeout(() => {
+        setDisabledContrast(false)
+      }, 8000);
+    } else {
+      setDisabledContrast(false);
+    }
+  }, [])
 
   const changeContrast = (init: boolean) => {
+
     if (localStorage.getItem('storageLibras') === '2'
       && !document.getElementsByClassName('vpw-box')[ 0 ]
       && process.env.NODE_ENV !== 'production') {
+
       setDisabledContrast(true)
       setTimeout(() => {
         setDisabledContrast(false)
       }, 10000);
+      
     } else {
       setDisabledContrast(false)
       try {
