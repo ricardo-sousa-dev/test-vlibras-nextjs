@@ -7,6 +7,7 @@ export default function Libras() {
   let firstLoad = true;
 
   const storageLibras = localStorage.getItem('storageLibras');
+
   const delayButton = () => {
 
     if (firstLoad) {
@@ -34,8 +35,8 @@ export default function Libras() {
   useEffect(() => delayButton(), [])
 
   const setLibras = () => {
+    delayButton()
     if (storageLibras == '1') {
-      delayButton()
       localStorage.setItem('storageLibras', JSON.stringify(2))
 
       try {
@@ -56,7 +57,6 @@ export default function Libras() {
     }
 
     if (storageLibras == '2') {
-      delayButton()
       localStorage.setItem('storageLibras', JSON.stringify(1))
 
       try {
