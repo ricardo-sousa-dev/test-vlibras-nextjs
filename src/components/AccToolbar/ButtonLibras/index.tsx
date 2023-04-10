@@ -23,6 +23,10 @@ export default function Libras() {
     } else {
       setDisabledLibras(false);
     }
+
+    if (localStorage.getItem('storageLibras') === '1'){
+      setDisabledLibras(false);
+    }
   }
 
   useEffect(() => delayButton, [])
