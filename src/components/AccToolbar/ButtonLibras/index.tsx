@@ -16,7 +16,11 @@ export default function Libras() {
         if (titleWidget) titleWidget.innerText = 'LIBRAS'
       }, 10000);
     } else {
+      setTimeout(() => {
+
       setDisabledLibras(false);
+      }, 6000);
+
     }
   }, [])
 
@@ -26,27 +30,15 @@ export default function Libras() {
     if (storageLibras == '1') {
       localStorage.setItem('storageLibras', JSON.stringify(2))
 
-      if (!document.getElementsByClassName('vpw-box')[ 0 ]
-        && process.env.NODE_ENV !== 'production') {
-
         setDisabledLibras(true)
         setTimeout(() => {
           setDisabledLibras(false)
-        }, 10000);
-      }
+        }, 3000);
 
 
       try {
         const showWidget = document.getElementsByClassName('access-button')[ 0 ] as HTMLElement
         showWidget.click();
-        // const selectText = document.getElementsByClassName('vw-text')
-
-        // for (let index = 0; index < selectText.length; index++) {
-        //   const element = selectText[ index ];
-        //   if (!element.parentElement?.classList.contains('material-symbols-outlined')) {
-        //     element.remove();
-        //   }
-        // }
 
       } catch (error) {
         console.log('error: ' + error)
@@ -59,14 +51,14 @@ export default function Libras() {
       try {
         const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
         closeWidget.click()
-        const selectText = document.getElementsByClassName('vw-text')
+        // const selectText = document.getElementsByClassName('vw-text')
 
-        for (let index = 0; index < selectText.length; index++) {
-          const element = selectText[ index ];
-          if (!element.parentElement?.classList.contains('material-symbols-outlined')) {
-            element.remove();
-          }
-        }
+        // for (let index = 0; index < selectText.length; index++) {
+        //   const element = selectText[ index ];
+        //   if (!element.parentElement?.classList.contains('material-symbols-outlined')) {
+        //     element.remove();
+        //   }
+        // }
 
       } catch (error) {
         console.log('error: ' + error)
