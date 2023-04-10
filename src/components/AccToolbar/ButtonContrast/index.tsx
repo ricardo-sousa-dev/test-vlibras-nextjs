@@ -9,9 +9,11 @@ let elements: string | any[] | null;
 export default function ContrastButton() {
   const [ disabledContrast, setDisabledContrast ] = useState(true);
   
-  setTimeout(() => {
-    setDisabledContrast(false)
-  }, 6000);
+  if (localStorage.getItem('storageLibras') === '2'){
+    setTimeout(() => {
+      setDisabledContrast(false)
+    }, 8000);
+  }
 
   const changeContrast = (init: boolean) => {
     if (localStorage.getItem('storageLibras') === '2'
