@@ -33,6 +33,8 @@ export default function Libras() {
       if (!document.getElementsByClassName('vpw-box')[ 0 ]) {
         setTimeout(() => {
           setDisabledLibras(false)
+          const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[ 0 ] as HTMLElement;
+          closeWidget.addEventListener('click', () => localStorage.setItem('storageLibras', JSON.stringify(1)));
         }, 10000);
       } else {
         setTimeout(() => {
