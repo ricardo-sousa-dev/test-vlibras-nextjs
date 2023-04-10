@@ -3,7 +3,7 @@ import ToolbarButton from '../ToolbarButton';
 
 /*eslint-disable */
 export default function Libras() {
-  const [ disabledLibras, setDisabledLibras ] = useState(false);
+  const [ disabledLibras, setDisabledLibras ] = useState(true);
 
   const delayButton = () => {
     const storageLibras = localStorage.getItem('storageLibras');
