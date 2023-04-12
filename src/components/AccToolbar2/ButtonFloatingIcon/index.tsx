@@ -1,12 +1,12 @@
 export default function FloatingIcon({ setShowToolbar, showToolbar, icon }: React.ComponentState) {
-  if (!icon) return null;
-
+ if(!icon)return null;
+ 
   return (
     <button
       type='button'
       className='floatingIcon'
-      onClick={() => setShowToolbar(!showToolbar)}
-      style={{
+      onClick={ () => setShowToolbar(!showToolbar) }
+      style={ {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -21,9 +21,11 @@ export default function FloatingIcon({ setShowToolbar, showToolbar, icon }: Reac
         zIndex: '999',
         background: '#003F86',
         padding: '0',
-        color: 'white',
-      }}>
-      <span className='material-symbols-outlined'>{icon}</span>
+        color: 'white'
+      } }>
+      <span className="material-symbols-outlined">
+        { icon }
+      </span>
     </button>
   );
 }

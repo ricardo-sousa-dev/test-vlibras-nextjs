@@ -1,15 +1,16 @@
 import ButtonContrast from '../ButtonContrast';
-import ButtonLibras from '../ButtonLibras';
-import ButtonReset from '../ButtonReset';
 import ButtonTextStyle from '../ButtonTextStyle';
 import ButtonZoomPage from '../ButtonZoomPage';
+import ButtonLibras from '../ButtonLibras'
+import ButtonReset from '../ButtonReset'
 import ToolbarButton from '../ToolbarButton';
 
 export default function Toolbar() {
+
   return (
     <div
       className='toolbar'
-      style={{
+      style={ {
         backgroundColor: 'white',
         display: 'flex',
         flexWrap: 'nowrap',
@@ -21,16 +22,16 @@ export default function Toolbar() {
         zIndex: '999',
         height: 'fit-content',
         borderRadius: '8px',
-        margin: '0',
-      }}>
+        margin: '0'
+      } }>
       <div
         className='containerToolbar'
-        style={{
+        style={ {
           display: 'flex',
           justifyContent: 'center',
           width: '100%',
-          gap: '5px',
-        }}>
+          gap: '5px'
+        } }>
         <ButtonTextStyle />
         <ButtonZoomPage />
         <ButtonContrast />
@@ -41,9 +42,6 @@ export default function Toolbar() {
         <ToolbarButton
           icon='close'
           alt='Fechar'
-          onClick={(): void => {}}
-          color=''
-          idButton=''
         />
       </div>
     </div>

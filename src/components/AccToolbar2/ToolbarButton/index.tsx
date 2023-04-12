@@ -1,58 +1,56 @@
 import React, { MouseEventHandler } from 'react';
 
-/*eslint-disable */
-
 interface Icon {
   icon: string;
   alt: string;
-  onClick: MouseEventHandler<HTMLElement>;
-  idButton: string;
-  color: string;
+  onClick?: MouseEventHandler<HTMLElement>;
+  idButton?: string;
+  id?: string;
+  color?:string;
 }
 
 export default function ToolbarButton({ icon, alt, onClick, idButton, color }: Icon) {
   return (
     <div
       className='divButtonToolbar'
-      style={{
+      style={ {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         border: '1px solid transparent',
-      }}>
+      } }>
       <button
         type='button'
-        style={{
+        style={ {
           padding: '2px 4px',
           border: '1px solid black !important',
           borderRadius: '7px',
           cursor: 'pointer',
           background: '#f1f1f1',
-        }}
+        } }
         className='a11yIcon'
-        id={idButton}
-        onClick={onClick}>
-        <div>
-          <span
-            style={{
-              borderRadius: '7px',
-              color,
-            }}
-            className='material-symbols-outlined'>
-            {icon}
-          </span>
-        </div>
+        id={ idButton }
+        onClick={ onClick }>
+        <span
+          style={ {
+            borderRadius: '7px',
+            color: color
+          } }
+          className="material-symbols-outlined">
+          { icon }
+        </span>
       </button>
       <p
-        style={{
+        style={ {
           margin: '0',
           padding: '0',
           fontSize: '8px',
           color: '#000000 !important',
-          fontFamily: 'Lexend Deca, sans-serif',
-        }}
+          fontFamily: 'Lexend Deca, sans-serif'
+        } }
         id='legendButton'>
-        {alt}
+        { alt }
+        
       </p>
     </div>
   );

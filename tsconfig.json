@@ -28,8 +28,9 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "src/components/AccToolbar/VLibras/index.js"  ],
+    "**/*.tsx",
+    "src/components/AccToolbar2/VLibras/index.js"
+  ],
   "exclude": [
     "node_modules"
   ]
