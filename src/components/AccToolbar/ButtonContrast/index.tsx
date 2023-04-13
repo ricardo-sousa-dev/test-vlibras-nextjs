@@ -124,7 +124,6 @@ export default function ContrastButton() {
       <button
         type='button'
         style={ {
-          background: !disabledContrast ? 'inherit' : 'gray',
           padding: '2px 4px',
           border: '1px solid black !important',
           borderRadius: '7px',

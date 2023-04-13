@@ -74,7 +74,6 @@ export default function Libras() {
       <button
         type='button'
         style={{
-          background:!disabledLibras? 'inherit': 'gray',
           padding: '2px 4px',
           border: '1px solid black !important',
           borderRadius: '7px',
