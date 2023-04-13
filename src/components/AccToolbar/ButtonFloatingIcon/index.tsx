@@ -11,7 +11,7 @@ export default function FloatingIcon({ setShowToolbar, showToolbar, icon }: Reac
         justifyContent: 'center',
         alignItems: 'center',
         position: 'fixed',
-        bottom: '50%',
+        bottom: '68%',
         right: '0',
         width: '35px',
         height: '35px',
