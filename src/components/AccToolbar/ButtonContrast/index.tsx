@@ -128,21 +128,15 @@ export default function ContrastButton() {
           border: '1px solid black !important',
           borderRadius: '7px',
           cursor: 'pointer',
-          background: disabledContrast ? 'red' : '#f1f1f1',
+          background: disabledContrast ?  'gray':'none',
         } }
         className='a11yIcon'
         onClick={ () => changeContrast(false) }>
-        {/* { Image ? <Image
-            src={ require('../utils/icons/contrast.svg') }
-            height={ 25 }
-            width={ 25 }
-          /> :
-            <img src='../utils/icons/contrast.svg' alt="Contraste" />
-          } */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="25"
           width="25"
+          // fill= {disabledContrast? 'white' : 'none'}
           className='iconToolbar'
           viewBox="0 96 960 960"
         >
