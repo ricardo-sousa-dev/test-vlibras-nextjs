@@ -16,10 +16,10 @@ export default function FloatingIcon({ setShowToolbar, showToolbar, icon }: Reac
         width: '35px',
         height: '35px',
         borderRadius: '10px',
-        border: '1px solid white',
+        border: '1px solid black',
         cursor: 'pointer',
         zIndex: '999',
-        background: '#003F86',
+        background: '#F1F1F1',
         padding: '0',
         color: 'white',
       }}>

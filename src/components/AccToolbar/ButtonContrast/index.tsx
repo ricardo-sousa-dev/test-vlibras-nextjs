@@ -69,27 +69,16 @@ export default function ContrastButton() {
               tag.style.border = `1px solid ${ primary } important`;
             }
 
+            if (tag.getAttribute('class') === 'a11yIcon') tag.style.background = secondary;
+
             if (tag.tagName === 'A') {
               tag.style.textDecoration = 'underline';
             }
 
-
             Array.from(document.getElementsByClassName('iconToolbar')).forEach((item) => {
-              switch (localStorage.getItem('storageContrast')) {
-                case '2':
-                  item.setAttribute('fill', 'blue')
-                  break;
-                case '3':
-                    item.setAttribute('fill', 'yellow')
-                  break;
-                case '4':
-                  item.setAttribute('fill', 'black')
-                  break;
-                default:
-                  break;
-              }
+                item.setAttribute('fill', `${ primary }`)
             })
-
+            document.getElementsByClassName('floatingIcon')[ 0 ].children[ 0 ].setAttribute('fill', `${ secondary}`)
           }
         }
       } else {
@@ -136,7 +125,7 @@ export default function ContrastButton() {
         type='button'
         style={ {
           padding: '2px 4px',
-          border: '1px solid transparent !important',
+          border: '1px solid black !important',
           borderRadius: '7px',
           cursor: 'pointer',
           background: disabledContrast ? 'red' : '#f1f1f1',
