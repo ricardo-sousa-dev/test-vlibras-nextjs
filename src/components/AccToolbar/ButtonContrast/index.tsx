@@ -1,17 +1,14 @@
 import { useEffect, useState } from 'react';
 
-import ToolbarButton from '../ToolbarButton';
-import Head from '../utils/head';
 import tags from '../utils/tags';
-
 /*eslint-disable */
+let elements: string | any[] | null;
 
 export default function ContrastButton() {
-  const [disabledContrast, setDisabledContrast] = useState(true);
-  let elements: string | any[] | null;
+  const [ disabledContrast, setDisabledContrast ] = useState(true);
 
   const changeContrast = (init: boolean) => {
-    if (!document.getElementsByClassName('vpw-box')[0]) {
+    if (!document.getElementsByClassName('vpw-box')[ 0 ]) {
       setTimeout(() => {
         setDisabledContrast(false);
       }, 10000);
@@ -49,7 +46,7 @@ export default function ContrastButton() {
 
         if (elements) {
           for (let i = 0; i < elements.length; i += 1) {
-            const tag = elements[i];
+            const tag = elements[ i ];
 
             tag.style.color = primary;
             tag.style.background = secondary;
@@ -62,32 +59,50 @@ export default function ContrastButton() {
               tag.tagName !== 'H5' &&
               tag.tagName !== 'H6' &&
               tag.tagName !== 'P' &&
-              tag.tagName !== 'LI' &&
-              tag.tagName !== 'A' &&
-              tag.tagName !== 'DIV' &&
-              tag.tagName !== 'IMG'
+              tag.tagName !== 'A'
             )
-              tag.style.border = `1px solid ${primary}`;
+              tag.style.border = `1px solid ${ primary }`;
 
             if (tag.tagName === 'BUTTON' && typeof tag !== 'undefined') {
               tag.style.background = primary;
               tag.style.color = secondary;
-              tag.style.border = `1px solid ${primary} important`;
+              tag.style.border = `1px solid ${ primary } important`;
             }
 
             if (tag.tagName === 'A') {
               tag.style.textDecoration = 'underline';
             }
+
+
+            Array.from(document.getElementsByClassName('iconToolbar')).forEach((item) => {
+              switch (localStorage.getItem('storageContrast')) {
+                case '2':
+                  item.setAttribute('fill', 'blue')
+                  break;
+                case '3':
+                    item.setAttribute('fill', 'yellow')
+                  break;
+                case '4':
+                  item.setAttribute('fill', 'black')
+                  break;
+                default:
+                  break;
+              }
+            })
+
           }
         }
       } else {
         if (elements) {
           for (let i = 0; i < elements.length; i += 1) {
-            const tag = elements[i];
+            const tag = elements[ i ];
             tag.style.removeProperty('color');
             tag.style.removeProperty('background');
             tag.style.removeProperty('text-decoration');
             tag.style.removeProperty('border');
+            Array.from(document.getElementsByClassName('iconToolbar')).forEach((item) => {
+              item.setAttribute('fill', 'black')
+            })
           }
         }
       }
@@ -105,28 +120,57 @@ export default function ContrastButton() {
       setDisabledContrast(false);
     }
     changeContrast(true);
-    Head();
   }, []);
 
-  useEffect(() => {
-    changeContrast(true);
-  }, [window.document.URL]);
+  return (
 
-  return disabledContrast ? (
-    <ToolbarButton
-      icon='contrast'
-      alt='Contraste'
-      color='#DCDCDC'
-      onClick={(): void => {}}
-      idButton={''}
-    />
-  ) : (
-    <ToolbarButton
-      icon='contrast'
-      alt='Contraste'
-      onClick={() => changeContrast(false)}
-      color={''}
-      idButton={''}
-    />
+    <div
+      className='divButtonToolbar'
+      style={ {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        border: '1px solid transparent',
+      } }>
+      <button
+        type='button'
+        style={ {
+          padding: '2px 4px',
+          border: '1px solid transparent !important',
+          borderRadius: '7px',
+          cursor: 'pointer',
+          background: disabledContrast ? 'red' : '#f1f1f1',
+        } }
+        className='a11yIcon'
+        onClick={ () => changeContrast(false) }>
+        {/* { Image ? <Image
+            src={ require('../utils/icons/contrast.svg') }
+            height={ 25 }
+            width={ 25 }
+          /> :
+            <img src='../utils/icons/contrast.svg' alt="Contraste" />
+          } */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="25"
+          width="25"
+          className='iconToolbar'
+          viewBox="0 96 960 960"
+        >
+          <path d="M480 976q-83 0-156-31.5T197 859q-54-54-85.5-127T80 576q0-83 31.5-156T197 293q54-54 127-85.5T480 176q83 0 156 31.5T763 293q54 54 85.5 127T880 576q0 83-31.5 156T763 859q-54 54-127 85.5T480 976Zm20-60q137-10 228.5-106T820 576q0-138-91.5-234T500 236v680Z" />
+        </svg>
+      </button>
+      <p
+        style={ {
+          margin: '0',
+          padding: '0',
+          fontSize: '8px',
+          color: '#000000 !important',
+          fontFamily: 'Lexend Deca, sans-serif',
+        } }
+        id='legendButton'>
+        Contraste
+      </p>
+    </div>
   );
 }

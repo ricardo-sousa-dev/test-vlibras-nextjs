@@ -1,4 +1,3 @@
-import ToolbarButton from '../ToolbarButton';
 import tags from '../utils/tags';
 
 /*eslint-disable */
@@ -69,12 +68,43 @@ export default function ZoomPage() {
   }
 
   return (
-    <ToolbarButton
-      icon='zoom_out_map'
-      alt='Zoom'
-      onClick={() => changeZoomPage(false)}
-      color={''}
-      idButton={''}
-    />
+
+    <div
+      className='divButtonToolbar'
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        border: '1px solid transparent',
+      }}>
+      <button
+        type='button'
+        style={{
+          padding: '2px 4px',
+          border: '1px solid black !important',
+          borderRadius: '7px',
+          cursor: 'pointer',
+          background: '#f1f1f1',
+        }}
+        className='a11yIcon'
+        onClick={() => changeZoomPage(false)}>
+          <svg 
+          className='iconToolbar'
+          xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 96 960 960" width="25">
+            <path d="M120 936V706h60v127l148-148 43 43-148 148h127v60H120Zm490 0v-60h127L590 729l43-43 147 147V706h60v230H610ZM327 466 180 319v127h-60V216h230v60H223l147 147-43 43Zm306 0-43-43 147-147H610v-60h230v230h-60V319L633 466Z" />
+          </svg>
+      </button>
+      <p
+        style={{
+          margin: '0',
+          padding: '0',
+          fontSize: '8px',
+          color: '#000000 !important',
+          fontFamily: 'Lexend Deca, sans-serif',
+        }}
+        id='legendButton'>
+        Zoom
+      </p>
+    </div>
   );
 }

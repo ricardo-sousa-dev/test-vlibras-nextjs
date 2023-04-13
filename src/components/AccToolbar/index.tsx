@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 
 import Head from './utils/head';
-import VLibras from './VLibras/vlibras';
 import FloatingIcon from './ButtonFloatingIcon';
 import Toolbar from './Toolbar';
+import VLibras from './VLibras';
 
 export default function AccToolbar() {
   const [showToolbar, setShowToolbar] = useState(false);
 
   useEffect(() => {
     Head();
-    new VLibras();
     const storageContrast = localStorage.getItem('storageContrast');
     const storageTextStyle = localStorage.getItem('storageTextStyle');
     const storageZoomPage = localStorage.getItem('storageZoomPage');
@@ -59,7 +58,7 @@ export default function AccToolbar() {
 
   return (
     <>
-      {/* <VLibras /> */}
+      <VLibras />
       <FloatingIcon
         setShowToolbar={setShowToolbar}
         showToolbar={showToolbar}

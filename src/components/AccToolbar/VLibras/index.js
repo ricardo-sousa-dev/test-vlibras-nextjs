@@ -1,4 +1,4 @@
-/* eslint-disable */
+/*eslint-disable */
 const __createBinding =
   (this && this.__createBinding) ||
   (Object.create
@@ -51,8 +51,12 @@ class VLibras extends react_1.Component {
     this.script.src = this.scriptSrc;
     this.script.async = true;
     this.script.onload = (load) => {
+      // @ts-ignore
+
       new window.VLibras.Widget(this.widgetSrc);
       if (this.props.forceOnload) {
+        // @ts-ignore
+
         window.onload();
       }
     };
@@ -64,15 +68,19 @@ class VLibras extends react_1.Component {
   }
 
   render() {
-    return react_1.default.createElement(
-      'div',
-      { vw: 'true', className: 'enabled' },
-      react_1.default.createElement('div', { 'vw-access-button': 'true', className: 'active' }),
+    return (
+      // @ts-ignore
+
       react_1.default.createElement(
         'div',
-        { 'vw-plugin-wrapper': 'true' },
-        react_1.default.createElement('div', { className: 'vw-plugin-top-wrapper' }),
-      ),
+        { vw: 'true', className: 'enabled' },
+        react_1.default.createElement('div', { 'vw-access-button': 'true', className: 'active' }),
+        react_1.default.createElement(
+          'div',
+          { 'vw-plugin-wrapper': 'true' },
+          react_1.default.createElement('div', { className: 'vw-plugin-top-wrapper' }),
+        ),
+      )
     );
   }
 }

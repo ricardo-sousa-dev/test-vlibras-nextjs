@@ -1,5 +1,5 @@
 import styles from '@/styles/Home.module.scss'
-import AccToolbar from '../components/AccToolbar2'
+import AccToolbar from '../components/AccToolbar'
 
 export default function Home() {
 

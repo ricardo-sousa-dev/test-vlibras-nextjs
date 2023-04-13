@@ -9,10 +9,11 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
   let tagsLI: HTMLElement[];
   let tagsA: HTMLAnchorElement[];
   let tagsIMG: HTMLElement[];
+  // let tagsSVG: SVGSVGElement[];
   let tagsDiv: HTMLDivElement[];
   let tagsButton: HTMLButtonElement[];
   let tagHeader: HTMLElement[];
-  let arrayTags: (HTMLButtonElement | HTMLElement | HTMLHeadingElement | HTMLDivElement)[];
+  let arrayTags: (HTMLHeadingElement | HTMLElement | HTMLDivElement | HTMLButtonElement )[];
 
   if (typeof window !== 'undefined') {
     tagsH1 = Array.from(document.querySelectorAll('h1'));
@@ -25,14 +26,29 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
     tagsLI = Array.from(document.querySelectorAll('li'));
     tagsA = Array.from(document.querySelectorAll('a'));
     tagsIMG = Array.from(document.querySelectorAll('img'));
+    // tagsSVG = Array.from(document.getElementsByClassName('iconToolbar'));
+    // tagsSVG = Array.from(document.querySelectorAll('svg'));
     tagsDiv = Array.from(document.querySelectorAll('div'));
     tagsButton = Array.from(document.querySelectorAll('button'));
     tagHeader = Array.from(document.querySelectorAll('header'));
-    arrayTags = [tagHeader, tagsH1, tagsH2, tagsH3, tagsH4, tagsH5, tagsH6, tagsP, tagsLI, tagsA, tagsDiv, tagsIMG, tagsButton].flatMap<
-      HTMLButtonElement | HTMLHeadingElement | HTMLDivElement | HTMLElement
-    >((tag) => tag);
+    arrayTags = [
+      tagHeader,
+      tagsH1,
+      tagsH2,
+      tagsH3,
+      tagsH4,
+      tagsH5,
+      tagsH6,
+      tagsP,
+      tagsLI,
+      tagsA,
+      tagsDiv,
+      tagsIMG,
+      // tagsSVG,
+      tagsButton,
+    ].flatMap<HTMLHeadingElement | HTMLElement | HTMLDivElement | HTMLButtonElement >((tag) => tag);
 
-    return arrayTags.filter(
+    const filterTags = arrayTags.filter(
       (tag) => tag.getAttribute('id') !== '__next'
         && tag.getAttribute('id') !== 'gameContainer'
         && tag.getAttribute('id') !== 'legendButton'
@@ -68,7 +84,6 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
         && !tag.parentElement?.getAttributeNames().includes('vp-rate-box')
         && !tag.parentElement?.getAttributeNames().includes('vp-rate-button')
         && !tag.parentElement?.getAttributeNames().includes('vp-controls')
-        && !tag.parentElement?.classList.contains('divButtonToolbar')
         && !tag.parentElement?.classList.contains('containerToolbar')
         && !tag.parentElement?.classList.contains('toolbar')
         && !tag.parentElement?.classList.contains('vp-controls-play')
@@ -86,8 +101,9 @@ export default function Tags(): (HTMLButtonElement | HTMLElement | HTMLHeadingEl
         && !tag.parentElement?.classList.contains('vpw-vlibras-logo')
         && !tag.parentElement?.classList.contains('vp-button-change-avatar')
         && !tag.parentElement?.classList.contains('vp-button')
-        && !tag.parentElement?.classList.contains('vp-container'),
+        && !tag.parentElement?.classList.contains('vp-container')
     );
+    return filterTags;
   }
 
   return null;
