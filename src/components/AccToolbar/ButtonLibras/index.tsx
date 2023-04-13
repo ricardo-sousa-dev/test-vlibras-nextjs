@@ -2,22 +2,17 @@ import { useEffect } from 'react';
 
 /*eslint-disable */
 export default function Libras() {
-  // const [ disabledLibras, setDisabledLibras ] = useState(true);
 
   useEffect(() => {
     if (localStorage.getItem('storageLibras') === '2') {
       setTimeout(() => {
-        // setDisabledLibras(false);
         const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[0] as HTMLElement;
         if (closeWidget) closeWidget.style.opacity = '0';
 
         const titleWidget: HTMLElement = document.getElementsByClassName('vpw-mes')[0] as HTMLElement;
         if (titleWidget) titleWidget.innerText = 'LIBRAS';
       }, 10000);
-      // } else {
-      //   setTimeout(() => {
-      //     setDisabledLibras(false);
-      //   }, 6000);
+     
     }
   }, []);
 
@@ -27,20 +22,19 @@ export default function Libras() {
     if (storageLibras == '1') {
       localStorage.setItem('storageLibras', JSON.stringify(2));
 
-      // setDisabledLibras(true);
       if (!document.getElementsByClassName('vpw-box')[0]) {
         setTimeout(() => {
-          // setDisabledLibras(false);
           const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[0] as HTMLElement;
           closeWidget.addEventListener('click', () => localStorage.setItem('storageLibras', JSON.stringify(1)));
+       
+          if (closeWidget) closeWidget.style.opacity = '0';
+
+          const titleWidget: HTMLElement = document.getElementsByClassName('vpw-mes')[ 0 ] as HTMLElement;
+          if (titleWidget) titleWidget.innerText = 'LIBRAS';
+
         }, 10000);
       }
-      // else {
-      //   setTimeout(() => {
-      //     setDisabledLibras(false);
-      //   }, 3000);
-      // }
-
+    
       try {
         const showWidget = document.getElementsByClassName('access-button')[0] as HTMLElement;
         showWidget.click();
