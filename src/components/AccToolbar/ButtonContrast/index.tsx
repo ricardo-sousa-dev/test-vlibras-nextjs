@@ -135,7 +135,7 @@ export default function ContrastButton() {
           xmlns="http://www.w3.org/2000/svg"
           height="25"
           width="25"
-          fill={ disabledContrast ? '#EEEEEE' : 'none' }
+          fill={ disabledContrast ? 'inherit' : '#EEEEEE' }
           className='iconToolbar'
           viewBox="0 96 960 960"
         >
