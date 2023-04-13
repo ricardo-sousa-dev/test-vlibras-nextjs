@@ -62,7 +62,6 @@ export default function TextStyle() {
   }
 
   return (
-
     <div
       className='divButtonToolbar'
       style={{
@@ -75,18 +74,21 @@ export default function TextStyle() {
         type='button'
         style={{
           padding: '2px 4px',
-          border: '1px solid black !important',
+          border: '1px solid #000000',
           borderRadius: '7px',
           cursor: 'pointer',
           background: '#f1f1f1',
         }}
         className='a11yIcon'
         onClick={() => changeTextStyle(false)}>
-          <svg 
+        <svg
           className='iconToolbar'
-          xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 96 960 960" width="25">
-            <path d="M200 856v-60h560v60H200Zm76-160 175-440h58l175 440h-55l-45-119H376l-45 119h-55Zm117-164h174l-85-222h-4l-85 222Z" />
-          </svg>
+          xmlns='http://www.w3.org/2000/svg'
+          height='25'
+          viewBox='0 96 960 960'
+          width='25'>
+          <path d='M200 856v-60h560v60H200Zm76-160 175-440h58l175 440h-55l-45-119H376l-45 119h-55Zm117-164h174l-85-222h-4l-85 222Z' />
+        </svg>
       </button>
       <p
         style={{
@@ -96,7 +98,7 @@ export default function TextStyle() {
           color: '#000000 !important',
           fontFamily: 'Lexend Deca, sans-serif',
         }}
-        id='legendButton'>
+        className='legendButton'>
         Fonte
       </p>
     </div>

@@ -68,7 +68,6 @@ export default function ZoomPage() {
   }
 
   return (
-
     <div
       className='divButtonToolbar'
       style={{
@@ -81,18 +80,21 @@ export default function ZoomPage() {
         type='button'
         style={{
           padding: '2px 4px',
-          border: '1px solid black !important',
+          border: '1px solid #000000',
           borderRadius: '7px',
           cursor: 'pointer',
           background: '#f1f1f1',
         }}
         className='a11yIcon'
         onClick={() => changeZoomPage(false)}>
-          <svg 
+        <svg
           className='iconToolbar'
-          xmlns="http://www.w3.org/2000/svg" height="25" viewBox="0 96 960 960" width="25">
-            <path d="M120 936V706h60v127l148-148 43 43-148 148h127v60H120Zm490 0v-60h127L590 729l43-43 147 147V706h60v230H610ZM327 466 180 319v127h-60V216h230v60H223l147 147-43 43Zm306 0-43-43 147-147H610v-60h230v230h-60V319L633 466Z" />
-          </svg>
+          xmlns='http://www.w3.org/2000/svg'
+          height='25'
+          viewBox='0 96 960 960'
+          width='25'>
+          <path d='M120 936V706h60v127l148-148 43 43-148 148h127v60H120Zm490 0v-60h127L590 729l43-43 147 147V706h60v230H610ZM327 466 180 319v127h-60V216h230v60H223l147 147-43 43Zm306 0-43-43 147-147H610v-60h230v230h-60V319L633 466Z' />
+        </svg>
       </button>
       <p
         style={{
@@ -102,7 +104,7 @@ export default function ZoomPage() {
           color: '#000000 !important',
           fontFamily: 'Lexend Deca, sans-serif',
         }}
-        id='legendButton'>
+        className='legendButton'>
         Zoom
       </p>
     </div>
