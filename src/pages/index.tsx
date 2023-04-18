@@ -15,7 +15,7 @@ export default function Home() {
         <a href="">LINK</a>
         <div>Div1</div>
         <div>Div2
-          <div>Div intern</div>
+          <div>Div interna</div>
         </div>
         <img src='/img/a11y-symbol.webp'></img>
       </div>
