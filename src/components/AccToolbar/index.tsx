@@ -27,20 +27,13 @@ export default function AccToolbar() {
     if (!storageLibras) localStorage.setItem('storageLibras', JSON.stringify(1));
 
     if (
-      (storageContrast && storageContrast !== '1') ||
-      (storageTextStyle && storageTextStyle !== '1') ||
-      (storageZoomPage && storageZoomPage !== '1') ||
-      (storageLibras && storageLibras !== '1')
-    )
-      setShowToolbar(true);
+      (storageContrast && storageContrast !== '1')
+      || (storageTextStyle && storageTextStyle !== '1')
+      || (storageZoomPage && storageZoomPage !== '1')
+      || (storageLibras && storageLibras !== '1')
+    ) setShowToolbar(true);
 
     if (storageLibras === '2') {
-      const toolbarLibras: HTMLButtonElement = document.getElementById('toolbarLibras') as HTMLButtonElement;
-
-      if (toolbarLibras) toolbarLibras.disabled = true;
-
-      localStorage.setItem('storageLibras', JSON.stringify(2));
-
       setTimeout(() => {
         const openWidget: HTMLElement = document.getElementsByClassName('access-button')[0] as HTMLElement;
 

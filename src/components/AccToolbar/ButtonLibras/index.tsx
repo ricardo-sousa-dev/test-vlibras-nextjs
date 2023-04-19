@@ -2,17 +2,18 @@ import { useEffect } from 'react';
 
 /*eslint-disable */
 export default function Libras() {
-
   useEffect(() => {
     if (localStorage.getItem('storageLibras') === '2') {
       setTimeout(() => {
         const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[0] as HTMLElement;
-        if (closeWidget) closeWidget.style.opacity = '0';
+        if (closeWidget) {
+          closeWidget.style.opacity = '0';
+          closeWidget.addEventListener('click', () => localStorage.setItem('storageLibras', JSON.stringify(1)));
+        }
 
         const titleWidget: HTMLElement = document.getElementsByClassName('vpw-mes')[0] as HTMLElement;
         if (titleWidget) titleWidget.innerText = 'LIBRAS';
       }, 10000);
-     
     }
   }, []);
 
@@ -25,16 +26,17 @@ export default function Libras() {
       if (!document.getElementsByClassName('vpw-box')[0]) {
         setTimeout(() => {
           const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[0] as HTMLElement;
-          closeWidget.addEventListener('click', () => localStorage.setItem('storageLibras', JSON.stringify(1)));
-       
-          if (closeWidget) closeWidget.style.opacity = '0';
 
-          const titleWidget: HTMLElement = document.getElementsByClassName('vpw-mes')[ 0 ] as HTMLElement;
+          if (closeWidget) {
+            closeWidget.addEventListener('click', () => localStorage.setItem('storageLibras', JSON.stringify(1)));
+            closeWidget.style.opacity = '0';
+          }
+
+          const titleWidget: HTMLElement = document.getElementsByClassName('vpw-mes')[0] as HTMLElement;
           if (titleWidget) titleWidget.innerText = 'LIBRAS';
-
         }, 10000);
       }
-    
+
       try {
         const showWidget = document.getElementsByClassName('access-button')[0] as HTMLElement;
         showWidget.click();
@@ -73,7 +75,7 @@ export default function Libras() {
           cursor: 'pointer',
         }}
         className='a11yIcon'
-        onClick={setLibras}>
+        onClick={() => setLibras()}>
         <svg
           className='iconToolbar'
           xmlns='http://www.w3.org/2000/svg'

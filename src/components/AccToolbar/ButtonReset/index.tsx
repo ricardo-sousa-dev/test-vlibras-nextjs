@@ -6,46 +6,39 @@ export default function Reset() {
 
   const reset = () => {
     elements = tags();
-    //contrast
     if (elements) {
       for (let i = 0; i < elements.length; i += 1) {
         const tag = elements[i];
+        //contrast
         tag.style.removeProperty('color');
         tag.style.removeProperty('background');
         tag.style.removeProperty('text-decoration');
         tag.style.removeProperty('border');
-        Array.from(document.getElementsByClassName('iconToolbar')).forEach((item) => {
-          item.setAttribute('fill', '#000000');
-        });
+
         if (tag.getAttribute('class') === 'a11yIcon' || tag.getAttribute('class') === 'floatingIcon') tag.style.border = '1px solid #000000';
-      }
-    }
-    localStorage.setItem('storageContrast', JSON.stringify(1));
 
-    // text style
-    if (elements)
-      for (let i = 0; i < elements.length; i += 1) {
-        const tag = elements[i];
-
+        // text style
         if (!tag.parentElement?.classList.contains('divButtonToolbar')) {
           tag.style.removeProperty('font-family');
         }
-      }
-    localStorage.setItem('storageTextStyle', JSON.stringify(1));
 
-    // zoom page
-    if (elements)
-      for (let i = 0; i < elements.length; i += 1) {
-        const tag = elements[i];
-
+        // zoom page
         if (!tag.parentElement?.classList.contains('divButtonToolbar')) {
           tag.style.removeProperty('font-size');
           tag.style.removeProperty('transform');
         }
       }
-    localStorage.setItem('storageZoomPage', JSON.stringify(1));
-
+    }
     // Libras
+    const closeWidget: HTMLElement = document.getElementsByClassName('vpw-settings-btn-close')[0] as HTMLElement;
+    if (closeWidget) closeWidget.click();
+
+    Array.from(document.getElementsByClassName('iconToolbar')).forEach((item) => {
+      item.setAttribute('fill', '#000000');
+    });
+    localStorage.setItem('storageContrast', JSON.stringify(1));
+    localStorage.setItem('storageTextStyle', JSON.stringify(1));
+    localStorage.setItem('storageZoomPage', JSON.stringify(1));
     localStorage.setItem('storageLibras', JSON.stringify(1));
   };
 

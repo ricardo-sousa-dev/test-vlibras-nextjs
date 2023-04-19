@@ -6,6 +6,7 @@ export default function TextStyle() {
   let elements: string | any[] | null;
 
   const changeTextStyle = (init: boolean) => {
+    console.log('{{{{{{{{{{{ ᕙ༼~_~༽ᕗ }}}}}}}}}}} ->  ENTROU:');
     const storageTextStyle = localStorage.getItem('storageTextStyle');
 
     if (!init) {
